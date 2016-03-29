@@ -1,1 +1,77 @@
-\chapter{Casehus} \label{sec:casehus}
+\chapter{Appendiks name} \label{sec:ap1}
+\begin{center}
+    \begin{tabular}{ | l| l | p{0.5\linewidth} | }
+    \hline
+    Reserved calls & Our language & RoboCode \\ \hline
+    Tank. & forward(num distance) & ahead(double distance)  \\ \hline
+     & backward(num distance) & back(double distance)  \\ \hline
+     & doNothing() & doNothing() \\ \hline
+     & energy() & getEnergy() \\ \hline
+     & heading() & getHeading() \\ \hline
+     & height() & getHeight() \\ \hline
+     & width() & getWidth()  \\ \hline
+     & velocity() & getVelocity()  \\ \hline
+     & xCoord() & getX() \\ \hline
+     & yCoord & getY() \\ \hline
+     & stop() & stop() \\ \hline
+     & resume() & resume() \\ \hline
+     & turn(num degrees) & turnLeft(double degrees)  \\ \hline
+     & &  \\ \hline
+    Gun. & shoot(num power) & fire(double power) \\ \hline
+     & coolingRate() & getGunCoolingRate() \\ \hline
+     & heading() & getGunHeading() \\ \hline
+     & heat() & getGunHeat() \\ \hline
+     & turn(num ddegrees) & turnGunLeft(double degrees)  \\ \hline
+     & adjustGunForRobotTurn(boolean) & adjustGunForRobotTurn(boolean independant) \\ \hline
+     & &  \\ \hline
+    Radar. & heading() & getRadarHeading() \\ \hline
+     & scan() & scan() \\ \hline
+     & adjustRadarForGunTurn(boolean) & adjustRadarForGunTurn(boolean independant)  \\ \hline
+     & adjustRadarForRobotTurn(boolean) & adjustRadarForRobotTurn(boolean independant) \\ \hline
+     & turn(num degrees) & turnRadarLeft(double degrees) \\ \hline
+     & &  \\ \hline
+    Battlefield. & height() & getBattleFieldHeight() \\ \hline
+     & width() & getBattleFieldWidth() \\ \hline
+     & numOfRounds() & getNumRounds() \\ \hline
+     & enemies() & getOthers() \\ \hline
+     & roundNume() & getRoundNum() \\ \hline
+     & time() & getTime()  \\
+    \hline
+    \end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{ | p{0.3\linewidth} | p{0.3\linewidth} | p{0.3\linewidth} |}
+		\hline
+		OL / Robocode Event& OL Event Information & Robocode Event Information \\ \hline
+		BulletHit / onBulletHit& bullet() & getBullet() \\ \hline
+		& energy() & getEnergy() \\ \hline
+		BulletHitBullet / onBulletHitBullet& bullet() & getBullet() \\ \hline
+		HitByBullet / onHitByBullet& bearing() & getBearing() \\ \hline
+		& bearingDegrees() & getBearingDegrees \\ \hline
+		& bullet() & getBullet() \\ \hline
+		& heading() & getHeading() \\ \hline
+		& headingDegrees() & getHeadingDegrees() \\ \hline
+		& power() & getPower() \\ \hline
+		& velocity() & getVelocity() \\ \hline
+		HitRobot / onHitRobot & bearing() & getBearing() \\ \hline
+		& bearingDegrees() & getBearingDegrees \\ \hline
+		& energy() & getEnergy() \\ \hline
+		& myFault() & isMyFault() \\ \hline
+		Death / onDeath & time() & getTime() \\ \hline
+		HitWall / onHitWall & bearing() & getBearing() \\ \hline
+		& bearingDegrees() & getBearingDegrees() \\ \hline
+		EnemyDeath / onRobotDeath & time() & getTime() \\ \hline
+		RoundEnded / onRoundEnded & round() & getRound() \\ \hline
+		& totalTurns() & getTotalTurns() \\ \hline
+		& turns() & getTurns() \\ \hline
+		ScannedRobot / onScannedRobot & bearing() & getBearing() \\ \hline
+		& distance() & getDistance() \\ \hline
+		& energy() & getEnergy() \\ \hline
+		& heading() & getHeading() \\ \hline
+		& velocity() & getVelocity() \\ \hline
+		Status / onStatus & status() & getStatus() \\ \hline
+		Win / onWin & time() & getTime() \\
+		\hline
+	\end{tabular}
+\end{center}

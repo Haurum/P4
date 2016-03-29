@@ -1,1 +1,19 @@
 \chapter{Language Description}
+This chapter is focused on describing the technical details of the language. 
+
+\section{Grammar}
+
+\subsection{Lexicon}
+The definition of what input are allowed for each lexical in the grammar is defined by regular expressions. This will be described here with a table of terminals with matching regex. A stream of characters is read by the scanner of the compiler and then turned into a lexical defined by the regex.
+
+\begin{table}[]
+\centering
+\label{fig:Lexicon}
+\begin{tabular}{|l|l|}
+\hline
+Terminal & Regular expressions                \\ \hline
+ID       & {[}a-z{]} ({[}a-z{]} | {[}A-Z{]})* \\ \hline
+TYPE     & Num | Bool | Text                  \\ \hline
+\end{tabular}
+\caption{Table with terminals and matching regular expressions.}
+\end{table}}

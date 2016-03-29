@@ -1,4 +1,12 @@
 \chapter{Analysis}
+\label{chap:Analysis}
+The analysis chapter is of purpose to create a basis for the further work with developing a programming language to make the use of Robocode easier for new programmers. This chapter contains a description of Robocode and cover the basics of how to use it. 
+
+Further in the analysis the choice of a parser generator for the project will be discussed. The work of the analysis has the purpose of leading to the next chapter, \ref{chap:LanguageDesign}
+
+\section{Robocode}
+\label{sec:Robocode}
+\todo{For meget intro til Robocode?}
 Robocode is an Open Source game project on SourceForge originally started by Mathew A. Nelson in late 2000, who was inspired by RobotBattle from the 1990s. Contributors for the Open Source lead to two new projects, RobocodeNG and Robocode 2006, by Flemming N. Larsen. These two new versions had bug fixes, and new features by the community of Robocode, and in 2006 Flemming merged one of the projects, the Robocode 2006, into an official version 1.1.
 The Robocode client was introduced in May 2007, which can be used to create the robots for the game. These robots are usually coded in Java, but in the recent years, C\# and Scala are popular as well.
 
@@ -46,7 +54,7 @@ The above mentioned is only a few of the events that can occur in RoboCode. In t
 
 
 In this section the robocode concept will be described. It will include the different functions the system contains.
-\section{Robocode}
+
 Robocode was originally developed by Matthew A. Nelson, back in 2000. During 2005 Robocode was brought to SourgeForge as Open Source. The development on Robocode had more or less stopped, and therefore it encouraged the Robocode-community to further develop it, so that they could fix bugs and other issues. Mid 2006 Flemming N. Larsen took over the Robocode project as administrator and since then the game have been updated fairly regularly with the help of the community. Robocode is best described, as they describe it on their website: “Robocode is a programming game, where the goal is to develop a robot battle tank to battle against other tanks in Java or .NET. The robot battles are running in real-time and on-screen.” \citep{robocode}
 
 The way this game works, is by writing code in one of their supported programming languages and then setting it into battle with other people’s robots. There are some sample robot, when the game is downloaded, in order to give the users/players a chance to see how it’s supposed to be written and from there, it’s up to the single individual to make the “best” robot. http://robowiki.net/wiki/Robocode/My\_First\_Robot
@@ -83,9 +91,11 @@ When all the above scoring points for all robots in a battle has been added up, 
 
 
 \section{Choice of parser generator}
+\label{sec:ParserGenerator}
 When choosing a parser generator, one also has to choose a lexer generator, for the lexical analysis. The choice of not building a parser for this project without a generator tool, was due to the fact that the ANTLR4 tool had a build-in lexical analyzer, and a plugin for Eclipse/IntelliJ, generating abstract syntax trees while writing the grammar. Other parser generators were discussed before making a final decision, such as CUP, but the lack of lexical analyzers and abstract syntax tree builders, and at the same time the ease of installing the ANTLR4 parser generator, stated that the ANTLR4 tool was the choice of generator for this project. For the IntelliJ IDE there was a single plugin the user had to install, but for Eclipse, and the abstract syntax tree builder for Eclipse, it required a few plugins, and a bit of experience with the tool, to fully understand how to operate with the tree builder window. Both Eclipse and IntelliJ has been considered as the IDE to use. IntelliJ is preferred because of the ease of installation and use of the ANTLR4 plugin.
  
 \section{ANTLR4 Parser Generator}
+\label{Antlr}
 In this project, the ANTLR4 parser generator was chosen, as the tool generated both the parser and the lexical analyzer. This tool, as a plugin for both IntelliJ and Eclipse, could also build abstract syntax trees (AST), which are the trees representing abstract syntactic structures, language correct (syntactically correct) sentences (source code) in a computer language. These trees have a top representing the program, and nodes representing terminals and non-terminals. The roots of the tree are terminals, which is the syntactically correct sentence.
 
 The AST tree builder for the ANTLR4 Eclipse plugin would show the trees in an Eclipse window, where the user would be able to write a sentence, and the window would show the AST for that particular sentence, if it was syntactically correct, corresponding to the grammar described in a .g4 file in the Eclipse project.

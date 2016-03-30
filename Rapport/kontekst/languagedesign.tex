@@ -1,54 +1,50 @@
 \chapter{Language design}
-INTRO
-\section{Language criterias}
+This chapter will describe the design choices made when designing our language. First the langauge criteria section is described with the three criteria \textit{Readability}, \textit{Writeability} and \textit{Reliability}. The MoSCoW analysis will be applied to our language. The MoSCoW analysis concerns what the project \textit{Must have}, \textit{Should have}, \textit{Could have} and \textit{Should have}. Last in the chapter each of the  items in the MoSCoW analysis will be shortly described why it have been considered and why it is placed where it is.
+\section{Language criteria}
 INTRO
 (Remember to mention that the sebesta book have been used as a source here)
 
 \subsection{Readability}
-Readability is referring to the ease of reading and understanding a programming language. The language in this report should be very simple, since the programming language is, as earlier mentioned, targeted for high school students with little or no programming experience. Therefore the only the necessary features for a beginner in both programming and RoboCode should be implemented. 
+Readability is referring to the ease of reading and understanding a programming language. The language in this report should be very simple, since the programming language is, as earlier mentioned, targeted for high school students with little or no programming experience. (write about what we are hiding from  the user and why here and why it should still look like Java.)
 
-Since the language is targeted for beginners, one of the criterias for the language would be to make the syntax as simple as possible, but still have it generally look like Java. The language should also have a high level of orthogonality, which also will help make the language simpler. 
+Since the language is targeted for beginners, one of the criteria for the language would be to make the syntax as simple as possible, but it still has to generally look like Java. The language should also have a high level of orthogonality, which also will help make the language simpler. 
 
 \subsection{Writability}
-The general purpose for a DSL language is a language is to be able to make solutions for a specific problem, therefore the writability is important in this project, since the purpose of this project is to make a DSL language for RoboCode. As mentioned in the section above, the language should have a high level of orthogonality, which will also help on  the writability of the language. 
-Reliability
+To have a higher level of writeability, the language will be a DSL for Robocode. The genereal purpose of a DSL language is to be able to make solutions for a specific problem. As mentioned in the section above, the language should have a high level of orthogonality, which will also help on  the writability of the language.  
 
 \subsection{Reliability}
 REMEMBER TO INSERT!
 
 \section{MoSCoW analysis}
 INTRO
+\begin{table}
+\centering
+\begin{tabular}{ |l|l| }
+\hline
+\multicolumn{2}{ |c| }{MoSCoW analysis} \\
+\hline
+\multirow{7}{*}{Must have} & Primitive types and variables (assignment)  \\
+& While loop  \\
+& Reserved calls  \\
+& Robot naming \\
+& If/Else/Elseif statements \\
+& Arithmetic expressions and operators \\
+& Logical expressions and operators  \\ \hline
+\multirow{2}{*}{Should have} & Events \\
+& Void and type methods \\ \hline
+\multirow{7}{*}{Could have} & Cos, Sin \& Tan  \\
+& For loops  \\
+& Arrays  \\
+& Strings \\
+& Print statements \\
+& Comments \\
+& Setup block  \\ \hline
+\multirow{3}{*}{Would have} & Random number generator \\
+& Other robot types \\
+& Other RoboCode gamemodes \\
+\hline
+\end{tabular}
+\caption{Outcome of the MoSCoW analysis}
+\label{moscow}
 
-\textbf{Must have}
-\begin{itemize}
-\item Primitive types and variables (assignment)
-\item While loop
-\item Reserved calls
-\item Robot naming
-\item If/Else/Elseif statements)
-\item Arithmetic expressions and operators
-\item Logical expressions and operators
-\end{itemize}
-\textbf{Should have}
-\begin{itemize}
-\item Events
-\item Void and type methods
-\item Cos, Sin \& Tan
-\end{itemize}
-\textbf{Could have}
-\begin{itemize}
-\item For loops
-\item Arrays
-\item Strings
-\item Print statements
-\item Comments
-\item Setup block
-\end{itemize}
-\textbf{Want to have, but can’t right now}
-\begin{itemize}
-\item Random number generator
-\item Other robot types
-\item Other RoboCode gamemodes
-\end{itemize}
-
- 
+\end{table}

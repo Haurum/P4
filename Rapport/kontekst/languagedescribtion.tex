@@ -1,1 +1,25 @@
 \chapter{Language Description}
+\label{chap:LanguageDescription}
+This chapter is focused on describing the technical details of the language. The usage of the language will be described with a walkthrough of some features, a context-free grammar will be showed describing the syntax of the language in detail. 
+
+\section{Grammar}
+\label{sec:Grammar}
+This section has the purpose of describing the context-free grammar of the language. This grammar has the purpose of defining the syntax of the language. The CFG formalizes the syntax and is in this case formatted to be run through the ANTLR4 parser generator.
+
+\subsection{Lexicon}
+The definition of what input are allowed for each lexical in the grammar is defined by regular expressions. This will be described here with a table of terminals with matching regex. A stream of characters is read by the scanner of the compiler and then turned into a lexical defined by the regex.
+Due to the way the context-free grammar is implemented there are not a lot of terminals. This is because that the terminal \emph{ID} is used widely through the CFG.  
+
+\begin{table}[]
+\centering
+\label{fig:Lexicon}
+\begin{tabular}{|l|l|}
+\hline
+Terminal & Regular expressions                \\ \hline
+ID       & {[}a-z{]} ({[}a-z{]} | {[}A-Z{]})* \\ \hline
+TYPE     & Num | Bool | Text                  \\ \hline
+Num		 & [0-9]+("."[0-9]*)?|"."[0-9]+		  \\ \hline
+Bool 	 & false | true						  \\ \hline
+\end{tabular}
+\caption{Table with terminals and matching regular expressions.}
+\end{table}

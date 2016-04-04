@@ -6,6 +6,111 @@ This chapter is focused on describing the technical details of the language. The
 \label{sec:Grammar}
 This section has the purpose of describing the context-free grammar of the language. This grammar has the purpose of defining the syntax of the language. The CFG formalizes the syntax and is in this case formatted to be run through the ANTLR4 parser generator.
 
+\begin{lstlisting}
+grammar Grammar;
+
+prog : dcls EOF;
+
+setupblock : 'Setup' block;
+
+repeatblock : 'Repeat' block;
+
+dcls : (actdcl | funcdcl | vardcl';' | setupblock | repeatblock | 'Tankname' ID ';' | event | print';')* ;
+
+actdcl : 'Action' ID '(' params? ')'block;
+
+funcdcl : 'Function' ID '(' params? ')' 'returns' TYPE block;
+
+params : param (',' param)*;
+
+param : TYPE ID;
+
+event : 'When' ID block;
+
+block : '{' stmts '}';
+
+stmts : (assign';'|vardcl';'|ifstmt|whilestmt|returnstmt';'|call';'|print';')*;
+
+assign : ID '=' expr;
+
+vardcl : TYPE (ID|assign);
+
+ifstmt : 'if''('expr')' block elseif* ('else' block)?;
+
+elseif : 'else''if''('expr')' block;
+
+whilestmt : 'repeat' ('while''('expr')' block | block 'while''('expr')');
+
+returnstmt : 'return' expr?;
+
+print : 'print('expr')';
+
+call : acall | fcall | rcall | ecall;
+
+acall : 'run' ID'('args?')';
+
+fcall : ID'('args?')';
+
+rcall : 'Tank.'ID'('args?')' | 'Gun.'ID'('args?')'
+       | 'Radar.'ID'('args?')' | 'Battlefield.'ID'('args?')'
+       | 'Math.'ID'('args?')';
+
+ecall : 'Event.'ID'('args?')';
+
+args : expr (',' expr)*;
+
+expr : orexpr ;
+
+orexpr : andexpr (OR andexpr)*;
+
+andexpr : eqexpr (AND eqexpr)*;
+
+eqexpr : relexpr (EQ relexpr)*;
+
+relexpr : addexpr (REL addexpr)*;
+
+addexpr : mulexpr (ADD mulexpr)*;
+
+mulexpr : unexpr (MUL unexpr)*;
+
+unexpr : 'NOT'? atomic;
+
+atomic : '(' expr ')' | ID | NUM | STRING | call | BOOL ;
+
+ID : [_a-z] [_a-zA-Z]* ;
+OR : 'OR';
+AND : 'AND';
+EQ : 'IS='|'NOT=';
+REL : '>'|'<'|'>='|'<=';
+ADD : '+'|'-';
+MUL : '*'|'/';
+NUM : '-'?[0-9]+('.'[0-9]+)?;
+BOOL : 'false' | 'true';
+STRING : '"'.*'"';
+TYPE : 'Num'|'Bool'|'String';
+
+Expr precedence:
+ 
+HIGHEST
+ 
+’NOT’ atomic
+* | /
++|-
+> | < | >= | <=
+IS= | NOT=
+AND
+OR
+ 
+LOWEST
+
+
+
+COMMENT : '/*'.*'*/' -> skip;
+SPACE : [ \t\n] -> skip;
+
+\end{lstlisting}
+
+
 \subsection{Lexicon}
 The definition of what input are allowed for each lexical in the grammar is defined by regular expressions. This will be described here with a table of terminals with matching regex. A stream of characters is read by the scanner of the compiler and then turned into a lexical defined by the regex.
 Due to the way the context-free grammar is implemented there are not a lot of terminals. This is because that the terminal \emph{ID} is used widely through the CFG.  

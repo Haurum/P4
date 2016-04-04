@@ -8,11 +8,15 @@ Further in the analysis the choice of a parser generator for the project will be
 \label{sec:Robocode}
 \todo{For meget intro til Robocode?}
 Robocode is an Open Source game project on SourceForge originally started by Mathew A. Nelson in late 2000, who was inspired by RobotBattle from the 1990s. Contributors for the Open Source lead to two new projects, RobocodeNG and Robocode 2006, by Flemming N. Larsen. These two new versions had bug fixes, and new features by the community of Robocode, and in 2006 Flemming merged one of the projects, the Robocode 2006, into an official version 1.1.
-The Robocode client was introduced in May 2007, which can be used to create the robots for the game. These robots are usually coded in Java, but in the recent years, C\# and Scala are popular as well.
+The Robocode client was introduced in May 2007, which can be used to create the robots for the game. These robots are usually coded in Java, but in the recent years, C\# and Scala are popular as well. \citep{robocode}
 
 In schools and universities, Robocode is introduced for education and research purposes, as it is intended to be fun and easy to understand the core principles: One robot each, with abilities to drive forward, backwards, turn to the sides, and shoot a gun. These core principles can be vastly expanded to more complicated demands, as the robots universe is bigger than it looks at a first glance. \citep{RoboReadMe}
 
-As mentioned before, the Robocode is usually coded in Java, which leads to this report only examining Java samples. This is to prevent any misleading keywords or misinterpretations. The Robocode client comes with a text editor, and a few code sample robots. In this chapter, some of these sample robots will be examined, and the general setup and main events or methods will be presented.
+The way this game works, is by writing code in one of their supported programming languages and then setting it into battle with other people’s robots. There are some sample robot, when the game is downloaded, in order to give the users/players a chance to see how it’s supposed to be written and from there, it’s up to the single individual to make the “best” robot. http://robowiki.net/wiki/Robocode/My\_First\_Robot
+
+There are held tournaments around the world, where people from around the globe compete. It varies in size, some tournaments are only country based, while others are worldwide, some have leagues and the options are more or less limitless. \citep{rc}
+
+As mentioned before, the Robocode is usually coded in Java, which leads to this report only examining Java samples. This is to prevent any misleading keywords or misinterpretations. The Robocode client comes with a text editor, and the sample robots. In this chapter, some of these sample robots will be examined, and the general setup and main events or methods will be presented.
 
 When creating a new robot in the Robocode text editor, the following methods and events are present:
 
@@ -54,17 +58,11 @@ The above mentioned is only a few of the events that can occur in RoboCode. In t
 
 
 In this section the robocode concept will be described. It will include the different functions the system contains.
-
-Robocode was originally developed by Matthew A. Nelson, back in 2000. During 2005 Robocode was brought to SourgeForge as Open Source. The development on Robocode had more or less stopped, and therefore it encouraged the Robocode-community to further develop it, so that they could fix bugs and other issues. Mid 2006 Flemming N. Larsen took over the Robocode project as administrator and since then the game have been updated fairly regularly with the help of the community. Robocode is best described, as they describe it on their website: “Robocode is a programming game, where the goal is to develop a robot battle tank to battle against other tanks in Java or .NET. The robot battles are running in real-time and on-screen.” \citep{robocode}
-
-The way this game works, is by writing code in one of their supported programming languages and then setting it into battle with other people’s robots. There are some sample robot, when the game is downloaded, in order to give the users/players a chance to see how it’s supposed to be written and from there, it’s up to the single individual to make the “best” robot. http://robowiki.net/wiki/Robocode/My\_First\_Robot
-
-There are held tournaments around the world, where people from around the globe compete. It varies in size, some tournaments are only country based, while others are worldwide, some have leagues and the options are more or less limitless. \citep{rc}
   
 \subsection{Robot}
-The robot is the core of the game. The robot can be coded to act differently in various of encounters. There are some events in Robocode that the user can use to program their strategies, one of the events could be onHitWall which basically tells the user that if the robot hits the wall, then the robot will execute the code matches the event that occurred. The robots also have a gun. The gun is used to damage other robots, that the robot will be fighting in the arena. The gun is always the same gun, but the players have the opportunity to code different types of bullets. For example, one play could use small and fast bullets, they won’t necessarily hurt very much, but it allows the player to shoot more frequent, compared to larger slower bullets. 
+The robot is the core of the game. The robot can be coded to act differently in various of encounters. There are some events in Robocode that the users can use to program their strategies. One of the events could be onHitWall which basically tells the user that if the robot hits the wall, then the robot will execute the code matches the event that occurred. The robots also have a gun. The gun is used to damage antagonist robots, in the arena. The robot has a gun, and the possibility to choose different types of bullets. For example, one play could use small and fast bullets, they won’t necessarily hurt very much, but it allows the player to shoot more frequent, compared to larger slower bullets. 
 
-Finally the robot also have a radar. With the radar, it allows the robot to scan for robots for example or scan for walls etc. This could once again, affect the strategies of the robots. There’s a sample robot called Rambot, this robot will just simply target a robot and run towards it very fast while shooting at it. 
+The robot also has a radar. The radar allows the robot to scan for other robots scan and walls. This could once again affect the strategies of the robots.
 
 \subsection{Battlefield}
 The battlefield is the arena where the robots will fight each other. It’s also the visible field on screen when the game is running. When coding, the battlefield can be used for different reasons, for example, to get the number of enemies that are alive. A robot might be programmed to act differently if there’s less than three robots left. All this depends on the way the player decided to program his robot. Some of the other examples that the battlefield can be used for could be the field size, time or the current round number. 

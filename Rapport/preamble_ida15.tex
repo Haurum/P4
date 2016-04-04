@@ -101,11 +101,27 @@
 \definecolor{commentGreen}{RGB}{34,139,24}
 \definecolor{stringPurple}{RGB}{208,76,239}
 
+\usepackage{xcolor}
+
+\lstdefinestyle{MyLang}{
+    basicstyle=\small\ttfamily\color{magenta},%
+    breaklines=true,%                                      allow line breaks
+    moredelim=[s][\color{green!50!black}\ttfamily]{'}{'},% single quotes in green
+    moredelim=*[s][\color{black}\ttfamily]{options}{\}},%  options in black (until trailing })
+    commentstyle={\color{gray}\itshape},%                  gray italics for comments
+    morecomment=[l]{//},%                                  define // comment
+    emph={%
+        STRING%                                            literal strings listed here
+        },emphstyle={\color{blue}\ttfamily},%              and formatted in blue
+    alsoletter={:,|,;},%
+    morekeywords={:,|,;},%                                 define the special characters
+    keywordstyle={\color{black}},%                         and format them in black  
+}	
 \lstset{language=Matlab,					% Sprog
 	basicstyle=\ttfamily\scriptsize,		% Opsaetning af teksten
-	keywords={for,if,while,else,elseif,		% Noegleord at fremhaeve
-			  end,break,return,case,
-			  switch,function},
+	%keywords={for,if,while,else,elseif,		% Noegleord at fremhaeve
+	%		  end,break,return,case,
+	%		  switch,function},
 	keywordstyle=\color{blue},				% Opsaetning af noegleord
 	commentstyle=\color{commentGreen},		% Opsaetning af kommentarer
 	stringstyle=\color{stringPurple},		% Opsaetning af strenge
@@ -115,6 +131,8 @@
 	columns=flexible,						% Kolonnejustering
 	breaklines, breakatwhitespace=true,		% Bryd lange linjer
 }
+
+
 
 % ¤¤ Navngivning ¤¤ %
 %\addto\captionsdanish{

@@ -1,7 +1,7 @@
 \chapter{Language design}
 %This Chapter will describe the design choices made when designing our language. First the langauge criteria section is described with the three criteria \textit{Readability}, \textit{Writeability} and \textit{Reliability}. The MoSCoW analysis will be applied to our language. The MoSCoW analysis concerns what the project \textit{Must have}, \textit{Should have}, \textit{Could have} and \textit{Should have}. Last in the chapter each of the  items in the MoSCoW analysis will be shortly described why it have been considered and why it is placed where it is.(Consider writing the sebesta source in this intro.)
 \label{chap:LanguageDesign}
-In this chapter the design decisions made during the process of creating the language will be described. There are three criteria for the development of the language, \emph{readability, writability} and \emph{reliability}. The decisions made to accommodate these will be described in detail in the first section of the chapter. 
+In this chapter the design decisions made during the process of creating the language will be described. There are three criteria for the development of the language \emph{readability, writability} and \emph{reliability}. The decisions made to accommodate these will be described in detail in the first section of the chapter. In the second part of this chapter, a list of items for the MoSCoW analysis are priortized. The MoSCoW analysis concerns what the project \textit{Must have}, \textit{Should have}, \textit{Could have} and \textit{Should have}. Last in the chapter each of the  items in the MoSCoW analysis will be shortly described why it have been considered and why it is placed where it is.
  
 \section{Language criteria}
 
@@ -19,17 +19,15 @@ To have a higher level of writeability, the language will be a DSL for Robocode.
 \subsection{Reliability}
 To make the programming language reliable to use, a lot of focus has been put into making the language as write- and readable as possible, and design the language in a way that helps the user create code without errors. By making programs written in the language less prone to errors, the more reliable it will also be.
 
-Another thing being implemented that will have an effect on the reliability of the programming language, is type checking. This is to prevent the user from assigning values to a variable that is not of the same type. If there is no type checking, bugs and errors can be hard to track down and fix, so it is better to be absolutely sure that all variables contains information of a certain type, than to have unexpected behaviour and output. 
-The language also does not have pointers, so aliasing, having two or more variables pointing to the same memory cell, will not be a problem that could have a negative effect on reliability.
+Another thing being implemented that will have an effect on the reliability of the programming language, is type checking. This is to prevent the user from assigning values to a variable that is not of the same type. If there is no type checking, bugs and errors can be hard to track down and fix, so it is better to be absolutely sure that all variables contains information of a certain type, rather than unexpected behaviour and output. 
+The language also does not have pointers, so aliasing, having two or more variables pointing to the same memory cell, will not be a problem that could have a negative effect on reliability. It can't be ensured that there is no aliasing in our language, since even without pointers one variable can reference an object, which is aliasing. 
 
-By taking these precautions, the programming language should be reliable enough for a beginner to use, without feeling frustrated and losing interest because of language difficulties.
+By taking these precautions, the programming language should be reliable enough for a beginner to use, without feeling frustrated and losing interest because of language difficulties, but reliability will not be the of biggest concern in our language. 
 
 
 \section{MoSCoW analysis}
 \label{sec:MoSCoW}
-The \emph{MoSCoW} method is used in this study with the purpose of specifying the importance of different requirements in the language. It is a good method for prioritizing work with the language.
-The criteria that has been designed can be seen in this section.  
-
+INTRO
 \begin{table}
 \centering
 \begin{tabular}{ |l|l| }
@@ -52,7 +50,7 @@ The criteria that has been designed can be seen in this section.
 & Print statements \\
 & Comments \\
 & Setup block  \\ \hline
-\multirow{3}{*}{Would have} & Random number generator \\
+\multirow{3}{*}{Won'tve} & Random number generator \\
 & Other robot types \\
 & Other RoboCode gamemodes \\
 \hline

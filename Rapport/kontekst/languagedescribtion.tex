@@ -3,6 +3,119 @@
 This chapter is focused on describing the technical details of the language. The usage of the language will be described with a walkthrough of some features, a context-free grammar will be showed describing the syntax of the language in detail. 
 
 \section{Syntax walkthrough}
+In this section an example of a sample robot from Robocode has been introduced and can be found in listing (Refer to listing 4.1 here!!)
+
+\begin{lstlisting}[caption={Eksampel of the sample robot "Corners" in our language} label=corners]
+Tankname corners;
+Num others;
+Num corner = 0;
+Bool stopWhenSeeRobot = False;
+
+Setup{
+  others = Battlefield.enemies();  
+  run goCorner();	 
+  Num gunIncrement = 3;
+}
+
+Repeat{  
+  Num i = 0;
+  
+  repeat while(i < 30){
+    Gun.turn(gunIncrement * -1);
+    i = i+1;
+  }  
+  gunIncrement = gunIncrement * -1;
+}
+
+Action goCorner(){
+  stopWhenSeeRobot = false;  
+  Tank.turn(Math.normalRelativeAngleDegrees(corner - Tank.heading()));      
+  stopWhenSeeRobot = true;
+  Tank.forward(5000);
+  Tank.turn(-90);
+  Tank.forward(5000);
+  Gun.turn(-90);
+}
+
+When scannedRobot{
+  if(stopWhenSeeRobot){
+    Tank.stop();                                     
+    run smartFire(Event.distance());
+    Radar.scan();                                     
+    Tank.resume();                                   
+  }else{
+    run smartFire(Event.distance());
+  }
+}
+
+Action smartFire(Num robotDistance){
+  if(robotDistance > 200 OR Tank.energy() < 15){
+    Gun.fire(1);
+  } else if (robotDistance > 50) {
+    Gun.fire(2);
+  } else {
+    Gun.fire(3);
+  }
+}
+
+When death{
+  if(others IS= 0){
+    return;
+  }
+  
+  if((others - getOthers()) / others < 0.75){
+    corner = corner + 90;
+    if(corner IS= 270) {
+      corner = -90;
+    }
+    print("I died and did poorly... switching corner to " + corner);
+  } else {
+    print("I died but did well.  I will still use corner " + corner);
+  }
+}
+\end{lstlisting}
+
+Robocodes sample robot, Corners, will as find a specific corner to sit in for the entire round, and shoot at other robots it has scanned. In the first round, Corners will go to the top left corner. When Corners dies, it will see if it did well or poorly it will either use the same corner og move to the next corner clockwise with the battlefield.
+
+In the top of the program the required Tankname is set and variables, which are going to be used in the program, are declared and initialized. The Setup block in listing(insert reference to listing 4.2 here), is a block only run once during the a round. When the Setup block is run in the beginning of a round, it will use the reserved call Battlefield.enemies() to give the variable other a value, equal to the number of enemies on the battlefield, which will be all other robots on the battlefield. It will run an action, which will be explained in one of the following paragraphs. As the last thing, the Setup block declares a variable, gunIncrement, of type num and initializes the value to 3.
+
+\begin{lstlisting}[caption={Code listing of the Setup block} label=corners1, xleftmargin=.2\textwidth]
+Setup{
+  others = Battlefield.enemies();  
+  run goCorner();	 
+  Num gunIncrement = 3;
+}
+\end{lstlisting}
+
+To make the robot do repetitive actions during the battles, Tank, Gun and Radar behaviour can be placed in the Repeat block. The repeat block in our language is the While loop in the function run. While loops other than the Repeat block has been renamed to repeat while loop, as it made more sense, in order to get the better understanding, as just "while" could seem confusing for new users. So instead of writing: “While(true)” the users now have to write: “Repeat While(true)”. The Repeat block of the sample robot Corners, in listing (insert reference to listing4.3 here!), consists of a repeat while loop. At the end of the repeat while loop, the gun have been turned a total of 90 or -90 degrees. 
+
+\begin{lstlisting}[caption={Code listing of the Repeat block} label=corners2, xleftmargin=.2\textwidth]
+Repeat{  
+  Num i = 0;
+  
+  repeat while(i < 30){
+    Gun.turn(gunIncrement * -1);
+    i = i+1;
+  }  
+  gunIncrement = gunIncrement * -1;
+}
+\end{lstlisting}
+
+In our language an Action is compared to the langauge C, a function with no return types. Corners uses an Action goCorner(), to get to the desired corner. In the first round of the battle, it will turn the robot the amount of degrees so it is facing the top wall, which is done at line 2 in listing (insert reference to listing 4.4 here!). The degrees are calculated by subtracting the corner variable from the robots heading. Heading is the getting the degrees the robot is facing. It will then move forward till it hits the wall, turn -90 degrees, again  move forward till it hits the wall and turn the gun -90 degrees. The robot should now be sitting in a corner, ready to turn its gun 90/-90 degrees, which will be from one wall to the other it will turn its gun.
+
+\begin{lstlisting}[caption={Code listing of the Action goCorner()} label=corners3, xleftmargin=.2\textwidth]
+  stopWhenSeeRobot = false;  
+  Tank.turn(Math.normalRelativeAngleDegrees(corner - Tank.heading()));      
+  stopWhenSeeRobot = true;
+  Tank.forward(5000);
+  Tank.turn(-90);
+  Tank.forward(5000);
+  Gun.turn(-90);
+}
+\end{lstlisting}
+
+One of the most categorizing things about Robocode is the use of their events. Whether it’s the “onHitWall” or “onHitRobot” they’re all very essential for the game. In our programming language we’ve made the change of removing the word “on” in each of the events, so the two previous examples would instead be named “HitWall” and “HitRobot”. The events are indicated by the key "When" in our language.
+In the Action goCorner(), a variable of type bool is set to false on line 1 and set to true in line 3 in listing (insert reference to listing 4.4 here). This variable is used in the WORK STILL IN PROGRESS.
 
 \section{Grammar}
 \label{sec:Grammar}

@@ -38,7 +38,7 @@ public void onScannedRobot(ScannedRobotEvent e) {
 
 The robot’s radar will spot enemies when they get within the vision of the radar, which will raise the onScannedRobot event. This event is used to determine how the robot reacts to spotting an enemy, where the ScannedRobotEvent e is the source for information about the enemy robot spotted.
 
-\begin{lstlisting}[caption={Eksampel of the onHitByBullet event event from Robocode} label=ohbb, xleftmargin=.2\textwidth]
+\begin{lstlisting}[caption={Eksampel of the onHitByBullet event from Robocode} label=ohbb, xleftmargin=.2\textwidth]
 public void onHitByBullet(HitByBulletEvent e) {
 	//Robots behaviour
 }
@@ -46,7 +46,7 @@ public void onHitByBullet(HitByBulletEvent e) {
 
 When the robot gets hit by another robot’s bullet, the event onHitByBullet will be raised. The robot can then be programmed to act a specific way, change behaviour or carry out a task when the event is raised.
 
-\begin{lstlisting}[caption={Eksampel of the onHitWall event event from Robocode} label=ohw, xleftmargin=.2\textwidth]
+\begin{lstlisting}[caption={Eksampel of the onHitWall event from Robocode} label=ohw, xleftmargin=.2\textwidth]
 public void onHitWall(HitWallEvent e) {
 	//Robots behaviour
 }

@@ -1,0 +1,9 @@
+Num fire = 4;
+Num fem = 5;
+String resultat;
+
+Setup{
+
+  resultat = "resultat: " + (fire + fem);
+
+}

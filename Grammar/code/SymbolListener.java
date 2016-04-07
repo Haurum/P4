@@ -43,6 +43,26 @@ public class SymbolListener extends GrammarBaseListener {
     }
 
     @Override
+    public void enterSetupblock(GrammarParser.SetupblockContext ctx) {
+        ST.OpenScope();
+    }
+
+    @Override
+    public void exitSetupblock(GrammarParser.SetupblockContext ctx) {
+        ST.CloseScope();
+    }
+
+    @Override
+    public void enterRepeatblock(GrammarParser.RepeatblockContext ctx) {
+        ST.OpenScope();
+    }
+
+    @Override
+    public void exitRepeatblock(GrammarParser.RepeatblockContext ctx) {
+        super.exitRepeatblock(ctx);
+    }
+
+    @Override
     public void enterVardcl(GrammarParser.VardclContext ctx) {
         if (ctx.getChild(1) instanceof GrammarParser.AssignContext){
             ST.EnterSymbol(((GrammarParser.AssignContext) ctx.getChild(1)).ID().getText(), ctx.TYPE().getText());

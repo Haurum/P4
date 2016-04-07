@@ -13,7 +13,7 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        ANTLRFileStream input = new ANTLRFileStream("Coners.txt");
+        ANTLRFileStream input = new ANTLRFileStream("test.txt");
         GrammarLexer lex = new GrammarLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lex);
         GrammarParser parser = new GrammarParser(tokens);
@@ -22,7 +22,7 @@ public class Main {
         FuncSymbolTable FST = new FuncSymbolTable();
         SymbolTable ST = new SymbolTable();
         FuncListener FListener = new FuncListener(FST);
-        SymbolListener SListener = new SymbolListener(ST, FST);
+        SymbolTypeVisitor STVisitor = new SymbolTypeVisitor(ST, FST);
         walker.walk(FListener, t);
         FST.Map.values().forEach(fs -> {
             System.out.print(fs.Name);
@@ -31,7 +31,7 @@ public class Main {
             });
             System.out.println("");
         });
-        walker.walk(SListener, t);
+        STVisitor.visit(t);
 
     }
 }

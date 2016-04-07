@@ -50,11 +50,15 @@ public class SymbolTable  {
 
     public Symbol GetSymbol(String name){
         Symbol sym = Map.get(name);
+        if (sym == null){
+            Error e = new Error("Variable with id: " + name + " not found");
+            throw e;
+        }
         return sym;
     }
 
     public void EnterSymbol(String name, String type){
-        Symbol oldsym = GetSymbol(name);
+        Symbol oldsym = Map.get(name);
         if (oldsym != null && oldsym.Depth == depth){
             Error e = new Error("Duplicate declaration of " + name);
             throw e;

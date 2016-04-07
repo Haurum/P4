@@ -56,9 +56,9 @@ orexpr : andexpr (OR andexpr)*;
 
 andexpr : eqexpr (AND eqexpr)*;
 
-eqexpr : relexpr (EQ relexpr)*;
+eqexpr : relexpr (EQ relexpr)?;
 
-relexpr : addexpr (REL addexpr)*;
+relexpr : addexpr (REL addexpr)?;
 
 addexpr : mulexpr (ADD mulexpr)*;
 

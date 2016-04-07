@@ -1,11 +1,8 @@
-package code;
+/*package code;
 
 import gen.GrammarBaseVisitor;
 import gen.GrammarParser;
 
-/**
- * Created by Frederik on 05-04-2016.
- */
 public class SymbolVisitor extends GrammarBaseVisitor<Tuple<String, String>> {
 
     SymbolTable ST;
@@ -231,3 +228,4 @@ public class SymbolVisitor extends GrammarBaseVisitor<Tuple<String, String>> {
         return new Tuple<>("Bool", ctx.BOOL().getText());
     }
 }
+*/

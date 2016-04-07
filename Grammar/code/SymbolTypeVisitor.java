@@ -16,22 +16,73 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
         FST = fst;
     }
 
+    public String visitIfstmt(GrammarParser.IfstmtContext ctx) {
+        if (!visit(ctx.expr()).equals("Bool")){
+            Error e = new Error("Type error");
+            throw e;
+        }
+        return "null";
+    }
+
+    public String visitElseif(GrammarParser.ElseifContext ctx) {
+        if (!visit(ctx.expr()).equals("Bool")){
+            Error e = new Error("Type error");
+            throw e;
+        }
+        return "null";
+    }
+
+    @Override
+    public String visitWhilestmt(GrammarParser.WhilestmtContext ctx) {
+        if (!visit(ctx.expr()).equals("Bool")){
+            Error e = new Error("Type error");
+            throw e;
+        }
+        return "null";
+    }
+
     @Override
     public String visitFuncdcl(GrammarParser.FuncdclContext ctx) {
-        return super.visitFuncdcl(ctx);
+        String returnStmt = visit(ctx.functionBlock());
+        if (returnStmt.equals(ctx.TYPE().getText())){
+            return returnStmt;
+        }else{
+            Error e = new Error("Type Error");
+            throw e;
+        }
     }
 
     @Override
     public String visitFunctionBlock(GrammarParser.FunctionBlockContext ctx) {
+        FuncSymbol fs = FST.GetFuncSymbol(((GrammarParser.FuncdclContext) ctx.parent).ID().getText());
+
+        fs.Params.forEach(tuple -> {
+            ST.EnterSymbol(tuple.x, tuple.y);
+        });
         return visit(ctx.returnstmt());
+    }
+
+    @Override
+    public String visitReturnstmt(GrammarParser.ReturnstmtContext ctx) {
+        if (ctx.getChildCount() > 1){
+            return visit(ctx.expr());
+        }else {
+            return "null";
+        }
     }
 
     @Override
     public String visitFcall(GrammarParser.FcallContext ctx) {
         FuncSymbol fsym = FST.GetFuncSymbol(ctx.ID().getText());
-        String[] args = visit(ctx.args()).split(",");
+        if (!fsym.Type.equals("Function")){
+            Error e = new Error("Type error");
+            throw e;
+        }
+        String[] args = visit(ctx.args()).split(", ");
         for (int i = 0; i < args.length; i++){
-            if (!fsym.Params.get(i).x.equals(args[i])){
+            String paramType = fsym.Params.get(i).y;
+            String arg = args[i];
+            if (!paramType.equals(arg)){
                 Error e = new Error("Type error");
                 throw e;
             }
@@ -41,10 +92,14 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
 
     @Override
     public String visitAcall(GrammarParser.AcallContext ctx) {
-        FuncSymbol fsym = FST.GetFuncSymbol(ctx.ID().getText());
-        String[] args = visit(ctx.args()).split(",");
+        FuncSymbol asym = FST.GetFuncSymbol(ctx.ID().getText());
+        if (!asym.Type.equals("Action")){
+            Error e = new Error("Type error");
+            throw e;
+        }
+        String[] args = visit(ctx.args()).split(", ");
         for (int i = 0; i < args.length; i++){
-            if (!fsym.Params.get(i).x.equals(args[i])){
+            if (!asym.Params.get(i).y.equals(args[i])){
                 Error e = new Error("Type error");
                 throw e;
             }
@@ -66,12 +121,6 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
         ST.OpenScope();
         if (ctx.parent instanceof GrammarParser.ActdclContext){
             FuncSymbol fs = FST.GetFuncSymbol(((GrammarParser.ActdclContext) ctx.parent).ID().getText());
-            fs.Params.forEach(tuple -> {
-                ST.EnterSymbol(tuple.x, tuple.y);
-            });
-        }else if (ctx.parent instanceof GrammarParser.FuncdclContext){
-            FuncSymbol fs = FST.GetFuncSymbol(((GrammarParser.FuncdclContext) ctx.parent).ID().getText());
-
             fs.Params.forEach(tuple -> {
                 ST.EnterSymbol(tuple.x, tuple.y);
             });

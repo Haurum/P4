@@ -2,11 +2,11 @@ Num resultat;
 
 Setup{
   Num c = 4;
-  Bool d = 3
+  Num d = 3;
   resultat = test(c, d);
 
 }
 
 Function test(Num a, Num b) returns Num {
-    return a + b;
+    return a - b;
 }

@@ -1,0 +1,46 @@
+Tankname wallsSample;
+
+Setup{
+    Tank.color(red);
+    Gun.color(blue);
+    Radar.color(yellow);
+    Gun.bulletColor(black);
+    Radar.scanColor(white);
+
+    Bool peek;
+    Num moveAmount;
+
+    moveAmount = Math.max(Battlefield.width(), Battlefield.height());
+    peek = false;
+    Tank.turn((Tank.heading() %  90)* (-1));
+    Tank.forward(moveAmount);
+
+    peek = true;
+    Gun.turn(90);
+    Tank.turn(90);
+}
+
+Repeat{
+
+    peek = true;
+    Tank.forward(moveAmount);
+    peek = false;
+    Tank.turn(90);
+    
+}
+
+When hitEnemy{
+    if(Event.bearing() > -90 AND Event.bearing() < 90){
+   	 Tank.backward(100);
+    }
+    else {
+   	 Tank.forward(100);
+    }
+}
+
+When scannedEnemy{
+    shoot(2);
+    if(peek){
+   	 Radar.scan();
+    }
+}

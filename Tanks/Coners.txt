@@ -1,0 +1,78 @@
+Tankname coners;
+Num others;
+Num corner = 0;
+Bool stopWhenSeeRobot = false;
+
+Setup{
+
+  others = Battlefield.enemies();
+  
+  run goCorner();	
+ 
+  Num gunIncrement = 3;
+}
+
+Repeat{
+  
+  Num i = 0;
+  
+  repeat while(i < 30){
+    Gun.turn(gunIncrement * -1);
+    i = i+1;
+  }
+  
+  gunIncrement = gunIncrement * -1;
+}
+
+Action goCorner(){
+  stopWhenSeeRobot = false;
+  
+  Tank.turn(Math.normalRelativeAngleDegrees(corner - Tank.heading()));    
+  
+  stopWhenSeeRobot = true;
+  
+  Tank.forward(5000);
+  
+  Tank.turn(-90);
+
+  Tank.forward(5000);
+  
+  Gun.turn(-90);
+}
+
+When scannedRobot{
+  if(stopWhenSeeRobot){
+    Tank.stop();                                     
+    run smartFire(Event.distance());
+    Radar.scan();                                     
+    Tank.resume();                                   
+  }else{
+    run smartFire(Event.distance());
+  }
+}
+
+Action smartFire(Num robotDistance){
+  if(robotDistance > 200 OR Tank.energy() < 15){
+    Gun.fire(1);
+  } else if (robotDistance > 50) {
+    Gun.fire(2);
+  } else {
+    Gun.fire(3);
+  }
+}
+
+When death{
+  if(others IS= 0){
+    return;
+  }
+  
+  if((others - getOthers()) / others < 0.75){
+    corner = coner + 90;
+    if(corner IS= 270) {
+      corner = -90;
+    }
+    print("I died and did poorly... switching corner to " + corner);
+  } else {
+    print("I died but did well.  I will still use corner " + corner);
+  }
+}

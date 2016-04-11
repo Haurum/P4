@@ -147,110 +147,91 @@ In this section we present the syntax of the language. The syntax is formally pr
 grammar Grammar;
 
 prog : dcls EOF;
-
 setupblock : 'Setup' block;
-
 repeatblock : 'Repeat' block;
-
-dcls : (actdcl | funcdcl | vardcl';' | setupblock | repeatblock | 'Tankname' ID ';' | event | print';')* ;
-
+dcls : (actdcl
+     | funcdcl
+     | vardcl';'
+     | setupblock
+     | repeatblock
+     | 'Tankname' ID ';'
+     | eventdcl
+     | print';')*
+     ;
 actdcl : 'Action' ID '(' params? ')'block;
-
-funcdcl : 'Function' ID '(' params? ')' 'returns' TYPE block;
-
+funcdcl : 'Function' ID '(' params? ')' 'returns' TYPE functionBlock;
+functionBlock : '{' stmts returnstmt';' '}';
 params : param (',' param)*;
-
 param : TYPE ID;
-
-event : 'When' ID block;
-
+eventdcl : 'When' ID block;
 block : '{' stmts '}';
-
-stmts : (assign';'|vardcl';'|ifstmt|whilestmt|returnstmt';'|call';'|print';')*;
-
+stmts : (assign';'
+      |vardcl';'
+      |ifstmt
+      |whilestmt
+      |call';'
+      |print';')*
+      ;
 assign : ID '=' expr;
-
 vardcl : TYPE (ID|assign);
-
 ifstmt : 'if''('expr')' block elseif* ('else' block)?;
-
 elseif : 'else''if''('expr')' block;
-
-whilestmt : 'repeat' ('while''('expr')' block | block 'while''('expr')');
-
+whilestmt : 'repeat' ('while''('expr')' block
+          | block 'while''('expr')')
+          ;
 returnstmt : 'return' expr?;
-
 print : 'print('expr')';
 
-call : acall | fcall | rcall | ecall;
-
+call : acall
+     | fcall
+     | rcall
+     | ecall
+     ;
 acall : 'run' ID'('args?')';
-
 fcall : ID'('args?')';
-
-rcall : 'Tank.'ID'('args?')' | 'Gun.'ID'('args?')'
-       | 'Radar.'ID'('args?')' | 'Battlefield.'ID'('args?')'
-       | 'Math.'ID'('args?')';
+rcall   : 'Tank.'ID'('args?')'
+        | 'Gun.'ID'('args?')'
+        | 'Radar.'ID'('args?')'
+        | 'Battlefield.'ID'('args?')'
+        | 'Math.'ID'('args?')'
+        ;
 
 ecall : 'Event.'ID'('args?')';
 
 args : expr (',' expr)*;
 
-expr : orexpr ;
+expr
+ : MINUS expr                           #unexpr
+ | NOT expr                             #notexpr
+ | expr op=(MULT | DIV | MOD) expr      #mulexpr
+ | expr op=(PLUS | MINUS) expr          #addexpr
+ | expr op=(LTEQ | GTEQ | LT | GT) expr #relexpr
+ | expr op=(EQ | NEQ) expr              #eqexpr
+ | expr AND expr                        #andexpr
+ | expr OR expr                         #orexpr
+ | atom                                 #atomic
+ ;
 
-orexpr : andexpr (OR andexpr)*;
+atom : '(' expr ')'
+     | call
+     | literal
+     ;
 
-andexpr : eqexpr (AND eqexpr)*;
+literal : ID        #id
+        | NUM       #num
+        | STRING    #string
+        | BOOL      #bool
+        ;
 
-eqexpr : relexpr (EQ relexpr)*;
-
-relexpr : addexpr (REL addexpr)*;
-
-addexpr : mulexpr (ADD mulexpr)*;
-
-mulexpr : unexpr (MUL unexpr)*;
-
-unexpr : 'NOT'? atomic;
-
-atomic : '(' expr ')' | ID | NUM | STRING | call | BOOL ;
-
-ID : [_a-z] [_a-zA-Z]* ;
-OR : 'OR';
-AND : 'AND';
-EQ : 'IS='|'NOT=';
-REL : '>'|'<'|'>='|'<=';
-ADD : '+'|'-';
-MUL : '*'|'/';
-NUM : '-'?[0-9]+('.'[0-9]+)?;
-BOOL : 'false' | 'true';
-STRING : '"'.*'"';
-TYPE : 'Num'|'Bool'|'String';
-
-Expr precedence:
- 
-HIGHEST
- 
-'NOT' atomic
-* | /
-+|-
-> | < | >= | <=
-IS= | NOT=
-AND
-OR
- 
-LOWEST
-
-
-
-COMMENT : '/*'.*'*/' -> skip;
-SPACE : [ \t\n] -> skip;
+COMMENT : '/*'~['*/']*'*/' -> skip;
+SPACE : [ \r\t\n] -> skip;
 
 \end{lstlisting}
 
 
 \subsection{Lexicon}
 The definition of what input are allowed for each lexical in the grammar is defined by regular expressions. This will be described here with a table of terminals with matching regex. A stream of characters is read by the scanner of the compiler and then turned into a lexical defined by the regex.
-Due to the way the context-free grammar is implemented there are not a lot of terminals. This is because that the terminal \emph{ID} is used widely through the CFG.  
+Due to the way the context-free grammar is implemented there are not a lot of terminals. This is because that the terminal \emph{ID} is used widely through the CFG. The general usage of this term creates consistency for the user giving that they quickly can get a feel for what input is allowed. 
 
 \begin{table}[]
 \centering
@@ -259,9 +240,18 @@ Due to the way the context-free grammar is implemented there are not a lot of te
 \hline
 Terminal & Regular expressions                \\ \hline
 ID       & {[}a-z{]} ({[}a-z{]} | {[}A-Z{]})* \\ \hline
-TYPE     & Num | Bool | Text                  \\ \hline
-Num		 & [0-9]+("."[0-9]*)?|"."[0-9]+		  \\ \hline
-Bool 	 & false | true						  \\ \hline
+OR		 & 'OR'								  \\ \hline
+AND		 & 'AND'							  \\ \hline
+EQ		 & 'IS=' | 'NOT='					  \\ \hline
+REL		 & '>'|'<'|'>='|'<='					  \\ \hline
+ADD		 & '+'|'-'							  \\ \hline
+MUL		 & '*'|'/'							  \\ \hline
+NUM		 & [0-9]+("."[0-9]*)?|"."[0-9]+\\ \hline
+BOOL 	 & 'false' | 'true'					  \\ \hline
+STRING 	 & '"'.*'"'						      \\ \hline
+TYPE     & 'Num' | 'Bool' | 'Text'            \\ \hline
+
+
 \end{tabular}
 \caption{Table with terminals and matching regular expressions.}
 \end{table}

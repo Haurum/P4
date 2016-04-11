@@ -10,7 +10,9 @@ dcls : (actdcl | funcdcl | vardcl';' | setupblock | repeatblock | 'Tankname' ID 
 
 actdcl : 'Action' ID '(' params? ')'block;
 
-funcdcl : 'Function' ID '(' params? ')' 'returns' TYPE block;
+funcdcl : 'Function' ID '(' params? ')' 'returns' TYPE functionBlock;
+
+functionBlock : '{' stmts returnstmt';' '}';
 
 params : param (',' param)*;
 
@@ -20,7 +22,7 @@ eventdcl : 'When' ID block;
 
 block : '{' stmts '}';
 
-stmts : (assign';'|vardcl';'|ifstmt|whilestmt|returnstmt';'|call';'|print';')*;
+stmts : (assign';'|vardcl';'|ifstmt|whilestmt|call';'|print';')*;
 
 assign : ID '=' expr;
 
@@ -52,19 +54,19 @@ args : expr (',' expr)*;
 
 expr : orexpr ;
 
-orexpr : andexpr (OR andexpr)*;
+orexpr : andexpr OR orexpr | andexpr;
 
-andexpr : eqexpr (AND eqexpr)*;
+andexpr : eqexpr AND andexpr | eqexpr ;
 
-eqexpr : relexpr (EQ relexpr)*;
+eqexpr : relexpr EQ eqexpr | relexpr;
 
-relexpr : addexpr (REL addexpr)*;
+relexpr : addexpr REL relexpr | addexpr ;
 
-addexpr : mulexpr (ADD mulexpr)*;
+addexpr :  mulexpr ADD addexpr | mulexpr ;
 
-mulexpr : unexpr (MUL unexpr)*;
+mulexpr : unexpr MUL mulexpr | unexpr ;
 
-unexpr : 'NOT'? atomic;
+unexpr : ('NOT')? atomic;
 
 atomic : '(' expr ')' | call | literal ;
 
@@ -80,7 +82,7 @@ EQ : 'IS='|'NOT=';
 REL : '>'|'<'|'>='|'<=';
 ADD : '+'|'-';
 MUL : '*'|'/'|'%';
-NUM : '-'?[0-9]+('.'[0-9]+)?;
+NUM : ('-')? [0-9]+('.'[0-9]+)?;
 BOOL : 'False' | 'True';
 STRING : '"'~'"'*'"';
 TYPE : 'Num'|'Bool'|'String';

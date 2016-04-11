@@ -1,9 +1,12 @@
-Num fire = 4;
-Num fem = 5;
-String resultat;
+Num resultat;
 
 Setup{
+  Num c = 4;
+  Num d = 3;
+  resultat = test(c, d);
 
-  resultat = "resultat: " + (fire + fem);
+}
 
+Function test(Num a, Num b) returns Num {
+    return a - b;
 }

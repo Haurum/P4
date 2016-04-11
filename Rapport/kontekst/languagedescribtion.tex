@@ -188,7 +188,7 @@ EQ		 & 'IS=' | 'NOT='					  \\ \hline
 REL		 & '>'|'<'|'>='|'<='					  \\ \hline
 ADD		 & '+'|'-'							  \\ \hline
 MUL		 & '*'|'/'							  \\ \hline
-NUM		 & [0-9]+("."[0-9]*)?|"."[0-9]+		  \\ \hline
+NUM		 & ('-')? [0-9]+("."[0-9]*)?|"."[0-9]+\\ \hline
 BOOL 	 & 'false' | 'true'					  \\ \hline
 STRING 	 & '"'.*'"'						      \\ \hline
 TYPE     & 'Num' | 'Bool' | 'Text'            \\ \hline

@@ -125,10 +125,17 @@ This section has the purpose of describing the context-free grammar of the langu
 grammar Grammar;
 
 prog : dcls EOF;
-
 setupblock : 'Setup' block;
 repeatblock : 'Repeat' block;
-dcls : (actdcl | funcdcl | vardcl';' | setupblock | repeatblock | 'Tankname' ID ';' | eventdcl | print';')* ;
+dcls : (actdcl
+     | funcdcl
+     | vardcl';'
+     | setupblock
+     | repeatblock
+     | 'Tankname' ID ';'
+     | eventdcl
+     | print';')*
+     ;
 actdcl : 'Action' ID '(' params? ')'block;
 funcdcl : 'Function' ID '(' params? ')' 'returns' TYPE functionBlock;
 functionBlock : '{' stmts returnstmt';' '}';
@@ -136,38 +143,67 @@ params : param (',' param)*;
 param : TYPE ID;
 eventdcl : 'When' ID block;
 block : '{' stmts '}';
-stmts : (assign';'|vardcl';'|ifstmt|whilestmt|call';'|print';')*;
+stmts : (assign';'
+      |vardcl';'
+      |ifstmt
+      |whilestmt
+      |call';'
+      |print';')*
+      ;
 assign : ID '=' expr;
 vardcl : TYPE (ID|assign);
 ifstmt : 'if''('expr')' block elseif* ('else' block)?;
 elseif : 'else''if''('expr')' block;
-whilestmt : 'repeat' ('while''('expr')' block | block 'while''('expr')');
+whilestmt : 'repeat' ('while''('expr')' block
+          | block 'while''('expr')')
+          ;
 returnstmt : 'return' expr?;
 print : 'print('expr')';
 
-call : acall | fcall | rcall | ecall;
+call : acall
+     | fcall
+     | rcall
+     | ecall
+     ;
 acall : 'run' ID'('args?')';
 fcall : ID'('args?')';
-rcall : 'Tank.'ID'('args?')' | 'Gun.'ID'('args?')'
-        | 'Radar.'ID'('args?')' | 'Battlefield.'ID'('args?')'
-        | 'Math.'ID'('args?')';
+rcall   : 'Tank.'ID'('args?')'
+        | 'Gun.'ID'('args?')'
+        | 'Radar.'ID'('args?')'
+        | 'Battlefield.'ID'('args?')'
+        | 'Math.'ID'('args?')'
+        ;
+
 ecall : 'Event.'ID'('args?')';
 
 args : expr (',' expr)*;
-expr : orexpr ;
-orexpr : andexpr OR orexpr | andexpr;
-andexpr : eqexpr AND andexpr | eqexpr ;
-eqexpr : relexpr EQ eqexpr | relexpr;
-relexpr : addexpr REL relexpr | addexpr ;
-addexpr :  mulexpr ADD addexpr | mulexpr ;
-mulexpr : unexpr MUL mulexpr | unexpr ;
-unexpr : ('NOT')? atomic;
-atomic : '(' expr ')' | call | literal ;
 
-literal : ID    #id
-        | NUM   #num
-        | STRING #string
-        | BOOL  #bool ;
+expr
+ : MINUS expr                           #unexpr
+ | NOT expr                             #notexpr
+ | expr op=(MULT | DIV | MOD) expr      #mulexpr
+ | expr op=(PLUS | MINUS) expr          #addexpr
+ | expr op=(LTEQ | GTEQ | LT | GT) expr #relexpr
+ | expr op=(EQ | NEQ) expr              #eqexpr
+ | expr AND expr                        #andexpr
+ | expr OR expr                         #orexpr
+ | atom                                 #atomic
+ ;
+
+atom : '(' expr ')'
+     | call
+     | literal
+     ;
+
+literal : ID        #id
+        | NUM       #num
+        | STRING    #string
+        | BOOL      #bool
+        ;
+
+COMMENT : '/*'~['*/']*'*/' -> skip;
+SPACE : [ \r\t\n] -> skip;
+
 \end{lstlisting}
 
 
@@ -188,7 +224,7 @@ EQ		 & 'IS=' | 'NOT='					  \\ \hline
 REL		 & '>'|'<'|'>='|'<='					  \\ \hline
 ADD		 & '+'|'-'							  \\ \hline
 MUL		 & '*'|'/'							  \\ \hline
-NUM		 & ('-')? [0-9]+("."[0-9]*)?|"."[0-9]+\\ \hline
+NUM		 & [0-9]+("."[0-9]*)?|"."[0-9]+\\ \hline
 BOOL 	 & 'false' | 'true'					  \\ \hline
 STRING 	 & '"'.*'"'						      \\ \hline
 TYPE     & 'Num' | 'Bool' | 'Text'            \\ \hline

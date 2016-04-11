@@ -80,7 +80,7 @@ expr
  | NOT expr                             #notexpr
  | expr op=(MULT | DIV | MOD) expr      #mulexpr
  | expr op=(PLUS | MINUS) expr          #addexpr
- | expr op=(LTEQ | GTEQ | LT | GT) expr #relxepr
+ | expr op=(LTEQ | GTEQ | LT | GT) expr #relexpr
  | expr op=(EQ | NEQ) expr              #eqexpr
  | expr AND expr                        #andexpr
  | expr OR expr                         #orexpr
@@ -119,10 +119,6 @@ NUM :  [0-9]+('.'[0-9]+)?;
 BOOL : 'False' | 'True';
 STRING : '"'~'"'*'"';
 TYPE : 'Num'|'Bool'|'String';
-
-
-
-
 
 COMMENT : '/*'~['*/']*'*/' -> skip;
 SPACE : [ \r\t\n] -> skip;

@@ -8,7 +8,15 @@ setupblock : 'Setup' block;
 
 repeatblock : 'Repeat' block;
 
-dcls : (actdcl | funcdcl | vardcl';' | setupblock | repeatblock | tankname  | eventdcl | print';')* ;
+dcls : (actdcl
+     | funcdcl
+     | vardcl';'
+     | setupblock
+     | repeatblock
+     | 'Tankname' ID ';'
+     | eventdcl
+     | print';')*
+     ;
 
 actdcl : 'Action' ID '(' params? ')'block;
 
@@ -24,7 +32,13 @@ eventdcl : 'When' ID block;
 
 block : '{' stmts '}';
 
-stmts : (assign';'|vardcl';'|ifstmt|whilestmt|call';'|print';')*;
+stmts : (assign';'
+      |vardcl';'
+      |ifstmt
+      |whilestmt
+      |call';'
+      |print';')*
+      ;
 
 assign : ID '=' expr;
 
@@ -34,61 +48,79 @@ ifstmt : 'if''('expr')' block elseif* ('else' block)?;
 
 elseif : 'else''if''('expr')' block;
 
-whilestmt : 'repeat' ('while''('expr')' block | block 'while''('expr')');
+whilestmt : 'repeat' ('while''('expr')' block
+          | block 'while''('expr')')
+          ;
 
 returnstmt : 'return' expr?;
 
 print : 'print('expr')';
 
-call : acall | fcall | rcall | ecall;
+call : acall
+     | fcall
+     | rcall
+     | ecall
+     ;
 
 acall : 'run' ID'('args?')';
 
 fcall : ID'('args?')';
 
-rcall : 'Tank.'ID'('args?')' | 'Gun.'ID'('args?')'
-        | 'Radar.'ID'('args?')' | 'Battlefield.'ID'('args?')'
-        | 'Math.'ID'('args?')';
+rcall   : 'Tank.'ID'('args?')'
+        | 'Gun.'ID'('args?')'
+        | 'Radar.'ID'('args?')'
+        | 'Battlefield.'ID'('args?')'
+        | 'Math.'ID'('args?')'
+        ;
 
 ecall : 'Event.'ID'('args?')';
 
 args : expr (',' expr)*;
 
-expr : orexpr ;
+expr
+ : MINUS expr                           #unexpr
+ | NOT expr                             #notexpr
+ | expr op=(MULT | DIV | MOD) expr      #mulexpr
+ | expr op=(PLUS | MINUS) expr          #addexpr
+ | expr op=(LTEQ | GTEQ | LT | GT) expr #relexpr
+ | expr op=(EQ | NEQ) expr              #eqexpr
+ | expr AND expr                        #andexpr
+ | expr OR expr                         #orexpr
+ | atom                                 #atomic
+ ;
 
-orexpr : andexpr OR orexpr | andexpr;
+atom : '(' expr ')'
+     | call
+     | literal
+     ;
 
-andexpr : eqexpr AND andexpr | eqexpr ;
+literal : ID        #id
+        | NUM       #num
+        | STRING    #string
+        | BOOL      #bool
+        ;
 
-eqexpr : relexpr EQ eqexpr | relexpr;
+OR : '||';
+AND : '&&';
+EQ : '==';
+NEQ : '!=';
+GT : '>';
+LT : '<';
+GTEQ : '>=';
+LTEQ : '<=';
+PLUS : '+';
+MINUS : '-';
+MULT : '*';
+DIV : '/';
+MOD : '%';
+NOT : '!';
 
-relexpr : addexpr REL relexpr | addexpr ;
+ID  : [_a-z] [_a-zA-Z]* ;
 
-addexpr :  mulexpr ADD addexpr | mulexpr ;
-
-mulexpr : unexpr MUL mulexpr | unexpr ;
-
-unexpr : ('NOT')? atomic;
-
-atomic : '(' expr ')' | call | literal ;
-
-literal : ID    #id
-        | NUM   #num
-        | STRING #string
-        | BOOL  #bool ;
-
-ID : [_a-z] [_a-zA-Z]* ;
-OR : 'OR';
-AND : 'AND';
-EQ : 'IS='|'NOT=';
-REL : '>'|'<'|'>='|'<=';
-ADD : '+'|'-';
-MUL : '*'|'/'|'%';
-NUM : ('-')? [0-9]+('.'[0-9]+)?;
+NUM :  [0-9]+('.'[0-9]+)?;
 BOOL : 'False' | 'True';
 STRING : '"'~'"'*'"';
 TYPE : 'Num'|'Bool'|'String';
-
 
 COMMENT : '/*'~['*/']*'*/' -> skip;
 SPACE : [ \r\t\n] -> skip;

@@ -8,13 +8,12 @@ In this chapter the design decisions made during the process of creating the lan
 In this section the three main criteria for designing the language will be discussed with focus on the implementation of these in the language. The criteria are based on theory from the book \emph{Concepts of Programming Languages} \citep{Sebesta}.
 
 \subsection{Readability}
-Readability refers to the ease of reading and understanding a programming language. The language in this report should be very simple, since the programming language is, as earlier mentioned, targeted for high school students with little or no programming experience. (write about what we are hiding from  the user and why here and why it should still look like Java.)
+Readability refers to the ease of reading and understanding a programming language. The language in this report should be very simple, since the programming language is, as earlier mentioned, targeted for high school students with little or no programming experience. Beginners would not necessarily know the concepts of object-oriented languages, but this would be needed to code robots in Java. This would be concealed from the user with this reports language, and simplifications to the type system would give the user a lesser flexibility, but it would highly increase the readability of the language. Readability will be the main priority for this report, as readability is key to understand and learn a new language.
 
-
-Since the language is targeted for beginners, one of the criteria for the language would be to make the syntax as simple as possible, but it still has to generally look like Java. The language should also have a high level of orthogonality, which also will help make the language simpler. 
+Readability is directly affected by orthogonality, and with this language being constructed for beginners, only a few primitive types and very few constructs will be implemented.
 
 \subsection{Writability}
-To have a higher level of writeability, the language will be a DSL for Robocode. The genereal purpose of a DSL language is to be able to make solutions for a specific problem. As mentioned in the section above, the language should have a high level of orthogonality, which will also help on  the writability of the language.  
+Writeability is a contradiction to readability. If a language has advanced constructs that will help a programmer code big systems in little time, it will probably not be as easy for a beginner to understand. Take structs from C, if a non-experienced highschool student had to implement a struct, that person wouldn't know what to do, or how it works. This is why writeability will not be considered greatly in this report.
 
 \subsection{Reliability}
 To make the programming language reliable to use, a lot of focus has been put into making the language as write- and readable as possible, and design the language in a way that helps the user create code without errors. By making programs written in the language less prone to errors, the more reliable it will also be.
@@ -35,23 +34,23 @@ The criteria that has been designed can be seen in this section.
 \hline
 \multicolumn{2}{ |c| }{MoSCoW analysis} \\
 \hline
-\multirow{7}{*}{Must have} & Primitive types and variables (assignment)  \\
+\multirow{7}{*}{Must have} & Primitive types and variables \\
 & While loop  \\
 & Reserved calls  \\
 & Robot naming \\
 & If/Else/Elseif statements \\
 & Arithmetic expressions and operators \\
 & Logical expressions and operators  \\ \hline
-\multirow{2}{*}{Should have} & Events \\
+\multirow{3}{*}{Should have} & Events \\
+& Comments \\
 & Void and type methods \\ \hline
-\multirow{7}{*}{Could have} & Cos, Sin \& Tan  \\
+\multirow{6}{*}{Could have} & Cos, Sin \& Tan  \\
 & For loops  \\
 & Arrays  \\
-& Strings \\
 & Print statements \\
-& Comments \\
+& Strings \\
 & Setup block  \\ \hline
-\multirow{3}{*}{Won'tve} & Random number generator \\
+\multirow{3}{*}{Won't have} & Random number generator \\
 & Other robot types \\
 & Other RoboCode gamemodes \\
 \hline
@@ -60,3 +59,39 @@ The criteria that has been designed can be seen in this section.
 \label{moscow}
 
 \end{table}
+
+\subsubsection{Must have}
+\textbf{Primitive types and variables} are needed for any calculation and comparisons in the language. 
+
+\textbf{While loop} is needed to make the robots logic, since the Repeat block is a while loop. The Repeat block will be described in the following chapter.
+
+\textbf{Reserved calls} are methods used to make the robots behaviour, this is needed to e.g. make the robot shoot, scan for other robots and move around the battlefield. 
+
+\textbf{Robot naming} is necessary because some of the methods in Robocode returns the robots name. 
+
+\textbf{If/Else/Elseif statements} is a very essential part of Robocode since it is a conditional statement, and since decision making is playing a very big role in Robocode.
+
+\textbf{Arithmetic expressions and operators} are used to do calculations on primitive types and variables. 
+
+\textbf{Logical expressions and operators} are needed in the conditional statements.
+
+\subsubsection{Should have}
+\textbf{Events} are a big part of Robocode, it gives the robot able to act on the environment and actions around it. Events are placed in should have because it is not necessary to code a moving robot, but to make the robot more intelligent.
+
+\textbf{Comments} would help on the readability of the program, if the user was able to put comments in his/her code. 
+
+\textbf{Void and type methods} are another way to inject intelligence to the robot. Instead of using the Robocode events, the user can make his/her own functions with or without return types. 
+
+\subsubsection{Could have} 
+\textbf{Cos, Sin \& Tan} could be useful when programming robots in Robocode, since when the robots behaviour is made, the user is often working with degrees in the Reserved calls, so if the user wants to make his/her own functions, this could become necessary.
+
+\textbf{For loops} would be another way for the user to iterate over data, but the for loop doesn't seem as necessary as the while loop for this.
+ 
+\textbf{Arrays} is an collection construct, which doesn't seem so important for beginners, but could be useful, if the users should be able to write more advanced robots in our language. 
+
+\textbf{Print statements} would be a smart statement for debugging purposes.
+\textbf{Strings} would be necessary if the print statement would be implemented
+\textbf{}
+\textbf{}
+\textbf{}
+\textbf{}

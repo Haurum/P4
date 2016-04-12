@@ -85,7 +85,7 @@ expr    : MINUS expr                           #unexpr
         | expr op=(EQ | NEQ) expr              #eqexpr
         | expr AND expr                        #andexpr
         | expr OR expr                         #orexpr
-        | atom                                 #atomic
+        | atomic                               #atom
         ;
 
 atomic : '(' expr ')'

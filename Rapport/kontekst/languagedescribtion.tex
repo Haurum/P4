@@ -5,8 +5,7 @@ In this chapter we will overview some features of our language by means of a sim
 \section{Syntax walkthrough}
 In this section an example of a sample robot from Robocode has been introduced and can be found in listing \ref{lst:corners}.
 
-\label{lst:corners}
-\begin{lstlisting}[caption={Eksampel of the sample robot "Corners" in our language}]
+\begin{lstlisting}[caption={Eksampel of the sample robot "Corners" in our language}, label={lst:corners}]
 Tankname corners;
 Num others;
 Num corner = 0;
@@ -76,7 +75,7 @@ When death{
 }
 \end{lstlisting}
 
-Robocodes sample robot, Corners\cite{Corners}, will as find a specific corner where to stay for the entire round, and shoot at other robots whenever scanned. Initially Corners goes to the top left corner. When Corners dies, it will see if it did well or poorly it will either use the same corner or move clockwise to the next corner on the battlefield.
+Robocodes sample robot, Corners \cite{Corners}, will as find a specific corner where to stay for the entire round, and shoot at other robots whenever scanned. Initially Corners goes to the top left corner. When Corners dies, it will see if it did well or poorly it will either use the same corner or move clockwise to the next corner on the battlefield.
 
 In line 1-5 the Tankname is set and some global variables, are declared and initialized. The Setup block in listing \ref{lst:setup} is a block there run once at the beginning of each round. In this example the Setup block is used to store in the global variable "other" the initial number of enemies. This value is obtained by calling the build-in function Battlefield.enemies(). It will run the action goCorner, which will be explained later. As the last thing, the Setup block declares a variable, gunIncrement, of type num and initializes its value to 3.
 
@@ -102,7 +101,7 @@ Repeat{
 }
 \end{lstlisting}
 
-In our language an Action is compared to the langauge C, a procedure in C. Corners uses an Action goCorner(), to move to the desired corner. In the first round of the battle, it will turn the robot the amount of degrees so it is facing the top wall, which is done at line 3 in listing \ref{lst:goCorner}. The degrees are calculated by subtracting the corner variable from the robots heading. "Heading" is getting the robot's heading, which is the direction the robot is facing. It will then move forward until it hits the wall, turn -90 degrees, again  move forward until it hits the wall and turn the gun -90 degrees. At the end of the execution of this action, the robot should be sitting in a corner, ready to turn its gun 90/-90 degrees, which will be from one wall to the other it will turn its gun.
+In our language an Action is compared to the langauge C, a procedure in C. Corners uses an Action goCorner(), to move to the desired corner. In the first round of the battle, it will turn the robot the amount of degrees so it is facing the top wall, which is done at line 3 in listing \ref{lst:goCorner}. The degrees are calculated by subtracting the corner variable from the robots heading. "Heading" is getting the robot's heading, which is the direction the robot is facing. It will then move forward until it hits the wall, turn -90 degrees, again  move forward until it hits the wall and turn the gun -90 degrees. At the end of the execution of this action, the robot should be sitting in a corner, ready to turn its gun 90 degrees clockwise or counter-clockwise.
 
 
 \begin{lstlisting}[caption={Code listing of the Action goCorner()}, xleftmargin=.2\textwidth, label={lst:goCorner}]
@@ -147,17 +146,23 @@ In this section we present the syntax of the language. The syntax is formally pr
 grammar Grammar;
 
 prog : dcls EOF;
+
+tankname : 'Tankname' ID ';';
+
 setupblock : 'Setup' block;
+
 repeatblock : 'Repeat' block;
+
 dcls : (actdcl
      | funcdcl
      | vardcl';'
      | setupblock
      | repeatblock
-     | 'Tankname' ID ';'
+     | tankname
      | eventdcl
      | print';')*
      ;
+
 actdcl : 'Action' ID '(' params? ')'block;
 funcdcl : 'Function' ID '(' params? ')' 'returns' TYPE functionBlock;
 functionBlock : '{' stmts returnstmt';' '}';
@@ -165,6 +170,7 @@ params : param (',' param)*;
 param : TYPE ID;
 eventdcl : 'When' ID block;
 block : '{' stmts '}';
+
 stmts : (assign';'
       |vardcl';'
       |ifstmt
@@ -172,6 +178,7 @@ stmts : (assign';'
       |call';'
       |print';')*
       ;
+
 assign : ID '=' expr;
 vardcl : TYPE (ID|assign);
 ifstmt : 'if''('expr')' block elseif* ('else' block)?;
@@ -179,6 +186,7 @@ elseif : 'else''if''('expr')' block;
 whilestmt : 'repeat' ('while''('expr')' block
           | block 'while''('expr')')
           ;
+
 returnstmt : 'return' expr?;
 print : 'print('expr')';
 
@@ -187,8 +195,10 @@ call : acall
      | rcall
      | ecall
      ;
+
 acall : 'run' ID'('args?')';
 fcall : ID'('args?')';
+
 rcall   : 'Tank.'ID'('args?')'
         | 'Gun.'ID'('args?')'
         | 'Radar.'ID'('args?')'
@@ -197,22 +207,20 @@ rcall   : 'Tank.'ID'('args?')'
         ;
 
 ecall : 'Event.'ID'('args?')';
-
 args : expr (',' expr)*;
 
-expr
- : MINUS expr                           #unexpr
- | NOT expr                             #notexpr
- | expr op=(MULT | DIV | MOD) expr      #mulexpr
- | expr op=(PLUS | MINUS) expr          #addexpr
- | expr op=(LTEQ | GTEQ | LT | GT) expr #relexpr
- | expr op=(EQ | NEQ) expr              #eqexpr
- | expr AND expr                        #andexpr
- | expr OR expr                         #orexpr
- | atom                                 #atomic
- ;
+expr    : MINUS expr                           #unexpr
+        | NOT expr                             #notexpr
+        | expr op=(MULT | DIV | MOD) expr      #mulexpr
+        | expr op=(PLUS | MINUS) expr          #addexpr
+        | expr op=(LTEQ | GTEQ | LT | GT) expr #relexpr
+        | expr op=(EQ | NEQ) expr              #eqexpr
+        | expr AND expr                        #andexpr
+        | expr OR expr                         #orexpr
+        | atomic                               #atomicexpr
+        ;
 
-atom : '(' expr ')'
+atomic : '(' expr ')'
      | call
      | literal
      ;
@@ -222,6 +230,28 @@ literal : ID        #id
         | STRING    #string
         | BOOL      #bool
         ;
+
+OR : '||';
+AND : '&&';
+EQ : '==';
+NEQ : '!=';
+GT : '>';
+LT : '<';
+GTEQ : '>=';
+LTEQ : '<=';
+PLUS : '+';
+MINUS : '-';
+MULT : '*';
+DIV : '/';
+MOD : '%';
+NOT : '!';
+
+ID  : [_a-z] [_a-zA-Z]* ;
+
+NUM :  [0-9]+('.'[0-9]+)?;
+BOOL : 'False' | 'True';
+STRING : '"'~'"'*'"';
+TYPE : 'Num'|'Bool'|'String';
 
 COMMENT : '/*'~['*/']*'*/' -> skip;
 SPACE : [ \r\t\n] -> skip;

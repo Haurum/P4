@@ -166,53 +166,68 @@ public interface GrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitArgs(GrammarParser.ArgsContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GrammarParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitExpr(GrammarParser.ExprContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link GrammarParser#orexpr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitOrexpr(GrammarParser.OrexprContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link GrammarParser#andexpr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAndexpr(GrammarParser.AndexprContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link GrammarParser#eqexpr}.
+	 * Visit a parse tree produced by the {@code eqexpr}
+	 * labeled alternative in {@link GrammarParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitEqexpr(GrammarParser.EqexprContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GrammarParser#relexpr}.
+	 * Visit a parse tree produced by the {@code notexpr}
+	 * labeled alternative in {@link GrammarParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitRelexpr(GrammarParser.RelexprContext ctx);
+	T visitNotexpr(GrammarParser.NotexprContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GrammarParser#addexpr}.
+	 * Visit a parse tree produced by the {@code minusexpr}
+	 * labeled alternative in {@link GrammarParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitAddexpr(GrammarParser.AddexprContext ctx);
+	T visitMinusexpr(GrammarParser.MinusexprContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GrammarParser#mulexpr}.
+	 * Visit a parse tree produced by the {@code mulexpr}
+	 * labeled alternative in {@link GrammarParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitMulexpr(GrammarParser.MulexprContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GrammarParser#unexpr}.
+	 * Visit a parse tree produced by the {@code addexpr}
+	 * labeled alternative in {@link GrammarParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitUnexpr(GrammarParser.UnexprContext ctx);
+	T visitAddexpr(GrammarParser.AddexprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code atomexpr}
+	 * labeled alternative in {@link GrammarParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAtomexpr(GrammarParser.AtomexprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code orexpr}
+	 * labeled alternative in {@link GrammarParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOrexpr(GrammarParser.OrexprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code andexpr}
+	 * labeled alternative in {@link GrammarParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAndexpr(GrammarParser.AndexprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code relexpr}
+	 * labeled alternative in {@link GrammarParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRelexpr(GrammarParser.RelexprContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GrammarParser#atomic}.
 	 * @param ctx the parse tree

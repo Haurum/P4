@@ -1,3 +1,4 @@
+/*
 package code;
 
 import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
@@ -6,9 +7,6 @@ import gen.GrammarParser;
 
 import java.util.Stack;
 
-/**
- * Created by Frederik on 28-03-2016.
- */
 public class SymbolListener extends GrammarBaseListener {
 
     SymbolTable ST;
@@ -326,3 +324,4 @@ public class SymbolListener extends GrammarBaseListener {
         stack.push(new Tuple<>("Bool", ctx.BOOL().getText()));
     }
 }
+*/

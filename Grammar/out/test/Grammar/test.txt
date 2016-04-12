@@ -1,10 +1,10 @@
-Num resultat;
+String resultat;
 
 Tankname test;
 
 Setup{
-  Num c = 4;
-  Num d = 3;
+  String c = "hello ";
+  String d = "world";
   resultat = test(c, d);
 
 }
@@ -13,6 +13,6 @@ Repeat{
 
 }
 
-Function test(Num a, Num b) returns Num {
+Function test(String a, String b) returns String {
     return a - b;
 }

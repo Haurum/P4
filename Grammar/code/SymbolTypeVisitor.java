@@ -22,21 +22,21 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
             Error e = new Error("A Tankname needs to be declared");
             throw e;
         }else if (ctx.tankname().size() > 1){
-            Error e = new Error("Onle one Tankname is allowed");
+            Error e = new Error("Only one Tankname is allowed");
             throw e;
         }
         if (ctx.repeatblock().size() < 1){
             Error e = new Error("A Repeat block needs to be declared");
             throw e;
         }else if (ctx.repeatblock().size() > 1){
-            Error e = new Error("Onle one Repeat block is allowed");
+            Error e = new Error("Only one Repeat block is allowed");
             throw e;
         }
         if (ctx.setupblock().size() < 1){
             Error e = new Error("A Setup block needs to be declared");
             throw e;
         }else if (ctx.setupblock().size() > 1){
-            Error e = new Error("Onle one Setup block is allowed");
+            Error e = new Error("Only one Setup block is allowed");
             throw e;
         }
         super.visitDcls(ctx);
@@ -184,106 +184,92 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
     }
 
     @Override
-    public String visitExpr(GrammarParser.ExprContext ctx) {
-        String result = super.visitExpr(ctx);
-        System.out.println( result);
-        return result;
-    }
-
-    @Override
     public String visitOrexpr(GrammarParser.OrexprContext ctx) {
-        if (ctx.getChildCount() > 1){
-            String left = visit(ctx.andexpr());
-            String right = visit(ctx.orexpr());
-            if (left.equals("Bool") && right.equals("Bool")){
-                return "Bool";
-            }else{
-                Error e = new Error("Type error");
-                throw e;
-            }
-        }else return super.visitOrexpr(ctx);
+        String left = visit(ctx.expr(0));
+        String right = visit(ctx.expr(1));
+        if (left.equals("Bool") && right.equals("Bool")){
+            return "Bool";
+        }else{
+            Error e = new Error("Type error");
+            throw e;
+        }
     }
 
     @Override
     public String visitAndexpr(GrammarParser.AndexprContext ctx) {
-        if (ctx.getChildCount() > 1){
-            String left = visit(ctx.eqexpr());
-            String right = visit(ctx.andexpr());
-            if (left.equals("Bool") && right.equals("Bool")){
-                return "Bool";
-            }else{
-                Error e = new Error("Type error");
-                throw e;
-            }
-        }else return super.visitAndexpr(ctx);
+        String left = visit(ctx.expr(0));
+        String right = visit(ctx.expr(1));
+        if (left.equals("Bool") && right.equals("Bool")){
+            return "Bool";
+        }else{
+            Error e = new Error("Type error");
+            throw e;
+        }
     }
 
     @Override
     public String visitEqexpr(GrammarParser.EqexprContext ctx) {
-        if (ctx.getChildCount() > 1){
-            String left = visit(ctx.relexpr());
-            String right = visit(ctx.eqexpr());
-            if (left.equals(right)){
-                return "Bool";
-            }else{
-                Error e = new Error("Type error");
-                throw e;
-            }
-        }else return super.visitEqexpr(ctx);
+        String left = visit(ctx.expr(0));
+        String right = visit(ctx.expr(1));
+        if (left.equals(right)){
+            return "Bool";
+        }else{
+            Error e = new Error("Type error");
+            throw e;
+        }
     }
 
     @Override
     public String visitRelexpr(GrammarParser.RelexprContext ctx) {
-        if (ctx.getChildCount() > 1){
-            String left = visit(ctx.addexpr());
-            String right = visit(ctx.relexpr());
-            if (left.equals("Num") && right.equals("Num")){
-                return "Bool";
-            }else{
-                Error e = new Error("Type error");
-                throw e;
-            }
-        }else return super.visitRelexpr(ctx);
+        String left = visit(ctx.expr(0));
+        String right = visit(ctx.expr(1));
+        if (left.equals("Num") && right.equals("Num")){
+            return "Bool";
+        }else{
+            Error e = new Error("Type error");
+            throw e;
+        }
     }
 
     @Override
     public String visitAddexpr(GrammarParser.AddexprContext ctx) {
-        if (ctx.getChildCount() > 1){
-            String left = visit(ctx.mulexpr());
-            String right = visit(ctx.addexpr());
+            String left = visit(ctx.expr(0));
+            String right = visit(ctx.expr(1));
             if (left.equals("Num") && right.equals("Num")) {
                 return "Num";
-            }else if((left.equals("String") || right.equals("String")) && ctx.ADD().getText().equals("+") ) {
+            }else if((left.equals("String") || right.equals("String")) && ctx.op.getText().equals("+") ) {
                 return "String";
             }else{
                 Error e = new Error("Type error");
                 throw e;
             }
-        }else return super.visitAddexpr(ctx);
-
     }
 
     @Override
     public String visitMulexpr(GrammarParser.MulexprContext ctx) {
-        if (ctx.getChildCount() > 1){
-            if (!visit(ctx.unexpr()).equals("Num") || !visit(ctx.mulexpr()).equals("Num")){
-                Error e = new Error("Type error");
-                throw e;
-            }
-            return "Num";
-        }else return super.visitMulexpr(ctx);
+        if (!visit(ctx.expr(0)).equals("Num") || !visit(ctx.expr(1)).equals("Num")){
+            Error e = new Error("Type error");
+            throw e;
+        }
+        return "Num";
     }
 
     @Override
-    public String visitUnexpr(GrammarParser.UnexprContext ctx) {
-        if (ctx.getChildCount() > 1){
-            if (visit(ctx.atomic()).equals("Bool")){
-                return "Bool";
-            }else{
-                Error e = new Error("Type error");
-                throw e;
-            }
-        }else return super.visitUnexpr(ctx);
+    public String visitMinusexpr(GrammarParser.MinusexprContext ctx) {
+        if (!visit(ctx.expr()).equals("Num")){
+            Error e = new Error("Type error");
+            throw e;
+        }
+        return "Num";
+    }
+
+    @Override
+    public String visitNotexpr(GrammarParser.NotexprContext ctx) {
+        if (!visit(ctx.expr()).equals("Bool")){
+            Error e = new Error("Type error");
+            throw e;
+        }
+        return "Bool";
     }
 
     @Override

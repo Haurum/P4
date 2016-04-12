@@ -13,7 +13,7 @@ dcls : (actdcl
      | vardcl';'
      | setupblock
      | repeatblock
-     | 'Tankname' ID ';'
+     | tankname
      | eventdcl
      | print';')*
      ;
@@ -78,7 +78,7 @@ ecall : 'Event.'ID'('args?')';
 args : expr (',' expr)*;
 
 expr
- : MINUS expr                           #unexpr
+ : MINUS expr                           #minusexpr
  | NOT expr                             #notexpr
  | expr op=(MULT | DIV | MOD) expr      #mulexpr
  | expr op=(PLUS | MINUS) expr          #addexpr
@@ -86,10 +86,10 @@ expr
  | expr op=(EQ | NEQ) expr              #eqexpr
  | expr AND expr                        #andexpr
  | expr OR expr                         #orexpr
- | atom                                 #atomic
+ | atomic                               #atomexpr
  ;
 
-atom : '(' expr ')'
+atomic : '(' expr ')'
      | call
      | literal
      ;

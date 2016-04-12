@@ -2,7 +2,7 @@ grammar Grammar;
 
 prog : dcls EOF;
 
-tankname: 'Tankname' ID ';';
+tankname : 'Tankname' ID ';';
 
 setupblock : 'Setup' block;
 
@@ -77,19 +77,18 @@ ecall : 'Event.'ID'('args?')';
 
 args : expr (',' expr)*;
 
-expr
- : MINUS expr                           #minusexpr
- | NOT expr                             #notexpr
- | expr op=(MULT | DIV | MOD) expr      #mulexpr
- | expr op=(PLUS | MINUS) expr          #addexpr
- | expr op=(LTEQ | GTEQ | LT | GT) expr #relexpr
- | expr op=(EQ | NEQ) expr              #eqexpr
- | expr AND expr                        #andexpr
- | expr OR expr                         #orexpr
- | atom                                 #atomic
- ;
+expr    : MINUS expr                           #unexpr
+        | NOT expr                             #notexpr
+        | expr op=(MULT | DIV | MOD) expr      #mulexpr
+        | expr op=(PLUS | MINUS) expr          #addexpr
+        | expr op=(LTEQ | GTEQ | LT | GT) expr #relexpr
+        | expr op=(EQ | NEQ) expr              #eqexpr
+        | expr AND expr                        #andexpr
+        | expr OR expr                         #orexpr
+        | atomic                               #atomicexpr
+        ;
 
-atom : '(' expr ')'
+atomic : '(' expr ')'
      | call
      | literal
      ;

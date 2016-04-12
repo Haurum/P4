@@ -142,15 +142,12 @@ Consider if the event Death should be explanied here for the example Corners.
 \label{sec:Grammar}
 In this section we present the syntax of the language. The syntax is formally presented by means of a context-free grammar in extended BNF.
 
-\begin{lstlisting}[style=MyLang, label={lst:CFG}]
+\begin{lstlisting}[style=CFG, label={lst:CFG}]
 grammar Grammar;
 
 prog : dcls EOF;
-
 tankname : 'Tankname' ID ';';
-
 setupblock : 'Setup' block;
-
 repeatblock : 'Repeat' block;
 
 dcls : (actdcl
@@ -230,28 +227,6 @@ literal : ID        #id
         | STRING    #string
         | BOOL      #bool
         ;
-
-OR : '||';
-AND : '&&';
-EQ : '==';
-NEQ : '!=';
-GT : '>';
-LT : '<';
-GTEQ : '>=';
-LTEQ : '<=';
-PLUS : '+';
-MINUS : '-';
-MULT : '*';
-DIV : '/';
-MOD : '%';
-NOT : '!';
-
-ID  : [_a-z] [_a-zA-Z]* ;
-
-NUM :  [0-9]+('.'[0-9]+)?;
-BOOL : 'False' | 'True';
-STRING : '"'~'"'*'"';
-TYPE : 'Num'|'Bool'|'String';
 
 COMMENT : '/*'~['*/']*'*/' -> skip;
 SPACE : [ \r\t\n] -> skip;

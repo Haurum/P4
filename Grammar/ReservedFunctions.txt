@@ -1,0 +1,14 @@
+tank forward void - num distance
+tank backward void - num distance
+tank doNothing void
+tank energy void
+tank heading void
+tank height void
+tank width void
+tank velocity void
+tank xCoord void
+tank yCoord void
+tank stop void
+tank resume void
+tank turn void - num degrees
+tank testfunc int - num degrees, num testparam2, num testparam3

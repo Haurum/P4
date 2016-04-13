@@ -23,21 +23,24 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
             Error e = new Error("A Tankname needs to be declared");
             throw e;
         }else if (ctx.tankname().size() > 1){
-            Error e = new Error("Only one Tankname is allowed");
+            Error e = new Error("Error at line: " +
+                    ctx.tankname(1).start.getLine() + ": Too many tank names.");
             throw e;
         }
         if (ctx.repeatblock().size() < 1){
             Error e = new Error("A Repeat block needs to be declared");
             throw e;
         }else if (ctx.repeatblock().size() > 1){
-            Error e = new Error("Only one Repeat block is allowed");
+            Error e = new Error("Error at line: " +
+                    ctx.repeatblock(1).start.getLine() + ": Too many repeat blocks.");
             throw e;
         }
         if (ctx.setupblock().size() < 1){
             Error e = new Error("A Setup block needs to be declared");
             throw e;
         }else if (ctx.setupblock().size() > 1){
-            Error e = new Error("Only one Setup block is allowed");
+            Error e = new Error("Error at line: " +
+                    ctx.setupblock(1).start.getLine() + ": Too many setup blocks.");
             throw e;
         }
         super.visitDcls(ctx);
@@ -46,7 +49,8 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
 
     public String visitIfstmt(GrammarParser.IfstmtContext ctx) {
         if (!visit(ctx.expr()).equals("Bool")){
-            Error e = new Error("Type error");
+            Error e = new Error("Error at line: " +
+                    ctx.expr().start.getLine() + ": Expression did not evaluate to bool.");
             throw e;
         }
         super.visitIfstmt(ctx);
@@ -55,7 +59,8 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
 
     public String visitElseif(GrammarParser.ElseifContext ctx) {
         if (!visit(ctx.expr()).equals("Bool")){
-            Error e = new Error("Type error");
+            Error e = new Error("Error at line: " +
+                    ctx.expr().start.getLine() + ": Expression did not evaluate to bool.");
             throw e;
         }
         visit(ctx.block());
@@ -65,7 +70,8 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
     @Override
     public String visitWhilestmt(GrammarParser.WhilestmtContext ctx) {
         if (!visit(ctx.expr()).equals("Bool")){
-            Error e = new Error("Type error");
+            Error e = new Error("Error at line: " +
+                    ctx.expr().start.getLine() + ": Expression did not evaluate to bool.");
             throw e;
         }
         visit(ctx.block());
@@ -76,7 +82,8 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
     public String visitTankcall(GrammarParser.TankcallContext ctx) {
         FuncSymbol fsym = RoboFST.GetFuncSymbol(ctx.ID().getText());
         if (!fsym.Type.equals("Tank")){
-            Error e = new Error("Type error");
+            Error e = new Error("Error at line: " +
+                    ctx.start.getLine() + ": Incorrect function type.");
             throw e;
         }
         String[] args = visit(ctx.args()).split(", ");
@@ -84,7 +91,9 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
             String paramType = fsym.Params.get(i).y;
             String arg = args[i];
             if (!paramType.equals(arg)){
-                Error e = new Error("Type error");
+                Error e = new Error("Error at line: " +
+                        ctx.args().expr(i).start.getLine() +
+                ": Parameter number " + i + " not matched. Expected " + paramType);
                 throw e;
             }
         }

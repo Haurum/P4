@@ -16,7 +16,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-<<<<<<< HEAD
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
@@ -26,8 +25,5 @@
         <SOURCES />
       </library>
     </orderEntry>
-=======
-    <orderEntry type="library" name="antlr-4.5.3-complete" level="project" />
->>>>>>> origin/master
   </component>
 </module>

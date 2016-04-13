@@ -1620,25 +1620,113 @@ public class GrammarParser extends Parser {
 	}
 
 	public static class RcallContext extends ParserRuleContext {
-		public TerminalNode ID() { return getToken(GrammarParser.ID, 0); }
-		public ArgsContext args() {
-			return getRuleContext(ArgsContext.class,0);
-		}
 		public RcallContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_rcall; }
+	 
+		public RcallContext() { }
+		public void copyFrom(RcallContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class MathcallContext extends RcallContext {
+		public TerminalNode ID() { return getToken(GrammarParser.ID, 0); }
+		public ArgsContext args() {
+			return getRuleContext(ArgsContext.class,0);
+		}
+		public MathcallContext(RcallContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterRcall(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterMathcall(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitRcall(this);
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitMathcall(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitRcall(this);
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitMathcall(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class RadarcallContext extends RcallContext {
+		public TerminalNode ID() { return getToken(GrammarParser.ID, 0); }
+		public ArgsContext args() {
+			return getRuleContext(ArgsContext.class,0);
+		}
+		public RadarcallContext(RcallContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterRadarcall(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitRadarcall(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitRadarcall(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class TankcallContext extends RcallContext {
+		public TerminalNode ID() { return getToken(GrammarParser.ID, 0); }
+		public ArgsContext args() {
+			return getRuleContext(ArgsContext.class,0);
+		}
+		public TankcallContext(RcallContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterTankcall(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitTankcall(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitTankcall(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class GuncallContext extends RcallContext {
+		public TerminalNode ID() { return getToken(GrammarParser.ID, 0); }
+		public ArgsContext args() {
+			return getRuleContext(ArgsContext.class,0);
+		}
+		public GuncallContext(RcallContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterGuncall(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitGuncall(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitGuncall(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class BattlefieldcallContext extends RcallContext {
+		public TerminalNode ID() { return getToken(GrammarParser.ID, 0); }
+		public ArgsContext args() {
+			return getRuleContext(ArgsContext.class,0);
+		}
+		public BattlefieldcallContext(RcallContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterBattlefieldcall(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitBattlefieldcall(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitBattlefieldcall(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1651,6 +1739,7 @@ public class GrammarParser extends Parser {
 			setState(262);
 			switch (_input.LA(1)) {
 			case T__21:
+				_localctx = new TankcallContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(227);
@@ -1673,6 +1762,7 @@ public class GrammarParser extends Parser {
 				}
 				break;
 			case T__22:
+				_localctx = new GuncallContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(234);
@@ -1695,6 +1785,7 @@ public class GrammarParser extends Parser {
 				}
 				break;
 			case T__23:
+				_localctx = new RadarcallContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(241);
@@ -1717,6 +1808,7 @@ public class GrammarParser extends Parser {
 				}
 				break;
 			case T__24:
+				_localctx = new BattlefieldcallContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(248);
@@ -1739,6 +1831,7 @@ public class GrammarParser extends Parser {
 				}
 				break;
 			case T__25:
+				_localctx = new MathcallContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
 				setState(255);
@@ -2027,25 +2120,6 @@ public class GrammarParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class AtomexprContext extends ExprContext {
-		public AtomicContext atomic() {
-			return getRuleContext(AtomicContext.class,0);
-		}
-		public AtomexprContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterAtomexpr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitAtomexpr(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitAtomexpr(this);
-			else return visitor.visitChildren(this);
-		}
-	}
 	public static class OrexprContext extends ExprContext {
 		public List<ExprContext> expr() {
 			return getRuleContexts(ExprContext.class);
@@ -2089,6 +2163,25 @@ public class GrammarParser extends Parser {
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitAndexpr(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class AtomicexprContext extends ExprContext {
+		public AtomicContext atomic() {
+			return getRuleContext(AtomicContext.class,0);
+		}
+		public AtomicexprContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterAtomicexpr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitAtomicexpr(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitAtomicexpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2174,7 +2267,7 @@ public class GrammarParser extends Parser {
 			case BOOL:
 			case STRING:
 				{
-				_localctx = new AtomexprContext(_localctx);
+				_localctx = new AtomicexprContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 				setState(285);

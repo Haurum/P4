@@ -66,26 +66,26 @@ acall : 'run' ID'('args?')';
 
 fcall : ID'('args?')';
 
-rcall   : 'Tank.'ID'('args?')'
-        | 'Gun.'ID'('args?')'
-        | 'Radar.'ID'('args?')'
-        | 'Battlefield.'ID'('args?')'
-        | 'Math.'ID'('args?')'
+rcall   : 'Tank.'ID'('args?')'          #tankcall
+        | 'Gun.'ID'('args?')'           #guncall
+        | 'Radar.'ID'('args?')'         #radarcall
+        | 'Battlefield.'ID'('args?')'   #battlefieldcall
+        | 'Math.'ID'('args?')'          #mathcall
         ;
 
 ecall : 'Event.'ID'('args?')';
 
 args : expr (',' expr)*;
 
-expr    : MINUS expr                           #unexpr
-        | NOT expr                             #notexpr
-        | expr op=(MULT | DIV | MOD) expr      #mulexpr
-        | expr op=(PLUS | MINUS) expr          #addexpr
-        | expr op=(LTEQ | GTEQ | LT | GT) expr #relexpr
-        | expr op=(EQ | NEQ) expr              #eqexpr
-        | expr AND expr                        #andexpr
-        | expr OR expr                         #orexpr
-        | atomic                               #atomicexpr
+expr    : MINUS expr                            #minusexpr
+        | NOT expr                              #notexpr
+        | expr op=(MULT | DIV | MOD) expr       #mulexpr
+        | expr op=(PLUS | MINUS) expr           #addexpr
+        | expr op=(LTEQ | GTEQ | LT | GT) expr  #relexpr
+        | expr op=(EQ | NEQ) expr               #eqexpr
+        | expr AND expr                         #andexpr
+        | expr OR expr                          #orexpr
+        | atomic                                #atomicexpr
         ;
 
 atomic : '(' expr ')'

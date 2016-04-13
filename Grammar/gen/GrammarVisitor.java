@@ -148,11 +148,40 @@ public interface GrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFcall(GrammarParser.FcallContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link GrammarParser#rcall}.
+	 * Visit a parse tree produced by the {@code tankcall}
+	 * labeled alternative in {@link GrammarParser#rcall}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitRcall(GrammarParser.RcallContext ctx);
+	T visitTankcall(GrammarParser.TankcallContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code guncall}
+	 * labeled alternative in {@link GrammarParser#rcall}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitGuncall(GrammarParser.GuncallContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code radarcall}
+	 * labeled alternative in {@link GrammarParser#rcall}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRadarcall(GrammarParser.RadarcallContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code battlefieldcall}
+	 * labeled alternative in {@link GrammarParser#rcall}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBattlefieldcall(GrammarParser.BattlefieldcallContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code mathcall}
+	 * labeled alternative in {@link GrammarParser#rcall}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMathcall(GrammarParser.MathcallContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GrammarParser#ecall}.
 	 * @param ctx the parse tree
@@ -201,13 +230,6 @@ public interface GrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAddexpr(GrammarParser.AddexprContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code atomexpr}
-	 * labeled alternative in {@link GrammarParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAtomexpr(GrammarParser.AtomexprContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code orexpr}
 	 * labeled alternative in {@link GrammarParser#expr}.
 	 * @param ctx the parse tree
@@ -221,6 +243,13 @@ public interface GrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitAndexpr(GrammarParser.AndexprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code atomicexpr}
+	 * labeled alternative in {@link GrammarParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAtomicexpr(GrammarParser.AtomicexprContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code relexpr}
 	 * labeled alternative in {@link GrammarParser#expr}.

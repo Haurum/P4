@@ -9,11 +9,12 @@ import gen.GrammarParser;
 public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
 
     SymbolTable ST;
-    FuncSymbolTable FST;
+    FuncSymbolTable FST, RoboFST;
 
-    public SymbolTypeVisitor(SymbolTable st, FuncSymbolTable fst){
+    public SymbolTypeVisitor(SymbolTable st, FuncSymbolTable fst, FuncSymbolTable robofst){
         ST = st;
         FST = fst;
+        RoboFST = robofst;
     }
 
     @Override
@@ -69,6 +70,101 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
         }
         visit(ctx.block());
         return "null";
+    }
+
+    @Override
+    public String visitTankcall(GrammarParser.TankcallContext ctx) {
+        FuncSymbol fsym = RoboFST.GetFuncSymbol(ctx.ID().getText());
+        if (!fsym.Type.equals("Tank")){
+            Error e = new Error("Type error");
+            throw e;
+        }
+        String[] args = visit(ctx.args()).split(", ");
+        for (int i = 0; i < args.length; i++){
+            String paramType = fsym.Params.get(i).y;
+            String arg = args[i];
+            if (!paramType.equals(arg)){
+                Error e = new Error("Type error");
+                throw e;
+            }
+        }
+        return fsym.ReturnType;
+    }
+
+    @Override
+    public String visitGuncall(GrammarParser.GuncallContext ctx) {
+        FuncSymbol fsym = RoboFST.GetFuncSymbol(ctx.ID().getText());
+        if (!fsym.Type.equals("Gun")){
+            Error e = new Error("Type error");
+            throw e;
+        }
+        String[] args = visit(ctx.args()).split(", ");
+        for (int i = 0; i < args.length; i++){
+            String paramType = fsym.Params.get(i).y;
+            String arg = args[i];
+            if (!paramType.equals(arg)){
+                Error e = new Error("Type error");
+                throw e;
+            }
+        }
+        return fsym.ReturnType;
+    }
+
+    @Override
+    public String visitRadarcall(GrammarParser.RadarcallContext ctx) {
+        FuncSymbol fsym = RoboFST.GetFuncSymbol(ctx.ID().getText());
+        if (!fsym.Type.equals("Radar")){
+            Error e = new Error("Type error");
+            throw e;
+        }
+        String[] args = visit(ctx.args()).split(", ");
+        for (int i = 0; i < args.length; i++){
+            String paramType = fsym.Params.get(i).y;
+            String arg = args[i];
+            if (!paramType.equals(arg)){
+                Error e = new Error("Type error");
+                throw e;
+            }
+        }
+        return fsym.ReturnType;
+    }
+
+    @Override
+    public String visitBattlefieldcall(GrammarParser.BattlefieldcallContext ctx) {
+        FuncSymbol fsym = RoboFST.GetFuncSymbol(ctx.ID().getText());
+        if (!fsym.Type.equals("Battlefield")){
+            Error e = new Error("Type error");
+            throw e;
+        }
+        String[] args = visit(ctx.args()).split(", ");
+        for (int i = 0; i < args.length; i++){
+            String paramType = fsym.Params.get(i).y;
+            String arg = args[i];
+            if (!paramType.equals(arg)){
+                Error e = new Error("Type error");
+                throw e;
+            }
+        }
+        return fsym.ReturnType;
+    }
+
+    @Override
+    public String visitMathcall(GrammarParser.MathcallContext ctx) {
+        FuncSymbol fsym = RoboFST.GetFuncSymbol(ctx.ID().getText());
+        if (!fsym.Type.equals("Math")){
+            Error e = new Error("Type error");
+            throw e;
+        }
+        String[] args = visit(ctx.args()).split(", ");
+        for (int i = 0; i < args.length; i++){
+            String paramType = fsym.Params.get(i).y;
+            String arg = args[i];
+            if (!paramType.equals(arg)){
+                Error e = new Error("Type error");
+                throw e;
+            }
+        }
+        return fsym.ReturnType;
     }
 
     @Override

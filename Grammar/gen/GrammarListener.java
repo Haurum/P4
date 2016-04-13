@@ -237,15 +237,65 @@ public interface GrammarListener extends ParseTreeListener {
 	 */
 	void exitFcall(GrammarParser.FcallContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GrammarParser#rcall}.
+	 * Enter a parse tree produced by the {@code tankcall}
+	 * labeled alternative in {@link GrammarParser#rcall}.
 	 * @param ctx the parse tree
 	 */
-	void enterRcall(GrammarParser.RcallContext ctx);
+	void enterTankcall(GrammarParser.TankcallContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GrammarParser#rcall}.
+	 * Exit a parse tree produced by the {@code tankcall}
+	 * labeled alternative in {@link GrammarParser#rcall}.
 	 * @param ctx the parse tree
 	 */
-	void exitRcall(GrammarParser.RcallContext ctx);
+	void exitTankcall(GrammarParser.TankcallContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code guncall}
+	 * labeled alternative in {@link GrammarParser#rcall}.
+	 * @param ctx the parse tree
+	 */
+	void enterGuncall(GrammarParser.GuncallContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code guncall}
+	 * labeled alternative in {@link GrammarParser#rcall}.
+	 * @param ctx the parse tree
+	 */
+	void exitGuncall(GrammarParser.GuncallContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code radarcall}
+	 * labeled alternative in {@link GrammarParser#rcall}.
+	 * @param ctx the parse tree
+	 */
+	void enterRadarcall(GrammarParser.RadarcallContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code radarcall}
+	 * labeled alternative in {@link GrammarParser#rcall}.
+	 * @param ctx the parse tree
+	 */
+	void exitRadarcall(GrammarParser.RadarcallContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code battlefieldcall}
+	 * labeled alternative in {@link GrammarParser#rcall}.
+	 * @param ctx the parse tree
+	 */
+	void enterBattlefieldcall(GrammarParser.BattlefieldcallContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code battlefieldcall}
+	 * labeled alternative in {@link GrammarParser#rcall}.
+	 * @param ctx the parse tree
+	 */
+	void exitBattlefieldcall(GrammarParser.BattlefieldcallContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code mathcall}
+	 * labeled alternative in {@link GrammarParser#rcall}.
+	 * @param ctx the parse tree
+	 */
+	void enterMathcall(GrammarParser.MathcallContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code mathcall}
+	 * labeled alternative in {@link GrammarParser#rcall}.
+	 * @param ctx the parse tree
+	 */
+	void exitMathcall(GrammarParser.MathcallContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GrammarParser#ecall}.
 	 * @param ctx the parse tree
@@ -327,18 +377,6 @@ public interface GrammarListener extends ParseTreeListener {
 	 */
 	void exitAddexpr(GrammarParser.AddexprContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code atomexpr}
-	 * labeled alternative in {@link GrammarParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterAtomexpr(GrammarParser.AtomexprContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code atomexpr}
-	 * labeled alternative in {@link GrammarParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitAtomexpr(GrammarParser.AtomexprContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code orexpr}
 	 * labeled alternative in {@link GrammarParser#expr}.
 	 * @param ctx the parse tree
@@ -362,6 +400,18 @@ public interface GrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAndexpr(GrammarParser.AndexprContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code atomicexpr}
+	 * labeled alternative in {@link GrammarParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterAtomicexpr(GrammarParser.AtomicexprContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code atomicexpr}
+	 * labeled alternative in {@link GrammarParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitAtomicexpr(GrammarParser.AtomicexprContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code relexpr}
 	 * labeled alternative in {@link GrammarParser#expr}.

@@ -142,7 +142,7 @@ Consider if the event Death should be explanied here for the example Corners.
 \label{sec:Grammar}
 In this section we present the syntax of the language. The syntax is formally presented by means of a context-free grammar in extended BNF.
 
-\begin{lstlisting}[style=CFG, label={lst:CFG}]
+\begin{lstlisting}[label={lst:CFG}]
 grammar Grammar;
 
 prog : dcls EOF;
@@ -264,9 +264,26 @@ TYPE     & 'Num' | 'Bool' | 'Text'            \\ \hline
 \section{Type systems}
 
 \subsection{Type rules}
-
+The following subsection will describe the type rules of the language. These rules will express which operators can be applied to each type, and how each expression will have a type, determined by the operands and operators in the expression.
+Operators has been divided into groups, and each group of operators has semantically equivalent rules.
+The operators [+, -, *, /, \%] will be used as the shorthand 'op'. Relational operators [<, >, <=, >=, NOT=, IS=, AND, OR] will be used as the shorthand 'relop'. There's two different types of negations, one for numbers and one for bools: -(num) for numbers, and NOT(bool) for bools.
+\[
+\dfrac{\Gamma \vdash e_1 : num \Gamma \vdash e_2 : num}{\Gamma \vdash e_1 op e_2 : num}
+\]
+\[
+\dfrac{\Gamma \vdash e_1 : num \Gamma \vdash e_2 : num}{\Gamma \vdash e_1 relop e_2 : bool}
+\]
+\[
+\dfrac{\Gamma \vdash e_1 : num}{\Gamma \vdash -e_1 : num}
+\]
+\[
+\dfrac{\Gamma \vdash e_1 : string \Gamma \vdash e_2 : \tau}{\Gamma \vdash e_1 + e_2 : string}
+\]
+\[
+\dfrac{\Gamma \vdash e_1 : bool \Gamma \vdash e_2 : bool}{\Gamma \vdash e_1 relop e_2 : bool}
+\]
+\[
+\dfrac{\Gamma \vdash e_1 : bool}{\Gamma \vdash NOTe_1 : bool}
+\]
 \subsection{Scope rules}
-
-\subsection{Type checking}
-
-\subsection{Scope checking}
+Lav indledning fra Sebesta s. 218 om, forklar og beskriv de scopes vi har. 

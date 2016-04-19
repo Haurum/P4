@@ -351,7 +351,7 @@ The operators [+, -, *, /, \%] will be used as the shorthand 'op'. Relational op
 \dfrac{\Gamma \vdash e_1 : bool}{\Gamma \vdash NOTe_1 : bool}
 \]
 \subsection{Scope rules}
-Lav indledning fra Sebesta s. 218 om, forklar og beskriv de scopes vi har. 
+Lav indledning fra Sebesta s. 218 om, forklar og beskriv de scopes vi har...!
 
 Scope rules are where the users variables are visible. In our language there is three kind of scopes: local scope, global scope and function scope. A variable is visible in the specific scope, if can be referenced to. Two variables of the same name, can't be in the same scope. The local variables are declared inside blocks of code, where the blocks are marked with \{ \}. In the example in listing \ref{lst:example} the variable degrees is declared locally in the code block Setup, and it can't be used in other code blocks unless it is nested inside of the Setup block, it could e.g. be used in a if-loop in the Setup block. 
 
@@ -367,6 +367,7 @@ Setup{
 The parameters declared in a function, is visible in the function scope and can be used just as local variables for the function. The parameters can't be masked by declaring new local variables in the function, since the value of the parameters can't be stored. The parameters can't be named the same as the local- and global variables. 
 
 When a variable is declared in the global scope, it can be used in all of the other functions and code blocks. When a variable is used, it will first search for it in the local scope, if it is not found in the local scope, it will search the in the global scope. In listing \ref{lst:example1} Codeblock1 uses the global variable, where Codeblock2 uses a local variable with the same name as the global variable, but the local variable will be used.
+
 
 \begin{lstlisting}[caption={Example of global scoping rules},  xleftmargin=.2\textwidth, label={lst:example1}]
 Num number = 2; /* Declared globally */

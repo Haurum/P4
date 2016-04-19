@@ -261,7 +261,69 @@ TYPE     & 'Num' | 'Bool' | 'Text'            \\ \hline
 \label{fig:Lexicon}
 \end{table}
 
+\section{Language constructs}
+Lav definitioner til hver contruct:
+Forklaring hvonår det er den contructs og hvad den gør(Så som hvad den tager som input og giver som output)
+
+Til hver definition, lav en tekst om hvad den bruges til og hvorfor den er med i vores sprog.
+
+\subsection{Setup block}
+The Setup block is a block run only once at the begining of each round. In this block the user can define colors of different parts of the robot, call user defined functions which should only be called in once in the beginning and reserved calls. 
+
+\begin{defi}
+The Setup block consists of the reserved word Setup followed by \{ \textbf{body} \}, where the body is the userdefined code. 
+\end{defi}
+
+\subsection{Repeat block}
+The Repeat block will iterate through the users code, unless an event has occurred which then have first priority. The Repeat block is the general behaviour and logic of the robot, and will often contain the main movements of the robot.
+
+\begin{defi}
+The Repeat block is defined with the reserved word Repeat followed by \{ \textbf{body} \}, where the body is the userdefined code.
+\end{defi}
+\subsection{When block}
+
+
+\begin{defi}
+Hello?
+\end{defi}
+\subsection{Variables}
+
+
+\begin{defi}
+Hello?
+\end{defi}
+\subsection{Actions}
+
+
+\begin{defi}
+Hello?
+\end{defi}
+\subsection{Functions}
+
+
+\begin{defi}
+Hello?
+\end{defi}
+\subsection{Reserved calls}
+
+
+\begin{defi}
+Hello?
+\end{defi}
+\subsection{Conditional block}
+
+
+\begin{defi}
+Hello?
+\end{defi}
+\subsection{Expressions}
+
+
+\begin{defi}
+Hello?
+\end{defi}
 \section{Type systems}
+Missing intro!
 
 \subsection{Type rules}
 The following subsection will describe the type rules of the language. These rules will express which operators can be applied to each type, and how each expression will have a type, determined by the operands and operators in the expression.
@@ -287,3 +349,31 @@ The operators [+, -, *, /, \%] will be used as the shorthand 'op'. Relational op
 \]
 \subsection{Scope rules}
 Lav indledning fra Sebesta s. 218 om, forklar og beskriv de scopes vi har. 
+
+Scope rules are where the users variables are visible. In our language there is three kind of scopes: local scope, global scope and function scope. A variable is visible in the specific scope, if can be referenced to. Two variables of the same name, can't be in the same scope. The local variables are declared inside blocks of code, where the blocks are marked with \{ \}. In the example in listing \ref{lst:example} the variable degrees is declared locally in the code block Setup, and it can't be used in other code blocks unless it is nested inside of the Setup block, it could e.g. be used in a if-loop in the Setup block. 
+
+\begin{lstlisting}[caption={Example of local scoping rules},  xleftmargin=.2\textwidth, label={lst:example}]
+Setup{
+	num degrees;
+	degrees = 90;
+	
+	Tank.forward(degrees);
+}
+\end{lstlisting}
+
+The parameters declared in a function, is visible in the function scope and can be used just as local variables for the function. The parameters can't be masked by declaring new local variables in the function, since the value of the parameters can't be stored. The parameters can't be named the same as the local- and global variables. 
+
+When a variable is declared in the global scope, it can be used in all of the other functions and code blocks. When a variable is used, it will first search for it in the local scope, if it is not found in the local scope, it will search the in the global scope. In listing \ref{lst:example1} Codeblock1 uses the global variable, where Codeblock2 uses a local variable with the same name as the global variable, but the local variable will be used.
+
+\begin{lstlisting}[caption={Example of global scoping rules},  xleftmargin=.2\textwidth, label={lst:example1}]
+Num number = 2; /* Declared globally */
+
+Codeblock1{
+	5 + number; /* Will use the global variable number */
+}
+
+Codeblock2{
+	Num number = 5; /* Locally declared variable */
+	5 + number; /* Will use the global variable number */
+}
+\end{lstlisting}

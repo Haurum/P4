@@ -262,47 +262,50 @@ TYPE     & 'Num' | 'Bool' | 'Text'            \\ \hline
 \end{table}
 
 \section{Language constructs}
-Lav definitioner til hver contruct:
-Forklaring hvonår det er den contructs og hvad den gør(Så som hvad den tager som input og giver som output)
+%Lav definitioner til hver contruct:
+%Forklaring hvonår det er den contructs og hvad den gør(Så som hvad den tager som input og giver som output)
 
-Til hver definition, lav en tekst om hvad den bruges til og hvorfor den er med i vores sprog.
+%Til hver definition, lav en tekst om hvad den bruges til og hvorfor den er med i vores sprog.
+Missing Intro!
 
 \subsection{Setup block}
 The Setup block is a block run only once at the begining of each round. In this block the user can define colors of different parts of the robot, call user defined functions which should only be called in once in the beginning and reserved calls. 
 
 \begin{defi}
-The Setup block consists of the reserved word Setup followed by \{ \textbf{body} \}, where the body is the userdefined code. 
+The Setup block consists of the reserved word \textbf{Setup} followed by \{ \textbf{body} \}, where the body is the userdefined code. 
 \end{defi}
 
 \subsection{Repeat block}
 The Repeat block will iterate through the users code, unless an event has occurred which then have first priority. The Repeat block is the general behaviour and logic of the robot, and will often contain the main movements of the robot.
 
 \begin{defi}
-The Repeat block is defined with the reserved word Repeat followed by \{ \textbf{body} \}, where the body is the userdefined code.
+The Repeat block is defined with the reserved word \textbf{Repeat} followed by \{ \textbf{body} \}, where the body is the userdefined code.
 \end{defi}
 \subsection{When block}
-
+The When block is raising the events when they occur. The When block is preforming the behaviour and logic when the events occur, where this will be made by the user. 
 
 \begin{defi}
-Hello?
+The When block is defined as: When eventName \{ \textbf{body} \}, \textbf{When} is the reserved word, the name of a Robocode event followed by the body which is the user defined code.
 \end{defi}
 \subsection{Variables}
-
+In our language there are three different kind of variables, \textbf{Num}, \textbf{Bool} and \textbf{Txt}. All numeric types will be interpreted as \textbf{Num}. \textbf{Bool} can either be True or False. \textbf{Txt} is an array of characters.
 
 \begin{defi}
-Hello?
+The variables can be declared using the reserved words \textbf{Num}, \textbf{Bool} and \textbf{Txt} followed by the desired id of the variable. If the variable should also de initialized,  the assignment operator "=" should be used followed by the value or expression for the variable. 
 \end{defi}
-\subsection{Actions}
-
+\subsection{Action block}
+An Action block is an abstraction for statements with no return types, the Actions can be called throughout the code. The parameters in the Action block is always parsed by value, just as in the programming language Java, this will be the same in the Function block.
 
 \begin{defi}
-Hello?
+An Action block is defined with the reserved word \textbf{Action} followed by the id of the Action, a desired amount of parameters in parentheses and the body of the Action block within \{\}.
+An Action block will look like: \textbf{Action} myAction (parameters) \{ \textbf{body} \}.
 \end{defi}
-\subsection{Functions}
-
+\subsection{Function block}
+The Function block is very similar to the Action block. The difference of the two blocks is that the Function block have a return type. 
 
 \begin{defi}
-Hello?
+The function block is defined with the reserved word \textbf{Function} followed by the id of the Function, what the Function will be returning, a desired amount of parameters in parentheses and the body of the Function block within \{\}.
+An example of the Function block would be: \textbf{Function} myFunction Returns returnType (parameters) \{ \textbf{body} \}
 \end{defi}
 \subsection{Reserved calls}
 

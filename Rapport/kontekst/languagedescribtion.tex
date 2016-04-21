@@ -180,11 +180,9 @@ assign : ID '=' expr;
 vardcl : TYPE (ID|assign);
 ifstmt : 'if''('expr')' block elseif* ('else' block)?;
 elseif : 'else''if''('expr')' block;
-whilestmt : 'repeat' ('while''('expr')' block
-          | block 'while''('expr')')
-          ;
+whilestmt : 'repeat' ('while''('expr')' block | block 'while''('expr')');
 
-returnstmt : 'return' expr?;
+returnstmt : 'return' expr;
 print : 'print('expr')';
 
 call : acall
@@ -235,14 +233,14 @@ SPACE : [ \r\t\n] -> skip;
 
 
 \subsection{Lexicon}
-The definition of what input are allowed for each lexical in the grammar is defined by regular expressions. This will be described here with a table of terminals with matching regex, found in table \ref{fig:Lexicon}. A stream of characters is read by the scanner of the compiler and then turned into a lexical defined by the regex.
+The definition of what input are allowed for each lexeme in the grammar is defined by means of regular expressions. This will be described here with a table of terminals with matching regex, found in table \ref{fig:Lexicon}. A stream of characters is read by the scanner of the compiler and then turned into a token name defined by the regex.
 Due to the way the context-free grammar is implemented there are not a lot of terminals. This is because that the terminal \emph{ID} is used widely through the CFG. The general usage of this term creates consistency for the user giving that they quickly can get a feel for what input is allowed. 
 
 \begin{table}[]
 \centering
 \begin{tabular}{|l|l|}
 \hline
-Terminal & Regular expressions                \\ \hline
+Token & Regular expressions                \\ \hline
 ID       & {[}a-z{]} ({[}a-z{]} | {[}A-Z{]})* \\ \hline
 OR		 & 'OR'								  \\ \hline
 AND		 & 'AND'							  \\ \hline
@@ -269,20 +267,20 @@ TYPE     & 'Num' | 'Bool' | 'Text'            \\ \hline
 Missing Intro!
 
 \subsection{Setup block}
-The Setup block is a block run only once at the begining of each round. In this block the user can define colors of different parts of the robot, call user defined functions which should only be called in once in the beginning and reserved calls. 
+The Setup block is a block run only once at the begining of each round. In this block the user can define colors of different parts of the robot, call user defined functions which should only be called in once in the beginning and reserved calls. The Setup block can only be declared once, and have to be in the code, else the user will not be able to run the code.
 
 \begin{defi}
 The Setup block consists of the reserved word \textbf{Setup} followed by \{ \textbf{body} \}, where the body is the userdefined code. 
 \end{defi}
 
 \subsection{Repeat block}
-The Repeat block will iterate through the users code, unless an event has occurred which then have first priority. The Repeat block is the general behaviour and logic of the robot, and will often contain the main movements of the robot.
+The Repeat block will iterate through the users code, unless an event has occurred which then have first priority. The Repeat block is the general behaviour and logic of the robot, and will often contain the main movements of the robot. Just as the Setup block, the Repeat block ccan also only be declared once, and have to be in the code.
 
 \begin{defi}
 The Repeat block is defined with the reserved word \textbf{Repeat} followed by \{ \textbf{body} \}, where the body is the userdefined code.
 \end{defi}
 \subsection{When block}
-The When block is raising the events when they occur. The When block is preforming the behaviour and logic when the events occur, where this will be made by the user. 
+The When block is handling an event whenever it occurs during the battle. The When block is preforming the behaviour and logic when the events occur, where this will be made by the user. Only a predefined number of events can be declared, which can be found in the Apendix(INSERT REFERENCE TO THE TABLE LATER!!).
 
 \begin{defi}
 The When block is defined as: When eventName \{ \textbf{body} \}, \textbf{When} is the reserved word, the name of a Robocode event followed by the body which is the user defined code.
@@ -294,7 +292,7 @@ In our language there are three different kind of variables, \textbf{Num}, \text
 The variables can be declared using the reserved words \textbf{Num}, \textbf{Bool} and \textbf{Txt} followed by the desired id of the variable. If the variable should also de initialized,  the assignment operator "=" should be used followed by the value or expression for the variable. 
 \end{defi}
 \subsection{Action block}
-An Action block is an abstraction for statements with no return types, the Actions can be called throughout the code. The parameters in the Action block is always parsed by value, just as in the programming language Java, this will be the same in the Function block.
+An Action block is an abstraction for statements with no return types, the Actions can be called throughout the code. The parameters in the Action block is always call by value, just as in the programming language Java, this will be the same in the Function block.
 
 \begin{defi}
 An Action block is defined with the reserved word \textbf{Action} followed by the id of the Action, a desired amount of parameters in parentheses and the body of the Action block within \{\}.
@@ -308,30 +306,36 @@ The function block is defined with the reserved word \textbf{Function} followed 
 An example of the Function block would be: \textbf{Function} myFunction Returns returnType (parameters) \{ \textbf{body} \}
 \end{defi}
 \subsection{Reserved calls}
-
+(Wait to explain this, till when we are sure if we want to rename tank, to robot???)
 
 \begin{defi}
 Hello?
 \end{defi}
 \subsection{Conditional block}
-
+The conditional block is the langauge's conditional statements which will execute the user defiend code in it's body depending on a boolean expression. Conditional blocks helps making the robots logic for it's behaviour. 
 
 \begin{defi}
-Hello?
-\end{defi}
-\subsection{Expressions}
+The conditional block contains a minimum of one if-construct, an optional number of else if-construct and can be ended with an optional else-construct. 
 
+The if-construct is noted with the reserved word \textbf{if} followed by the boolean expression in parentheses and the body within \{\}: If(ture) {body}.
+
+The else if-contruct's structure is the same as the if-construct, except that the reserved  word \textbf{else if} should be used instead of the \textbf{if}. 
+
+The else-construct is noted by the reserved word \textbf{else} followed by the the body in \{\}.
+\end{defi}
+\subsection{Operators}
+Describe the different operators.. ? 
 
 \begin{defi}
 Hello?
 \end{defi}
 \section{Type systems}
-Missing intro!
+Missing intro! Skriv at sebesta er blevet brugt til denne section ??
 
 \subsection{Type rules}
 The following subsection will describe the type rules of the language. These rules will express which operators can be applied to each type, and how each expression will have a type, determined by the operands and operators in the expression.
-Operators has been divided into groups, and each group of operators has semantically equivalent rules.
-The operators [+, -, *, /, \%] will be used as the shorthand 'op'. Relational operators [<, >, <=, >=, NOT=, IS=, AND, OR] will be used as the shorthand 'relop'. There's two different types of negations, one for numbers and one for bools: -(num) for numbers, and NOT(bool) for bools.
+Operators have been divided into groups, and each group of operators have semantically equivalent rules.
+The operators [+, -, *, /, \%] will be used as the shorthand 'op'. Relational operators [<, >, <=, >=, NOT=, IS=, AND, OR] will be used as the shorthand 'relop'. There're two different types of negations, one for numbers and one for bools: -(num) for numbers, and NOT(bool) for bools.
 \[
 \dfrac{\Gamma \vdash e_1 : num \Gamma \vdash e_2 : num}{\Gamma \vdash e_1 op e_2 : num}
 \]
@@ -351,9 +355,7 @@ The operators [+, -, *, /, \%] will be used as the shorthand 'op'. Relational op
 \dfrac{\Gamma \vdash e_1 : bool}{\Gamma \vdash NOTe_1 : bool}
 \]
 \subsection{Scope rules}
-Lav indledning fra Sebesta s. 218 om, forklar og beskriv de scopes vi har...!
-
-Scope rules are where the users variables are visible. In our language there is three kind of scopes: local scope, global scope and function scope. A variable is visible in the specific scope, if can be referenced to. Two variables of the same name, can't be in the same scope. The local variables are declared inside blocks of code, where the blocks are marked with \{ \}. In the example in listing \ref{lst:example} the variable degrees is declared locally in the code block Setup, and it can't be used in other code blocks unless it is nested inside of the Setup block, it could e.g. be used in a if-loop in the Setup block. 
+Scope rules are where the users variables are visible. In our language there are three kind of scopes: local scope, global scope and function scope. A variable is visible in the specific scope, if can be referenced to. Two variables of the same name, can't be in the same scope. The local variables are declared inside blocks of code, where the blocks are marked with \{ \}. In the example in listing \ref{lst:example} the variable degrees is declared locally in the code block Setup, and it can't be used in other code blocks unless it is nested inside of the Setup block, it could e.g. be used in a if-loop in the Setup block. 
 
 \begin{lstlisting}[caption={Example of local scoping rules},  xleftmargin=.2\textwidth, label={lst:example}]
 Setup{

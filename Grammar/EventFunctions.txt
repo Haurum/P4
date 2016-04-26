@@ -7,6 +7,7 @@ BulletHit  bulletXCoord()  double
 BulletHit  bulletYCoord()  double
 BulletHit  bulletIsActive()  boolean
 BulletHit  energy()  double
+BulletHit  void()  void
 
 BulletHitBullet  bulletHeading()  double
 BulletHitBullet  bulletOwner()  string
@@ -24,6 +25,7 @@ BulletHitBullet  enemyBulletVictim()  string
 BulletHitBullet  enemyBulletXCoord()  double
 BulletHitBullet  enemyBulletYCoord()  double
 BulletHitBullet  enemyBulletIsActive()  boolean
+BulletHitBullet  void()  void
 
 HitByBullet  bearing()  double
 HitByBullet  bearingDegrees()  double
@@ -39,22 +41,27 @@ HitByBullet  heading()  double
 HitByBullet  headingDegrees()  double
 HitByBullet  power()  double
 HitByBullet  velocity()  double
+HitByBullet  void()  void
 
 HitRobot  bearing()  double
 HitRobot  bearingDegrees()  double
 HitRobot  energy()  double
 HitRobot  myFault()  boolean
 HitRobot  enemyName()  string
+HitRobot  void()  void
 
-Death  void()
+Death  void()  void
 
 HitWall  bearing()  double
+HitWall  void()  void
 
 EnemyDeath  enemyName()  string
+EnemyDeath  void()  void
 
 RoundEnded  round()  int
 RoundEnded  totalTurns()  int
 RoundEnded  turns()  int
+RoundEnded  void()  void
 
 ScannedRobot  bearing()  double
 ScannedRobot  distance()  double
@@ -62,9 +69,11 @@ ScannedRobot  energy()  double
 ScannedRobot  heading()  double
 ScannedRobot  enemyName()  string
 ScannedRobot  velocity()  double
+ScannedRobot  void()  void
 
 Status  distanceRemaining()  double
 Status  gunTurnRemaining()  double
 Status  radarTurnRemaining()  double
+Status  void()  void
  
-Win  void() 
+Win  void()  void

@@ -66,6 +66,20 @@
 \setlength{\parskip}{3mm}          			% Afstand mellem afsnit ved brug af double Enter
 \linespread{1,1}							% Linie afstand
 
+%Definition bokses %
+\usepackage{xcolor}
+\usepackage{ntheorem}
+\usepackage{mdframed}
+
+\theoremstyle{break}
+\theoremheaderfont{\bfseries}
+\newmdtheoremenv[%
+linecolor=gray,leftmargin=60,%
+rightmargin=40,
+backgroundcolor=gray!40,%
+innertopmargin=8pt,%
+ntheorem]{defi}{Definition}[section]
+
 % ¤¤ Litteraturlisten ¤¤ %
 \bibpunct[,]{[}{]}{;}{a}{,}{,} 				% Definerer de 6 parametre ved Harvard henvisning (bl.a. parantestype og seperatortegn)
 \bibliographystyle{bibtex/harvard}			% Udseende af litteraturlisten.
@@ -110,7 +124,7 @@
 
 \usepackage{xcolor}
 
-\lstdefinestyle{CFG}{
+\lstdefinestyle{MyLang}{
     basicstyle=\small\ttfamily\color{magenta},%
     breaklines=true,%                                      allow line breaks
     moredelim=[s][\color{green!50!black}\ttfamily]{'}{'},% single quotes in green

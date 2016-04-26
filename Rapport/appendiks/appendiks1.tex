@@ -22,19 +22,16 @@
      & heading() & getGunHeading() \\ \hline
      & heat() & getGunHeat() \\ \hline
      & turn(num ddegrees) & turnGunLeft(double degrees)  \\ \hline
-     & adjustGunForRobotTurn(boolean) & adjustGunForRobotTurn(boolean independant) \\ \hline
      & &  \\ \hline
     Radar. & heading() & getRadarHeading() \\ \hline
      & scan() & scan() \\ \hline
-     & adjustRadarForGunTurn(boolean) & adjustRadarForGunTurn(boolean independant)  \\ \hline
-     & adjustRadarForRobotTurn(boolean) & adjustRadarForRobotTurn(boolean independant) \\ \hline
      & turn(num degrees) & turnRadarLeft(double degrees) \\ \hline
      & &  \\ \hline
     Battlefield. & height() & getBattleFieldHeight() \\ \hline
      & width() & getBattleFieldWidth() \\ \hline
      & numOfRounds() & getNumRounds() \\ \hline
      & enemies() & getOthers() \\ \hline
-     & roundNume() & getRoundNum() \\ \hline
+     & roundNum() & getRoundNum() \\ \hline
      & time() & getTime()  \\
     \hline
     \end{tabular}
@@ -44,12 +41,41 @@
 	\begin{tabular}{ | p{0.3\linewidth} | p{0.3\linewidth} | p{0.3\linewidth} |}
 		\hline
 		OL / Robocode Event& OL Event Information & Robocode Event Information \\ \hline
-		BulletHit / onBulletHit& bullet() & getBullet() \\ \hline
+		BulletHit / onBulletHit& bulletHeading() & getBullet().getHeading() \\ \hline
+		& bulletOwner() & getBullet().getName() \\ \hline
+		& bulletPower() & getBullet().getPower() \\ \hline
+		& bulletVelocity() & getBullet().getVelocity() \\ \hline
+		& bulletVictim() & getBullet().getVictim() \\ \hline
+		& bulletXCoord() & getBullet().getX() \\ \hline
+		& bulletYCoord() & getBullet().getY() \\ \hline
+		& bulletIsActive() & getBullet().isActive() \\ \hline
 		& energy() & getEnergy() \\ \hline
-		BulletHitBullet / onBulletHitBullet& bullet() & getBullet() \\ \hline
+		BulletHitBullet / onBulletHitBullet& bulletHeading() & getBullet().getHeading() \\ \hline
+		& bulletOwner() & getBullet().getName() \\ \hline
+		& bulletPower() & getBullet().getPower() \\ \hline
+		& bulletVelocity() & getBullet().getVelocity() \\ \hline
+		& bulletVictim() & getBullet().getVictim() \\ \hline
+		& bulletXCoord() & getBullet().getX() \\ \hline
+		& bulletYCoord() & getBullet().getY() \\ \hline
+		& bulletIsActive() & getBullet().isActive() \\ \hline
+		& enemyBulletHeading() & getHitBullet().getHeading() \\ \hline
+		& enemyBulletOwner() & getHitBullet().getName() \\ \hline
+		& enemyBulletPower() & getHitBullet().getPower() \\ \hline
+		& enemyBulletVelocity() & getHitBullet().getVelocity() \\ \hline
+		& enemyBulletVictim() & getHitBullet().getVictim() \\ \hline
+		& enemyBulletXCoord() & getHitBullet().getX() \\ \hline
+		& enemyBulletYCoord() & getHitBullet().getY() \\ \hline
+		& enemyBulletIsActive() & getHitBullet().isActive() \\ \hline
 		HitByBullet / onHitByBullet& bearing() & getBearing() \\ \hline
 		& bearingDegrees() & getBearingDegrees \\ \hline
-		& bullet() & getBullet() \\ \hline
+		& bulletHeading() & getBullet().getHeading() \\ \hline
+		& bulletOwner() & getBullet().getName() \\ \hline
+		& bulletPower() & getBullet().getPower() \\ \hline
+		& bulletVelocity() & getBullet().getVelocity() \\ \hline
+		& bulletVictim() & getBullet().getVictim() \\ \hline
+		& bulletXCoord() & getBullet().getX() \\ \hline
+		& bulletYCoord() & getBullet().getY() \\ \hline
+		& bulletIsActive() & getBullet().isActive() \\ \hline
 		& heading() & getHeading() \\ \hline
 		& headingDegrees() & getHeadingDegrees() \\ \hline
 		& power() & getPower() \\ \hline
@@ -58,10 +84,10 @@
 		& bearingDegrees() & getBearingDegrees \\ \hline
 		& energy() & getEnergy() \\ \hline
 		& myFault() & isMyFault() \\ \hline
-		Death / onDeath & time() & getTime() \\ \hline
+		& enemyName() & getName() \\ \hline
+		Death / onDeath & & \\ \hline
 		HitWall / onHitWall & bearing() & getBearing() \\ \hline
-		& bearingDegrees() & getBearingDegrees() \\ \hline
-		EnemyDeath / onRobotDeath & time() & getTime() \\ \hline
+		EnemyDeath / onRobotDeath & enemyName() & getName() \\ \hline
 		RoundEnded / onRoundEnded & round() & getRound() \\ \hline
 		& totalTurns() & getTotalTurns() \\ \hline
 		& turns() & getTurns() \\ \hline
@@ -69,9 +95,12 @@
 		& distance() & getDistance() \\ \hline
 		& energy() & getEnergy() \\ \hline
 		& heading() & getHeading() \\ \hline
+		& enemyName() & getName() \\ \hline
 		& velocity() & getVelocity() \\ \hline
-		Status / onStatus & status() & getStatus() \\ \hline
-		Win / onWin & time() & getTime() \\
+		Status / onStatus & distanceRemaining() & getStatus.getDistanceRemaining() \\ \hline
+		& gunTurnRemaining() & getStatus.getGunTurnRemaining() \\ \hline
+		& radarTurnRemaining() & getStatus.getRadarTurnRemaining() \\ \hline
+		Win / onWin &  & \\
 		\hline
 	\end{tabular}
 \end{center}

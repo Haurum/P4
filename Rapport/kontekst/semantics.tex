@@ -1,1 +1,38 @@
 \chapter{Semantics}
+This chapter is about the semantics in our language, both for type systems and operational semantics. The chapter uses techniques and structures from the book \textit{Transitions and Trees} \cite{Huttel}.
+ \section{Syntactic categories}
+ To describe the semantics of our language, syntactic categories have been used. The syntactic categories are based on the grammer found in section \ref{sec:Grammar}. A collection of metavariables are presented in the following paragraphs which will be used throughout the chapter to describe the type system and operational semantics.
+ 
+ \begin{math}
+ e \in \textbf{Expr} - Expressions \newline
+ S \in \textbf{Stmt} - Statement\newline
+ n \in \textbf{Num} - Numerals\newline
+ b \in \textbf{Bool} - Boolean\ Literal\newline
+ tx \in \textbf{Txt} - Txt\ Literal\newline
+ t \in \textbf{Type} - Num,\ Bool\ and\ Txt\ types\newline
+ id \in \textbf{ID} - Action,\ Function,\ Variable\ and\ Reserved Calls\newline
+ D \in \textbf{Dcl} - Action,\ Function\ and\ global\ variable\ declaration\newline
+ \end{math}
+ 
+ LAV FORMATION RULES!?
+ 
+ 
+ \section{Semantic Functions}
+ 
+  \subsection{ID}
+  
+  Evt. calls ?
+  
+  \subsection{Numerals}
+  The numbers in our language will be Numerals(with the symbol n, from the syntactic categories), which will be converted to real numbers with the semantic function: 
+  
+  \begin{math}
+  \mathcal{N}: \textbf{Num} \leftarrow \mathbb{R}
+  \end{math}
+  
+  Using this function, numerals as \underline{5} and \underline{5.36} will become the real numbers 5 and 5.36. 
+  
+  
+  \subsection{Text literals}
+  
+  \subsection{Boolean Literals}

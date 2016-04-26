@@ -2,6 +2,7 @@ package code;
 
 import gen.GrammarBaseVisitor;
 import gen.GrammarParser;
+import org.antlr.v4.runtime.RuleContext;
 
 /**
  * Created by Frederik on 05-04-2016.
@@ -73,8 +74,29 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
     }
 
     @Override
+    public String visitEventdcl(GrammarParser.EventdclContext ctx) {
+        FuncSymbol fsym = RoboFST.GetFuncSymbol(ctx.ID().getText(), "void");
+        super.visitEventdcl(ctx);
+        return "null";
+    }
+
+    @Override
+    public String visitEcall(GrammarParser.EcallContext ctx) {
+        RuleContext parent = ctx.parent;
+        while(parent != null){
+            if(parent instanceof GrammarParser.EventdclContext){
+                FuncSymbol fsym = RoboFST.GetFuncSymbol(((GrammarParser.EventdclContext) parent).ID().getText(), ctx.ID().getText());
+                return fsym.ReturnType;
+            }
+            parent = parent.parent;
+        }
+        Error e = new Error("Event calls must be inside an event/when function");
+        throw e;
+    }
+
+    @Override
     public String visitTankcall(GrammarParser.TankcallContext ctx) {
-        FuncSymbol fsym = RoboFST.GetFuncSymbol(ctx.ID().getText());
+        FuncSymbol fsym = RoboFST.GetFuncSymbol("Tank", ctx.ID().getText());
         if (!fsym.Type.equals("Tank")){
             Error e = new Error("Type error");
             throw e;
@@ -93,7 +115,7 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
 
     @Override
     public String visitGuncall(GrammarParser.GuncallContext ctx) {
-        FuncSymbol fsym = RoboFST.GetFuncSymbol(ctx.ID().getText());
+        FuncSymbol fsym = RoboFST.GetFuncSymbol("Gun", ctx.ID().getText());
         if (!fsym.Type.equals("Gun")){
             Error e = new Error("Type error");
             throw e;
@@ -112,7 +134,7 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
 
     @Override
     public String visitRadarcall(GrammarParser.RadarcallContext ctx) {
-        FuncSymbol fsym = RoboFST.GetFuncSymbol(ctx.ID().getText());
+        FuncSymbol fsym = RoboFST.GetFuncSymbol("Radar", ctx.ID().getText());
         if (!fsym.Type.equals("Radar")){
             Error e = new Error("Type error");
             throw e;
@@ -131,7 +153,7 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
 
     @Override
     public String visitBattlefieldcall(GrammarParser.BattlefieldcallContext ctx) {
-        FuncSymbol fsym = RoboFST.GetFuncSymbol(ctx.ID().getText());
+        FuncSymbol fsym = RoboFST.GetFuncSymbol("Battlefield", ctx.ID().getText());
         if (!fsym.Type.equals("Battlefield")){
             Error e = new Error("Type error");
             throw e;
@@ -150,7 +172,7 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
 
     @Override
     public String visitMathcall(GrammarParser.MathcallContext ctx) {
-        FuncSymbol fsym = RoboFST.GetFuncSymbol(ctx.ID().getText());
+        FuncSymbol fsym = RoboFST.GetFuncSymbol("Math", ctx.ID().getText());
         if (!fsym.Type.equals("Math")){
             Error e = new Error("Type error");
             throw e;
@@ -180,7 +202,7 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
 
     @Override
     public String visitFunctionBlock(GrammarParser.FunctionBlockContext ctx) {
-        FuncSymbol fs = FST.GetFuncSymbol(((GrammarParser.FuncdclContext) ctx.parent).ID().getText());
+        FuncSymbol fs = FST.GetFuncSymbol("Function", ((GrammarParser.FuncdclContext) ctx.parent).ID().getText());
 
         fs.Params.forEach(tuple -> {
             ST.EnterSymbol(tuple.x, tuple.y);
@@ -200,7 +222,7 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
 
     @Override
     public String visitFcall(GrammarParser.FcallContext ctx) {
-        FuncSymbol fsym = FST.GetFuncSymbol(ctx.ID().getText());
+        FuncSymbol fsym = FST.GetFuncSymbol("Function", ctx.ID().getText());
         if (!fsym.Type.equals("Function")){
             Error e = new Error("Type error");
             throw e;
@@ -219,7 +241,7 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
 
     @Override
     public String visitAcall(GrammarParser.AcallContext ctx) {
-        FuncSymbol asym = FST.GetFuncSymbol(ctx.ID().getText());
+        FuncSymbol asym = FST.GetFuncSymbol("Action", ctx.ID().getText());
         if (!asym.Type.equals("Action")){
             Error e = new Error("Type error");
             throw e;
@@ -247,7 +269,7 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
     public String visitBlock(GrammarParser.BlockContext ctx) {
         ST.OpenScope();
         if (ctx.parent instanceof GrammarParser.ActdclContext){
-            FuncSymbol fs = FST.GetFuncSymbol(((GrammarParser.ActdclContext) ctx.parent).ID().getText());
+            FuncSymbol fs = FST.GetFuncSymbol("Action", ((GrammarParser.ActdclContext) ctx.parent).ID().getText());
             fs.Params.forEach(tuple -> {
                 ST.EnterSymbol(tuple.x, tuple.y);
             });

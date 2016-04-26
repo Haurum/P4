@@ -28,7 +28,7 @@ public class Main {
         FuncSymbolTable RoboFST = new FuncSymbolTable();
         SymbolTable ST = new SymbolTable();
         FuncListener FListener = new FuncListener(FST);
-        SymbolTypeVisitor STVisitor = new SymbolTypeVisitor(ST, FST);
+        SymbolTypeVisitor STVisitor = new SymbolTypeVisitor(ST, RoboFST, FST);
         ImportReservedFunctions(RoboFST);
         walker.walk(FListener, t);
         RoboFST.Map.values().forEach(fs -> {

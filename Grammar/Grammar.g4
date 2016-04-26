@@ -99,10 +99,10 @@ literal : ID        #id
         | BOOL      #bool
         ;
 
-OR : '||';
-AND : '&&';
-EQ : '==';
-NEQ : '!=';
+OR : 'OR';
+AND : 'AND';
+EQ : 'IS=';
+NEQ : 'NOT=';
 GT : '>';
 LT : '<';
 GTEQ : '>=';

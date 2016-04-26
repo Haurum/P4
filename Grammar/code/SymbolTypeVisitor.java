@@ -82,6 +82,11 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
     @Override
     public String visitEventdcl(GrammarParser.EventdclContext ctx) {
         FuncSymbol fsym = RoboFST.GetFuncSymbol(ctx.ID().getText(), "void");
+        if (fsym == null){
+            Error e = new Error("Error at line: " +
+                    ctx.start.getLine() + ": Event not found.");
+            throw e;
+        }
         super.visitEventdcl(ctx);
         return "null";
     }
@@ -92,6 +97,10 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
         while(parent != null){
             if(parent instanceof GrammarParser.EventdclContext){
                 FuncSymbol fsym = RoboFST.GetFuncSymbol(((GrammarParser.EventdclContext) parent).ID().getText(), ctx.ID().getText());
+                if (fsym == null){
+                    Error e = new Error("Function not found");
+                    throw e;
+                }
                 return fsym.ReturnType;
             }
             parent = parent.parent;
@@ -103,20 +112,26 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
     @Override
     public String visitTankcall(GrammarParser.TankcallContext ctx) {
         FuncSymbol fsym = RoboFST.GetFuncSymbol("Tank", ctx.ID().getText());
+        if (fsym == null){
+            Error e = new Error("Function not found");
+            throw e;
+        }
         if (!fsym.Type.equals("Tank")){
             Error e = new Error("Error at line: " +
                     ctx.start.getLine() + ": Incorrect function type.");
             throw e;
         }
-        String[] args = visit(ctx.args()).split(", ");
-        for (int i = 0; i < args.length; i++){
-            String paramType = fsym.Params.get(i).y;
-            String arg = args[i];
-            if (!paramType.equals(arg)){
-                Error e = new Error("Error at line: " +
-                        ctx.args().expr(i).start.getLine() +
-                        ": Parameter number " + i + " not matched. Expected " + paramType);
-                throw e;
+        if(ctx.getChildCount() == 5) {
+            String[] args = visit(ctx.args()).split(", ");
+            for (int i = 0; i < args.length; i++) {
+                String paramType = fsym.Params.get(i).y;
+                String arg = args[i];
+                if (!paramType.equals(arg)) {
+                    Error e = new Error("Error at line: " +
+                            ctx.args().expr(i).start.getLine() +
+                            ": Parameter number " + i + " not matched. Expected " + paramType);
+                    throw e;
+                }
             }
         }
         return fsym.ReturnType;
@@ -125,20 +140,26 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
     @Override
     public String visitGuncall(GrammarParser.GuncallContext ctx) {
         FuncSymbol fsym = RoboFST.GetFuncSymbol("Gun", ctx.ID().getText());
+        if (fsym == null){
+            Error e = new Error("Function not found");
+            throw e;
+        }
         if (!fsym.Type.equals("Gun")){
             Error e = new Error("Error at line: " +
                     ctx.start.getLine() + ": Incorrect function type.");
             throw e;
         }
-        String[] args = visit(ctx.args()).split(", ");
-        for (int i = 0; i < args.length; i++){
-            String paramType = fsym.Params.get(i).y;
-            String arg = args[i];
-            if (!paramType.equals(arg)){
-                Error e = new Error("Error at line: " +
-                        ctx.args().expr(i).start.getLine() +
-                        ": Parameter number " + i + " not matched. Expected " + paramType);
-                throw e;
+        if(ctx.getChildCount() == 5) {
+            String[] args = visit(ctx.args()).split(", ");
+            for (int i = 0; i < args.length; i++) {
+                String paramType = fsym.Params.get(i).y;
+                String arg = args[i];
+                if (!paramType.equals(arg)) {
+                    Error e = new Error("Error at line: " +
+                            ctx.args().expr(i).start.getLine() +
+                            ": Parameter number " + i+1 + " not matched. Expected " + paramType);
+                    throw e;
+                }
             }
         }
         return fsym.ReturnType;
@@ -147,20 +168,26 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
     @Override
     public String visitRadarcall(GrammarParser.RadarcallContext ctx) {
         FuncSymbol fsym = RoboFST.GetFuncSymbol("Radar", ctx.ID().getText());
+        if (fsym == null){
+            Error e = new Error("Function not found");
+            throw e;
+        }
         if (!fsym.Type.equals("Radar")){
             Error e = new Error("Error at line: " +
                     ctx.start.getLine() + ": Incorrect function type.");
             throw e;
         }
-        String[] args = visit(ctx.args()).split(", ");
-        for (int i = 0; i < args.length; i++){
-            String paramType = fsym.Params.get(i).y;
-            String arg = args[i];
-            if (!paramType.equals(arg)){
-                Error e = new Error("Error at line: " +
-                        ctx.args().expr(i).start.getLine() +
-                        ": Parameter number " + i + " not matched. Expected " + paramType);
-                throw e;
+        if(ctx.getChildCount() == 5) {
+            String[] args = visit(ctx.args()).split(", ");
+            for (int i = 0; i < args.length; i++) {
+                String paramType = fsym.Params.get(i).y;
+                String arg = args[i];
+                if (!paramType.equals(arg)) {
+                    Error e = new Error("Error at line: " +
+                            ctx.args().expr(i).start.getLine() +
+                            ": Parameter number " + i + " not matched. Expected " + paramType);
+                    throw e;
+                }
             }
         }
         return fsym.ReturnType;
@@ -169,20 +196,26 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
     @Override
     public String visitBattlefieldcall(GrammarParser.BattlefieldcallContext ctx) {
         FuncSymbol fsym = RoboFST.GetFuncSymbol("Battlefield", ctx.ID().getText());
+        if (fsym == null){
+            Error e = new Error("Function not found");
+            throw e;
+        }
         if (!fsym.Type.equals("Battlefield")){
             Error e = new Error("Error at line: " +
                     ctx.start.getLine() + ": Incorrect function type.");
             throw e;
         }
-        String[] args = visit(ctx.args()).split(", ");
-        for (int i = 0; i < args.length; i++){
-            String paramType = fsym.Params.get(i).y;
-            String arg = args[i];
-            if (!paramType.equals(arg)){
-                Error e = new Error("Error at line: " +
-                        ctx.args().expr(i).start.getLine() +
-                        ": Parameter number " + i + " not matched. Expected " + paramType);
-                throw e;
+        if(ctx.getChildCount() == 5) {
+            String[] args = visit(ctx.args()).split(", ");
+            for (int i = 0; i < args.length; i++) {
+                String paramType = fsym.Params.get(i).y;
+                String arg = args[i];
+                if (!paramType.equals(arg)) {
+                    Error e = new Error("Error at line: " +
+                            ctx.args().expr(i).start.getLine() +
+                            ": Parameter number " + i + " not matched. Expected " + paramType);
+                    throw e;
+                }
             }
         }
         return fsym.ReturnType;
@@ -191,20 +224,26 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
     @Override
     public String visitMathcall(GrammarParser.MathcallContext ctx) {
         FuncSymbol fsym = RoboFST.GetFuncSymbol("Math", ctx.ID().getText());
+        if (fsym == null){
+            Error e = new Error("Function not found");
+            throw e;
+        }
         if (!fsym.Type.equals("Math")){
             Error e = new Error("Error at line: " +
                     ctx.start.getLine() + ": Incorrect function type.");
             throw e;
         }
-        String[] args = visit(ctx.args()).split(", ");
-        for (int i = 0; i < args.length; i++){
-            String paramType = fsym.Params.get(i).y;
-            String arg = args[i];
-            if (!paramType.equals(arg)){
-                Error e = new Error("Error at line: " +
-                        ctx.args().expr(i).start.getLine() +
-                        ": Parameter number " + i + " not matched. Expected " + paramType);
-                throw e;
+        if(ctx.getChildCount() == 5) {
+            String[] args = visit(ctx.args()).split(", ");
+            for (int i = 0; i < args.length; i++) {
+                String paramType = fsym.Params.get(i).y;
+                String arg = args[i];
+                if (!paramType.equals(arg)) {
+                    Error e = new Error("Error at line: " +
+                            ctx.args().expr(i).start.getLine() +
+                            ": Parameter number " + i + " not matched. Expected " + paramType);
+                    throw e;
+                }
             }
         }
         return fsym.ReturnType;
@@ -244,20 +283,26 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
     @Override
     public String visitFcall(GrammarParser.FcallContext ctx) {
         FuncSymbol fsym = FST.GetFuncSymbol("Function", ctx.ID().getText());
+        if (fsym == null){
+            Error e = new Error("Function not found");
+            throw e;
+        }
         if (!fsym.Type.equals("Function")){
             Error e = new Error("Error at line: " +
                     ctx.start.getLine() + ": Incorrect function type.");
             throw e;
         }
-        String[] args = visit(ctx.args()).split(", ");
-        for (int i = 0; i < args.length; i++){
-            String paramType = fsym.Params.get(i).y;
-            String arg = args[i];
-            if (!paramType.equals(arg)){
-                Error e = new Error("Error at line: " +
-                        ctx.args().expr(i).start.getLine() +
-                        ": Parameter number " + i + " not matched. Expected " + paramType);
-                throw e;
+        if(ctx.getChildCount() == 4) {
+            String[] args = visit(ctx.args()).split(", ");
+            for (int i = 0; i < args.length; i++) {
+                String paramType = fsym.Params.get(i).y;
+                String arg = args[i];
+                if (!paramType.equals(arg)) {
+                    Error e = new Error("Error at line: " +
+                            ctx.args().expr(i).start.getLine() +
+                            ": Parameter number " + i + " not matched. Expected " + paramType);
+                    throw e;
+                }
             }
         }
         return fsym.ReturnType;
@@ -272,13 +317,15 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
 
             throw e;
         }
-        String[] args = visit(ctx.args()).split(", ");
-        for (int i = 0; i < args.length; i++){
-            if (!asym.Params.get(i).y.equals(args[i])){
-                Error e = new Error("Error at line: " +
-                        ctx.args().expr(i).start.getLine() +
-                        ": Parameter number " + i + " not matched.");
-                throw e;
+        if(ctx.getChildCount() == 5) {
+            String[] args = visit(ctx.args()).split(", ");
+            for (int i = 0; i < args.length; i++) {
+                if (!asym.Params.get(i).y.equals(args[i])) {
+                    Error e = new Error("Error at line: " +
+                            ctx.args().expr(i).start.getLine() +
+                            ": Parameter number " + i + " not matched.");
+                    throw e;
+                }
             }
         }
         return "null";
@@ -322,6 +369,10 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
     public String visitAssign(GrammarParser.AssignContext ctx) {
         String id = ctx.ID().getText();
         Symbol sym = ST.GetSymbol(id);
+        if (sym == null){
+            Error e = new Error("variable not found");
+            throw e;
+        }
         if (!sym.Type.equals(visit(ctx.expr()))){
             Error e = new Error("Error at line: " +
                     ctx.expr().start.getLine() + ": No expression was found.");
@@ -392,7 +443,7 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
                 return "String";
             }else{
                 Error e = new Error("Error at line: " +
-                        ctx.start.getLine() + ": Expression did not evaluate to String.");
+                        ctx.start.getLine() + ": Expression types did not match.");
                 throw e;
             }
     }
@@ -436,7 +487,13 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
 
     @Override
     public String visitId(GrammarParser.IdContext ctx) {
-        Symbol sym = ST.GetSymbol(ctx.ID().getText());
+        String test = ctx.getText();
+        Symbol sym = ST.GetSymbol(ctx.getText());
+        if (sym == null){
+            Error e = new Error("Error at line: " +
+                    ctx.start.getLine() + ": Variable not found");
+            throw e;
+        }
         return sym.Type;
     }
 

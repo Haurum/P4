@@ -50,10 +50,6 @@ public class SymbolTable  {
 
     public Symbol GetSymbol(String name){
         Symbol sym = Map.get(name);
-        if (sym == null){
-            Error e = new Error("Variable with id: " + name + " not found");
-            throw e;
-        }
         return sym;
     }
 

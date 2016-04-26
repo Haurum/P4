@@ -46,7 +46,7 @@ HitRobot  energy()  double
 HitRobot  myFault()  boolean
 HitRobot  enemyName()  string
 
-Death  
+Death  void()
 
 HitWall  bearing()  double
 
@@ -66,5 +66,5 @@ ScannedRobot  velocity()  double
 Status  distanceRemaining()  double
 Status  gunTurnRemaining()  double
 Status  radarTurnRemaining()  double
-
-Win  
+ 
+Win  void() 

@@ -18,7 +18,7 @@ import java.util.stream.Stream;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        ANTLRFileStream input = new ANTLRFileStream("Coners.txt");
+        ANTLRFileStream input = new ANTLRFileStream("Fire.txt");
         GrammarLexer lex = new GrammarLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lex);
         GrammarParser parser = new GrammarParser(tokens);

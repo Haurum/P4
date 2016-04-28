@@ -98,7 +98,8 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
             if(parent instanceof GrammarParser.EventdclContext){
                 FuncSymbol fsym = RoboFST.GetFuncSymbol(((GrammarParser.EventdclContext) parent).ID().getText(), ctx.ID().getText());
                 if (fsym == null){
-                    Error e = new Error("Function not found");
+                    Error e = new Error("Error at line: " +
+                            ctx.start.getLine() + ": Function not found");
                     throw e;
                 }
                 return fsym.ReturnType;
@@ -113,7 +114,8 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
     public String visitTankcall(GrammarParser.TankcallContext ctx) {
         FuncSymbol fsym = RoboFST.GetFuncSymbol("Tank", ctx.ID().getText());
         if (fsym == null){
-            Error e = new Error("Function not found");
+            Error e = new Error("Error at line: " +
+                    ctx.start.getLine() + ": Function not found");
             throw e;
         }
         if (!fsym.Type.equals("Tank")){
@@ -141,7 +143,8 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
     public String visitGuncall(GrammarParser.GuncallContext ctx) {
         FuncSymbol fsym = RoboFST.GetFuncSymbol("Gun", ctx.ID().getText());
         if (fsym == null){
-            Error e = new Error("Function not found");
+            Error e = new Error("Error at line: " +
+                    ctx.start.getLine() + ": Function not found");
             throw e;
         }
         if (!fsym.Type.equals("Gun")){
@@ -169,7 +172,8 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
     public String visitRadarcall(GrammarParser.RadarcallContext ctx) {
         FuncSymbol fsym = RoboFST.GetFuncSymbol("Radar", ctx.ID().getText());
         if (fsym == null){
-            Error e = new Error("Function not found");
+            Error e = new Error("Error at line: " +
+                    ctx.start.getLine() + ": Function not found");
             throw e;
         }
         if (!fsym.Type.equals("Radar")){
@@ -197,7 +201,8 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
     public String visitBattlefieldcall(GrammarParser.BattlefieldcallContext ctx) {
         FuncSymbol fsym = RoboFST.GetFuncSymbol("Battlefield", ctx.ID().getText());
         if (fsym == null){
-            Error e = new Error("Function not found");
+            Error e = new Error("Error at line: " +
+                    ctx.start.getLine() + ": Function not found");
             throw e;
         }
         if (!fsym.Type.equals("Battlefield")){
@@ -225,7 +230,8 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
     public String visitMathcall(GrammarParser.MathcallContext ctx) {
         FuncSymbol fsym = RoboFST.GetFuncSymbol("Math", ctx.ID().getText());
         if (fsym == null){
-            Error e = new Error("Function not found");
+            Error e = new Error("Error at line: " +
+                    ctx.start.getLine() + ": Function not found");
             throw e;
         }
         if (!fsym.Type.equals("Math")){
@@ -284,7 +290,8 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
     public String visitFcall(GrammarParser.FcallContext ctx) {
         FuncSymbol fsym = FST.GetFuncSymbol("Function", ctx.ID().getText());
         if (fsym == null){
-            Error e = new Error("Function not found");
+            Error e = new Error("Error at line: " +
+                    ctx.start.getLine() + ": Function not found");
             throw e;
         }
         if (!fsym.Type.equals("Function")){

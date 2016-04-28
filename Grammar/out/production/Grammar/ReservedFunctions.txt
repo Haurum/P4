@@ -24,6 +24,7 @@ Battlefield width Num
 Battlefield NumOfRounds Num
 Battlefield enemies Num
 Battlefield roundNum Num
+Math max Num - Num value1, Num value2
 bulletHit bulletHeading Num
 bulletHit bulletOwner String
 bulletHit bulletPower Num

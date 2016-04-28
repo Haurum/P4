@@ -337,22 +337,22 @@ The following subsection will describe the type rules of the language. These rul
 Operators have been divided into groups, and each group of operators have semantically equivalent rules.
 The operators [+, -, *, /, \%] will be used as the shorthand 'op'. Relational operators [<, >, <=, >=, NOT=, IS=, AND, OR] will be used as the shorthand 'relop'. There're two different types of negations, one for numbers and one for bools: -(num) for numbers, and NOT(bool) for bools.
 \[
-\dfrac{\Gamma \vdash e_1 : num \Gamma \vdash e_2 : num}{\Gamma \vdash e_1 op e_2 : num}
+\dfrac{\Gamma \vdash e_1 : Num \Gamma \vdash e_2 : Num}{\Gamma \vdash e_1 op e_2 : Num}
 \]
 \[
-\dfrac{\Gamma \vdash e_1 : num \Gamma \vdash e_2 : num}{\Gamma \vdash e_1 relop e_2 : bool}
+\dfrac{\Gamma \vdash e_1 : Num \Gamma \vdash e_2 : Num}{\Gamma \vdash e_1 relop e_2 : Bool}
 \]
 \[
-\dfrac{\Gamma \vdash e_1 : num}{\Gamma \vdash -e_1 : num}
+\dfrac{\Gamma \vdash e_1 : Num}{\Gamma \vdash -e_1 : Num}
 \]
 \[
-\dfrac{\Gamma \vdash e_1 : string \Gamma \vdash e_2 : \tau}{\Gamma \vdash e_1 + e_2 : string}
+\dfrac{\Gamma \vdash e_1 : Txt \Gamma \vdash e_2 : \tau}{\Gamma \vdash e_1 + e_2 : Txt}
 \]
 \[
-\dfrac{\Gamma \vdash e_1 : bool \Gamma \vdash e_2 : bool}{\Gamma \vdash e_1 relop e_2 : bool}
+\dfrac{\Gamma \vdash e_1 : Bool \Gamma \vdash e_2 : Bool}{\Gamma \vdash e_1 relop e_2 : Bool}
 \]
 \[
-\dfrac{\Gamma \vdash e_1 : bool}{\Gamma \vdash NOTe_1 : bool}
+\dfrac{\Gamma \vdash e_1 : Bool}{\Gamma \vdash NOTe_1 : Bool}
 \]
 \subsection{Scope rules}
 Scope rules are where the users variables are visible. In our language there are three kind of scopes: local scope, global scope and function scope. A variable is visible in the specific scope, if can be referenced to. Two variables of the same name, can't be in the same scope. The local variables are declared inside blocks of code, where the blocks are marked with \{ \}. In the example in listing \ref{lst:example} the variable degrees is declared locally in the code block Setup, and it can't be used in other code blocks unless it is nested inside of the Setup block, it could e.g. be used in a if-loop in the Setup block. 

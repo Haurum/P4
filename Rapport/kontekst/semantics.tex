@@ -1,5 +1,5 @@
 \chapter{Semantics}
-This chapter is about the semantics in our language, both for type systems and operational semantics. The chapter uses techniques and structures from the book \textit{Transitions and Trees} \cite{Huttel}.
+This chapter is about the semantics in our language, both for type system and operational semantic. The chapter uses techniques and structures from the book \textit{Transitions and Trees} \cite{Huttel}.
  \section{Syntactic categories}
  To describe the semantics of our language, syntactic categories have been used. The syntactic categories are based on the grammer found in section \ref{sec:Grammar}. A collection of metavariables are presented in the following paragraphs which will be used throughout the chapter to describe the type system and operational semantics.
  
@@ -10,7 +10,7 @@ This chapter is about the semantics in our language, both for type systems and o
  b \in \textbf{Bool} - Boolean\ Literal\newline
  tx \in \textbf{Txt} - Txt\ Literal\newline
  t \in \textbf{Type} - Num,\ Bool\ and\ Txt\ types\newline
- id \in \textbf{ID} - Action,\ Function,\ Variable\ and\ Reserved Calls\newline
+ id \in \textbf{ID} - Action,\ Function,\ Variable\ and\ Reserved\ Calls\newline
  D \in \textbf{Dcl} - Action,\ Function\ and\ global\ variable\ declaration\newline
  \end{math}
  
@@ -18,21 +18,98 @@ This chapter is about the semantics in our language, both for type systems and o
  
  
  \section{Semantic Functions}
- 
-  \subsection{ID}
+ The purpose of the semantics functions is to change the syntactic elements to a semantic element. The semantic functions used in our language will be described in this section. 
   
-  Evt. calls ?
-  
-  \subsection{Numerals}
-  The numbers in our language will be Numerals(with the symbol n, from the syntactic categories), which will be converted to real numbers with the semantic function: 
+  \subsection{Numerals Literal}
+  The numbers literal in our language will be Numerals(with the symbol n, from the syntactic categories), which will be converted to real numbers with the semantic function: 
   
   \begin{math}
   \mathcal{N}: \textbf{Num} \leftarrow \mathbb{R}
   \end{math}
   
-  Using this function, numerals as \underline{5} and \underline{5.36} will become the real numbers 5 and 5.36. 
+  Using this function, numerals as 
+  \begin{math}
+    \mathcal{N}
+  \end{math}[\underline{5}] and 
+  \begin{math}
+    \mathcal{N}
+  \end{math}[\underline{5.36}] will become the real numbers 5 and 5.36. 
   
   
-  \subsection{Text literals}
+  \subsection{Text Literals}
+  The Text literal a sequence of symbols and characters in UTF-8(Unicode Transformation Format 8-bit) except the delimiter ("). The sequence of symbols and characters must be within the delimiter, for example "Hello world!".
+  
+  \begin{math}
+  tx \in \textbf{Txt} = (") \ (U)^* \ (")\ |\ U \in \ {UTF-8}
+  \end{math}
   
   \subsection{Boolean Literals}
+  The Boolean literals depict whether the expression is evaluated to true or false. The symbol for true is \begin{math} \top \end{math}, and the symbol for false is \begin{math} \bot \end{math} from the set of values from \textbf{bool} = {True, False}.
+  
+  \begin{math}
+  	\beta : Bool \rightarrow bool
+  \end{math}
+  
+  The semantic function above can be used to evaluate the semantic value of a boolean, take \begin{math} x \in \beta  \end{math} as an example:
+  
+  \[ \beta(x) =
+    \begin{cases}
+      \top       & \quad \text{if } x \text{ is true}\\
+      \bot  & \quad \text{if } x \text{ is false}\\
+    \end{cases}
+  \]
+  
+  
+  \section{Models}
+  
+  \section{Type system}
+  
+	\[
+	[NUM] \quad
+	\dfrac{}{\Gamma \vdash n ::= Num}
+	\]
+	 
+	\[
+	[BOOL] \quad
+	\dfrac{}{\Gamma \vdash b ::= Bool}
+	\]
+	
+  	\[
+  	[TXT] \quad
+  	\dfrac{}{\Gamma \vdash tx ::= Txt}
+  	\]
+  
+	\[
+  	[EMPTY-VARDCL] \quad
+  	\dfrac{<\epsilon, \ E_v, \ st> \ \rightarrow_{Dv} \ <E_v, \ st> }{<var \ x; D_v,\ E_v,\ st>}
+  	\]
+  	
+  	\[
+  	[VARDCL] \quad
+  	\dfrac{<D_v, \ E_v^{''}, \ st[l \mapsto v]> \ \rightarrow_{Dv} \ <E_v^{'}, \ st^{'}> }{<var x = a; D_v,\ E_v,\ st> \rightarrow_{Dv} \ <E_v^{'}, \ st^{'}>}
+  	\]
+  	\begin{math}
+	  	Where: E_v, \ st \vdash a \rightarrow_A \ v
+	  	\qquad \ \ l = E_v(next)
+	  	\qquad \ \ E_v^{''} = E_v[x \mapsto l][next \mapsto new(l)]
+  	\end{math}
+  	
+  	\[
+  	[EMPTY-ACTDCL] \quad
+  	\dfrac{E_v \vdash <\epsilon, \ E_f> \rightarrow_Df \ E_f}{ action \ f \ is \ S; D_f \rightarrow_Df E_f }
+  	\]
+  	
+  	
+	\[
+  	[ACTDCL] \quad
+  	\dfrac{E_v \vdash <D_f, \ E_f[f \mapsto \ <S, \ E_v, \ E_f>]> \rightarrow_{Df} E^{'}_f}{E_v \vdash \ <action \ f \ is \ S; \ D_f, \ E_f> \rightarrow_Df \ E_f^{'}}
+  	\]
+  
+
+  	
+
+
+    [FUNCDCL]
+
+  
+  \section{Operational semantic}

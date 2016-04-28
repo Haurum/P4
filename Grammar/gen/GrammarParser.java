@@ -41,9 +41,9 @@ public class GrammarParser extends Parser {
 		null, "'Tankname'", "';'", "'Setup'", "'Repeat'", "'Action'", "'('", "')'", 
 		"'Function'", "'returns'", "'{'", "'}'", "','", "'When'", "'='", "'if'", 
 		"'else'", "'repeat'", "'while'", "'return'", "'print('", "'run'", "'Tank.'", 
-		"'Gun.'", "'Radar.'", "'Battlefield.'", "'Math.'", "'Event.'", "'||'", 
-		"'&&'", "'=='", "'!='", "'>'", "'<'", "'>='", "'<='", "'+'", "'-'", "'*'", 
-		"'/'", "'%'", "'!'"
+		"'Gun.'", "'Radar.'", "'Battlefield.'", "'Math.'", "'Event.'", "'OR'", 
+		"'AND'", "'IS='", "'NOT='", "'>'", "'<'", "'>='", "'<='", "'+'", "'-'", 
+		"'*'", "'/'", "'%'", "'!'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, null, null, null, null, null, null, null, null, null, null, null, 

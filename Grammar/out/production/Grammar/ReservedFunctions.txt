@@ -1,14 +1,96 @@
-tank forward void - num distance
-tank backward void - num distance
-tank doNothing void
-tank energy void
-tank heading void
-tank height void
-tank width void
-tank velocity void
-tank xCoord void
-tank yCoord void
-tank stop void
-tank resume void
-tank turn void - num degrees
-tank testfunc int - num degrees, num testparam2, num testparam3
+Tank forward void - Num distance
+Tank backward void - Num distance
+Tank doNothing void
+Tank energy Num
+Tank heading Num
+Tank height Num
+Tank width Num
+Tank velocity Num
+Tank xCoord Num
+Tank yCoord Num
+Tank stop void
+Tank resume void
+Tank turn void - Num degrees
+Gun shoot void - Num power
+Gun coolingRate Num
+Gun heading Num
+Gun heat Num
+Gun turn Num - Num degrees
+Radar heading void
+Radar scan void
+Radar turn void
+Battlefield height Num
+Battlefield width Num
+Battlefield NumOfRounds Num
+Battlefield enemies Num
+Battlefield roundNum Num
+Math max Num - Num value1, Num value2
+bulletHit bulletHeading Num
+bulletHit bulletOwner String
+bulletHit bulletPower Num
+bulletHit bulletVelocity Num
+bulletHit bulletVictim String
+bulletHit bulletXCoord Num
+bulletHit bulletYCoord Num
+bulletHit bulletIsActive Bool
+bulletHit energy Num
+bulletHit void void
+bulletHitBullet bulletHeading Num
+bulletHitBullet bulletOwner String
+bulletHitBullet bulletPower Num
+bulletHitBullet bulletVelocity Num
+bulletHitBullet bulletVictim String
+bulletHitBullet bulletXCoord Num
+bulletHitBullet bulletYCoord Num
+bulletHitBullet bulletIsActive Bool
+bulletHitBullet enemyBulletHeading Num
+bulletHitBullet enemyBulletOwner String
+bulletHitBullet enemyBulletPower Num
+bulletHitBullet enemyBulletVelocity Num
+bulletHitBullet enemyBulletVictim String
+bulletHitBullet enemyBulletXCoord Num
+bulletHitBullet enemyBulletYCoord Num
+bulletHitBullet enemyBulletIsActive Bool
+bulletHitBullet void void
+hitByBullet bearing Num
+hitByBullet bearingDegrees Num
+hitByBullet bulletHeading Num
+hitByBullet bulletOwner String
+hitByBullet bulletPower Num
+hitByBullet bulletVelocity Num
+hitByBullet bulletVictim String
+hitByBullet bulletXCoord Num
+hitByBullet bulletYCoord Num
+hitByBullet bulletIsActive Bool
+hitByBullet heading Num
+hitByBullet headingDegrees Num
+hitByBullet power Num
+hitByBullet velocity Num
+hitByBullet void void
+hitRobot bearing Num
+hitRobot bearingDegrees Num
+hitRobot energy Num
+hitRobot myFault Bool
+hitRobot enemyName String
+hitRobot void void
+death void void
+hitWall bearing Num
+hitWall void void
+enemyDeath enemyName String
+enemyDeath void void
+roundEnded round Num
+roundEnded totalTurns Num
+roundEnded turns Num
+roundEnded void void
+scannedRobot bearing Num
+scannedRobot distance Num
+scannedRobot energy Num
+scannedRobot heading Num
+scannedRobot enemyName String
+scannedRobot velocity Num
+scannedRobot void void
+status distanceRemaining Num
+status gunTurnRemaining Num
+status radarTurnRemaining Num
+status void void
+win void void

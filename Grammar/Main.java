@@ -18,7 +18,7 @@ import java.util.stream.Stream;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        ANTLRFileStream input = new ANTLRFileStream("test.txt");
+        ANTLRFileStream input = new ANTLRFileStream("Fire.txt");
         GrammarLexer lex = new GrammarLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lex);
         GrammarParser parser = new GrammarParser(tokens);
@@ -28,20 +28,13 @@ public class Main {
         FuncSymbolTable RoboFST = new FuncSymbolTable();
         SymbolTable ST = new SymbolTable();
         FuncListener FListener = new FuncListener(FST);
-        SymbolTypeVisitor STVisitor = new SymbolTypeVisitor(ST, RoboFST, FST);
+        SymbolTypeVisitor STVisitor = new SymbolTypeVisitor(ST, FST, RoboFST);
         ImportReservedFunctions(RoboFST);
         walker.walk(FListener, t);
-        RoboFST.Map.values().forEach(fs -> {
-            System.out.print(fs.Name);
-            fs.Params.forEach(tuple -> {
-                System.out.print(tuple.toString());
-            });
-            System.out.println("");
-        });
         STVisitor.visit(t);
     }
 
-    public static FuncSymbolTable ImportReservedFunctions(FuncSymbolTable FST)
+    public static void ImportReservedFunctions(FuncSymbolTable FST)
     {
         Path path = Paths.get("ReservedFunctions.txt");
         try (Stream<String> lines = Files.lines(path)) {
@@ -58,7 +51,7 @@ public class Main {
                     for (String params: funcParams) {
                         params = params.trim();
                         String[] tempparam = params.split(" ");
-                        FS.Params.add(new Tuple(tempparam[0], tempparam[1]));
+                        FS.Params.add(new Tuple(tempparam[1], tempparam[0]));
                     }
                 }
 
@@ -68,7 +61,7 @@ public class Main {
 
         }
 
-        return FST;
+        //return FST;
 
     }
 }

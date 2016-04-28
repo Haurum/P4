@@ -12,10 +12,6 @@ public class FuncSymbolTable {
 
     public FuncSymbol GetFuncSymbol(String type, String name){
         FuncSymbol sym = Map.get(type + name);
-        if(sym == null){
-            Error e = new Error("Function not found");
-            throw e;
-        }
         return sym;
     }
 

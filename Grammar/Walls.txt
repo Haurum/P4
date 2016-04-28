@@ -1,0 +1,44 @@
+
+Tankname walls;
+
+Bool peek;
+Num moveAmount;
+
+Setup {
+
+    moveAmount = Math.max(Battlefield.width(), Battlefield.height());
+    peek = False;
+
+    Tank.turn(-(Tank.heading() % 90));
+    Tank.forward(moveAmount);
+
+    peek = True;
+    Gun.turn(90);
+    Tank.turn(90);
+}
+
+Repeat {
+    peek = True;
+    Tank.forward(moveAmount);
+    peek = False;
+    Tank.turn(90);
+}
+
+
+
+When hitRobot {
+    if (Event.bearing() > -90 AND Event.bearing() < 90) {
+        Tank.backward(100);
+    }
+    else {
+        Tank.forward(100);
+    }
+}
+
+
+When scannedRobot {
+    Gun.shoot(2);
+    if (peek) {
+        Radar.scan();
+    }
+}

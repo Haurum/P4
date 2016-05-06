@@ -8,14 +8,41 @@ This chapter is about the semantics in our language, both for type system and op
  S \in \textbf{Stmt} - Statement\newline
  n \in \textbf{Num} - Numerals\newline
  b \in \textbf{Bool} - Boolean\ Literal\newline
+ B \in \textbf{Block} - Block \newline %sure about this??
  tx \in \textbf{Txt} - Txt\ Literal\newline
  t \in \textbf{Type} - Num,\ Bool\ and\ Txt\ types\newline
- id \in \textbf{ID} - Action,\ Function,\ Variable\ and\ Reserved\ Calls\newline
- D \in \textbf{Dcl} - Action,\ Function\ and\ global\ variable\ declaration\newline
+ vid \in \textbf{var} - Variable name \newline
+ fid \in \textbf{Func} - Function name \newline
+ aid \in \textbf{Act} - Action name \newline
+ D_a \in \textbf{ActDcl} - Action \newline
+ D_f \in \textbf{FuncDcl} - Function \newline
+ D_v \in \textbf{VarDcl} - global\ variable\ declaration\newline
+ acall \in \textbf{acall} - Action call \newline
+ fcall \in \textbf{fcall} - Function call \newline
+ rcall \in \textbf{rcall} - Predefined Robocode calls \newline
+ ecall \in \textbf{ecall} - Event call \newline
  \end{math}
  
- LAV FORMATION RULES!?
+ \section{Formation rules}
+ Missing intro!
  
+\begin{math}
+	B ::= \{ \ S \ \}
+	\newline
+	Stmt ::= \ vid = e \ | \ D_v \ | \ if \ e_1 \ B_1 \ ( elseif \ e_2 \ B_2 )^* \ (else B)^* \ \newline | \ Repeat \ While(e_1) \ B \ | \ Repeat \ B \ While \ (e_2) \ | \ Return \ e
+	\newline
+	Exprs ::= \ Expr \ op \ Exprs \ | \ \epsilon
+	\newline
+	Expr ::= \ ( \ - \ | \ NOT \ )? \ e 
+	\newline
+	D_a ::= \ aid(S) \ B
+	\newline
+	D_f ::= \ fid(S) \ B
+	\newline
+	D_v ::= \ vid; \ | \ vid \ = \ literal
+	\newline
+	Call ::= \ acall \ | \ fcall \ | \ vcall \ | ecall	
+\end{math}
  
  \section{Semantic Functions}
  The purpose of the semantics functions is to change the syntactic elements to a semantic element. The semantic functions used in our language will be described in this section. 

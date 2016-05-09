@@ -18,7 +18,7 @@ import java.util.stream.Stream;
  */
 public class Main {
     public static void main(String[] args ) throws IOException {
-        ANTLRFileStream input = new ANTLRFileStream("Fire.txt");
+        ANTLRFileStream input = new ANTLRFileStream("RamFire.txt");
         GrammarLexer lex = new GrammarLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lex);
         GrammarParser parser = new GrammarParser(tokens);
@@ -32,6 +32,8 @@ public class Main {
         ImportReservedFunctions(RoboFST);
         walker.walk(FListener, t);
         STVisitor.visit(t);
+        CodeGen codeGen = new CodeGen(RoboFST);
+        codeGen.visit(t);
     }
 
     public static void ImportReservedFunctions(FuncSymbolTable FST)

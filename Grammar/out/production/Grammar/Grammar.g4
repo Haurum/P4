@@ -10,12 +10,12 @@ repeatblock : 'Repeat' block;
 
 dcls : (actdcl
      | funcdcl
-     | vardcl';'
+     | vardcl
      | setupblock
      | repeatblock
      | tankname
      | eventdcl
-     | print';')*
+     | print)*
      ;
 
 actdcl : 'Action' ID '(' params? ')'block;
@@ -32,17 +32,17 @@ eventdcl : 'When' ID block;
 
 block : '{' stmts '}';
 
-stmts : (assign';'
-      |vardcl';'
+stmts : (assign
+      |vardcl
       |ifstmt
       |whilestmt
-      |call';'
-      |print';')*
+      |call
+      |print)*
       ;
 
-assign : ID '=' expr;
+assign : ID '=' expr';';
 
-vardcl : TYPE (ID|assign);
+vardcl : TYPE (ID';'|assign);
 
 ifstmt : 'if''('expr')' block elseif* ('else' block)?;
 
@@ -52,14 +52,14 @@ whilestmt : 'repeat' ('while''('expr')' block
           | block 'while''('expr')')
           ;
 
-returnstmt : 'return' expr?;
+returnstmt : 'return' expr;
 
-print : 'print('expr')';
+print : 'print('expr');';
 
-call : acall
-     | fcall
-     | rcall
-     | ecall
+call : acall';'
+     | fcall';'
+     | rcall';'
+     | ecall';'
      ;
 
 acall : 'run' ID'('args?')';

@@ -33,4 +33,3 @@ public void onHitRobot(HitRobotEvent e) {
     turnGunRight(turnGunAmt);
     fire(3);
 }
-}

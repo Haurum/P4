@@ -128,7 +128,7 @@ This chapter provides a formal description of the language semantics. The chapte
     	
    	\[
    	[VARDCL] \quad
-   	\dfrac{<D_v, \ E_v^{''}, \ st[l \mapsto v]> \ \rightarrow_{Dv} \ <E_v^{'}, \ st^{'}> }{<var \ x = a; D_v,\ E_v,\ st> \rightarrow_{Dv} \ <E_v^{'}, \ st^{'}>}
+   	\dfrac{<D_v, \ E_v^{''}, \ st[l \mapsto v]> \ \rightarrow_{Dv} \ <E_v^{'}, \ st^{'}> }{<var \ v = a; D_v,\ E_v,\ st> \rightarrow_{Dv} \ <E_v^{'}, \ st^{'}>}
    	\]
    	\begin{math}
  	  	\qquad \ Where: E_v, \ st \vdash a \rightarrow_A \ v
@@ -160,4 +160,167 @@ This chapter provides a formal description of the language semantics. The chapte
    	\subsection{Statements}
    	
    	\subsection{Expressions}
+   	
+   	\[
+   	[PAR-EXPR] \quad
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <e, \ st> \rightarrow_e (v, \ st^{'}}{E_v, \ E_a, \ E_f \vdash <(e), \ st> \rightarrow_e \ (v, \ st^{'})}
+   	\]
+   	
+   	\subsection{Arithmetic Expressions}
+   	
+   	\[
+   	[ADD-EXPR] \quad
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <a_1, \ st> \rightarrow_{e} (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <a_2, \ st^{''}> \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \vdash <a_1 + a_2, st> \rightarrow_{e} (v, st^{'})}
+   	\]
+ 	\begin{math}
+   	v \ = \ v_1 \ + \ v_2
+   	\end{math}
+   	
+   	\[
+   	[SUB-EXPR] \quad
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <a_1, \ st> \rightarrow_{e} (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <a_2, \ st^{''}> \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \vdash <a_1 - a_2, st> \rightarrow_{e} (v, st^{'})}
+   	\]
+   	\begin{math}
+   	v \ = \ v_1 \ - \ v_2
+   	\end{math}
+   	
+   	\[
+   	[MUL-EXPR] \quad
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <a_1, \ st> \rightarrow_{e} (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <a_2, \ st^{''}> \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \vdash <a_1 * a_2, st> \rightarrow_{e} (v, st^{'})}
+   	\]
+   	\begin{math}
+   	v \ = \ v_1 \ * \ v_2
+   	\end{math}
+   	
+   	\[
+   	[DIV-EXPR] \quad
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <a_1, \ st> \rightarrow_{e} (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <a_2, \ st^{''}> \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \vdash <a_1 / a_2, st> \rightarrow_{e} (v, st^{'})}
+   	\]
+   	\begin{math}
+   	v \ = \ v_1 \ / \ v_2
+   	\end{math}   	   	
+
+   	\[
+   	[MOD-EXPR] \quad
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <a_1, \ st> \rightarrow_{e} (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <a_2, \ st^{''}> \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \vdash <a_1 \% a_2, st> \rightarrow_{e} (v, st^{'})}
+   	\]
+   	\begin{math}
+   	v \ = \ v_1 \ \% \ v_2
+   	\end{math}   	
+
+   	\subsection{Boolean Expressions}
+   	\[
+   	[EXPR^{IS=}_{\ \top}] \quad
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1
+   	\ IS= e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}
+   	\]
+   	\begin{math}
+   	v_1 \ = \ v_2 
+   	\end{math}
+
+   	\[
+   	[EXPR^{IS=}_{\ \bot}] \quad
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1
+   	\ IS= e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}
+   	\]
+	\begin{math}
+   	v_1 \ \not= \ v_2
+   	\end{math}
+
+
+   	\[
+   	[EXPR^{NOT=}_{\ \top}] \quad
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ NOT= e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}
+   	\]
+	\begin{math}
+   	v_1 \ \not= \ v_2
+   	\end{math}   	
+   	
+
+   	\[
+   	[EXPR^{NOT=}_{\ \bot}] \quad
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ NOT= e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}
+   	\]
+	\begin{math}
+   	v_1 \ = \ v_2
+   	\end{math}   	
+   	
+   	
+   	\[
+   	[EXPR^{\ >}_{\ \top}] \quad
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ > e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}
+   	\]
+	\begin{math}
+   	v_1 \ > \ v_2
+   	\end{math}   	
+   	
+
+   	\[
+   	[EXPR^{\ >}_{\ \bot}] \quad
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ > e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}
+   	\]
+	\begin{math}
+   	v_1 \ \not> \ v_2
+   	\end{math}   
+   	
+   	\[
+   	[EXPR^{\ <}_{\ \top}] \quad
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ < e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}
+   	\]
+	\begin{math}
+   	v_1 \ < \ v_2
+   	\end{math}   	
+   	
+
+   	\[
+   	[EXPR^{\ <}_{\ \bot}] \quad
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ < e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}
+   	\]
+	\begin{math}
+   	v_1 \ \not< \ v_2
+   	\end{math}
+   	
+   	\[
+   	[EXPR^{\ >=}_{\ \ \top}] \quad
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ >= e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}
+   	\]
+	\begin{math}
+   	v_1 \ >= \ v_2
+   	\end{math}   	
+   	
+
+   	\[
+   	[EXPR^{\ >=}_{\ \ \bot}] \quad
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ >= e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}
+   	\]
+	\begin{math}
+   	v_1 \ \not>= \ v_2
+   	\end{math}
+   	
+   	\[
+   	[EXPR^{\ <=}_{\ \ \top}] \quad
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ <= e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}
+   	\]
+	\begin{math}
+   	v_1 \ <= \ v_2
+   	\end{math}   	
+   	
+
+   	\[
+   	[EXPR^{\ <=}_{\ \ \bot}] \quad
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ <= e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}
+   	\]
+	\begin{math}
+   	v_1 \ \not<= \ v_2
+   	\end{math}
+   	
+   	\[
+   	[EXPR^{\ \ !}_{\ \ \top}] \quad
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <v, \ st> \rightarrow_e (\top, st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <!v, \ st> \ \rightarrow_e (\top, \ st^{'})}
+   	\]  	  	
+
+   	\[
+   	[EXPR^{\ \ !}_{\ \ \bot}] \quad
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <v, \ st> \rightarrow_e (\bot, st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <!v, \ st> \ \rightarrow_e (\bot, \ st^{'})}
+   	\]
    	

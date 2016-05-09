@@ -1,8 +1,9 @@
-import gen.*;
-import code.*;
 
-import org.antlr.v4.runtime.ANTLRFileStream;
-import org.antlr.v4.runtime.CommonTokenStream;
+import code.*;
+import gen.*;
+
+import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.BailErrorStrategy;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
@@ -16,8 +17,7 @@ import java.util.stream.Stream;
  * Created by Frederik on 23-03-2016.
  */
 public class Main {
-    public static void main(String[] args) throws IOException {
-
+    public static void main(String[] args ) throws IOException {
         ANTLRFileStream input = new ANTLRFileStream("Fire.txt");
         GrammarLexer lex = new GrammarLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lex);
@@ -65,5 +65,6 @@ public class Main {
 
     }
 }
+
 
 

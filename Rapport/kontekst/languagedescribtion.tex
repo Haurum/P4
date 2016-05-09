@@ -330,11 +330,11 @@ Describe the different operators.. ?
 Hello?
 \end{defi}
 \section{Type systems}
-Missing intro! Skriv at sebesta er blevet brugt til denne section ??
+In this section the type and scope rules will be explained. To do so, \cite{Sebesta} has been used to understand and explain how the type and scope rules impacts our project.
 
 \subsection{Type rules}
 The following subsection will describe the type rules of the language. These rules will express which operators can be applied to each type, and how each expression will have a type, determined by the operands and operators in the expression.
-Operators have been divided into groups, and each group of operators have semantically equivalent rules.
+Operators have been divided into groups, and each group of the operators have semantically equivalent rules.
 The operators [+, -, *, /, \%] will be used as the shorthand 'op'. Relational operators [<, >, <=, >=, NOT=, IS=, AND, OR] will be used as the shorthand 'relop'. There're two different types of negations, one for numbers and one for bools: -(num) for numbers, and NOT(bool) for bools.
 \[
 \dfrac{\Gamma \vdash e_1 : Num \Gamma \vdash e_2 : Num}{\Gamma \vdash e_1 op e_2 : Num}
@@ -355,7 +355,7 @@ The operators [+, -, *, /, \%] will be used as the shorthand 'op'. Relational op
 \dfrac{\Gamma \vdash e_1 : Bool}{\Gamma \vdash NOTe_1 : Bool}
 \]
 \subsection{Scope rules}
-Scope rules are where the users variables are visible. In our language there are three kind of scopes: local scope, global scope and function scope. A variable is visible in the specific scope, if can be referenced to. Two variables of the same name, can't be in the same scope. The local variables are declared inside blocks of code, where the blocks are marked with \{ \}. In the example in listing \ref{lst:example} the variable degrees is declared locally in the code block Setup, and it can't be used in other code blocks unless it is nested inside of the Setup block, it could e.g. be used in a if-loop in the Setup block. 
+Scope rules are where the scope of a name is part of the program, where the name binding is associated with an entity. Enities are variables, function names, event names, action names, etc. The scoping mechanism used in this project, is the lexical scoping, as the scope of a name binding refers to a portion of the source code. In our language there are three kind of scopes: local scope, global scope and function scope. A variable is visible in the specific scope, if can be referenced to. Two variables of the same name, can't be in the same scope. The local variables are declared inside blocks of code. The scope of a name binding is delinited to the deepest block where it has been declared. The blocks are marked with \{ \}. In the example in listing \ref{lst:example} the variable degrees is declared locally in the code block Setup, and it can't be used in other code blocks unless it is nested inside of the Setup block, it could e.g. be used in a if-loop in the Setup block. 
 
 \begin{lstlisting}[caption={Example of local scoping rules},  xleftmargin=.2\textwidth, label={lst:example}]
 Setup{
@@ -366,7 +366,7 @@ Setup{
 }
 \end{lstlisting}
 
-The parameters declared in a function, is visible in the function scope and can be used just as local variables for the function. The parameters can't be masked by declaring new local variables in the function, since the value of the parameters can't be stored. The parameters can't be named the same as the local- and global variables. 
+The parameters declared in a function, are visible in the function scope and can be used just as local variables for the function. It is possible to shadow parameters by creating an inner block and declare a varible with the same name. However it isn't possible to create two varibles with the same name in the same block. 
 
 When a variable is declared in the global scope, it can be used in all of the other functions and code blocks. When a variable is used, it will first search for it in the local scope, if it is not found in the local scope, it will search the in the global scope. In listing \ref{lst:example1} Codeblock1 uses the global variable, where Codeblock2 uses a local variable with the same name as the global variable, but the local variable will be used.
 

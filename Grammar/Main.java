@@ -18,7 +18,7 @@ import java.util.stream.Stream;
  */
 public class Main {
     public static void main(String[] args ) throws IOException {
-        ANTLRFileStream input = new ANTLRFileStream("Fire.txt");
+        ANTLRFileStream input = new ANTLRFileStream("Coners.txt");
         GrammarLexer lex = new GrammarLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lex);
         GrammarParser parser = new GrammarParser(tokens);
@@ -42,9 +42,10 @@ public class Main {
                 String[] funcString = s.split("-");
                 String[] funcId = funcString[0].split(" ");
                 FuncSymbol FS = new FuncSymbol();
-                FS.Type = funcId[0];
-                FS.Name = funcId[1];
-                FS.ReturnType = funcId[2];
+                FS.RoboCodeName = funcId[0];
+                FS.Type = funcId[1];
+                FS.Name = funcId[2];
+                FS.ReturnType = funcId[3];
 
                 if (funcString.length > 1) {
                     String[] funcParams = funcString[1].split(",");

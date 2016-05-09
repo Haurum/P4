@@ -51,7 +51,7 @@ This chapter is about the semantics in our language, both for type system and op
   The numbers literal in our language will be Numerals(with the symbol n, from the syntactic categories), which will be converted to real numbers with the semantic function: 
   
   \begin{math}
-  \mathcal{N}: \textbf{Num} \leftarrow \mathbb{R}
+  \mathcal{N}: \textbf{Num} \rightarrow \mathbb{R}
   \end{math}
   
   Using this function, numerals as 
@@ -64,11 +64,23 @@ This chapter is about the semantics in our language, both for type system and op
   
   
   \subsection{Text Literals}
-  The Text literal a sequence of symbols and characters in UTF-8(Unicode Transformation Format 8-bit) except the delimiter ("). The sequence of symbols and characters must be within the delimiter, for example "Hello world!".
+  The Text literal a sequence of symbols and characters in UTF-8(Unicode Transformation Format 8-bit) except the delimiter ("). The sequence of symbols and characters must be within the delimiter, for example "Hello world!". A new language \textbf{txtL} is defined, which purpose is to remove the quotation("). 
   
   \begin{math}
-  tx \in \textbf{Txt} = (") \ (U)^* \ (")\ |\ U \in \ {UTF-8}
+  txl \in \textbf{txtL} = (") \newline
+  tx \in \textbf{Txt} = (") \ (U)^* \ (")\ \newline
+  U \in \ {UTF-8}
   \end{math}
+  
+  The langauge \textbf{txtL} translates the input of the Text Literal to Text, which is done with the function below. 
+  
+  \begin{math}
+  	\tau(\textbf{Txt}) \ \rightarrow \ \textbf{txtL} \newline
+  	As \ an \ example: \ \tau("Insert \ text \ here") \ \rightarrow \ Insert \ text \ here
+  \end{math}
+  
+  
+  
   
   \subsection{Boolean Literals}
   The Boolean literals depict whether the expression is evaluated to true or false. The symbol for true is \begin{math} \top \end{math}, and the symbol for false is \begin{math} \bot \end{math} from the set of values from \textbf{bool} = {True, False}.
@@ -87,7 +99,7 @@ This chapter is about the semantics in our language, both for type system and op
   \]
   
   
-  \section{Models}
+  \section{Eviorment Storemodel}
   
   \section{Type system}
   
@@ -105,38 +117,40 @@ This chapter is about the semantics in our language, both for type system and op
   	[TXT] \quad
   	\dfrac{}{\Gamma \vdash tx ::= Txt}
   	\]
-  
-	\[
-  	[EMPTY-VARDCL] \quad
-  	\dfrac{<\epsilon, \ E_v, \ st> \ \rightarrow_{Dv} \ <E_v, \ st> }{<var \ x; D_v,\ E_v,\ st>}
-  	\]
   	
-  	\[
-  	[VARDCL] \quad
-  	\dfrac{<D_v, \ E_v^{''}, \ st[l \mapsto v]> \ \rightarrow_{Dv} \ <E_v^{'}, \ st^{'}> }{<var x = a; D_v,\ E_v,\ st> \rightarrow_{Dv} \ <E_v^{'}, \ st^{'}>}
-  	\]
-  	\begin{math}
-	  	Where: E_v, \ st \vdash a \rightarrow_A \ v
-	  	\qquad \ \ l = E_v(next)
-	  	\qquad \ \ E_v^{''} = E_v[x \mapsto l][next \mapsto new(l)]
-  	\end{math}
-  	
-  	\[
-  	[EMPTY-ACTDCL] \quad
-  	\dfrac{E_v \vdash <\epsilon, \ E_f> \rightarrow_Df \ E_f}{ action \ f \ is \ S; D_f \rightarrow_Df E_f }
-  	\]
-  	
-  	
-	\[
-  	[ACTDCL] \quad
-  	\dfrac{E_v \vdash <D_f, \ E_f[f \mapsto \ <S, \ E_v, \ E_f>]> \rightarrow_{Df} E^{'}_f}{E_v \vdash \ <action \ f \ is \ S; \ D_f, \ E_f> \rightarrow_Df \ E_f^{'}}
-  	\]
-  
-
-  	
-
-
-    [FUNCDCL]
-
-  
   \section{Operational semantic}
+  	\[
+	[EMPTY-VARDCL] \quad
+	\dfrac{<\epsilon, \ E_v, \ st> \ \rightarrow_{Dv} \ <E_v, \ st> }{<var \ x; D_v,\ E_v,\ st>}
+	\]
+    	
+   	\[
+   	[VARDCL] \quad
+   	\dfrac{<D_v, \ E_v^{''}, \ st[l \mapsto v]> \ \rightarrow_{Dv} \ <E_v^{'}, \ st^{'}> }{<var x = a; D_v,\ E_v,\ st> \rightarrow_{Dv} \ <E_v^{'}, \ st^{'}>}
+   	\]
+   	\begin{math}
+ 	  	\qquad \ Where: E_v, \ st \vdash a \rightarrow_A \ v
+ 	  	\qquad \ \ l = E_v(next)
+ 	  	\qquad \ \ E_v^{''} = E_v[x \mapsto l][next \mapsto new(l)]
+   	\end{math}
+    	
+   	\[
+   	[EMPTY-ACTDCL] \quad
+   	\dfrac{E_v \vdash <\epsilon, \ E_f> \ \rightarrow_{Df} \ E_f}{ Action \ f \ is \ S; D_f \ \rightarrow_{Df} E_f }
+   	\]
+    	
+    	
+  	\[
+   	[ACTDCL] \quad
+   	\dfrac{E_v \vdash <D_f, \ E_f[f \mapsto \ <S, \ E_v, \ E_f>]>   \ \rightarrow_{Df} E^{'}_f}{E_v \vdash \ <Action \ f \ is \ S; \ D_f, \ E_f> \ \rightarrow_{Df} \ E_f^{'}}
+   	\]
+    	
+   	\[
+   	[EMPTY-FUNCDCL] \quad
+   	\dfrac{E_v \vdash < \epsilon, \ E_f> \ \rightarrow_{Df} \ E_f}{Function \ f \ is \ S; \ D_f \ \rightarrow_{Df} \ E_f}
+   	\]
+    
+  	\[
+   	[FUNCDCL] \quad
+   	\dfrac{}{}
+   	\]

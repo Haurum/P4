@@ -1,7 +1,7 @@
 \chapter{Semantics}
-This chapter is about the semantics in our language, both for type system and operational semantic. The chapter uses techniques and structures from the book \textit{Transitions and Trees} \cite{Huttel}.
+This chapter provides a formal description of the language semantics. The chapter uses techniques and structures from the book \textit{Transitions and Trees} \cite{Huttel}.
  \section{Syntactic categories}
- To describe the semantics of our language, syntactic categories have been used. The syntactic categories are based on the grammer found in section \ref{sec:Grammar}. A collection of metavariables are presented in the following paragraphs which will be used throughout the chapter to describe the type system and operational semantics.
+ To simplify the presentation of the semantics of our language, syntactic categories have been used. The syntactic categories are based on the grammer found in section \ref{sec:Grammar}. A collection of metavariables are presented in the following paragraphs which will be used throughout the chapter to present the type system and the operational semantics.
  
  \begin{math}
  e \in \textbf{Expr} - Expressions \newline
@@ -47,11 +47,11 @@ This chapter is about the semantics in our language, both for type system and op
  \section{Semantic Functions}
  The purpose of the semantics functions is to change the syntactic elements to a semantic element. The semantic functions used in our language will be described in this section. 
   
-  \subsection{Numerals Literal}
+  \subsection{Numeral Literals}
   The numbers literal in our language will be Numerals(with the symbol n, from the syntactic categories), which will be converted to real numbers with the semantic function: 
   
   \begin{math}
-  \mathcal{N}: \textbf{Num} \leftarrow \mathbb{R}
+  \mathcal{N}: \textbf{Num} \rightarrow \mathbb{R}
   \end{math}
   
   Using this function, numerals as 
@@ -60,14 +60,23 @@ This chapter is about the semantics in our language, both for type system and op
   \end{math}[\underline{5}] and 
   \begin{math}
     \mathcal{N}
-  \end{math}[\underline{5.36}] will become the real numbers 5 and 5.36. 
+  \end{math}[\underline{5.36}] will be mapped to the corresponding values 5 and 5.36. 
   
   
   \subsection{Text Literals}
-  The Text literal a sequence of symbols and characters in UTF-8(Unicode Transformation Format 8-bit) except the delimiter ("). The sequence of symbols and characters must be within the delimiter, for example "Hello world!".
+  A Text literal is a sequence of symbols and characters in UTF-8(Unicode Transformation Format 8-bit) except the delimiter ("). The sequence of symbols and characters must be within the delimiter, for example "Hello world!". A new language \textbf{txtL} is defined, which purpose is to remove the quotation("). 
   
   \begin{math}
-  tx \in \textbf{Txt} = (") \ (U)^* \ (")\ |\ U \in \ {UTF-8}
+  txl \in \textbf{txtL} = (") \newline
+  tx \in \textbf{Txt} = (") \ (U)^* \ (")\ \newline
+  U \in \ {UTF-8}
+  \end{math}
+  
+  The langauge \textbf{txtL} translates the input of the Text Literal to Text, which is done with the function below. 
+  
+  \begin{math}
+  	\tau(\textbf{Txt}) \ \rightarrow \ \textbf{txtL} \newline
+  	As \ an \ example: \ \tau("Insert \ text \ here") \ \rightarrow \ Insert \ text \ here
   \end{math}
   
   \subsection{Boolean Literals}
@@ -77,7 +86,7 @@ This chapter is about the semantics in our language, both for type system and op
   	\beta : Bool \rightarrow bool
   \end{math}
   
-  The semantic function above can be used to evaluate the semantic value of a boolean, take \begin{math} x \in \beta  \end{math} as an example:
+  The semantic function above can be used to evaluate the semantic value of a boolean, take \begin{math} x \ is \ evaluated \ by \ the \ function \ \beta,  \end{math} as an example:
   
   \[ \beta(x) =
     \begin{cases}
@@ -87,10 +96,13 @@ This chapter is about the semantics in our language, both for type system and op
   \]
   
   
-  \section{Models}
+  \section{Environment Storemodel}
+  MISSING INTRO!
+  
+  
   
   \section{Type system}
-  
+  THIS SHALL BE MOVED!!!
 	\[
 	[NUM] \quad
 	\dfrac{}{\Gamma \vdash n ::= Num}
@@ -105,38 +117,47 @@ This chapter is about the semantics in our language, both for type system and op
   	[TXT] \quad
   	\dfrac{}{\Gamma \vdash tx ::= Txt}
   	\]
-  
-	\[
-  	[EMPTY-VARDCL] \quad
-  	\dfrac{<\epsilon, \ E_v, \ st> \ \rightarrow_{Dv} \ <E_v, \ st> }{<var \ x; D_v,\ E_v,\ st>}
-  	\]
   	
-  	\[
-  	[VARDCL] \quad
-  	\dfrac{<D_v, \ E_v^{''}, \ st[l \mapsto v]> \ \rightarrow_{Dv} \ <E_v^{'}, \ st^{'}> }{<var x = a; D_v,\ E_v,\ st> \rightarrow_{Dv} \ <E_v^{'}, \ st^{'}>}
-  	\]
-  	\begin{math}
-	  	Where: E_v, \ st \vdash a \rightarrow_A \ v
-	  	\qquad \ \ l = E_v(next)
-	  	\qquad \ \ E_v^{''} = E_v[x \mapsto l][next \mapsto new(l)]
-  	\end{math}
-  	
-  	\[
-  	[EMPTY-ACTDCL] \quad
-  	\dfrac{E_v \vdash <\epsilon, \ E_f> \rightarrow_Df \ E_f}{ action \ f \ is \ S; D_f \rightarrow_Df E_f }
-  	\]
-  	
-  	
-	\[
-  	[ACTDCL] \quad
-  	\dfrac{E_v \vdash <D_f, \ E_f[f \mapsto \ <S, \ E_v, \ E_f>]> \rightarrow_{Df} E^{'}_f}{E_v \vdash \ <action \ f \ is \ S; \ D_f, \ E_f> \rightarrow_Df \ E_f^{'}}
-  	\]
-  
-
-  	
-
-
-    [FUNCDCL]
-
-  
   \section{Operational semantic}
+  
+  \subsection{Declarations}
+  	\[
+	[EMPTY-VARDCL] \quad
+	\dfrac{<\epsilon, \ E_v, \ st> \ \rightarrow_{Dv} \ <E_v, \ st> }{<var \ x; D_v,\ E_v,\ st>}
+	\]
+    	
+   	\[
+   	[VARDCL] \quad
+   	\dfrac{<D_v, \ E_v^{''}, \ st[l \mapsto v]> \ \rightarrow_{Dv} \ <E_v^{'}, \ st^{'}> }{<var \ x = a; D_v,\ E_v,\ st> \rightarrow_{Dv} \ <E_v^{'}, \ st^{'}>}
+   	\]
+   	\begin{math}
+ 	  	\qquad \ Where: E_v, \ st \vdash a \rightarrow_A \ v
+ 	  	\qquad \ \ l = E_v(next)
+ 	  	\qquad \ \ E_v^{''} = E_v[x \mapsto l][next \mapsto new(l)]
+   	\end{math}
+    	
+   	\[
+   	[EMPTY-ACTDCL] \quad
+   	\dfrac{E_v \vdash <\epsilon, \ E_a, \ st> \ \rightarrow_{Da} \ E_a, \ st}{ E_v, \vdash  <Action \ a \ is \ S; \ D_a, \ st, \ E_a> \ \rightarrow_{Da} E_a, \ st }
+   	\]
+    	
+    	
+  	\[
+   	[ACTDCL] \quad
+   	\dfrac{E_v \vdash <D_a, \ st[a \mapsto \ <S, \ E_v, \ E_a>]>   \ \rightarrow_{Da} st^{'}, E_a^{'} \ }{E_v \ \vdash \ <Action \ a \ is \ S; \ D_a, \ st, \ E_a> \ \rightarrow_{Da} \ st^{'}, \ E_a^{'}}
+   	\]
+    	
+   	\[
+   	[EMPTY-FUNCDCL] \quad
+   	\dfrac{E_v \vdash < \epsilon, \ E_f, \ st> \ \rightarrow_{Df} \ E_f, \ st}{Function \ f \ is \ S; \ D_f, \ st \ \rightarrow_{Df} \ E_f, \ st}
+   	\]
+   	
+   	\[
+   	[FUNCDCL] \quad
+   	\dfrac{E_v \vdash <D_f, \ st[f \mapsto <S, E_v, E_f>]> \rightarrow_{Df} st^{'}, \ E_f^{'}}{E_v \vdash <Function \ f \ is \ S; D_f, \ st, \ E_f > \rightarrow_{Df} st^{'}, \ E_f^{'}}
+   	\]
+   	
+   	\subsection{Statements}
+   	
+   	\subsection{Expressions}
+   	

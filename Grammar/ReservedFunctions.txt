@@ -1,96 +1,95 @@
-Tank forward void - Num distance
-Tank backward void - Num distance
-Tank doNothing void
-Tank energy Num
-Tank heading Num
-Tank height Num
-Tank width Num
-Tank velocity Num
-Tank xCoord Num
-Tank yCoord Num
-Tank stop void
-Tank resume void
-Tank turn void - Num degrees
-Gun shoot void - Num power
-Gun coolingRate Num
-Gun heading Num
-Gun heat Num
-Gun turn Num - Num degrees
-Radar heading void
-Radar scan void
-Radar turn void
-Battlefield height Num
-Battlefield width Num
-Battlefield NumOfRounds Num
-Battlefield enemies Num
-Battlefield roundNum Num
-Math max Num - Num value1, Num value2
-bulletHit bulletHeading Num
-bulletHit bulletOwner String
-bulletHit bulletPower Num
-bulletHit bulletVelocity Num
-bulletHit bulletVictim String
-bulletHit bulletXCoord Num
-bulletHit bulletYCoord Num
-bulletHit bulletIsActive Bool
-bulletHit energy Num
-bulletHit void void
-bulletHitBullet bulletHeading Num
-bulletHitBullet bulletOwner String
-bulletHitBullet bulletPower Num
-bulletHitBullet bulletVelocity Num
-bulletHitBullet bulletVictim String
-bulletHitBullet bulletXCoord Num
-bulletHitBullet bulletYCoord Num
-bulletHitBullet bulletIsActive Bool
-bulletHitBullet enemyBulletHeading Num
-bulletHitBullet enemyBulletOwner String
-bulletHitBullet enemyBulletPower Num
-bulletHitBullet enemyBulletVelocity Num
-bulletHitBullet enemyBulletVictim String
-bulletHitBullet enemyBulletXCoord Num
-bulletHitBullet enemyBulletYCoord Num
-bulletHitBullet enemyBulletIsActive Bool
-bulletHitBullet void void
-hitByBullet bearing Num
-hitByBullet bearingDegrees Num
-hitByBullet bulletHeading Num
-hitByBullet bulletOwner String
-hitByBullet bulletPower Num
-hitByBullet bulletVelocity Num
-hitByBullet bulletVictim String
-hitByBullet bulletXCoord Num
-hitByBullet bulletYCoord Num
-hitByBullet bulletIsActive Bool
-hitByBullet heading Num
-hitByBullet headingDegrees Num
-hitByBullet power Num
-hitByBullet velocity Num
-hitByBullet void void
-hitRobot bearing Num
-hitRobot bearingDegrees Num
-hitRobot energy Num
-hitRobot myFault Bool
-hitRobot enemyName String
-hitRobot void void
-death void void
-hitWall bearing Num
-hitWall void void
-enemyDeath enemyName String
-enemyDeath void void
-roundEnded round Num
-roundEnded totalTurns Num
-roundEnded turns Num
-roundEnded void void
-scannedRobot bearing Num
-scannedRobot distance Num
-scannedRobot energy Num
-scannedRobot heading Num
-scannedRobot enemyName String
-scannedRobot velocity Num
-scannedRobot void void
-status distanceRemaining Num
-status gunTurnRemaining Num
-status radarTurnRemaining Num
-status void void
-win void void
+ahead Tank forward void - Num distance
+back Tank backward void - Num distance
+doNothing Tank doNothing void
+getEnergy Tank energy Num
+getHeading Tank heading Num
+getHeight Tank height Num
+getWidth Tank width Num
+getVelocity Tank velocity Num
+getX Tank xCoord Num
+getY Tank yCoord Num
+stop Tank stop void
+resume Tank resume void
+turnLeft Tank turn void - Num degrees
+fire Gun shoot void - Num power
+getGunCoolingRate Gun coolingRate Num
+getGunHeading Gun heading Num
+getGunHeat Gun heat Num
+turnGunLeft Gun turn Num - Num degrees
+getRadarHeading Radar heading void
+scan Radar scan void
+turnRadarLeft Radar turn void
+getBattleFieldHeight Battlefield height Num
+getBattleFieldWidth Battlefield width Num
+getNumRounds Battlefield NumOfRounds Num
+getOthers Battlefield enemies Num
+getRoundNum Battlefield roundNum Num
+getTime Math max Num - Num value1, Num value2
+getBullet().getHeading bulletHit bulletHeading Num
+getBullet().getName bulletHit bulletOwner String
+getBullet().getPower bulletHit bulletPower Num
+getBullet().getVelocity bulletHit bulletVelocity Num
+getBullet().getVictim bulletHit bulletVictim String
+getBullet().getX bulletHit bulletXCoord Num
+getBullet().getY bulletHit bulletYCoord Num
+getBullet().isActive bulletHit bulletIsActive Bool
+getEnergy bulletHit energy Num
+null bulletHit void void
+getBullet().getHeading bulletHitBullet bulletHeading Num
+getBullet().getName bulletHitBullet bulletOwner String
+getBullet().getPower bulletHitBullet bulletPower Num
+getBullet().getVelocity bulletHitBullet bulletVelocity Num
+getBullet().getVictim bulletHitBullet bulletVictim String
+getBullet().getX bulletHitBullet bulletXCoord Num
+getBullet().getY bulletHitBullet bulletYCoord Num
+getBullet().isActive bulletHitBullet bulletIsActive Bool
+getHitBullet().getHeading bulletHitBullet enemyBulletHeading Num
+getHitBullet().getName bulletHitBullet enemyBulletOwner String
+getHitBullet().getPower bulletHitBullet enemyBulletPower Num
+getHitBullet().getVelocity bulletHitBullet enemyBulletVelocity Num
+getHitBullet().getVictim bulletHitBullet enemyBulletVictim String
+getHitBullet().getX bulletHitBullet enemyBulletXCoord Num
+getHitBullet().getY bulletHitBullet enemyBulletYCoord Num
+getHitBullet().isActive bulletHitBullet enemyBulletIsActive Bool
+null bulletHitBullet void void
+getBearing hitByBullet bearing Num
+getBearingDegrees hitByBullet bearingDegrees Num
+getBullet().getHeading hitByBullet bulletHeading Num
+getBullet().getName hitByBullet bulletOwner String
+getBullet().getPower hitByBullet bulletPower Num
+getBullet().getVelocity hitByBullet bulletVelocity Num
+getBullet().getVictim hitByBullet bulletVictim String
+getBullet().getX hitByBullet bulletXCoord Num
+getBullet().getY hitByBullet bulletYCoord Num
+getBullet().isActive hitByBullet bulletIsActive Bool
+getHeading hitByBullet heading Num
+getHeadingDegrees hitByBullet headingDegrees Num
+getPower hitByBullet power Num
+getVelocity hitByBullet velocity Num
+null hitByBullet void void
+getBearing hitRobot bearing Num
+getBearingDegrees hitRobot bearingDegrees Num
+getEnergy hitRobot energy Num
+isMyFault hitRobot myFault Bool
+getName hitRobot enemyName String
+null hitRobot void void
+null death void void
+null enemyDeath void void
+null hitWall void void
+getBearing hitWall bearing Num
+getRound roundEnded round Num
+null roundEnded void void
+getTotalTurns roundEnded totalTurns Num
+getTurns roundEnded turns Num
+getBearing scannedRobot bearing Num
+getDistance scannedRobot distance Num
+getEnergy scannedRobot energy Num
+getHeading scannedRobot heading Num
+getName scannedRobot enemyName String
+getVelocity scannedRobot velocity Num
+null scannedRobot void void
+getStatus.getDistanceRemaining status distanceRemaining Num
+getStatus.getGunTurnRemaining status gunTurnRemaining Num
+getStatus.getRadarTurnRemaining status radarTurnRemaining Num
+null status void void
+null win void void

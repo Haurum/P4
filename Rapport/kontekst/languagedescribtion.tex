@@ -135,7 +135,7 @@ When scannedRobot{
 }
 \end{lstlisting}
 
-Consider if the event Death should be explanied here for the example Corners. 
+%Consider if the event Death should be explanied here for the example Corners. 
 
 
 \section{Grammar}
@@ -264,7 +264,7 @@ TYPE     & 'Num' | 'Bool' | 'Text'            \\ \hline
 %Forklaring hvonår det er den contructs og hvad den gør(Så som hvad den tager som input og giver som output)
 
 %Til hver definition, lav en tekst om hvad den bruges til og hvorfor den er med i vores sprog.
-Missing Intro!
+In this section the language constructs for this project will be defined and explained, in order to give a clear view of our language.
 
 \subsection{Setup block}
 The Setup block is a block run only once at the begining of each round. In this block the user can define colors of different parts of the robot, call user defined functions which should only be called in once in the beginning and reserved calls. The Setup block can only be declared once, and have to be in the code, else the user will not be able to run the code.
@@ -279,18 +279,21 @@ The Repeat block will iterate through the users code, unless an event has occurr
 \begin{defi}
 The Repeat block is defined with the reserved word \textbf{Repeat} followed by \{ \textbf{body} \}, where the body is the userdefined code.
 \end{defi}
+
 \subsection{When block}
 The When block is handling an event whenever it occurs during the battle. The When block is preforming the behaviour and logic when the events occur, where this will be made by the user. Only a predefined number of events can be declared, which can be found in the Apendix(INSERT REFERENCE TO THE TABLE LATER!!).
 
 \begin{defi}
 The When block is defined as: When eventName \{ \textbf{body} \}, \textbf{When} is the reserved word, the name of a Robocode event followed by the body which is the user defined code.
 \end{defi}
+
 \subsection{Variables}
 In our language there are three different kind of variables, \textbf{Num}, \textbf{Bool} and \textbf{Txt}. All numeric types will be interpreted as \textbf{Num}. \textbf{Bool} can either be True or False. \textbf{Txt} is an array of characters.
 
 \begin{defi}
 The variables can be declared using the reserved words \textbf{Num}, \textbf{Bool} and \textbf{Txt} followed by the desired id of the variable. If the variable should also de initialized,  the assignment operator "=" should be used followed by the value or expression for the variable. 
 \end{defi}
+
 \subsection{Action block}
 An Action block is an abstraction for statements with no return types, the Actions can be called throughout the code. The parameters in the Action block is always call by value, just as in the programming language Java, this will be the same in the Function block.
 
@@ -298,6 +301,7 @@ An Action block is an abstraction for statements with no return types, the Actio
 An Action block is defined with the reserved word \textbf{Action} followed by the id of the Action, a desired amount of parameters in parentheses and the body of the Action block within \{\}.
 An Action block will look like: \textbf{Action} myAction (parameters) \{ \textbf{body} \}.
 \end{defi}
+
 \subsection{Function block}
 The Function block is very similar to the Action block. The difference of the two blocks is that the Function block have a return type. 
 
@@ -305,12 +309,14 @@ The Function block is very similar to the Action block. The difference of the tw
 The function block is defined with the reserved word \textbf{Function} followed by the id of the Function, what the Function will be returning, a desired amount of parameters in parentheses and the body of the Function block within \{\}.
 An example of the Function block would be: \textbf{Function} myFunction Returns returnType (parameters) \{ \textbf{body} \}
 \end{defi}
+
 \subsection{Reserved calls}
 (Wait to explain this, till when we are sure if we want to rename tank, to robot???)
 
 \begin{defi}
 Hello?
 \end{defi}
+
 \subsection{Conditional block}
 The conditional block is the langauge's conditional statements which will execute the user defiend code in it's body depending on a boolean expression. Conditional blocks helps making the robots logic for it's behaviour. 
 
@@ -323,12 +329,14 @@ The else if-contruct's structure is the same as the if-construct, except that th
 
 The else-construct is noted by the reserved word \textbf{else} followed by the the body in \{\}.
 \end{defi}
+
 \subsection{Operators}
 Describe the different operators.. ? 
 
 \begin{defi}
 Hello?
 \end{defi}
+
 \section{Type systems}
 In this section the type and scope rules will be explained. To do so, \cite{Sebesta} has been used to understand and explain how the type and scope rules impacts our project.
 

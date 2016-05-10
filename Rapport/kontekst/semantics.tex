@@ -23,19 +23,19 @@ This chapter provides a formal description of the language semantics. The chapte
  Missing intro!
  
 \begin{math}
-	B ::= \{ \ S \ \}
+	B ::= \{ \ D_v  \ S \ \}
 	\newline
-	Stmt ::= \ vid = e \ | \ D_v \ | \ if \ e_1 \ B_1 \ ( elseif \ e_2 \ B_2 )^* \ (else B)^* \ \newline | \ Repeat \ While(e_1) \ B \ | \ Repeat \ B \ While \ (e_2) \ | \ Return \ e
+	Stmt ::= \ x = e \ | \ if \ e_1 \ B_1 \ else \ B_2 \ \newline | \ Repeat \ While(e_1) \ B \ | \ Repeat \ B \ While \ (e_2) \ | \ Return \ e \ | \ skip
 	\newline
-	Exprs ::= \ Expr \ op \ Exprs \ | \ \epsilon
+	%Exprs ::= \ Expr \ op \ Exprs \ | \ \epsilon
+	%\newline
+	%Expr ::= \ ( \ - \ | \ NOT \ )? \ e 
+	%\newline
+	D_a ::= \ a(S) \ B \ D_a \ | \epsilon 
 	\newline
-	Expr ::= \ ( \ - \ | \ NOT \ )? \ e 
+	D_f ::= \ f(S) \ B \ D_f \ | \epsilon 
 	\newline
-	D_a ::= \ aid(S) \ B
-	\newline
-	D_f ::= \ fid(S) \ B
-	\newline
-	D_v ::= \ vid; \ | \ vid \ = \ literal
+	D_v ::= \tau \ x \ D_v \ | \epsilon 
 	\newline
 \end{math}
  

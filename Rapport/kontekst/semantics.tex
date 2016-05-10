@@ -14,9 +14,9 @@ This chapter provides a formal description of the language semantics. The chapte
  x \in \textbf{var} - Variable name \newline
  f \in \textbf{Func} - Function name \newline
  a \in \textbf{Act} - Action name \newline
- D_a \in \textbf{ActDcl} - Action \newline
- D_f \in \textbf{FuncDcl} - Function \newline
- D_v \in \textbf{VarDcl} - global\ variable\ declaration\newline
+ D_a \in \textbf{ActDcl} - Action\ declaration\newline
+ D_f \in \textbf{FuncDcl} - Function\ declaration\newline
+ D_v \in \textbf{VarDcl} - Gobal\ variable\ declaration\newline
  \end{math}
  
  \section{Formation rules}
@@ -37,14 +37,13 @@ This chapter provides a formal description of the language semantics. The chapte
 	\newline
 	D_v ::= \ vid; \ | \ vid \ = \ literal
 	\newline
-	Call ::= \ acall \ | \ fcall \ | \ vcall \ | ecall	
 \end{math}
  
  \section{Semantic Functions}
- The purpose of the semantics functions is to change the syntactic elements to a semantic element. The semantic functions used in our language will be described in this section. 
+ The purpose of the semantics functions is interpret syntactic elements to semantic elements. The semantic functions used in our language will be described in this section. 
   
   \subsection{Numeral Literals}
-  The numbers literal in our language will be Numerals(with the symbol n, from the syntactic categories), which will be converted to real numbers with the semantic function: 
+  The numbers literal in our language will be Numerals, which will be interpreted to real numbers by means of the semantic function: 
   
   \begin{math}
   \mathcal{N}: \textbf{Num} \rightarrow \mathbb{R}
@@ -68,28 +67,28 @@ This chapter provides a formal description of the language semantics. The chapte
   %U \in \ {UTF-8}
   %\end{math}
   
-  Text Literal are interpreted as string elements to Text, which is done with the function below. 
+  Text Literal are interpreted as string elements Text, by means of the following:
   
   \begin{math}
-  	\tau(\textbf{Txt}) \ \rightarrow \ \textbf{txtL} \newline
+  	\tau : \textbf{Txt} \ \rightarrow \ \textbf{txtL} \newline
   	As \ an \ example: \ \tau("Insert \ text \ here") \ \rightarrow \ Insert \ text \ here
   \end{math}
   
   \subsection{Boolean Literals}
   The Boolean literals depict whether the expression is evaluated to true or false. The symbol for true is \begin{math} \top \end{math}, and the symbol for false is \begin{math} \bot \end{math} from the set of values from \textbf{bool} = {True, False}.
   
-  \begin{math}
-  	\beta : Bool \rightarrow bool
-  \end{math}
+  %\begin{math}
+  	%\beta : Bool \rightarrow bool
+  %\end{math}
   
-  The semantic function above can be used to evaluate the semantic value of a boolean, take \begin{math} x \ is \ evaluated \ by \ the \ function \ \beta,  \end{math} as an example:
+  %The semantic function above can be used to evaluate the semantic value of a boolean, take \begin{math} x \ is \ evaluated \ by \ the \ function \ \beta,  \end{math} as an example:
   
-  \[ \beta(x) =
-    \begin{cases}
-      \top       & \quad \text{if } x \text{ is true}\\
-      \bot  & \quad \text{if } x \text{ is false}\\
-    \end{cases}
-  \]
+  %\[ \beta(x) =
+    %\begin{cases}
+      %\top       & \quad \text{if } x \text{ is true}\\
+      %\bot  & \quad \text{if } x \text{ is false}\\
+    %\end{cases}
+  %\]
   
   
   \section{Environment Storemodel}

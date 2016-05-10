@@ -11,16 +11,12 @@ This chapter provides a formal description of the language semantics. The chapte
  B \in \textbf{Block} - Block \newline %sure about this??
  tx \in \textbf{Txt} - Txt\ Literal\newline
  t \in \textbf{Type} - Num,\ Bool\ and\ Txt\ types\newline
- vid \in \textbf{var} - Variable name \newline
- fid \in \textbf{Func} - Function name \newline
- aid \in \textbf{Act} - Action name \newline
+ x \in \textbf{var} - Variable name \newline
+ f \in \textbf{Func} - Function name \newline
+ a \in \textbf{Act} - Action name \newline
  D_a \in \textbf{ActDcl} - Action \newline
  D_f \in \textbf{FuncDcl} - Function \newline
  D_v \in \textbf{VarDcl} - global\ variable\ declaration\newline
- acall \in \textbf{acall} - Action call \newline
- fcall \in \textbf{fcall} - Function call \newline
- rcall \in \textbf{rcall} - Predefined Robocode calls \newline
- ecall \in \textbf{ecall} - Event call \newline
  \end{math}
  
  \section{Formation rules}
@@ -64,15 +60,15 @@ This chapter provides a formal description of the language semantics. The chapte
   
   
   \subsection{Text Literals}
-  A Text literal is a sequence of symbols and characters in UTF-8(Unicode Transformation Format 8-bit) except the delimiter ("). The sequence of symbols and characters must be within the delimiter, for example "Hello world!". A new language \textbf{txtL} is defined, which purpose is to remove the quotation("). 
+  A Text literal is a sequence of symbols and characters in UTF-8(Unicode Transformation Format 8-bit) except the delimiter ("). The sequence of symbols and characters must be within the delimiter, for example "Hello world!". 
   
-  \begin{math}
-  txl \in \textbf{txtL} = (") \newline
-  tx \in \textbf{Txt} = (") \ (U)^* \ (")\ \newline
-  U \in \ {UTF-8}
-  \end{math}
+  %\begin{math}
+  %txl \in \textbf{txtL} = (") \newline
+  %tx \in \textbf{Txt} = (") \ (U)^* \ (")\ \newline
+  %U \in \ {UTF-8}
+  %\end{math}
   
-  The langauge \textbf{txtL} translates the input of the Text Literal to Text, which is done with the function below. 
+  Text Literal are interpreted as string elements to Text, which is done with the function below. 
   
   \begin{math}
   	\tau(\textbf{Txt}) \ \rightarrow \ \textbf{txtL} \newline
@@ -128,7 +124,7 @@ This chapter provides a formal description of the language semantics. The chapte
     	
    	\[
    	[VARDCL] \quad
-   	\dfrac{<D_v, \ E_v^{''}, \ st[l \mapsto v]> \ \rightarrow_{Dv} \ <E_v^{'}, \ st^{'}> }{<var \ v = a; D_v,\ E_v,\ st> \rightarrow_{Dv} \ <E_v^{'}, \ st^{'}>}
+   	\dfrac{<D_v, \ E_v^{''}, \ st[l \mapsto v]> \ \rightarrow_{Dv} \ <E_v^{'}, \ st^{'}> }{<var \ x = a; D_v,\ E_v,\ st> \rightarrow_{Dv} \ <E_v^{'}, \ st^{'}>}
    	\]
    	\begin{math}
  	  	\qquad \ Where: E_v, \ st \vdash a \rightarrow_A \ v
@@ -254,7 +250,8 @@ This chapter provides a formal description of the language semantics. The chapte
    	v_1 \ > \ v_2
    	\end{math}   	
    	
-
+   	\newcommand{\exprtrans}[5][E_v, E_a,E_f]{#1\vdash \langle #2, #3 \rangle \mathrel{\to_e} (#4 , #5)}
+   	
    	\[
    	[EXPR^{\ >}_{\ \bot}] \quad
    	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ > e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}

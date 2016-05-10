@@ -3,7 +3,6 @@ import code.*;
 import gen.*;
 
 import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.BailErrorStrategy;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
@@ -18,7 +17,7 @@ import java.util.stream.Stream;
  */
 public class Main {
     public static void main(String[] args ) throws IOException {
-        ANTLRFileStream input = new ANTLRFileStream("Coners.txt");
+        ANTLRFileStream input = new ANTLRFileStream("Corners.txt");
         GrammarLexer lex = new GrammarLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lex);
         GrammarParser parser = new GrammarParser(tokens);

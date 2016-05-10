@@ -10,15 +10,15 @@ getX Tank xCoord Num
 getY Tank yCoord Num
 stop Tank stop void
 resume Tank resume void
-turnLeft Tank turn void - Num degrees
+turnRight Tank turn void - Num degrees
 fire Gun shoot void - Num power
 getGunCoolingRate Gun coolingRate Num
 getGunHeading Gun heading Num
 getGunHeat Gun heat Num
-turnGunLeft Gun turn Num - Num degrees
+turnGunRight Gun turn Num - Num degrees
 getRadarHeading Radar heading void
 scan Radar scan void
-turnRadarLeft Radar turn void
+turnRadarRight Radar turn void
 getBattleFieldHeight Battlefield height Num
 getBattleFieldWidth Battlefield width Num
 getNumRounds Battlefield NumOfRounds Num

@@ -2,7 +2,7 @@ grammar Grammar;
 
 prog : dcls EOF;
 
-tankname : 'Tankname' ID ';';
+tankname : 'Tankname' ID SEMI;
 
 setupblock : 'Setup' block;
 
@@ -22,7 +22,7 @@ actdcl : 'Action' ID '(' params? ')'block;
 
 funcdcl : 'Function' ID '(' params? ')' 'returns' TYPE functionBlock;
 
-functionBlock : '{' stmts returnstmt';' '}';
+functionBlock : '{' stmts returnstmt SEMI '}';
 
 params : param (',' param)*;
 
@@ -36,13 +36,13 @@ stmts : (assign
       |vardcl
       |ifstmt
       |whilestmt
-      |call
+      |stmtcall
       |print)*
       ;
 
-assign : ID '=' expr';';
+assign : ID '=' expr SEMI;
 
-vardcl : TYPE (ID';'|assign);
+vardcl : TYPE (ID SEMI|assign);
 
 ifstmt : 'if''('expr')' block elseif* ('else' block)?;
 
@@ -54,12 +54,14 @@ whilestmt : 'repeat' ('while''('expr')' block
 
 returnstmt : 'return' expr;
 
-print : 'print('expr');';
+print : 'print('expr')' SEMI;
 
-call : acall';'
-     | fcall';'
-     | rcall';'
-     | ecall';'
+stmtcall : call SEMI;
+
+call : acall
+     | fcall
+     | rcall
+     | ecall
      ;
 
 acall : 'run' ID'('args?')';
@@ -99,6 +101,7 @@ literal : ID        #id
         | BOOL      #bool
         ;
 
+SEMI : ';';
 OR : 'OR';
 AND : 'AND';
 EQ : 'IS=';

@@ -130,6 +130,12 @@ public interface GrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPrint(GrammarParser.PrintContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link GrammarParser#stmtcall}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStmtcall(GrammarParser.StmtcallContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link GrammarParser#call}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

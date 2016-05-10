@@ -1,5 +1,6 @@
 package code;
 
+import com.sun.xml.internal.ws.util.StringUtils;
 import gen.GrammarBaseVisitor;
 import gen.GrammarParser;
 import org.antlr.v4.runtime.RuleContext;
@@ -19,8 +20,8 @@ public class CodeGen extends GrammarBaseVisitor<String> {
     public String visitProg(GrammarParser.ProgContext ctx) {
         StringBuilder buf = new StringBuilder();
         buf.append("public class ");
-        buf.append(visit(ctx.dcls().tankname(0)));
-        buf.append(" extends Robot { ");
+        buf.append(StringUtils.capitalize(visit(ctx.dcls().tankname(0))));
+        buf.append(" extends Robot {\n ");
         buf.append(visit(ctx.dcls()));
         buf.append("}");
         System.out.print(buf.toString());
@@ -109,7 +110,7 @@ public class CodeGen extends GrammarBaseVisitor<String> {
         }else{
             result = "String ";
         }
-        return result + ctx.ID().getText();
+        return result + "_" + ctx.ID().getText();
     }
 
     @Override
@@ -120,7 +121,7 @@ public class CodeGen extends GrammarBaseVisitor<String> {
 
     @Override
     public String visitBlock(GrammarParser.BlockContext ctx) {
-        return "{ " + visit(ctx.stmts()) + " }";
+        return "{\n " + visit(ctx.stmts()) + " \n}\n";
     }
 
     @Override
@@ -134,7 +135,7 @@ public class CodeGen extends GrammarBaseVisitor<String> {
 
     @Override
     public String visitAssign(GrammarParser.AssignContext ctx) {
-        return ctx.ID().getText() + " = " + visit(ctx.expr()) + ";";
+        return "_" + ctx.ID().getText() + " = " + visit(ctx.expr()) + ctx.SEMI().getText() + "\n";
     }
 
     @Override
@@ -150,7 +151,7 @@ public class CodeGen extends GrammarBaseVisitor<String> {
         if (ctx.getChild(1) instanceof GrammarParser.AssignContext){
             result += visit(ctx.assign());
         }else {
-            result += ctx.ID().getText() + ";";
+            result += "_" + ctx.ID().getText() + ctx.SEMI().getText() + "\n";
         }
         return result;
     }
@@ -193,12 +194,17 @@ public class CodeGen extends GrammarBaseVisitor<String> {
 
     @Override
     public String visitPrint(GrammarParser.PrintContext ctx) {
-        return "out.println(" + visit(ctx.expr()) + ");";
+        return "System.out.println(" + visit(ctx.expr()) + ")" + ctx.SEMI().getText() + "\n";
+    }
+
+    @Override
+    public String visitStmtcall(GrammarParser.StmtcallContext ctx) {
+        return visit(ctx.call()) + ctx.SEMI().getText() + "\n";
     }
 
     @Override
     public String visitCall(GrammarParser.CallContext ctx) {
-        return visit(ctx.getChild(0)) + ";";
+        return visit(ctx.getChild(0));
     }
 
     @Override
@@ -365,7 +371,7 @@ public class CodeGen extends GrammarBaseVisitor<String> {
 
     @Override
     public String visitString(GrammarParser.StringContext ctx) {
-        String s = ctx.STRING().getText().replace('"', ' ').trim();
+        String s = ctx.STRING().getText();
         return s;
     }
 

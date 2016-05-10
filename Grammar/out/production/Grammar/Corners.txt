@@ -1,4 +1,4 @@
-Tankname coners;
+Tankname corners;
 Num others;
 Num corner = 0;
 Bool stopWhenSeeRobot = False;

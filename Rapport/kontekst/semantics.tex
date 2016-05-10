@@ -115,44 +115,40 @@ This chapter provides a formal description of the language semantics. The chapte
   	\]
   	
   \section{Operational semantic}
+  MISSING INTRO! We should write about the smallstep- and bigstep semantics ?
   
   \subsection{Declarations}
   	\[
-	[EMPTY-VARDCL] \quad
-	\dfrac{<\epsilon, \ E_v, \ st> \ \rightarrow_{Dv} \ <E_v, \ st> }{<var \ x; D_v,\ E_v,\ st>}
-	\]
-    	
-   	\[
-   	[VARDCL] \quad
-   	\dfrac{<D_v, \ E_v^{''}, \ st[l \mapsto v]> \ \rightarrow_{Dv} \ <E_v^{'}, \ st^{'}> }{<var \ x = a; D_v,\ E_v,\ st> \rightarrow_{Dv} \ <E_v^{'}, \ st^{'}>}
-   	\]
-   	\begin{math}
- 	  	\qquad \ Where: E_v, \ st \vdash a \rightarrow_A \ v
- 	  	\qquad \ \ l = E_v(next)
- 	  	\qquad \ \ E_v^{''} = E_v[x \mapsto l][next \mapsto new(l)]
-   	\end{math}
-    	
-   	\[
-   	[EMPTY-ACTDCL] \quad
-   	\dfrac{E_v \vdash <\epsilon, \ E_a, \ st> \ \rightarrow_{Da} \ E_a, \ st}{ E_v, \vdash  <Action \ a \ is \ S; \ D_a, \ st, \ E_a> \ \rightarrow_{Da} E_a, \ st }
-   	\]
-    	
-    	
-  	\[
-   	[ACTDCL] \quad
-   	\dfrac{E_v \vdash <D_a, \ st[a \mapsto \ <S, \ E_v, \ E_a>]>   \ \rightarrow_{Da} st^{'}, E_a^{'} \ }{E_v \ \vdash \ <Action \ a \ is \ S; \ D_a, \ st, \ E_a> \ \rightarrow_{Da} \ st^{'}, \ E_a^{'}}
-   	\]
-    	
-   	\[
-   	[EMPTY-FUNCDCL] \quad
-   	\dfrac{E_v \vdash < \epsilon, \ E_f, \ st> \ \rightarrow_{Df} \ E_f, \ st}{Function \ f \ is \ S; \ D_f, \ st \ \rightarrow_{Df} \ E_f, \ st}
-   	\]
-   	
-   	\[
-   	[FUNCDCL] \quad
-   	\dfrac{E_v \vdash <D_f, \ st[f \mapsto <S, E_v, E_f>]> \rightarrow_{Df} st^{'}, \ E_f^{'}}{E_v \vdash <Function \ f \ is \ S; D_f, \ st, \ E_f > \rightarrow_{Df} st^{'}, \ E_f^{'}}
-   	\]
-   	
+  		[EMPTY-VARDCL] \quad
+  		\dfrac{}{\langle\epsilon, \ E_v\rangle \rightarrow_{Dv} E_v}
+  		\]
+  	    	
+  	   	\[
+  	   	[VARDCL] \quad
+  	   	\dfrac{\langle \ D_v, \ E_v[x \mapsto l]\rangle \ \rightarrow_{Dv} \ \langle \ E_v^{'} \ \rangle }{ \langle var \ x; \ D_v,\ E_v \rangle \rightarrow_{Dv} \ \langle E_v^{'} \rangle }
+  	   	\qquad \ \ l = E_v(next)
+  	   	\]
+  	    	
+  	   	\[
+  	   	[EMPTY-ACTDCL] \quad
+  	   	\dfrac{}{E_v \ \vdash \ \langle \epsilon, E_a \rangle \ \rightarrow_{Da} \ E_a}
+  	   	\]
+  	    	
+  	    	
+  	  	\[
+  	   	[ACTDCL] \quad
+  	   	\dfrac{E_v \ \vdash \langle D_a, \ E_a[a \ \mapsto (S, \ (x_1 .. x_n) \ E_v)] \ \rangle \rightarrow_Da \ E_a^{'}}{E_v \ Action \ a(x_1 .. x_n) \ is \ S; \ D_a \ E_a \ \rightarrow_{Da} \ E_a^{'}}
+  	   	\]
+  	    	
+  	   	\[
+  	   	[EMPTY-FUNCDCL] \quad
+  	   	\dfrac{}{E_v \ \vdash \langle \epsilon; \ D_f \rangle \ \rightarrow_{Df} \ E_f}
+  	   	\]
+  	   	
+  	   	\[
+  	   	[FUNCDCL] \quad
+  	   	\dfrac{E_v \vdash \langle D_f, \ E_f[f \ \mapsto (S, \ x_1 .. x_n, \ E_v)] \rangle \rightarrow_{Df} E_f^{'}}{E_v \vdash <Function \ f(x_1 .. x_2) \ is \ S; D_f, \ E_f > \rightarrow_{Df} \ E_f^{'}}
+  	   	\]
    	\subsection{Statements}
    	
    	\subsection{Expressions}
@@ -165,44 +161,25 @@ This chapter provides a formal description of the language semantics. The chapte
    	\subsection{Arithmetic Expressions}
    	
    	\[
-   	[ADD-EXPR] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <a_1, \ st> \rightarrow_{e} (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <a_2, \ st^{''}> \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \vdash <a_1 + a_2, st> \rightarrow_{e} (v, st^{'})}
+   	[ASM-EXPR] \quad
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <a_1, \ st> \rightarrow_{e} (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <a_2, \ st^{''}> \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \vdash <a_1 \ op \ a_2, st> \rightarrow_{e} (v, st^{'})}
    	\]
  	\begin{math}
-   	v \ = \ v_1 \ + \ v_2
-   	\end{math}
-   	
-   	\[
-   	[SUB-EXPR] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <a_1, \ st> \rightarrow_{e} (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <a_2, \ st^{''}> \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \vdash <a_1 - a_2, st> \rightarrow_{e} (v, st^{'})}
-   	\]
-   	\begin{math}
-   	v \ = \ v_1 \ - \ v_2
-   	\end{math}
-   	
-   	\[
-   	[MUL-EXPR] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <a_1, \ st> \rightarrow_{e} (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <a_2, \ st^{''}> \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \vdash <a_1 * a_2, st> \rightarrow_{e} (v, st^{'})}
-   	\]
-   	\begin{math}
+ 	op \ \in \ \{ \ +, \ -, \ * \ \} \newline
+   	v \ = \ v_1 \ + \ v_2 \newline
+   	v \ = \ v_1 \ - \ v_2 \newline
    	v \ = \ v_1 \ * \ v_2
    	\end{math}
    	
    	\[
    	[DIV-EXPR] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <a_1, \ st> \rightarrow_{e} (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <a_2, \ st^{''}> \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \vdash <a_1 / a_2, st> \rightarrow_{e} (v, st^{'})}
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <a_1, \ st> \rightarrow_{e} (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <a_2, \ st^{''}> \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \vdash <a_1 \ op \ a_2, st> \rightarrow_{e} (v, st^{'})}
    	\]
    	\begin{math}
-   	v \ = \ v_1 \ / \ v_2
-   	\end{math}   	   	
-
-   	\[
-   	[MOD-EXPR] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <a_1, \ st> \rightarrow_{e} (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <a_2, \ st^{''}> \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \vdash <a_1 \% a_2, st> \rightarrow_{e} (v, st^{'})}
-   	\]
-   	\begin{math}
+   	op \ \in \ \{ \ /, \ \% \ \} \ | v \not= \ 0 \newline 
+   	v \ = \ v_1 \ / \ v_2 \newline
    	v \ = \ v_1 \ \% \ v_2
-   	\end{math}   	
+   	\end{math}   	   	   	
 
    	\subsection{Boolean Expressions}
    	\[
@@ -282,7 +259,7 @@ This chapter provides a formal description of the language semantics. The chapte
    	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ >= e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}
    	\]
 	\begin{math}
-   	v_1 \ >= \ v_2
+   	v_1 \ \ge \ v_2
    	\end{math}   	
    	
 
@@ -291,7 +268,7 @@ This chapter provides a formal description of the language semantics. The chapte
    	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ >= e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}
    	\]
 	\begin{math}
-   	v_1 \ \not>= \ v_2
+   	v_1 \ \ngeq \ v_2
    	\end{math}
    	
    	\[
@@ -299,7 +276,7 @@ This chapter provides a formal description of the language semantics. The chapte
    	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ <= e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}
    	\]
 	\begin{math}
-   	v_1 \ <= \ v_2
+   	v_1 \ \le \ v_2
    	\end{math}   	
    	
 
@@ -308,7 +285,7 @@ This chapter provides a formal description of the language semantics. The chapte
    	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ <= e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}
    	\]
 	\begin{math}
-   	v_1 \ \not<= \ v_2
+   	v_1 \ \nleq \ v_2
    	\end{math}
    	
    	\[
@@ -320,4 +297,27 @@ This chapter provides a formal description of the language semantics. The chapte
    	[EXPR^{\ \ !}_{\ \ \bot}] \quad
    	\dfrac{E_v, \ E_a, \ E_f \vdash <v, \ st> \rightarrow_e (\bot, st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <!v, \ st> \ \rightarrow_e (\bot, \ st^{'})}
    	\]
+   	
+   	
+   	\[
+   	[EXPR^{\ AND}_{\ \ \top}] \quad
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (\top, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (\top, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ AND \ e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}
+   	\]  	
+   	
+   	\[
+   	[EXPR^{\ AND}_{\ \ \bot}] \quad
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <e, \ st> \rightarrow_e (\bot, \ st) }{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ AND \ e_2, \ st> \ \rightarrow_e (\bot, \ st)}
+   	\]
+   	
+   	
+   	\[
+   	[EXPR^{\ OR}_{\ \ \top}] \quad
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <e, \ st> \rightarrow_e (\top, \ st) }{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ OR \ e_2, \ st> \ \rightarrow_e (\top, \ st)}
+   	\]
+   	
+   	\[
+   	[EXPR^{\ OR}_{\ \ \bot}] \quad
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (\bot, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (\bot, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ OR \ e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}
+   	\]  	
+   	
    	

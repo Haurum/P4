@@ -75,7 +75,7 @@ When death{
 }
 \end{lstlisting}
 
-Robocodes sample robot, Corners \cite{Corners}, will as find a specific corner where to stay for the entire round, and shoot at other robots whenever scanned. Initially Corners goes to the top left corner. When Corners dies, it will see if it did well or poorly it will either use the same corner or move clockwise to the next corner on the battlefield.
+Robocodes sample robot, Corners \citep{Corners}, will as find a specific corner where to stay for the entire round, and shoot at other robots whenever scanned. Initially Corners goes to the top left corner. When Corners dies, it will see if it did well or poorly it will either use the same corner or move clockwise to the next corner on the battlefield.
 
 In line 1-5 the Tankname is set and some global variables, are declared and initialized. The Setup block in listing \ref{lst:setup} is a block there run once at the beginning of each round. In this example the Setup block is used to store in the global variable "other" the initial number of enemies. This value is obtained by calling the build-in function Battlefield.enemies(). It will run the action goCorner, which will be explained later. As the last thing, the Setup block declares a variable, gunIncrement, of type num and initializes its value to 3.
 

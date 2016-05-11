@@ -91,8 +91,14 @@ This chapter provides a formal description of the language semantics. The chapte
   %\]
   
   
-  \section{Environment Storemodel}
-  MISSING INTRO!
+  \section{Environment Store Model}
+  The environment store model describes how variables are bound to a storage during the execution of programs. The variables are bound to a storage-call, where the storage-cell contains the value of the variable. Storage-cells are also called \textit{locations}, the set of locations is denoted \textbf{Loc}. In short the environment store model describes how variables are stored at locations and what values can be found at the locations.
+  
+  The variable environment is a function that will tell what storage location a variable is bound to. Variable environments  is the set of partial functions  from the variable to their location, as shown in the following equation:
+  
+  \begin{math}  
+	  \boldsymbol{EnvV} = \boldsymbol{Var} \cup \{ next \} \rightharpoonup \ \boldsymbol{Loc}
+  \end{math}
   
   
   

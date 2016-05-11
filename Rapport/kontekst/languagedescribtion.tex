@@ -298,7 +298,7 @@ The variables can be declared using the reserved words \textbf{Num}, \textbf{Boo
 An Action block is an abstraction for statements with no return types, the Actions can be called throughout the code. The parameters in the Action block is always call by value, just as in the programming language Java, this will be the same in the Function block.
 
 \begin{defi}
-An Action block is defined with the reserved word \textbf{Action} followed by the id of the Action, a desired amount of parameters in parentheses and the body of the Action block within \{\}.
+An Action block is defined with the reserved word \textbf{Action} followed by the id of the Action, a desired amount of parameters in parentheses and the body of the Action block within \{\}. \newline
 An Action block will look like: \textbf{Action} myAction (parameters) \{ \textbf{body} \}.
 \end{defi}
 
@@ -306,15 +306,16 @@ An Action block will look like: \textbf{Action} myAction (parameters) \{ \textbf
 The Function block is very similar to the Action block. The difference of the two blocks is that the Function block have a return type. 
 
 \begin{defi}
-The function block is defined with the reserved word \textbf{Function} followed by the id of the Function, what the Function will be returning, a desired amount of parameters in parentheses and the body of the Function block within \{\}.
+The function block is defined with the reserved word \textbf{Function} followed by the id of the Function, what the Function will be returning, a desired amount of parameters in parentheses and the body of the Function block within \{\}. \newline
 An example of the Function block would be: \textbf{Function} myFunction Returns returnType (parameters) \{ \textbf{body} \}
 \end{defi}
 
 \subsection{Reserved calls}
-(Wait to explain this, till when we are sure if we want to rename tank, to robot???)
+In our language, there are a few reserved calls, meaning that there are some predefined words that can’t be used for other purposes other than what they’re intended to be used for. The reserved calls for our language are: \textbf{Tank}, \textbf{Gun}, \textbf{Radar} and \textbf{Battlefield}. With the use of dot notation, the members of each reserved call can be accesed.  
 
 \begin{defi}
-Hello?
+A reserved call is defined by the use of one of the four reserved calls: \textbf{Tank}, \textbf{Gun}, \textbf{Radar} and \textbf{Battlefield} followed by dot notation, then followed by an action. The list containing each action one of the reserved calls can call, can be seen in Apendix \ref{fig:ReservedCallsTable}. \newline
+A call with a reserved call could look like: \textbf{Tank}.energy()
 \end{defi}
 
 \subsection{Conditional block}
@@ -331,10 +332,13 @@ The else-construct is noted by the reserved word \textbf{else} followed by the t
 \end{defi}
 
 \subsection{Operators}
-Describe the different operators.. ? 
-
+Describe the different operators.. 
+\begin{math}
++, -, *, /, \%, =, \not=, >, \not>, <, \not<, \ge, \ngeq, \le, \nleq.
+\end{math} 
+Which ones!?? 
 \begin{defi}
-Hello?
+Hello? It's me. 
 \end{defi}
 
 \section{Type systems}

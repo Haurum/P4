@@ -1,6 +1,7 @@
-\chapter{Appendiks name} \label{sec:ap1}
+\chapter{Appendix name}
+\section{Reserved calls table}
 \begin{center}
-    \begin{tabular}{ | l| l | p{0.5\linewidth} | }
+    \begin{tabular}{ | l| l | p{0.4\linewidth} | }
     \hline
     Reserved calls & Our language & RoboCode \\ \hline
     Tank. & forward(num distance) & ahead(double distance)  \\ \hline
@@ -37,8 +38,9 @@
     \end{tabular}
 \end{center}
 
+\section{Event table}
 \begin{center}
-	\begin{tabular}{ | p{0.3\linewidth} | p{0.3\linewidth} | p{0.3\linewidth} |}
+	\begin{tabular}{ | p{0.2\linewidth} | p{0.3\linewidth} | p{0.35\linewidth} |}
 		\hline
 		OL / Robocode Event& OL Event Information & Robocode Event Information \\ \hline
 		BulletHit / onBulletHit& bulletHeading() & getBullet().getHeading() \\ \hline
@@ -80,6 +82,13 @@
 		& headingDegrees() & getHeadingDegrees() \\ \hline
 		& power() & getPower() \\ \hline
 		& velocity() & getVelocity() \\ \hline
+	\end{tabular}
+	\label{fig:ReservedCallsTable}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{ | p{0.2\linewidth} | p{0.25\linewidth} | p{0.4\linewidth} |}
+		\hline
 		HitRobot / onHitRobot & bearing() & getBearing() \\ \hline
 		& bearingDegrees() & getBearingDegrees \\ \hline
 		& energy() & getEnergy() \\ \hline
@@ -103,4 +112,5 @@
 		Win / onWin &  & \\
 		\hline
 	\end{tabular}
+		\label{fig:EventTable}
 \end{center}

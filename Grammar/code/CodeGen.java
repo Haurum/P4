@@ -19,6 +19,8 @@ public class CodeGen extends GrammarBaseVisitor<String> {
     @Override
     public String visitProg(GrammarParser.ProgContext ctx) {
         StringBuilder buf = new StringBuilder();
+        buf.append("import robocode.*;\n");
+        buf.append("import static robocode.util.Utils.*;\n");
         buf.append("public class ");
         buf.append(StringUtils.capitalize(visit(ctx.dcls().tankname(0))));
         buf.append(" extends Robot {\n ");
@@ -194,7 +196,7 @@ public class CodeGen extends GrammarBaseVisitor<String> {
 
     @Override
     public String visitPrint(GrammarParser.PrintContext ctx) {
-        return "System.out.println(" + visit(ctx.expr()) + ")" + ctx.SEMI().getText() + "\n";
+        return "out.println(" + visit(ctx.expr()) + ")" + ctx.SEMI().getText() + "\n";
     }
 
     @Override

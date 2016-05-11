@@ -2,78 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69e8e018-4d1e-4444-9562-d99c2d37dd6e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Corners.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/Coners.txt" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Coners.txt" afterPath="$PROJECT_DIR$/Corners.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/Main.class" afterPath="$PROJECT_DIR$/out/production/Grammar/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/code/CodeGen.class" afterPath="$PROJECT_DIR$/out/production/Grammar/code/CodeGen.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarBaseListener.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarBaseListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarBaseVisitor.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarBaseVisitor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarLexer.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarLexer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarListener.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$AcallContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$AcallContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$ActdclContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$ActdclContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$AddexprContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$AddexprContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$AndexprContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$AndexprContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$ArgsContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$ArgsContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$AssignContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$AssignContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$AtomicContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$AtomicContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$AtomicexprContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$AtomicexprContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$BattlefieldcallContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$BattlefieldcallContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$BoolContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$BoolContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$CallContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$CallContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$DclsContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$DclsContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$EcallContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$EcallContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$ElseifContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$ElseifContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$EqexprContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$EqexprContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$ExprContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$ExprContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$FcallContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$FcallContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$FuncdclContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$FuncdclContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$FunctionBlockContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$FunctionBlockContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$GuncallContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$GuncallContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$IdContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$IdContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$IfstmtContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$IfstmtContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$LiteralContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$LiteralContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$MathcallContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$MathcallContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$MinusexprContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$MinusexprContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$MulexprContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$MulexprContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$NotexprContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$NotexprContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$NumContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$NumContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$OrexprContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$OrexprContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$PrintContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$PrintContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$ProgContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$ProgContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$RadarcallContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$RadarcallContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$RcallContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$RcallContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$RelexprContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$RelexprContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$RepeatblockContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$RepeatblockContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$ReturnstmtContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$ReturnstmtContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$SetupblockContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$SetupblockContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$StmtsContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$StmtsContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$StringContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$StringContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$TankcallContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$TankcallContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$TanknameContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$TanknameContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$VardclContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$VardclContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$WhilestmtContext.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser$WhilestmtContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarParser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarVisitor.class" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarVisitor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Grammar.g4" afterPath="$PROJECT_DIR$/Grammar.g4" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Grammar.iws" afterPath="$PROJECT_DIR$/Grammar.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main.java" afterPath="$PROJECT_DIR$/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ReservedFunctions.txt" afterPath="$PROJECT_DIR$/ReservedFunctions.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/CodeGen.java" afterPath="$PROJECT_DIR$/code/CodeGen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/Grammar.tokens" afterPath="$PROJECT_DIR$/gen/Grammar.tokens" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/GrammarBaseListener.java" afterPath="$PROJECT_DIR$/gen/GrammarBaseListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/GrammarBaseVisitor.java" afterPath="$PROJECT_DIR$/gen/GrammarBaseVisitor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/GrammarLexer.java" afterPath="$PROJECT_DIR$/gen/GrammarLexer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/GrammarLexer.tokens" afterPath="$PROJECT_DIR$/gen/GrammarLexer.tokens" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/GrammarListener.java" afterPath="$PROJECT_DIR$/gen/GrammarListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/GrammarParser.java" afterPath="$PROJECT_DIR$/gen/GrammarParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/GrammarVisitor.java" afterPath="$PROJECT_DIR$/gen/GrammarVisitor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/Grammar.g4" afterPath="$PROJECT_DIR$/out/production/Grammar/Grammar.g4" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/Grammar.iws" afterPath="$PROJECT_DIR$/out/production/Grammar/Grammar.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/compile_script" afterPath="$PROJECT_DIR$/out/production/Grammar/compile_script" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/Grammar.tokens" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/Grammar.tokens" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarLexer.tokens" afterPath="$PROJECT_DIR$/out/production/Grammar/gen/GrammarLexer.tokens" />
     </list>
     <ignored path="Grammar.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -96,7 +26,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
@@ -126,15 +56,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CodeGen.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CodeGen.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/code/CodeGen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="373" column="41" selection-start-line="373" selection-start-column="41" selection-end-line="373" selection-end-column="41" />
+            <state relative-caret-position="289">
+              <caret line="198" column="16" selection-start-line="198" selection-start-column="16" selection-end-line="198" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#872#873#0" expanded="true" />
-                <element signature="e#913#914#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -153,7 +81,7 @@
       <file leaf-file-name="Corners.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Corners.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-785">
+            <state relative-caret-position="0">
               <caret line="0" column="12" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
               <folding />
             </state>
@@ -199,7 +127,6 @@
         <option value="$PROJECT_DIR$/code/SymbolTypeVisitor.java" />
         <option value="$PROJECT_DIR$/RamFire.txt" />
         <option value="$PROJECT_DIR$/code/FuncSymbol.java" />
-        <option value="$PROJECT_DIR$/Main.java" />
         <option value="$PROJECT_DIR$/gen/GrammarBaseListener.java" />
         <option value="$PROJECT_DIR$/gen/GrammarBaseVisitor.java" />
         <option value="$PROJECT_DIR$/gen/GrammarLexer.java" />
@@ -208,9 +135,10 @@
         <option value="$PROJECT_DIR$/gen/GrammarVisitor.java" />
         <option value="$PROJECT_DIR$/Grammar.g4" />
         <option value="$PROJECT_DIR$/Coners.txt" />
-        <option value="$PROJECT_DIR$/code/CodeGen.java" />
         <option value="$PROJECT_DIR$/ReservedFunctions.txt" />
         <option value="$PROJECT_DIR$/Corners.java" />
+        <option value="$PROJECT_DIR$/Main.java" />
+        <option value="$PROJECT_DIR$/code/CodeGen.java" />
       </list>
     </option>
   </component>
@@ -250,8 +178,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -272,7 +201,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -588,18 +516,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295711" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295711" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875264" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49548534" sideWeight="0.50214595" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875264" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295711" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -609,13 +535,15 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.255079" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.255079" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875264" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875264" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3266385" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -666,7 +594,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="68" column="30" selection-start-line="68" selection-start-column="30" selection-end-line="68" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -688,7 +615,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -696,7 +622,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -704,7 +629,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -712,7 +636,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -720,7 +643,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -728,7 +650,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -736,7 +657,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -744,7 +664,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -752,7 +671,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -760,7 +678,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -885,7 +802,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -901,7 +817,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -917,7 +832,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="12" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -933,7 +847,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="12" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -951,7 +864,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="12" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -959,9 +871,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="12" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -969,27 +878,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="716">
           <caret line="103" column="11" selection-start-line="103" selection-start-column="11" selection-end-line="103" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Corners.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-785">
+        <state relative-caret-position="0">
           <caret line="0" column="12" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/CodeGen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="373" column="41" selection-start-line="373" selection-start-column="41" selection-end-line="373" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#872#873#0" expanded="true" />
-            <element signature="e#913#914#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1014,6 +910,16 @@
         <state relative-caret-position="272">
           <caret line="28" column="34" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/CodeGen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="198" column="16" selection-start-line="198" selection-start-column="16" selection-end-line="198" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -25,18 +25,23 @@ This chapter provides a formal description of the language semantics. The chapte
 \begin{math}
 	B ::= \{ \ D_v  \ S \ \}
 	\newline
+	S ::= \ Stmt \ S \ | \ \epsilon
+	\newline
 	Stmt ::= \ x = e \ | \ if \ e_1 \ B_1 \ else \ B_2 \ \newline | \ Repeat \ While(e_1) \ B \ | \ Repeat \ B \ While \ (e_2) \ | \ Return \ e \ | \ skip
 	\newline
 	%Exprs ::= \ Expr \ op \ Exprs \ | \ \epsilon
 	%\newline
 	%Expr ::= \ ( \ - \ | \ NOT \ )? \ e 
 	%\newline
-	D_a ::= \ a(S) \ B \ D_a \ | \epsilon 
+	D_a ::= \ a(Params) \ B \ D_a \ | \epsilon 
 	\newline
-	D_f ::= \ f(S) \ B \ D_f \ | \epsilon 
+	D_f ::= \ f(Params) \ B \ D_f \ | \epsilon 
 	\newline
-	D_v ::= \tau \ x \ D_v \ | \epsilon 
+	D_v ::= \ \tau \ x \ D_v \ | \epsilon 
 	\newline
+	Params ::= Param \ Params \ | \ \epsilon
+	\newline
+	Param ::= \ D_v
 \end{math}
  
  \section{Semantic Functions}
@@ -92,7 +97,7 @@ This chapter provides a formal description of the language semantics. The chapte
   
   
   \section{Environment Store Model}
-  The environment store model describes how variables are bound to a storage during the execution of programs. The variables are bound to a storage-call, where the storage-cell contains the value of the variable. Storage-cells are also called \textit{locations}, the set of locations is denoted \textbf{Loc}. In short the environment store model describes how variables are stored at locations and what values can be found at the locations.
+  The environment store model describes how variables are bound to a storage during the execution of programs. The variables are bound to a storage-call, where the storage-cell contains the value of the variable. Storage-cells are also called \textit{locations}, the set of locations is denoted \textbf{Loc}.
   
   The variable environment is a function that will tell what storage location a variable is bound to. Variable environments  is the set of partial functions  from the variable to their location, as shown in the following equation:
   
@@ -195,12 +200,22 @@ This chapter provides a formal description of the language semantics. The chapte
    	\]
    	\subsection{Statements}
    	
+   	
    	\subsection{Expressions}
    	
    	\[
    	[PAR-EXPR] \quad
    	\dfrac{E_v, \ E_a, \ E_f \vdash <e, \ st> \rightarrow_e (v, \ st^{'}}{E_v, \ E_a, \ E_f \vdash <(e), \ st> \rightarrow_e \ (v, \ st^{'})}
    	\]
+   	
+	\[
+	[CALL]
+	\dfrac{E_v^{'}[next \ \mapsto \ l], \ E_f^{'} \ \vdash \ \langle S, \ st \rangle \ \rightarrow_{Call} \ st^{'}}{E_v, \ E_f \ \vdash \ \langle call f, \ st \rangle \ \rightarrow_call \ st^{'}}
+	\]
+	\begin{math}		
+		\qquad \qquad \qquad \qquad where \ E_f(f) \ = \ \langle S, \ E_v^{'}, \ E_p^{'} \rangle \
+		and \ l \ = \ E_v(next)
+	\end{math}
    	
    	\subsection{Arithmetic Expressions}
    	

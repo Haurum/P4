@@ -1,5 +1,5 @@
 \chapter{Semantics}
-This chapter provides a formal description of the language semantics. The chapter uses techniques and structures from the book \textit{Transitions and Trees} \cite{Huttel}.
+This chapter provides a formal description of the language semantics. The chapter uses techniques from the book \textit{Transitions and Trees} \cite{Huttel}.
  \section{Syntactic categories}
  To simplify the presentation of the semantics of our language, syntactic categories have been used. The syntactic categories are based on the grammer found in section \ref{sec:Grammar}. A collection of metavariables are presented in the following paragraphs which will be used throughout the chapter to present the type system and the operational semantics.
  
@@ -97,12 +97,42 @@ This chapter provides a formal description of the language semantics. The chapte
   The variable environment is a function that will tell what storage location a variable is bound to. Variable environments  is the set of partial functions  from the variable to their location, as shown in the following equation:
   
   \begin{math}  
-	  \boldsymbol{EnvV} = \boldsymbol{Var} \cup \{ next \} \rightharpoonup \ \boldsymbol{Loc}
+	 env_v \in \boldsymbol{EnvV} = \boldsymbol{Var} \cup \{ next \} \rightharpoonup \ \boldsymbol{Loc}
   \end{math}
   
-  Let l be an arbitray element of \textbf{Loc} and always assume that \textbf{Loc} = \begin{math} \mathbb{N}. \end{math}
+  The partial function above shows us how a variable or the set \{ next \} is bound to a location. The \textit{next} element is pointing to the next available location in memory.
+  Let l be an arbitrary element of \textbf{Loc} and always assume that \textbf{Loc} = \begin{math} \mathbb{N}. \end{math} The function \textbf{new} found below, will return the successor for every location by defining \textbf{new} as: \textbf{new} l = l + 1.
   
-  The partial function above shows us how a variable or the set \{ next \} is bound to a location. The \textit{next} element is pointing to the next available location in memory. 
+  \begin{math}
+	  \boldsymbol{new} : \ \boldsymbol{Loc} \ \rightarrow \ \boldsymbol{Loc}
+  \end{math}
+  
+  Let \begin{math}env_v\end{math} be an arbitrary element of the partial function \textbf{EnvV}. To update the environment the update notation \begin{math}env_v [x \mapsto v] \end{math} is used. 
+  
+  \[ env^{'}_v(y) =
+      \begin{cases}
+        env_v(y)       & \quad \text{if } y \not= x\\
+        l  & \quad \text{if } y = x\\
+      \end{cases}
+    \]
+      
+  A partial function \textbf{Sto} is defined below with an arbitrary element sto.
+  
+  \begin{math}
+	  sto \ \in \boldsymbol{Sto} \ = \ \boldsymbol{Loc} \rightharpoonup \ \boldsymbol{Value}
+  \end{math}
+  
+  For updating the store sto \begin{math} \in \end{math} \textbf{Sto} the update notation \begin{math} sto[l \mapsto v] \end{math} will be used. A location and a value is needed to be able to update sto.
+  
+  \[ sto^{'}(l^{'}) =
+    \begin{cases}
+      sto(l)       & \quad \text{if } l^{'} \not= l\\
+      v  & \quad \text{if } l^{'} = l\\
+    \end{cases}
+  \]
+  
+  
+  
   
   \section{Type system}
   THIS SHALL BE MOVED!!!
@@ -124,38 +154,44 @@ This chapter provides a formal description of the language semantics. The chapte
   \section{Operational semantic}
   MISSING INTRO! We should write about the smallstep- and bigstep semantics ?
   
-  \subsection{Declarations}
+  \subsection{Blocks}
+    \[
+	  [BLOCK]
+	  \dfrac{\langle D_v, \ E_v \rangle \ \rightarrow_{Dv} \ \langle E_v^{'} \rangle \qquad E_v^{'} \ \vdash \ \langle S, \ st \rangle \ \rightarrow_S \ st^{'}}{E_v \ \vdash \ \langle begin \ D_v \ S \ end, \ st \rangle \ \rightarrow_B \ st^{'}}
+	  \]
+  
+  \subsubsection{Declarations}
   	\[
-  		[EMPTY-VARDCL] \quad
-  		\dfrac{}{\langle\epsilon, \ E_v\rangle \rightarrow_{Dv} E_v}
-  		\]
-  	    	
-  	   	\[
-  	   	[VARDCL] \quad
-  	   	\dfrac{\langle \ D_v, \ E_v[x \mapsto l]\rangle \ \rightarrow_{Dv} \ \langle \ E_v^{'} \ \rangle }{ \langle var \ x; \ D_v,\ E_v \rangle \rightarrow_{Dv} \ \langle E_v^{'} \rangle }
-  	   	\qquad \ \ l = E_v(next)
-  	   	\]
-  	    	
-  	   	\[
-  	   	[EMPTY-ACTDCL] \quad
-  	   	\dfrac{}{E_v \ \vdash \ \langle \epsilon, E_a \rangle \ \rightarrow_{Da} \ E_a}
-  	   	\]
-  	    	
-  	    	
-  	  	\[
-  	   	[ACTDCL] \quad
-  	   	\dfrac{E_v \ \vdash \langle D_a, \ E_a[a \ \mapsto (S, \ (x_1 .. x_n) \ E_v)] \ \rangle \rightarrow_Da \ E_a^{'}}{E_v \ Action \ a(x_1 .. x_n) \ is \ S; \ D_a \ E_a \ \rightarrow_{Da} \ E_a^{'}}
-  	   	\]
-  	    	
-  	   	\[
-  	   	[EMPTY-FUNCDCL] \quad
-  	   	\dfrac{}{E_v \ \vdash \langle \epsilon; \ D_f \rangle \ \rightarrow_{Df} \ E_f}
-  	   	\]
-  	   	
-  	   	\[
-  	   	[FUNCDCL] \quad
-  	   	\dfrac{E_v \vdash \langle D_f, \ E_f[f \ \mapsto (S, \ x_1 .. x_n, \ E_v)] \rangle \rightarrow_{Df} E_f^{'}}{E_v \vdash <Function \ f(x_1 .. x_2) \ is \ S; D_f, \ E_f > \rightarrow_{Df} \ E_f^{'}}
-  	   	\]
+	[EMPTY-VARDCL] \quad
+	\dfrac{}{\langle\epsilon, \ E_v\rangle \rightarrow_{Dv} E_v}
+	\]
+    	
+   	\[
+   	[VARDCL] \quad
+   	\dfrac{ \langle D_v, \ E_v[x \mapsto l]\rangle \ \rightarrow_{Dv} \ \langle E_v^{'} \rangle }{ \langle \ \tau \ x; \ D_v,\ E_v \rangle \rightarrow_{Dv} \ \langle E_v^{'} \rangle }
+   	\qquad \ \ l = E_v(next)
+   	\]
+    	
+   	\[
+   	[EMPTY-ACTDCL] \quad
+   	\dfrac{}{E_v \ \vdash \ \langle \epsilon, E_a \rangle \ \rightarrow_{Da} \ E_a}
+   	\]
+    	
+    	
+  	\[
+   	[ACTDCL] \quad
+   	\dfrac{E_v \ \vdash \langle D_a, \ E_a[a \ \mapsto (S, \ (x_1 .. x_n) \ E_v)] \rangle \rightarrow_Da \ E_a^{'}}{E_v \ \vdash \ Action \ a(x_1 .. x_n) \ is \ S; \ D_a \ E_a \ \rightarrow_{Da} \ E_a^{'}}
+   	\]
+    	
+   	\[
+   	[EMPTY-FUNCDCL] \quad
+   	\dfrac{}{E_v \ \vdash \langle \epsilon; \ D_f \rangle \ \rightarrow_{Df} \ E_f}
+   	\]
+   	
+   	\[
+   	[FUNCDCL] \quad
+   	\dfrac{E_v \vdash \langle D_f, \ E_f[f \ \mapsto (S, \ x_1 .. x_n, \ E_v)] \rangle \rightarrow_{Df} E_f^{'}}{E_v \vdash \ \langle Function \ f(x_1 .. x_2) \ is \ S; \ D_f, \ E_f \rangle \ \rightarrow_{Df} \ E_f^{'}}
+   	\]
    	\subsection{Statements}
    	
    	\subsection{Expressions}

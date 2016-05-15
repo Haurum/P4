@@ -42,6 +42,11 @@ This chapter provides a formal description of the language semantics. The chapte
 	Params ::= Param \ Params \ | \ \epsilon
 	\newline
 	Param ::= \ D_v
+	\newline
+	C ::= \ active \ C \ end \ | \ x \ := \ e \ | \ skip \ | \ C_1;C_2 \ | \ if \ b \ then \ C_1 \ else \ C_2 \newline
+	| \ while \ b \ do \ C \ | \ begin \ D_v \ D_p \ C \ end \ | \ call \ p \ | \ atom \ S \ end
+	\newline
+	D_p ::= \ proc \ p \ is \ C; \ D_p \ | \epsilon
 \end{math}
  
  \section{Semantic Functions}
@@ -199,7 +204,24 @@ This chapter provides a formal description of the language semantics. The chapte
    	\dfrac{E_v \vdash \langle D_f, \ E_f[f \ \mapsto (S, \ x_1 .. x_n, \ E_v)] \rangle \rightarrow_{Df} E_f^{'}}{E_v \vdash \ \langle Function \ f(x_1 .. x_2) \ is \ S; \ D_f, \ E_f \rangle \ \rightarrow_{Df} \ E_f^{'}}
    	\]
    	\subsection{Statements}
+   	The configuration of the semantics statements are
    	
+   	\begin{itemize}
+   		\item \begin{math} \langle \end{math}C, sto, envl\begin{math} \rangle \end{math}, which are intermediate configurations where C is a statement that may contain atomic-encapsulations or parallels.
+   		\item \begin{math} \langle \end{math}sto, envl\begin{math} \rangle \end{math} is terminal configurations.
+   	\end{itemize}
+   	
+   	The transition system of our language are:
+   	 
+   	\begin{math}
+   		((\boldsymbol{EvCxt} \ \times \boldsymbol{Sto}) \ \cup \ (\boldsymbol{Sto} \ \times \ \boldsymbol{Envl}), \Rightarrow, \ \boldsymbol{Sto} \ \times \ \boldsymbol{Envl})
+   	\end{math}
+   	
+   	The set of run time stacks \textbf{EvCxt} is 
+   	
+   	\textbf{Envl} = \textbf{EnvV}\begin{math}
+   	^*
+   	\end{math}
    	
    	\subsection{Expressions}
    	

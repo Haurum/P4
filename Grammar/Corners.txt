@@ -28,7 +28,7 @@ Repeat{
 Action goCorner(){
   stopWhenSeeRobot = False;
   
-  Tank.turn(corner - Tank.heading());
+  Tank.turn(Utils.normalRelativeAngleDegrees(corner - Tank.heading()));
   
   stopWhenSeeRobot = True;
   

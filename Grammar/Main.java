@@ -1,4 +1,3 @@
-
 import code.*;
 import gen.*;
 
@@ -7,6 +6,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -17,7 +17,8 @@ import java.util.stream.Stream;
  */
 public class Main {
     public static void main(String[] args ) throws IOException {
-        ANTLRFileStream input = new ANTLRFileStream("Corners.txt");
+
+        ANTLRFileStream input = new ANTLRFileStream(args[0] + ".txt");
         GrammarLexer lex = new GrammarLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lex);
         GrammarParser parser = new GrammarParser(tokens);
@@ -32,7 +33,10 @@ public class Main {
         walker.walk(FListener, t);
         STVisitor.visit(t);
         CodeGen cg = new CodeGen(RoboFST);
-        cg.visit(t);
+        String result = cg.visit(t);
+        PrintWriter writer = new PrintWriter(args[0] + ".java");
+        writer.println(result);
+        writer.close();
     }
 
     public static void ImportReservedFunctions(FuncSymbolTable FST)

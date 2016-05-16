@@ -27,7 +27,7 @@ This chapter provides a formal description of the language semantics. The chapte
 	\newline
 	S ::= \ Stmt \ S \ | \ \epsilon
 	\newline
-	Stmt ::= \ x = e \ | \ if \ e_1 \ B_1 \ else \ B_2 \ \newline | \ Repeat \ While(e_1) \ B \ | \ Repeat \ B \ While \ (e_2) \ | \ Return \ e \ | \ skip
+	Stmt ::= \ x = e \ | \ if \ e_1 \ B_1 \ else \ B_2 \ \newline | \ Repeat \ While(e) \ B \ | \ Return \ e \ | \ skip \ | \ atom \ S \ end
 	\newline
 	%Exprs ::= \ Expr \ op \ Exprs \ | \ \epsilon
 	%\newline
@@ -43,10 +43,7 @@ This chapter provides a formal description of the language semantics. The chapte
 	\newline
 	Param ::= \ D_v
 	\newline
-	C ::= \ active \ C \ end \ | \ x \ := \ e \ | \ skip \ | \ C_1;C_2 \ | \ if \ b \ then \ C_1 \ else \ C_2 \newline
-	| \ while \ b \ do \ C \ | \ begin \ D_v \ D_p \ C \ end \ | \ call \ p \ | \ atom \ S \ end
-	\newline
-	D_p ::= \ proc \ p \ is \ C; \ D_p \ | \epsilon
+	Game ::= \ Stmt \ || \ F
 \end{math}
  
  \section{Semantic Functions}
@@ -126,13 +123,13 @@ This chapter provides a formal description of the language semantics. The chapte
       \end{cases}
     \]
       
-  A partial function \textbf{Sto} is defined below with an arbitrary element sto.
+  A partial function \textbf{St} is defined below with an arbitrary element st.
   
   \begin{math}
-	  sto \ \in \boldsymbol{Sto} \ = \ \boldsymbol{Loc} \rightharpoonup \ \boldsymbol{Value}
+	  st \ \in \boldsymbol{St} \ = \ \boldsymbol{Loc} \rightharpoonup \ \boldsymbol{Value}
   \end{math}
   
-  For updating the store sto \begin{math} \in \end{math} \textbf{Sto} the update notation \begin{math} sto[l \mapsto v] \end{math} will be used. A location and a value is needed to be able to update sto.
+  For updating the store st \begin{math} \in \end{math} \textbf{St} the update notation \begin{math} sto[l \mapsto v] \end{math} will be used. A location and a value is needed to be able to update sto.
   
   \[ sto^{'}(l^{'}) =
     \begin{cases}
@@ -204,17 +201,21 @@ This chapter provides a formal description of the language semantics. The chapte
    	\dfrac{E_v \vdash \langle D_f, \ E_f[f \ \mapsto (S, \ x_1 .. x_n, \ E_v)] \rangle \rightarrow_{Df} E_f^{'}}{E_v \vdash \ \langle Function \ f(x_1 .. x_2) \ is \ S; \ D_f, \ E_f \rangle \ \rightarrow_{Df} \ E_f^{'}}
    	\]
    	\subsection{Statements}
+   	EXPLAIN ABOUT THE BATTLEFIELD INTERACTIONS!
+   	
    	The configuration of the semantics statements are
    	
    	\begin{itemize}
-   		\item \begin{math} \langle \end{math}C, sto, envl\begin{math} \rangle \end{math}, which are intermediate configurations where C is a statement that may contain atomic-encapsulations or parallels.
-   		\item \begin{math} \langle \end{math}sto, envl\begin{math} \rangle \end{math} is terminal configurations.
+   		\item \begin{math} \langle \end{math}S, st, envl\begin{math} \rangle \end{math}, which are intermediate configurations where C is a statement that may contain atomic-encapsulations or parallels.
+   		\item \begin{math} \langle \end{math}st, envl\begin{math} \rangle \end{math} is terminal configurations.
    	\end{itemize}
+   	
+   	In intermediate configuration is where only parts of the statements will be interpreted. Where in terminal configurations  all the statements will be executed.
    	
    	The transition system of our language are:
    	 
    	\begin{math}
-   		((\boldsymbol{EvCxt} \ \times \boldsymbol{Sto}) \ \cup \ (\boldsymbol{Sto} \ \times \ \boldsymbol{Envl}), \Rightarrow, \ \boldsymbol{Sto} \ \times \ \boldsymbol{Envl})
+   		((\boldsymbol{EvCxt} \ \times \boldsymbol{St}) \ \cup \ (\boldsymbol{St} \ \times \ \boldsymbol{Envl}), \Rightarrow, \ \boldsymbol{St} \ \times \ \boldsymbol{Envl})
    	\end{math}
    	
    	The set of run time stacks \textbf{EvCxt} is 
@@ -222,6 +223,53 @@ This chapter provides a formal description of the language semantics. The chapte
    	\textbf{Envl} = \textbf{EnvV}\begin{math}
    	^*
    	\end{math}
+   	
+   	\[
+   	[ATOM-PARTLY]
+   	\dfrac{E_e, \ E_f, \ E_a \ \vdash \langle S, \ st, \ E_l \rangle \ \Rightarrow_Atom \ \langle S^{''}, \ st^{'}, \ E_l^{'}}{E_e, \ E_f, \ E_a \ \vdash \ \langle atom \ S \ end, \ st, \ E_l \rangle \ \Rightarrow_Atom \ \langle atom \ S^{''} \ end, \ st^{'}, \ E_l^{'}}
+   	\]
+   	
+   	\[
+   	[ATOM-PARTLY]
+   	\dfrac{E_e, \ E_f, \ E_a \ \vdash \langle S, \ st, \ E_l \rangle \ \Rightarrow_Atom \ \langle st^{'}, \ E_l^{'}}{E_e, \ E_f, \ E_a \ \vdash \ \langle atom \ S \ end, \ st, \ E_l \rangle \ \Rightarrow_Atom \ \langle st^{'}, \ E_l^{'}}
+   	\]
+   	
+   	In the formation rules section the formation rule "Game", describes the interaction between the battlefield and the program. The "F" in Game is the battlefield configuration. As mentioned earlier(have not been written yet) the semantics for the battlefield is out of scope for this project, but the interaction the battlefield configuration may have with a statement running in parallel will be explained, but only for when it moves from one configuration to another. 
+   	
+   	F have to states in our language, either an event is raised or not. If no events are raised, F stays the same. If an event has been raise \begin{math} F \rightarrow_{event(p)} F^{'} \end{math}, which is an transition from the battlefield configuration. It is possible for the events to be raised with an parameter p. 
+   	
+   	\[
+   	[ASSIGN] \quad
+   	\dfrac{E_v \ \vdash \ st[l \ -> \ a] \ \Rightarrow_Assign \ st^{'}}{E_v \ \vdash \ x \ = \ a; \ S, \ st \ \Rightarrow_Assign \ st^{'}}
+   	\]
+   	\begin{math}
+   		Where E_v(x) = l;
+   	\end{math}
+   	
+   	\[
+   	[IF-ELSE^{E_1}_\top]
+   	\dfrac{E_v \ \vdash \ \langle e_1, \ st \rangle \Rightarrow_e true \quad \langle B_1, \ st \rangle \ \Rightarrow_S \ st^{'}}{E_v \ \vdash \ \langle if \ e_1 \ B_1 \ else \ B_2 \ st \ \Rightarrow_IfElse \ st^{'}}
+   	\]
+   	
+   	\[
+   	[IF-ELSE^{E_1}_\bot]
+   	\dfrac{E_v \ \vdash \ \langle e_1, \ st \rangle \Rightarrow_e false \quad \langle B_2, \ st \rangle \ \Rightarrow_S \ st^{'}}{E_v \ \vdash \ \langle if \ e_1 \ B_1 \ else \ B_2 \ st \ \Rightarrow_IfElse \ st^{'}}
+   	\]
+   	
+   	\[
+   	[REPEAT^e_\top]
+   	\dfrac{E_v \ \vdash \ \langle e, \ st \rangle \ \Rightarrow_e \ true \quad \langle B, \ st \ \Rightarrow_S \ st^{'}}{E_v \ \vdash \ \langle Repeat \ While(e) \ B \rangle \ \Rightarrow_Repeat \ st^{'}}
+   	\]
+   	
+   	\[
+   	[REPEAT^e_\bot]
+   	\dfrac{E_v \ \vdash \ e, \ st \ \Rightarrow_e false}{E_v \ \vdash \ \langle Repeat \ While(e) \ B, \ st\rangle \ \Rightarrow_e st}
+   	\]
+   	
+   	\[
+   	[SKIP]
+   	\dfrac{}{\langle skip, \ st \rangle \ \Rightarrow_Skip \ st}
+   	\]
    	
    	\subsection{Expressions}
    	
@@ -253,7 +301,7 @@ This chapter provides a formal description of the language semantics. The chapte
    	\end{math}
    	
    	\[
-   	[DIV-EXPR] \quad
+   	[DM-EXPR] \quad
    	\dfrac{E_v, \ E_a, \ E_f \vdash <a_1, \ st> \rightarrow_{e} (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <a_2, \ st^{''}> \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \vdash <a_1 \ op \ a_2, st> \rightarrow_{e} (v, st^{'})}
    	\]
    	\begin{math}

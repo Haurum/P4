@@ -24,7 +24,13 @@ getBattleFieldWidth Battlefield width Num
 getNumRounds Battlefield NumOfRounds Num
 getOthers Battlefield enemies Num
 getRoundNum Battlefield roundNum Num
-getTime Math max Num - Num value1, Num value2
+isNear Utils isNear Bool - Num value1, Num value2
+normalAbsoluteAngle Utils normalAbsoluteAngle Num - Num angle
+normalAbsoluteAngleDegrees Utils normalAbsoluteAngleDegrees Num - Num angle
+normalNearAbsoluteAngle Utils normalNearAbsoluteAngle Num - Num angle
+normalNearAbsoluteAngleDegrees Utils normalNearAbsoluteAngleDegrees Num - Num angle
+normalRelativeAngle Utils normalRelativeAngle Num - Num angle
+normalRelativeAngleDegrees Utils normalRelativeAngleDegrees Num - Num angle
 getBullet().getHeading bulletHit bulletHeading Num
 getBullet().getName bulletHit bulletOwner String
 getBullet().getPower bulletHit bulletPower Num

@@ -227,14 +227,14 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
     }
 
     @Override
-    public String visitMathcall(GrammarParser.MathcallContext ctx) {
-        FuncSymbol fsym = RoboFST.GetFuncSymbol("Math", ctx.ID().getText());
+    public String visitUtilscall(GrammarParser.UtilscallContext ctx) {
+        FuncSymbol fsym = RoboFST.GetFuncSymbol("Utils", ctx.ID().getText());
         if (fsym == null){
             Error e = new Error("Error at line: " +
                     ctx.start.getLine() + ": Function not found");
             throw e;
         }
-        if (!fsym.Type.equals("Math")){
+        if (!fsym.Type.equals("Utils")){
             Error e = new Error("Error at line: " +
                     ctx.start.getLine() + ": Incorrect function type.");
             throw e;

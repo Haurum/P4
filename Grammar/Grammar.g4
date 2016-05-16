@@ -72,7 +72,7 @@ rcall   : 'Tank.'ID'('args?')'          #tankcall
         | 'Gun.'ID'('args?')'           #guncall
         | 'Radar.'ID'('args?')'         #radarcall
         | 'Battlefield.'ID'('args?')'   #battlefieldcall
-        | 'Math.'ID'('args?')'          #mathcall
+        | 'Utils.'ID'('args?')'          #utilscall
         ;
 
 ecall : 'Event.'ID'('args?')';

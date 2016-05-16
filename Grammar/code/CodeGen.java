@@ -268,8 +268,8 @@ public class CodeGen extends GrammarBaseVisitor<String> {
     }
 
     @Override
-    public String visitMathcall(GrammarParser.MathcallContext ctx) {
-        FuncSymbol fs = RoboFST.GetFuncSymbol("Math", ctx.ID().getText());
+    public String visitUtilscall(GrammarParser.UtilscallContext ctx) {
+        FuncSymbol fs = RoboFST.GetFuncSymbol("Utils", ctx.ID().getText());
         if(ctx.getChildCount() == 5) {
             return fs.RoboCodeName + "(" + visit(ctx.args()) + ")";
         }else {

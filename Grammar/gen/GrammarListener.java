@@ -295,17 +295,17 @@ public interface GrammarListener extends ParseTreeListener {
 	 */
 	void exitBattlefieldcall(GrammarParser.BattlefieldcallContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code mathcall}
+	 * Enter a parse tree produced by the {@code utilscall}
 	 * labeled alternative in {@link GrammarParser#rcall}.
 	 * @param ctx the parse tree
 	 */
-	void enterMathcall(GrammarParser.MathcallContext ctx);
+	void enterUtilscall(GrammarParser.UtilscallContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code mathcall}
+	 * Exit a parse tree produced by the {@code utilscall}
 	 * labeled alternative in {@link GrammarParser#rcall}.
 	 * @param ctx the parse tree
 	 */
-	void exitMathcall(GrammarParser.MathcallContext ctx);
+	void exitUtilscall(GrammarParser.UtilscallContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GrammarParser#ecall}.
 	 * @param ctx the parse tree

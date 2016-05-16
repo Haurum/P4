@@ -182,12 +182,12 @@ public interface GrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBattlefieldcall(GrammarParser.BattlefieldcallContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code mathcall}
+	 * Visit a parse tree produced by the {@code utilscall}
 	 * labeled alternative in {@link GrammarParser#rcall}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitMathcall(GrammarParser.MathcallContext ctx);
+	T visitUtilscall(GrammarParser.UtilscallContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GrammarParser#ecall}.
 	 * @param ctx the parse tree

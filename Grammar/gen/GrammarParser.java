@@ -43,7 +43,7 @@ public class GrammarParser extends Parser {
 		null, "'Tankname'", "'Setup'", "'Repeat'", "'Action'", "'('", "')'", "'Function'", 
 		"'returns'", "'{'", "'}'", "','", "'When'", "'='", "'if'", "'else'", "'repeat'", 
 		"'while'", "'return'", "'print('", "'run'", "'Tank.'", "'Gun.'", "'Radar.'", 
-		"'Battlefield.'", "'Math.'", "'Event.'", "';'", "'OR'", "'AND'", "'IS='", 
+		"'Battlefield.'", "'Utils.'", "'Event.'", "';'", "'OR'", "'AND'", "'IS='", 
 		"'NOT='", "'>'", "'<'", "'>='", "'<='", "'+'", "'-'", "'*'", "'/'", "'%'", 
 		"'!'"
 	};
@@ -1670,26 +1670,6 @@ public class GrammarParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
-	public static class MathcallContext extends RcallContext {
-		public TerminalNode ID() { return getToken(GrammarParser.ID, 0); }
-		public ArgsContext args() {
-			return getRuleContext(ArgsContext.class,0);
-		}
-		public MathcallContext(RcallContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterMathcall(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitMathcall(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitMathcall(this);
-			else return visitor.visitChildren(this);
-		}
-	}
 	public static class RadarcallContext extends RcallContext {
 		public TerminalNode ID() { return getToken(GrammarParser.ID, 0); }
 		public ArgsContext args() {
@@ -1727,6 +1707,26 @@ public class GrammarParser extends Parser {
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitTankcall(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class UtilscallContext extends RcallContext {
+		public TerminalNode ID() { return getToken(GrammarParser.ID, 0); }
+		public ArgsContext args() {
+			return getRuleContext(ArgsContext.class,0);
+		}
+		public UtilscallContext(RcallContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).enterUtilscall(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GrammarListener ) ((GrammarListener)listener).exitUtilscall(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GrammarVisitor ) return ((GrammarVisitor<? extends T>)visitor).visitUtilscall(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1871,7 +1871,7 @@ public class GrammarParser extends Parser {
 				}
 				break;
 			case T__24:
-				_localctx = new MathcallContext(_localctx);
+				_localctx = new UtilscallContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
 				setState(250);

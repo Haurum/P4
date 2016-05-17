@@ -261,7 +261,7 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
         if (returnStmt.equals(ctx.TYPE().getText())){
             return returnStmt;
         }else{
-            Error e = new Error("Error at line: " + ctx.start.getLine() + ": Missing return statement.");
+            Error e = new Error("Error at line: " + ctx.start.getLine() + ": return type and return expression type do not match");
             throw e;
         }
     }
@@ -318,6 +318,11 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
     @Override
     public String visitAcall(GrammarParser.AcallContext ctx) {
         FuncSymbol asym = FST.GetFuncSymbol("Action", ctx.ID().getText());
+        if (asym == null){
+            Error e = new Error("Error at line: " +
+                    ctx.start.getLine() + ": Action not found");
+            throw e;
+        }
         if (!asym.Type.equals("Action")){
             Error e = new Error("Error at line: " +
                     ctx.start.getLine() + ": Incorrect function type.");
@@ -382,7 +387,7 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
         }
         if (!sym.Type.equals(visit(ctx.expr()))){
             Error e = new Error("Error at line: " +
-                    ctx.expr().start.getLine() + ": No expression was found.");
+                    ctx.expr().start.getLine() + ": Expression and variable are not type compatible");
             throw e;
         }
         return sym.Type;

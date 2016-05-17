@@ -71,7 +71,7 @@ public class CodeGen extends GrammarBaseVisitor<String> {
 
     @Override
     public String visitFuncdcl(GrammarParser.FuncdclContext ctx) {
-        String type = new String();
+        String type;
         if (ctx.TYPE().getText().equals("Num")){
             type = "double ";
         }else if(ctx.TYPE().getText().equals("Bool")){
@@ -104,7 +104,7 @@ public class CodeGen extends GrammarBaseVisitor<String> {
 
     @Override
     public String visitParam(GrammarParser.ParamContext ctx) {
-        String result = new String();
+        String result;
         if (ctx.TYPE().getText().equals("Num")){
             result = "double ";
         }else if(ctx.TYPE().getText().equals("Bool")){
@@ -142,7 +142,7 @@ public class CodeGen extends GrammarBaseVisitor<String> {
 
     @Override
     public String visitVardcl(GrammarParser.VardclContext ctx) {
-        String result = new String();
+        String result;
         if (ctx.TYPE().getText().equals("Num")){
             result = "double ";
         }else if(ctx.TYPE().getText().equals("Bool")){

@@ -1,15 +1,15 @@
 \chapter{Semantics}
 This chapter provides a formal description of the language semantics. The chapter uses techniques from the book \textit{Transitions and Trees} \cite{Huttel}.
  \section{Syntactic categories}
- To simplify the presentation of the semantics of our language, syntactic categories have been used. The syntactic categories are based on the grammer found in section \ref{sec:Grammar}. A collection of metavariables are presented in the following paragraphs which will be used throughout the chapter to present the type system and the operational semantics.
+ To simplify the presentation of the semantics of our language, syntactic categories have been used. The syntactic categories are based on the grammer found in section \ref{sec:Grammar}. A collection of metavariables are presented in the following paragraphs which will be used throughout the chapter to present the operational semantics.
  
  \begin{math}
  e \in \textbf{Expr} - Expressions \newline
- S \in \textbf{Stmt} - Statement\newline
+ S \in \textbf{Stmt} - Statements\newline
  n \in \textbf{Num} - Numerals\newline
- b \in \textbf{Bool} - Boolean\ Literal\newline
- B \in \textbf{Block} - Block \newline %sure about this??
- tx \in \textbf{Txt} - Txt\ Literal\newline
+ b \in \textbf{Bool} - Booleans\ Literal\newline
+ B \in \textbf{Block} - Blocks \newline %sure about this??
+ tx \in \textbf{Txt} - Txt\ Literals\newline
  t \in \textbf{Type} - Num,\ Bool\ and\ Txt\ types\newline
  x \in \textbf{var} - Variable name \newline
  f \in \textbf{Func} - Function name \newline
@@ -17,6 +17,7 @@ This chapter provides a formal description of the language semantics. The chapte
  D_a \in \textbf{ActDcl} - Action\ declaration\newline
  D_f \in \textbf{FuncDcl} - Function\ declaration\newline
  D_v \in \textbf{VarDcl} - Gobal\ variable\ declaration\newline
+ F \in \textbf{Battle-Field} - Battle-field\ configuration\newline
  \end{math}
  
  \section{Formation rules}
@@ -27,27 +28,23 @@ This chapter provides a formal description of the language semantics. The chapte
 	\newline
 	S ::= \ Stmt \ S \ | \ \epsilon
 	\newline
-	Stmt ::= \ x = e \ | \ if \ e_1 \ B_1 \ else \ B_2 \ \newline | \ Repeat \ While(e) \ B \ | \ Return \ e \ | \ skip \ | \ atom \ S \ end
+	Stmt ::= \ x = e \ | \ if \ e_1 \ B_1 \ else \ B_2 \ \newline | \ Repeat \ While(e) \ B \ | \ Return \ e \ | \ skip \ | \ atom \ S \ end \ | active \ S \ end
 	\newline
 	%Exprs ::= \ Expr \ op \ Exprs \ | \ \epsilon
 	%\newline
 	%Expr ::= \ ( \ - \ | \ NOT \ )? \ e 
 	%\newline
-	D_a ::= \ a(Params) \ B \ D_a \ | \epsilon 
+	D_a ::= \ a(Dv) \ B \ D_a \ | \epsilon 
 	\newline
-	D_f ::= \ f(Params) \ B \ D_f \ | \epsilon 
+	D_f ::= \ f(Dv) \ B \ D_f \ | \epsilon 
 	\newline
 	D_v ::= \ \tau \ x \ D_v \ | \epsilon 
-	\newline
-	Params ::= Param \ Params \ | \ \epsilon
-	\newline
-	Param ::= \ D_v
 	\newline
 	Game ::= \ Stmt \ || \ F
 \end{math}
  
  \section{Semantic Functions}
- The purpose of the semantics functions is interpret syntactic elements to semantic elements. The semantic functions used in our language will be described in this section. 
+ The purpose of the semantics functions to interpret syntactic elements to semantic elements. The semantic functions used in our language will be described in this section. 
   
   \subsection{Numeral Literals}
   The numbers literal in our language will be Numerals, which will be interpreted to real numbers by means of the semantic function: 
@@ -82,7 +79,7 @@ This chapter provides a formal description of the language semantics. The chapte
   \end{math}
   
   \subsection{Boolean Literals}
-  The Boolean literals depict whether the expression is evaluated to true or false. The symbol for true is \begin{math} \top \end{math}, and the symbol for false is \begin{math} \bot \end{math} from the set of values from \textbf{bool} = {True, False}.
+  The Boolean literals depict whether the expression is evaluated to True or False. The semantic value for true is \begin{math} \top \end{math}, and false is \begin{math} \bot. \end{math}
   
   %\begin{math}
   	%\beta : Bool \rightarrow bool
@@ -107,14 +104,14 @@ This chapter provides a formal description of the language semantics. The chapte
 	 E_v \in \boldsymbol{EnvV} = \boldsymbol{Var} \cup \{ next \} \rightharpoonup \ \boldsymbol{Loc}
   \end{math}
   
-  The partial function above shows us how a variable or the set \{ next \} is bound to a location. The \textit{next} element is pointing to the next available location in memory.
-  Let l be an arbitrary element of \textbf{Loc} and always assume that \textbf{Loc} = \begin{math} \mathbb{N}. \end{math} The function \textbf{new} found below, will return the successor for every location by defining \textbf{new} as: \textbf{new} l = l + 1.
+  We assume the \textit{next} element does not belong to \textit{var} and will be used to point to the next available location in memory.
+  Let l be an arbitrary element of \textbf{Loc} and assume that \textbf{Loc} = \begin{math} \mathbb{N}. \end{math} The function \textbf{new} found below, will return the successor for every location by defining \textbf{new} as: \textbf{new} l = l + 1.
   
   \begin{math}
 	  \boldsymbol{new} : \ \boldsymbol{Loc} \ \rightarrow \ \boldsymbol{Loc}
   \end{math}
   
-  Let \begin{math}env_v\end{math} be an arbitrary element of the partial function \textbf{EnvV}. To update the environment the update notation \begin{math}env_v [x \mapsto v] \end{math} is used. 
+  Let \begin{math}E_v\end{math} be an arbitrary element in \textbf{EnvV}, we denote by \begin{math} E_v[x \mapsto l] \end{math} the variable environment \begin{math}E_v^{'} \end{math} defined as follows:
   
   \[ E^{'}_v(y) =
       \begin{cases}
@@ -123,13 +120,15 @@ This chapter provides a formal description of the language semantics. The chapte
       \end{cases}
     \]
       
-  A partial function \textbf{St} is defined below with an arbitrary element st.
+  \begin{math}Env_v[x \mapsto v] \end{math} represents the update of \begin{math} x \ \in \ var \ to \ l \ \in \ Loc.\end{math}    
+  
+  A partial function in \textbf{St} is defined below with an arbitrary element st.
   
   \begin{math}
 	  st \ \in \boldsymbol{St} \ = \ \boldsymbol{Loc} \rightharpoonup \ \boldsymbol{Value}
   \end{math}
   
-  For updating the store st \begin{math} \in \end{math} \textbf{St} the update notation \begin{math} sto[l \mapsto v] \end{math} will be used. A location and a value is needed to be able to update sto.
+  For updating the store st \begin{math} \in \end{math} \textbf{St} the update notation \begin{math} sto[l \mapsto v] \end{math} will be used. \begin{math} sto[l \mapsto v] \end{math} will denote the store function \begin{math}sto^{'} \end{math} defined as follows:
   
   \[ sto^{'}(l^{'}) =
     \begin{cases}
@@ -137,37 +136,27 @@ This chapter provides a formal description of the language semantics. The chapte
       v  & \quad \text{if } l^{'} = l\\
     \end{cases}
   \]
-  
-  
-  
-  
-  \section{Type system}
-  THIS SHALL BE MOVED!!!
-	\[
-	[NUM] \quad
-	\dfrac{}{\Gamma \vdash n ::= Num}
-	\]
-	 
-	\[
-	[BOOL] \quad
-	\dfrac{}{\Gamma \vdash b ::= Bool}
-	\]
-	
-  	\[
-  	[TXT] \quad
-  	\dfrac{}{\Gamma \vdash tx ::= Txt}
-  	\]
   	
   \section{Operational semantic}
-  This section has the purpose of formally describing the language. It consists of semantic rules that gives context to a program. 
-  The semantics are described with big-step semantics due to the intuitiveness of this kind of semantics. 
+  This section has the purpose of formally describing the language. It consists of semantic rules that give context to a program. 
+  The semantics is described with big-step semantics due to the intuitiveness of this kind of semantics. 
   The environments during the operational semantics will be denoted with E.
   
   \subsection{Blocks}
     \[
-	  [BLOCK]
-	  \dfrac{\langle D_v, \ E_v \rangle \ \rightarrow_{Dv} \ \langle E_v^{'} \rangle \qquad E_v^{'} \ \vdash \ \langle S, \ st \rangle \ \rightarrow_S \ st^{'}}{E_v \ \vdash \ \langle begin \ D_v \ S \ end, \ st \rangle \ \rightarrow_B \ st^{'}}
-	  \]
+    [BLOCK]
+    \dfrac{\dfrac{E_f, \ E_a \ \vdash \ \langle B, \ st^{''}, \ E_v^{''} \rangle \ \Rightarrow^* \ (st^{'}, \ E_l^{'})}{\dfrac{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1, \ st_1 \rangle \ \rightarrow_e \ (v_1, \ st_2)}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_n, \ st_n \rangle \ \rightarrow_e \ (v_n, \ st_{n+1})}}}{E_v, \ E_a, \ E_f \ \vdash \ \langle f(e_1 \ ... \ e_n), \ st \rangle \ \rightarrow_e \ (v, \ st^{'})}
+    \]
+    
+	\begin{math}
+		\quad where \newline
+		\qquad st_1 = st \newline
+		\qquad E_f(f) = (B, x_1 ... x_n, E_v^{'}) \newline
+		\qquad E_v^{''} = E_v^{'}[x_1 \mapsto l_1] ... [x_n \mapsto l_n] [next \mapsto l_{n+1}] \newline
+		\qquad st^{''} = st_{n+1}[l_1 \mapsto v_1] ... [l_n \mapsto v_n] \newline
+		\qquad l_1 = new (Ev(next)) \newline
+		\qquad l_{i+1}= new l_i for i \in {1 ... n}
+	\end{math}
   
   \subsubsection{Declarations}
   	\[
@@ -177,7 +166,7 @@ This chapter provides a formal description of the language semantics. The chapte
     	
    	\[
    	[VARDCL] \quad
-   	\dfrac{ \langle D_v, \ E_v[x \mapsto l]\rangle \ \rightarrow_{Dv} \ \langle E_v^{'} \rangle }{ \langle \ \tau \ x; \ D_v,\ E_v \rangle \rightarrow_{Dv} \ \langle E_v^{'} \rangle }
+   	\dfrac{ \langle D_v, \ E_v[x \mapsto l][next \mapsto new_l]\rangle \ \rightarrow_{Dv} \ \langle E_v^{'} \rangle }{ \langle \ \tau \ x; \ D_v,\ E_v \rangle \rightarrow_{Dv} \ \langle E_v^{'} \rangle }
    	\qquad \ \ l = E_v(next)
    	\]
     	
@@ -189,7 +178,7 @@ This chapter provides a formal description of the language semantics. The chapte
     	
   	\[
    	[ACTDCL] \quad
-   	\dfrac{E_v \ \vdash \langle D_a, \ E_a[a \ \mapsto (S, \ (x_1 .. x_n) \ E_v)] \rangle \rightarrow_Da \ E_a^{'}}{E_v \ \vdash \ Action \ a(x_1 .. x_n) \ is \ S; \ D_a \ E_a \ \rightarrow_{Da} \ E_a^{'}}
+   	\dfrac{E_v \ \vdash \langle D_a, \ E_a[a \ \mapsto (S, \ x_1 .. x_n \ E_v)] \rangle \rightarrow_{Da} \ E_a^{'}}{E_v \ \vdash \ Action \ a(x_1 .. x_n) \ is \ S; \ D_a \ E_a \ \rightarrow_{Da} \ E_a^{'}}
    	\]
     	
    	\[
@@ -199,7 +188,7 @@ This chapter provides a formal description of the language semantics. The chapte
    	
    	\[
    	[FUNCDCL] \quad
-   	\dfrac{E_v \vdash \langle D_f, \ E_f[f \ \mapsto (S, \ x_1 .. x_n, \ E_v)] \rangle \rightarrow_{Df} E_f^{'}}{E_v \vdash \ \langle Function \ f(x_1 .. x_2) \ is \ S; \ D_f, \ E_f \rangle \ \rightarrow_{Df} \ E_f^{'}}
+   	\dfrac{E_v \vdash \langle D_f, \ E_f[f \ \mapsto (S, \ x_1 .. x_n, \ E_v)] \rangle \rightarrow_{Df} E_f^{'}}{E_v \vdash \ \langle Function \ f(x_1 .. x_n) \ is \ S; \ D_f, \ E_f \rangle \ \rightarrow_{Df} \ E_f^{'}}
    	\]
    	\subsection{Statements}
    	The interaction with the battlefield will not be explained in the semantics in this project, since it is out of the scope of the project. The interaction that a battlefield configuration may have with a statement running in parallel will be explained, but only for when it moves from one configuration to another.
@@ -207,16 +196,16 @@ This chapter provides a formal description of the language semantics. The chapte
    	The configuration of the semantics statements are:
    	
    	\begin{itemize}
-   		\item \begin{math} \langle \end{math}S, st, envl\begin{math} \rangle \end{math}, which are intermediate configurations where C is a statement that may contain atomic-encapsulations or parallels.
+   		\item \begin{math} \langle \end{math}S, st, envl\begin{math} \rangle \end{math}, which are intermediate configurations where S is a statement that may contain atomic-encapsulations or parallels.
    		\item \begin{math} \langle \end{math}st, envl\begin{math} \rangle \end{math} is terminal configurations.
    	\end{itemize}
    	
    	In intermediate configuration is where only parts of the statements will be interpreted. Where in terminal configurations  all the statements will be executed.
    	
-   	The transition system of our language are:
+   	The transition system of our language is:
    	 
    	\begin{math}
-   		((\boldsymbol{EvCxt} \ \times \boldsymbol{St}) \ \cup \ (\boldsymbol{St} \ \times \ \boldsymbol{Envl}), \Rightarrow, \ \boldsymbol{St} \ \times \ \boldsymbol{Envl})
+   		((\boldsymbol{S} \ \times \boldsymbol{EvCxt} \ \times \boldsymbol{St}) \ \cup \ (\boldsymbol{St} \ \times \ \boldsymbol{Envl}), \Rightarrow, \ \boldsymbol{St} \ \times \ \boldsymbol{Envl})
    	\end{math}
    	
    	The set of run time stacks \textbf{EvCxt} is:
@@ -225,14 +214,16 @@ This chapter provides a formal description of the language semantics. The chapte
    	^*
    	\end{math}
    	
+   	We will denote by \begin{math} E_l \end{math} a generic element in EvCxt
+   	
    	\[
    	[ATOM-PARTLY]
-   	\dfrac{E_e, \ E_f, \ E_a \ \vdash \langle S, \ st, \ E_l \rangle \ \Rightarrow_{Atom} \ \langle S^{''}, \ st^{'}, \ E_l^{'}}{E_e, \ E_f, \ E_a \ \vdash \ \langle atom \ S \ end, \ st, \ E_l \rangle \ \Rightarrow_{Atom} \ \langle atom \ S^{''} \ end, \ st^{'}, \ E_l^{'}}
+   	\dfrac{E_l, \ E_f, \ E_a \ \vdash \langle S, \ st, \ E_l \rangle \ \Rightarrow \ \langle S^{''}, \ st^{'}, \ E_l^{'} \rangle}{E_e, \ E_f, \ E_a \ \vdash \ \langle atom \ S \ end, \ st, \ E_l \rangle \ \Rightarrow \ \langle atom \ S^{''} \ end, \ st^{'}, \ E_l^{'} \rangle}
    	\]
    	
    	\[
    	[ATOM-COMPLETE]
-   	\dfrac{E_e, \ E_f, \ E_a \ \vdash \langle S, \ st, \ E_l \rangle \ \Rightarrow_{Atom} \ \langle st^{'}, \ E_l^{'}}{E_e, \ E_f, \ E_a \ \vdash \ \langle atom \ S \ end, \ st, \ E_l \rangle \ \Rightarrow_{Atom} \ \langle st^{'}, \ E_l^{'}}
+   	\dfrac{E_l, \ E_f, \ E_a \ \vdash \langle S, \ st, \ E_l \rangle \ \Rightarrow \ \langle st^{'}, \ E_l^{'} \rangle}{E_e, \ E_f, \ E_a \ \vdash \ \langle atom \ S \ end, \ st, \ E_l \rangle \ \Rightarrow \ \langle st^{'}, \ E_l^{'} \rangle}
    	\]
    	
    	In the formation rules section the formation rule "Game", describes the interaction between the battlefield and the program. The "F" in Game is the battlefield configuration. 
@@ -288,16 +279,23 @@ This chapter provides a formal description of the language semantics. The chapte
    	\dfrac{}{\langle skip, \ st \rangle \ \Rightarrow_Skip \ st}
    	\]
    	
+   	\[
+   	[RETURN]
+   	\dfrac{E_v, \ E_a, \ E_f \ \vdash \ \langle e, \ st \rangle \ \rightarrow_e \ (v, \ st^{'})}{E_f, \ E_a \ \vdash \ \langle return \ e, \ st, \ E_l \rangle \ \Rightarrow \ (st^{'}[r \ \mapsto \ v], \ E_l)}
+   	\quad Where
+   	\qquad E_l = E_v : E_l^{'}
+   	\]
+   	
    	\subsection{Expressions}
    	
    	\[
    	[PAR-EXPR] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e, \ st> \rightarrow_e (v, \ st^{'}}{E_v, \ E_a, \ E_f \vdash <(e), \ st> \rightarrow_e \ (v, \ st^{'})}
+   	\dfrac{E_v, \ E_a, \ E_f \vdash \langle e, \ st \rangle \rightarrow_e (v, \ st^{'}}{E_v, \ E_a, \ E_f \vdash \langle (e), \ st \rangle \rightarrow_e \ (v, \ st^{'})}
    	\]
    	
 	\[
 	[CALL]
-	\dfrac{E_v^{'}[next \ \mapsto \ l], \ E_f^{'} \ \vdash \ \langle S, \ st \rangle \ \rightarrow_{Call} \ st^{'}}{E_v, \ E_f \ \vdash \ \langle call f, \ st \rangle \ \rightarrow_call \ st^{'}}
+	\dfrac{E_v^{'}[next \ \mapsto \ l], \ E_f^{'} \ \vdash \ \langle S, \ st \rangle \ \rightarrow_{Call} \ st^{'}}{E_v, \ E_f \ \vdash \ \langle call f, \ st \rangle \ \rightarrow_{call} \ st^{'}}
 	\]
 	\begin{math}		
 		\qquad \qquad \qquad \qquad where \ E_f(f) \ = \ \langle S, \ E_v^{'}, \ E_p^{'} \rangle \
@@ -308,31 +306,28 @@ This chapter provides a formal description of the language semantics. The chapte
    	
    	\[
    	[ASM-EXPR] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <a_1, \ st> \rightarrow_{e} (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <a_2, \ st^{''}> \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \vdash <a_1 \ op \ a_2, st> \rightarrow_{e} (v, st^{'})}
+   	\dfrac{E_v, \ E_a, \ E_f \vdash \langle a_1, \ st \rangle \rightarrow_{e} (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \langle a_2, \ st^{''}\rangle \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \vdash \ \langle a_1 \ op \ a_2, st \rangle \ \rightarrow_{e} (v, st^{'})}
    	\]
  	\begin{math}
  	op \ \in \ \{ \ +, \ -, \ * \ \} \newline
-   	v \ = \ v_1 \ + \ v_2 \newline
-   	v \ = \ v_1 \ - \ v_2 \newline
-   	v \ = \ v_1 \ * \ v_2
+   	v \ = \ v_1 \ op \ v_2
    	\end{math}
    	
    	\[
    	[DM-EXPR] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <a_1, \ st> \rightarrow_{e} (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <a_2, \ st^{''}> \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \vdash <a_1 \ op \ a_2, st> \rightarrow_{e} (v, st^{'})}
+   	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle a_1, \ st \rangle \ \rightarrow_{e} (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle a_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \vdash \ \langle a_1 \ op \ a_2, st \rangle \ \rightarrow_{e} (v, st^{'})}
    	\]
    	\begin{math}
    	op \ \in \ \{ \ /, \ \% \ \} \ | v \not= \ 0 \newline 
-   	v \ = \ v_1 \ / \ v_2 \newline
-   	v \ = \ v_1 \ \% \ v_2
+   	v \ = \ v_1 \ op \ v_2
    	\end{math}   	   	   	
 
    	\subsection{Boolean Expressions}
    	Most of the boolean expressions look alike even with the value of true/false, except the AND/OR expressions. The constructs of AND/OR uses short-circuiting, since in the OR expression if the first value is evaluated to true, there is no need to evaluate the second part of the expression.
    	\[
    	[EXPR^{IS=}_{\ \top}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1
-   	\ IS= e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}
+   	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \ \langle e_1
+   	\ IS= e_2, \ st \rangle \ \ \rightarrow_e (\top, \ st^{'})}
    	\]
    	\begin{math}
    	v_1 \ = \ v_2 
@@ -340,8 +335,8 @@ This chapter provides a formal description of the language semantics. The chapte
 
    	\[
    	[EXPR^{IS=}_{\ \bot}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1
-   	\ IS= e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}
+   	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \ \rangle \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1
+   	\ IS= e_2, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}
    	\]
 	\begin{math}
    	v_1 \ \not= \ v_2
@@ -350,7 +345,7 @@ This chapter provides a formal description of the language semantics. The chapte
 
    	\[
    	[EXPR^{NOT=}_{\ \top}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ NOT= e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}
+   	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ NOT= e_2, \ st \rangle \ \rightarrow_e (\top, \ st^{'})}
    	\]
 	\begin{math}
    	v_1 \ \not= \ v_2
@@ -359,7 +354,7 @@ This chapter provides a formal description of the language semantics. The chapte
 
    	\[
    	[EXPR^{NOT=}_{\ \bot}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ NOT= e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}
+   	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ NOT= e_2, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}
    	\]
 	\begin{math}
    	v_1 \ = \ v_2
@@ -378,7 +373,7 @@ This chapter provides a formal description of the language semantics. The chapte
    	
    	\[
    	[EXPR^{\ >}_{\ \bot}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ > e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}
+   	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ > e_2, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}
    	\]
 	\begin{math}
    	v_1 \ \not> \ v_2
@@ -386,7 +381,7 @@ This chapter provides a formal description of the language semantics. The chapte
    	
    	\[
    	[EXPR^{\ <}_{\ \top}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ < e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}
+   	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ < e_2, \ st \rangle \ \rightarrow_e (\top, \ st^{'})}
    	\]
 	\begin{math}
    	v_1 \ < \ v_2
@@ -395,7 +390,7 @@ This chapter provides a formal description of the language semantics. The chapte
 
    	\[
    	[EXPR^{\ <}_{\ \bot}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ < e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}
+   	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ < e_2, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}
    	\]
 	\begin{math}
    	v_1 \ \not< \ v_2
@@ -403,7 +398,7 @@ This chapter provides a formal description of the language semantics. The chapte
    	
    	\[
    	[EXPR^{\ >=}_{\ \ \top}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ >= e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}
+   	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ >= e_2, \ st \rangle \ \rightarrow_e (\top, \ st^{'})}
    	\]
 	\begin{math}
    	v_1 \ \ge \ v_2
@@ -412,7 +407,7 @@ This chapter provides a formal description of the language semantics. The chapte
 
    	\[
    	[EXPR^{\ >=}_{\ \ \bot}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ >= e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}
+   	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ >= e_2, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}
    	\]
 	\begin{math}
    	v_1 \ \ngeq \ v_2
@@ -420,7 +415,7 @@ This chapter provides a formal description of the language semantics. The chapte
    	
    	\[
    	[EXPR^{\ <=}_{\ \ \top}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ <= e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}
+   	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ <= e_2, \ st \rangle \ \rightarrow_e (\top, \ st^{'})}
    	\]
 	\begin{math}
    	v_1 \ \le \ v_2
@@ -429,7 +424,7 @@ This chapter provides a formal description of the language semantics. The chapte
 
    	\[
    	[EXPR^{\ <=}_{\ \ \bot}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ <= e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}
+   	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ <= e_2, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}
    	\]
 	\begin{math}
    	v_1 \ \nleq \ v_2
@@ -437,34 +432,35 @@ This chapter provides a formal description of the language semantics. The chapte
    	
    	\[
    	[EXPR^{\ \ !}_{\ \ \top}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <v, \ st> \rightarrow_e (\top, st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <!v, \ st> \ \rightarrow_e (\top, \ st^{'})}
+   	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e, \ st \rangle \ \rightarrow_e (\top, st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle !e, \ st \rangle \ \rightarrow_e (\top, \ st^{'})}
    	\]  	  	
 
    	\[
    	[EXPR^{\ \ !}_{\ \ \bot}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <v, \ st> \rightarrow_e (\bot, st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <!v, \ st> \ \rightarrow_e (\bot, \ st^{'})}
+   	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e, \ st \rangle \ \rightarrow_e (\bot, st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle !e, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}
    	\]
    	
    	
    	\[
    	[EXPR^{\ AND}_{\ \ \top}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (\top, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (\top, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ AND \ e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}
+   	\dfrac{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e \ (\top, \ st^{''}) \qquad E_v, \ E_a, \ E_f \ \vdash \ \langle e_2, \ st^{''} \ \rightarrow_e \ (v, st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ AND \ e_2, \ st> \ \rightarrow_e (v, \ st^{'})}
    	\]  	
    	
    	\[
    	[EXPR^{\ AND}_{\ \ \bot}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e, \ st> \rightarrow_e (\bot, \ st) }{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ AND \ e_2, \ st> \ \rightarrow_e (\bot, \ st)}
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (\bot, \ st^{'}) }{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ AND \ e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}
    	\]
    	
    	
    	\[
    	[EXPR^{\ OR}_{\ \ \top}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e, \ st> \rightarrow_e (\top, \ st) }{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ OR \ e_2, \ st> \ \rightarrow_e (\top, \ st)}
+   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (\top, \ st^{'}) }{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ OR \ e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}
    	\]
    	
    	\[
    	[EXPR^{\ OR}_{\ \ \bot}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (\bot, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (\bot, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ OR \ e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}
-   	\]  	
+   	\dfrac{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e \ (\bot, \ st^{''}) \qquad E_v, \ E_a, \ E_f \ \vdash \ \langle e_2, \ st^{''} \ \rightarrow_e \ (v, st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ OR \ e_2, \ st> \ \rightarrow_e (v, \ st^{'})}
+   	\] 	
+   	
    	
    	

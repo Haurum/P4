@@ -104,7 +104,7 @@ This chapter provides a formal description of the language semantics. The chapte
   The variable environment is a function that will tell what storage location a variable is bound to. Variable environments  is the set of partial functions  from the variable to their location, as shown in the following equation:
   
   \begin{math}  
-	 env_v \in \boldsymbol{EnvV} = \boldsymbol{Var} \cup \{ next \} \rightharpoonup \ \boldsymbol{Loc}
+	 E_v \in \boldsymbol{EnvV} = \boldsymbol{Var} \cup \{ next \} \rightharpoonup \ \boldsymbol{Loc}
   \end{math}
   
   The partial function above shows us how a variable or the set \{ next \} is bound to a location. The \textit{next} element is pointing to the next available location in memory.
@@ -116,9 +116,9 @@ This chapter provides a formal description of the language semantics. The chapte
   
   Let \begin{math}env_v\end{math} be an arbitrary element of the partial function \textbf{EnvV}. To update the environment the update notation \begin{math}env_v [x \mapsto v] \end{math} is used. 
   
-  \[ env^{'}_v(y) =
+  \[ E^{'}_v(y) =
       \begin{cases}
-        env_v(y)       & \quad \text{if } y \not= x\\
+        E_v(y)       & \quad \text{if } y \not= x\\
         l  & \quad \text{if } y = x\\
       \end{cases}
     \]
@@ -161,6 +161,7 @@ This chapter provides a formal description of the language semantics. The chapte
   \section{Operational semantic}
   This section has the purpose of formally describing the language. It consists of semantic rules that gives context to a program. 
   The semantics are described with big-step semantics due to the intuitiveness of this kind of semantics. 
+  The environments during the operational semantics will be denoted with E.
   
   \subsection{Blocks}
     \[
@@ -201,9 +202,9 @@ This chapter provides a formal description of the language semantics. The chapte
    	\dfrac{E_v \vdash \langle D_f, \ E_f[f \ \mapsto (S, \ x_1 .. x_n, \ E_v)] \rangle \rightarrow_{Df} E_f^{'}}{E_v \vdash \ \langle Function \ f(x_1 .. x_2) \ is \ S; \ D_f, \ E_f \rangle \ \rightarrow_{Df} \ E_f^{'}}
    	\]
    	\subsection{Statements}
-   	EXPLAIN ABOUT THE BATTLEFIELD INTERACTIONS!
+   	The interaction with the battlefield will not be explained in the semantics in this project, since it is out of the scope of the project. The interaction that a battlefield configuration may have with a statement running in parallel will be explained, but only for when it moves from one configuration to another.
    	
-   	The configuration of the semantics statements are
+   	The configuration of the semantics statements are:
    	
    	\begin{itemize}
    		\item \begin{math} \langle \end{math}S, st, envl\begin{math} \rangle \end{math}, which are intermediate configurations where C is a statement that may contain atomic-encapsulations or parallels.
@@ -218,7 +219,7 @@ This chapter provides a formal description of the language semantics. The chapte
    		((\boldsymbol{EvCxt} \ \times \boldsymbol{St}) \ \cup \ (\boldsymbol{St} \ \times \ \boldsymbol{Envl}), \Rightarrow, \ \boldsymbol{St} \ \times \ \boldsymbol{Envl})
    	\end{math}
    	
-   	The set of run time stacks \textbf{EvCxt} is 
+   	The set of run time stacks \textbf{EvCxt} is:
    	
    	\textbf{Envl} = \textbf{EnvV}\begin{math}
    	^*
@@ -226,17 +227,33 @@ This chapter provides a formal description of the language semantics. The chapte
    	
    	\[
    	[ATOM-PARTLY]
-   	\dfrac{E_e, \ E_f, \ E_a \ \vdash \langle S, \ st, \ E_l \rangle \ \Rightarrow_Atom \ \langle S^{''}, \ st^{'}, \ E_l^{'}}{E_e, \ E_f, \ E_a \ \vdash \ \langle atom \ S \ end, \ st, \ E_l \rangle \ \Rightarrow_Atom \ \langle atom \ S^{''} \ end, \ st^{'}, \ E_l^{'}}
+   	\dfrac{E_e, \ E_f, \ E_a \ \vdash \langle S, \ st, \ E_l \rangle \ \Rightarrow_{Atom} \ \langle S^{''}, \ st^{'}, \ E_l^{'}}{E_e, \ E_f, \ E_a \ \vdash \ \langle atom \ S \ end, \ st, \ E_l \rangle \ \Rightarrow_{Atom} \ \langle atom \ S^{''} \ end, \ st^{'}, \ E_l^{'}}
    	\]
    	
    	\[
-   	[ATOM-PARTLY]
-   	\dfrac{E_e, \ E_f, \ E_a \ \vdash \langle S, \ st, \ E_l \rangle \ \Rightarrow_Atom \ \langle st^{'}, \ E_l^{'}}{E_e, \ E_f, \ E_a \ \vdash \ \langle atom \ S \ end, \ st, \ E_l \rangle \ \Rightarrow_Atom \ \langle st^{'}, \ E_l^{'}}
+   	[ATOM-COMPLETE]
+   	\dfrac{E_e, \ E_f, \ E_a \ \vdash \langle S, \ st, \ E_l \rangle \ \Rightarrow_{Atom} \ \langle st^{'}, \ E_l^{'}}{E_e, \ E_f, \ E_a \ \vdash \ \langle atom \ S \ end, \ st, \ E_l \rangle \ \Rightarrow_{Atom} \ \langle st^{'}, \ E_l^{'}}
    	\]
    	
-   	In the formation rules section the formation rule "Game", describes the interaction between the battlefield and the program. The "F" in Game is the battlefield configuration. As mentioned earlier(have not been written yet) the semantics for the battlefield is out of scope for this project, but the interaction the battlefield configuration may have with a statement running in parallel will be explained, but only for when it moves from one configuration to another. 
+   	In the formation rules section the formation rule "Game", describes the interaction between the battlefield and the program. The "F" in Game is the battlefield configuration. 
    	
    	F have to states in our language, either an event is raised or not. If no events are raised, F stays the same. If an event has been raise \begin{math} F \rightarrow_{event(p)} F^{'} \end{math}, which is an transition from the battlefield configuration. It is possible for the events to be raised with an parameter p. 
+   	
+   	\[
+   	[PARA-F]
+   	\dfrac{E_e, \ E_f, \ E_a \ \vdash \ \langle S, \ st, \ E_l \rangle \ \Rightarrow_S \ \langle S^{'}, \ st^{'}, \ E_l^{'}}{E_e, \ E_f, \ E_a \ \vdash \ \langle S \ || \ F, \ st, \ E_l \rangle \ \Rightarrow_Para \ \langle S^{'} \ || \ F, \ st^{'}, \ E_l^{'} \rangle}
+   	\]
+   	
+   	\[
+   	[PARA-F^{'}]
+   	\dfrac{F \ \rightarrow_{event(p)} \ F^{'}}{E_e, \ E_f, \ E_a \ \vdash \ \langle S \ || \ F, \ st, \ E_l \rangle \ \Rightarrow_Para \ \langle atom \ S^{'} \ end; \ S \ || \ F^{'}, \ st, \ E_l \rangle}
+   	\]
+   	
+   	\begin{math}
+   		Where \ S \ is \ not \ of \ the \ form \ S_1 \ end; \ S_2 \newline
+	   	E_e(event) \ = \ (begin \ D_v \ S^{''} \ end, \ x, \ E_v) \newline
+	   	S^{'} \ = \ begin \ D_v \ (x \ := \ p; \ S^{''} \ end)
+   	\end{math}
    	
    	\[
    	[ASSIGN] \quad
@@ -311,6 +328,7 @@ This chapter provides a formal description of the language semantics. The chapte
    	\end{math}   	   	   	
 
    	\subsection{Boolean Expressions}
+   	Most of the boolean expressions look alike even with the value of true/false, except the AND/OR expressions. The constructs of AND/OR uses short-circuiting, since in the OR expression if the first value is evaluated to true, there is no need to evaluate the second part of the expression.
    	\[
    	[EXPR^{IS=}_{\ \top}] \quad
    	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1

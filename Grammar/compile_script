@@ -1,2 +1,3 @@
 #!/bin/bash
-javac 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+java -classpath "$DIR/out/production/Grammar/:$DIR/antlr-4.5.2-complete.jar" Main

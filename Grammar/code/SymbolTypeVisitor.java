@@ -102,6 +102,19 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
                             ctx.start.getLine() + ": Function not found");
                     throw e;
                 }
+                if(ctx.getChildCount() == 5) {
+                    String[] args = visit(ctx.args()).split(", ");
+                    for (int i = 0; i < args.length; i++) {
+                        String paramType = fsym.Params.get(i).y;
+                        String arg = args[i];
+                        if (!paramType.equals(arg)) {
+                            Error e = new Error("Error at line: " +
+                                    ctx.args().expr(i).start.getLine() +
+                                    ": Parameter number " + i + " not matched. Expected " + paramType);
+                            throw e;
+                        }
+                    }
+                }
                 return fsym.ReturnType;
             }
             parent = parent.parent;

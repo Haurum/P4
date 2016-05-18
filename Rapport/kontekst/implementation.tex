@@ -72,7 +72,7 @@ Now in the Exit Action and Function declaration functions the CurrentFunc gets a
 The reason the CurrentFunc is added in the Exit functions, is that the walker have to visit all the parameters. 
 
 \section{Type checking} 
-After the first travesal of the parse tree using the FuncListener, every function is now defined in the function table and we can begin type checking. To do type checking a Symbol- and a SymbolTable class are used to keep track of every variable and their scope, using these two classes the SymbolTypeVisitor class checks for type compatibility. 
+After the first traversal of the parse tree using the FuncListener, every function is now defined in the function table and we can begin type checking. To do type checking a Symbol- and a SymbolTable class are used to keep track of every variable and their scope, using these two classes the SymbolTypeVisitor class checks for type compatibility. 
 
 \subsection{Symbol \& Symbol table}
 Every variable in the program is represented by the Symbol class. The Symbol class has the properties String Name and Type, Symbol Var and int Depth. The Name and Type represents the name and type of the variable, the interesting parts is the Var and Depth properties. Var is a reference to a Symbol of the same name but in a higher scope, this would work as stack for all symbols of the same name, where the top of the stack will be the most inner scope and therefore the one used. The Depth property indicates the depth of the scope the symbol is in, with 0 being the global scope. 
@@ -120,24 +120,261 @@ CloseScope in listing \ref{CS}, is used to close the current scope. This is done
 
 \begin{lstlisting}[caption={CloseScope function}, label={CS}]
 public void CloseScope(){
-        Scope.get(depth).forEach(s -> {
-            Symbol prevSym = s.Var;
-            Map.replace(s.Name, s, prevSym);
-        });
-        depth--;
-    }
+    Scope.get(depth).forEach(s -> {
+        Symbol prevSym = s.Var;
+        Map.replace(s.Name, s, prevSym);
+    });
+    depth--;
+}
 \end{lstlisting}
 
 
 
 \subsection{The SymbolTypeVisitor class}
+The SymbolTypeVisitor class extends the BaseVisitor class from Antlr and is the second traversal through the parse tree. It visits every single node in  the parse tree and each node return its type to the caller. At each node it is determined whether the types returned match with the expected type, errors are thrown if they don't match.
+
+At the basic level the types are returned as they are, which is the functions visitNum, visitString and visitBool, that can be found in listing \ref{VT}.
+
+\begin{lstlisting}[caption={SymbolTypeVisitor - visitNum, visitString and visitBool functions}, label={VT}]
+@Override
+public String visitNum(GrammarParser.NumContext ctx) {
+    return "Num";
+}
+
+@Override
+public String visitString(GrammarParser.StringContext ctx) {
+    return "String";
+}
+
+@Override
+public String visitBool(GrammarParser.BoolContext ctx) {
+    return "Bool";
+}
+\end{lstlisting}
+
+Also at the basic level variable ids are looked up in the SymbolTable and their type is returned, an error is thrown if the variable isn't found in the SymbolTable, as shown in listing \ref{VID}.
+
+\begin{lstlisting}[caption={SymbolTypeVisitor - visitId function}, label={VID}]
+@Override
+public String visitId(GrammarParser.IdContext ctx) {
+    String test = ctx.getText();
+    Symbol sym = ST.GetSymbol(ctx.getText());
+    if (sym == null){
+        Error e = new Error("Error at line: " +
+                ctx.start.getLine() + ": Variable not found");
+        throw e;
+    }
+    return sym.Type;
+}
+\end{lstlisting}
+
+When visiting and, or, minus, not, mul, rel and eq expressions each expression type is calculated and compared to what is expected. Afterwards either an error is thrown or the right type is returned. An example of such function is the or-expression, which can be found in listing \ref{VOR}.
+
+\begin{lstlisting}[caption={SymbolTypeVisitor - visitOrexpr function}, label={VOR}]
+@Override
+public String visitOrexpr(GrammarParser.OrexprContext ctx) {
+    String left = visit(ctx.expr(0));
+    String right = visit(ctx.expr(1));
+    if (left.equals("Bool") && right.equals("Bool")){
+        return "Bool";
+    }else{
+        Error e = new Error("Error at line: " +
+                ctx.start.getLine() + ": Expression did not evaluate to Bool.");
+        throw e;
+    }
+}
+\end{lstlisting}
+
+The add-expression in listing \ref{VADD}, is a bit special as the plus operator can be used on two numbers or a string and any other type. Therefore the function checks if both expressions evaluate to a number, or one of them is a string and the operator is a plus, it throws an error if none of the above is true else it returns the appropriate type. 
+
+\begin{lstlisting}[caption={SymbolTypeVisitor - visitAddexpr function}, label={VADD}]
+@Override
+public String visitAddexpr(GrammarParser.AddexprContext ctx) {
+    String left = visit(ctx.expr(0));
+    String right = visit(ctx.expr(1));
+    if (left.equals("Num") && right.equals("Num")) {
+        return "Num";
+    }else if((left.equals("String") || right.equals("String")) && ctx.op.getText().equals("+") ) {
+        return "String";
+    }else{
+        Error e = new Error("Error at line: " +
+                ctx.start.getLine() + ": Expression types did not match.");
+        throw e;
+    }
+}
+\end{lstlisting}
+
+The function visitAssign in listing \ref{VAS}, checks whether the type of the symbol found from the id = the expression's type. It throws errors if the id doesn't match any symbols or the types don't match. 
+
+\begin{lstlisting}[caption={SymbolTypeVisitor - visitAssign function}, label={VAS}]
+@Override
+public String visitAssign(GrammarParser.AssignContext ctx) {
+    String id = ctx.ID().getText();
+    Symbol sym = ST.GetSymbol(id);
+    if (sym == null){
+        Error e = new Error("variable not found");
+        throw e;
+    }
+    if (!sym.Type.equals(visit(ctx.expr()))){
+        Error e = new Error("Error at line: " +
+                ctx.expr().start.getLine() + ": Expression and variable are not type compatible");
+        throw e;
+    }
+    return sym.Type;
+}
+\end{lstlisting}
+
+The function visitVardcl in listing \ref{VAD}, enters a new symbol in the SymbolTable. The type is found at the variable declaration Node or at the assign node. visitVardcl determines where to find the id and adds the new symbol to the SymbolTable. 
+
+\begin{lstlisting}[caption={SymbolTypeVisitor - visitVardcl function}, label={VAD}]
+@Override
+public String visitVardcl(GrammarParser.VardclContext ctx) {
+    if (ctx.getChild(1) instanceof GrammarParser.AssignContext){
+        ST.EnterSymbol(((GrammarParser.AssignContext) ctx.getChild(1)).ID().getText(), ctx.TYPE().getText());
+        visit(ctx.assign());
+    }else {
+        ST.EnterSymbol(ctx.ID().getText(), ctx.TYPE().getText());
+    }
+    return ctx.TYPE().getText();
+}
+\end{lstlisting}
+
+The visitBlock function in listing \ref{VB}, opens a new scope and if its parent is the Action declaration, any parameter of the Action declaration  is added to the scope. The function then visits all the statements in the block and then closes the scope. 
+
+\begin{lstlisting}[caption={SymbolTypeVisitor - visitBlock function}, label={VB}]
+@Override
+public String visitBlock(GrammarParser.BlockContext ctx) {
+    ST.OpenScope();
+    if (ctx.parent instanceof GrammarParser.ActdclContext){
+        FuncSymbol fs = FST.GetFuncSymbol("Action", ((GrammarParser.ActdclContext) ctx.parent).ID().getText());
+        fs.Params.forEach(tuple -> {
+            ST.EnterSymbol(tuple.x, tuple.y);
+        });
+    }
+    visit(ctx.stmts());
+    ST.CloseScope();
+    return "null";
+}
+\end{lstlisting}
+
+The function visitArgs in listing \ref{VAF} at line 1-8, visits each expression and concatenates with a comma in between and returns the whole thing as a string. 
+
+visitFcall which is also found in listing \ref{VAF} at line 10-37, gets a function symbol from the FuncSymbolTable and then matches each argument type from the visitArgs with each parameter type in the function symbol. Errors are thrown if these don't match or the function id doesn't match any function in the FuncSymbolTable. visitAcall, visitUtilscall, visitBattlefieldcall, visitRadarcall, visitGuncall and visitTankcall functions works similarly to the visitFcall function.
+
+\begin{lstlisting}[caption={SymbolTypeVisitor - visitArgs and visitFcall functions}, label={VAF}]
+@Override
+public String visitArgs(GrammarParser.ArgsContext ctx) {
+    String result = visit(ctx.expr(0));
+    for (int i = 1; i < ctx.expr().size(); i++){
+        result = result + ", " + visit(ctx.expr(i));
+    }
+    return result;
+}
+
+@Override
+public String visitFcall(GrammarParser.FcallContext ctx) {
+    FuncSymbol fsym = FST.GetFuncSymbol("Function", ctx.ID().getText());
+    if (fsym == null){
+        Error e = new Error("Error at line: " +
+                ctx.start.getLine() + ": Function not found");
+        throw e;
+    }
+    if (!fsym.Type.equals("Function")){
+        Error e = new Error("Error at line: " +
+                ctx.start.getLine() + ": Incorrect function type.");
+        throw e;
+    }
+    if(ctx.getChildCount() == 4) {
+        String[] args = visit(ctx.args()).split(", ");
+        for (int i = 0; i < args.length; i++) {
+            String paramType = fsym.Params.get(i).y;
+            String arg = args[i];
+            if (!paramType.equals(arg)) {
+                Error e = new Error("Error at line: " +
+                        ctx.args().expr(i).start.getLine() +
+                        ": Parameter number " + i + " not matched. Expected " + paramType);
+                throw e;
+            }
+        }
+    }
+    return fsym.ReturnType;
+}
+\end{lstlisting}
+
+visitEcall in listing \ref{VE}, is a bit special compared to the other call function, as it needs to check whether the function called is comparable with the event that it is called within. To do this, it checks the parent to see if that is an event declaration, if it is not, it checks the parent of the parent and so on, until it either reaches the event declaration or the root of the tree, if the root is reached an error is then thrown. If an event declaration is reached, the event declaration id and the event call id is used to look up the function in the FuncSymbolTable, if none is returned an error is thrown, otherwise the arguments are matched with the parameters as before, if successful the function's return type is returned. 
+
+\begin{lstlisting}[caption={SymbolTypeVisitor - visitEcall function}, label={VE}]
+@Override
+public String visitEcall(GrammarParser.EcallContext ctx) {
+    RuleContext parent = ctx.parent;
+    while(parent != null){
+        if(parent instanceof GrammarParser.EventdclContext){
+            FuncSymbol fsym = RoboFST.GetFuncSymbol(((GrammarParser.EventdclContext) parent).ID().getText(), ctx.ID().getText());
+            if (fsym == null){
+                Error e = new Error("Error at line: " +
+                        ctx.start.getLine() + ": Function not found");
+                throw e;
+            }
+            if(ctx.getChildCount() == 5) {
+                String[] args = visit(ctx.args()).split(", ");
+                for (int i = 0; i < args.length; i++) {
+                    String paramType = fsym.Params.get(i).y;
+                    String arg = args[i];
+                    if (!paramType.equals(arg)) {
+                        Error e = new Error("Error at line: " +
+                                ctx.args().expr(i).start.getLine() +
+                                ": Parameter number " + i + " not matched. Expected " + paramType);
+                        throw e;
+                    }
+                }
+            }
+            return fsym.ReturnType;
+        }
+        parent = parent.parent;
+    }
+    Error e = new Error("Event calls must be inside an event/when function");
+    throw e;
+}
+\end{lstlisting}
+
+visitDcls makes sure that the program the user wrote has one and only one Tankname, Repeatblock and Setupblock declared. 
+
+\begin{lstlisting}[caption={SymbolTypeVisitor - visitDcls function}, label={VD}]
+@Override
+public String visitDcls(GrammarParser.DclsContext ctx) {
+    if (ctx.tankname().size() < 1){
+        Error e = new Error("A Tankname needs to be declared");
+        throw e;
+    }else if (ctx.tankname().size() > 1){
+        Error e = new Error("Error at line: " +
+                ctx.tankname(1).start.getLine() + ": Too many tank names.");
+        throw e;
+    }
+    if (ctx.repeatblock().size() < 1){
+        Error e = new Error("A Repeat block needs to be declared");
+        throw e;
+    }else if (ctx.repeatblock().size() > 1){
+        Error e = new Error("Error at line: " +
+                ctx.repeatblock(1).start.getLine() + ": Too many repeat blocks.");
+        throw e;
+    }
+    if (ctx.setupblock().size() < 1){
+        Error e = new Error("A Setup block needs to be declared");
+        throw e;
+    }else if (ctx.setupblock().size() > 1){
+        Error e = new Error("Error at line: " +
+                ctx.setupblock(1).start.getLine() + ": Too many setup blocks.");
+        throw e;
+    }
+    super.visitDcls(ctx);
+    return "null";
+}
+\end{lstlisting}
+
 
 
 Forklar vi "overskriver" visitoren, eller vi bruger visitoren.
 \section{Code generation}
-
-
-\section{Compiling}
 
 
 TO DO

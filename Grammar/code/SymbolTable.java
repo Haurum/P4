@@ -37,14 +37,6 @@ public class SymbolTable  {
                 Map.put(prevSym.Name, prevSym);
             }
         });
-       /* for (int i = 0; i < Scope.get(depth).size(); i++){
-            Symbol s = Scope.get(depth).get(i);
-            Symbol prevSym = s.Var;
-            Map.remove(s.Name);
-            if (prevSym != null){
-                Map.put(prevSym.Name, prevSym);
-            }
-        }*/
         depth--;
     }
 

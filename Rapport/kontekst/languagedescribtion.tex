@@ -87,7 +87,7 @@ Setup{
 }
 \end{lstlisting}
 
-To make the robot do repetitive actions during the battles, Robot, Gun and Radar behaviour can be placed in the Repeat block. The Repeat block is basically a loop, that will iterate through the robot's Robot, Gun and Radar behaviour. The Repeat block of the sample robot Corners, in listing \ref{lst:Repeat}, consists of a repeat while loop. At the end of the repeat while loop, the gun have been turned a total of 90 or -90 degrees. 
+To make the robot do repetitive actions during the battles, Tank, Gun and Radar behaviour can be placed in the Repeat block. The Repeat block is basically a loop, that will iterate through the robot's Tank, Gun and Radar behaviour. The Repeat block of the sample robot Corners, in listing \ref{lst:Repeat}, consists of a repeat while loop. At the end of the repeat while loop, the gun have been turned a total of 90 or -90 degrees. 
 
 \begin{lstlisting}[caption={Code listing of the Repeat block}, xleftmargin=.2\textwidth, label={lst:Repeat}]
 Repeat{  
@@ -119,7 +119,7 @@ Action goCorner(){
 One of the most peculiar things about Robocode is the use of events. The event handlers are indicated by the reserved word "When". 
 In the Action goCorner(), a variable of type bool is set to false on line 2 and set to true in line 4 in listing \ref{lst:goCorner}. This variable is used in the event scannedRobot() found in listing \ref{lst:scannedRobot}. If the before mentioned bool is true, a build-in function Tank.Stop() is used to stop the robots movement, then it uses the action "smartfire", where the power of the shoot will be determined by the distance between the robot and the scannedRobot. The robot will then use Radar.scan() and resume it's movement towards the corner. If the bool was false, the robot is already in the corner, and will shoot at scanned robots.
 
-If an event listener is listening to the event, it can detect when the event is triggered and make sure the event handler is executed. When the behaviour in the event has been run, the robot will continue running the Repeat block.  
+If an event listener is listening to the event, it can detect when the event is triggered and make sure the event handler is executed. When the behaviour in the event has been run, the tank will continue running the Repeat block.  
 
 
 \begin{lstlisting}[caption={Code listing of the event scannedRobot()} label=corners3, xleftmargin=.2\textwidth, label={lst:scannedRobot}]
@@ -274,7 +274,7 @@ The Setup block consists of the reserved word \textbf{Setup} followed by \{ \tex
 \end{defi}
 
 \subsection{Repeat block}
-The Repeat block will iterate through the users code, unless an event has occurred which then have first priority. The Repeat block is the general behaviour and logic of the robot, and will often contain the main movements of the robot. Just as the Setup block, the Repeat block ccan also only be declared once, and have to be in the code.
+The Repeat block will iterate through the users code, unless an event has occurred which then have first priority. The Repeat block is the general behaviour and logic of the tank, and will often contain the main movements of the tank. Just as the Setup block, the Repeat block ccan also only be declared once, and have to be in the code.
 
 \begin{defi}
 The Repeat block is defined with the reserved word \textbf{Repeat} followed by \{ \textbf{body} \}, where the body is the userdefined code.
@@ -288,10 +288,10 @@ The When block is defined as: When eventName \{ \textbf{body} \}, \textbf{When} 
 \end{defi}
 
 \subsection{Variables}
-In our language there are three different kind of variables, \textbf{Num}, \textbf{Bool} and \textbf{Txt}. All numeric types will be interpreted as \textbf{Num}. \textbf{Bool} can either be True or False. \textbf{Txt} is an array of characters.
+In our language there are three different kind of variables, \textbf{Num}, \textbf{Bool} and \textbf{String}. All numeric types will be interpreted as \textbf{Num}. \textbf{Bool} can either be True or False. \textbf{String} is an array of characters.
 
 \begin{defi}
-The variables can be declared using the reserved words \textbf{Num}, \textbf{Bool} and \textbf{Txt} followed by the desired id of the variable. If the variable should also de initialized,  the assignment operator "=" should be used followed by the value or expression for the variable. 
+The variables can be declared using the reserved words \textbf{Num}, \textbf{Bool} and \textbf{String} followed by the desired id of the variable. If the variable should also de initialized,  the assignment operator "=" should be used followed by the value or expression for the variable. 
 \end{defi}
 
 \subsection{Action block}
@@ -319,7 +319,7 @@ A call with a reserved call could look like: \textbf{Tank}.energy()
 \end{defi}
 
 \subsection{Conditional block}
-The conditional block is the langauge's conditional statements which will execute the user defiend code in it's body depending on a boolean expression. Conditional blocks helps making the robots logic for it's behaviour. 
+The conditional block is the langauge's conditional statements which will execute the user defiend code in it's body depending on a boolean expression. Conditional blocks helps making the tanks logic for it's behaviour. 
 
 \begin{defi}
 The conditional block contains a minimum of one if-construct, an optional number of else if-construct and can be ended with an optional else-construct. 
@@ -372,7 +372,7 @@ The operators [+, -, *, /, \%] will be used as the shorthand 'op'. Relational op
 \dfrac{\Gamma \vdash e_1 : Num}{\Gamma \vdash -e_1 : Num}
 \]
 \[
-\dfrac{\Gamma \vdash e_1 : Txt \Gamma \vdash e_2 : \tau}{\Gamma \vdash e_1 + e_2 : Txt}
+\dfrac{\Gamma \vdash e_1 : String \Gamma \vdash e_2 : \tau}{\Gamma \vdash e_1 + e_2 : String}
 \]
 \[
 \dfrac{\Gamma \vdash e_1 : Bool \Gamma \vdash e_2 : Bool}{\Gamma \vdash e_1 relop e_2 : Bool}

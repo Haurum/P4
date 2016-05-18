@@ -5,13 +5,13 @@ This chapter provides a formal description of the language semantics. The chapte
  
  \begin{math}
  e \in \textbf{Expr} - Expressions \newline
- S \in \textbf{Stmt} - Statement\newline
+ S \in \textbf{Stmt} - Statements\newline
  n \in \textbf{Num} - Numerals\newline
- b \in \textbf{Bool} - Boolean\ Literal\newline
- B \in \textbf{Block} - Block \newline %sure about this??
- tx \in \textbf{Txt} - Txt\ Literal\newline
- t \in \textbf{Type} - Num,\ Bool\ and\ Txt\ types\newline
- x \in \textbf{var} - Variable name \newline
+ b \in \textbf{Bool} - Boolean\ Literals\newline
+ B \in \textbf{Block} - Blocks \newline %sure about this??
+ tx \in \textbf{String} - String \ Literals\newline
+ t \in \textbf{Type} - Num,\ Bool\ and\ String \ types\newline
+ x \in \textbf{Var} - Variable name \newline
  f \in \textbf{Func} - Function name \newline
  a \in \textbf{Act} - Action name \newline
  D_a \in \textbf{ActDcl} - Action\ declaration\newline
@@ -65,8 +65,8 @@ This chapter provides a formal description of the language semantics. The chapte
   \end{math}[\underline{5.36}] will be mapped to the corresponding values 5 and 5.36. 
   
   
-  \subsection{Text Literals}
-  A Text literal is a sequence of symbols and characters in UTF-8(Unicode Transformation Format 8-bit) except the delimiter ("). The sequence of symbols and characters must be within the delimiter, for example "Hello world!". 
+  \subsection{String Literals}
+  A String literal is a sequence of symbols and characters in UTF-8 (Unicode Transformation Format 8-bit) except the delimiter ("). The sequence of symbols and characters must be within the delimiter, for example "Hello world!". 
   
   %\begin{math}
   %txl \in \textbf{txtL} = (") \newline
@@ -74,10 +74,10 @@ This chapter provides a formal description of the language semantics. The chapte
   %U \in \ {UTF-8}
   %\end{math}
   
-  Text Literal are interpreted as string elements Text, by means of the following:
+  String Literals are interpreted as string elements String, by means of the following:
   
   \begin{math}
-  	\tau : \textbf{Txt} \ \rightarrow \ \textbf{txtL} \newline
+  	\tau : \textbf{String} \ \rightarrow \ \textbf{StringL} \newline
   	As \ an \ example: \ \tau("Insert \ text \ here") \ \rightarrow \ Insert \ text \ here
   \end{math}
   

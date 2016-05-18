@@ -119,7 +119,7 @@ Action goCorner(){
 One of the most peculiar things about Robocode is the use of events. The event handlers are indicated by the reserved word "When". 
 In the Action goCorner(), a variable of type bool is set to false on line 2 and set to true in line 4 in listing \ref{lst:goCorner}. This variable is used in the event scannedRobot() found in listing \ref{lst:scannedRobot}. If the before mentioned bool is true, a build-in function Tank.Stop() is used to stop the robots movement, then it uses the action "smartfire", where the power of the shoot will be determined by the distance between the robot and the scannedRobot. The robot will then use Radar.scan() and resume it's movement towards the corner. If the bool was false, the robot is already in the corner, and will shoot at scanned robots.
 
-If an event listener is listening to the event, it can detect when the event is triggered and make sure the event handler is executed. When the behaviour in the event has been run, the tank will continue running the Repeat block.  
+If an event listener is listening to the event, it can detect when the event is triggered and make sure the event handler is executed. When the behaviour in the event has been run, the robot will continue running the Repeat block.  
 
 
 \begin{lstlisting}[caption={Code listing of the event scannedRobot()} label=corners3, xleftmargin=.2\textwidth, label={lst:scannedRobot}]
@@ -274,7 +274,7 @@ The Setup block consists of the reserved word \textbf{Setup} followed by \{ \tex
 \end{defi}
 
 \subsection{Repeat block}
-The Repeat block will iterate through the users code, unless an event has occurred which then have first priority. The Repeat block is the general behaviour and logic of the tank, and will often contain the main movements of the tank. Just as the Setup block, the Repeat block ccan also only be declared once, and have to be in the code.
+The Repeat block will iterate through the users code, unless an event has occurred which then have first priority. The Repeat block is the general behaviour and logic of the robot, and will often contain the main movements of the robot. Just as the Setup block, the Repeat block ccan also only be declared once, and have to be in the code.
 
 \begin{defi}
 The Repeat block is defined with the reserved word \textbf{Repeat} followed by \{ \textbf{body} \}, where the body is the userdefined code.
@@ -319,7 +319,7 @@ A call with a reserved call could look like: \textbf{Tank}.energy()
 \end{defi}
 
 \subsection{Conditional block}
-The conditional block is the langauge's conditional statements which will execute the user defiend code in it's body depending on a boolean expression. Conditional blocks helps making the tanks logic for it's behaviour. 
+The conditional block is the langauge's conditional statements which will execute the user defiend code in it's body depending on a boolean expression. Conditional blocks helps making the robots logic for it's behaviour. 
 
 \begin{defi}
 The conditional block contains a minimum of one if-construct, an optional number of else if-construct and can be ended with an optional else-construct. 

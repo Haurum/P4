@@ -23,7 +23,7 @@ After Antlr has produced the parsetree, baselistener and basevisitior, the funct
 
 \subsection{FuncSymbol \& FuncSymbolTable}
 To keep track of the varies functions and their parameters, return values and Robocode names, a FuncSymbol class is used as representation for a single function and a FuncSymbolTable class is used to keep track of every FuncSymbol in the program.
-The FuncSymbol has a string members for Name, Type, ReturnType, original Robocode names and a string array for the parameters.
+The FuncSymbol has a string properties for Name, Type, ReturnType, original Robocode names and a string array for the parameters.
 
 The FuncSymbolTable is basically a key/value pair HashMap. Where the key is the type of the function followed by the name of the function. The type in this case, can be either Function or Action from userdefined functions, Tank, Gun, Battlefield, Radar or Utils from Robocode functions or the name of the event from Robocode events.
 This class has two functions, GetFuncSymbol and EnterFuncSymbol which can be found in listing \ref{cs}. 
@@ -71,10 +71,18 @@ In the Enter parameter function adds a new parameter to the CurrentFunc's array 
 Now in the Exit Action and Function declaration functions the CurrentFunc gets added to the FuncSymbolTable. 
 The reason the CurrentFunc is added in the Exit functions, is that the walker have to visit all the parameters. 
 
-\section{Type checking}
-Forklar vi "overskriver" visitoren, eller vi bruger visitoren. 
+\section{Type checking} 
+After the first travesal of the parse tree using the FuncListener, every function is now defined in the function table and we can begin type checking. To do type checking a Symbol- and a SymbolTable class are used to keep track of every variable and their scope, using these two classes the SymbolTypeVisitor class checks for type compatibility. 
+
+\subsection{Symbol \& Symbol table}
+Every variable in the program is represented by the Symbol class. The Symbol class has the properties String Name and Type, Symbol Var and int Depth. The Name and Type represents the name and type of the variable, the interesting parts is the Var and Depth properties. Var is a reference to a Symbol of the same name but in a higher scope, this would work as stack for all symbols of the same name, where the top of the stack will be the most inner scope and therefore the one used. The Depth property indicates the depth of the scope the symbol is in, with 0 being the global scope. 
+
+The SymbolTable is mainly two things, the Map associates a name of a variable with a symbol as key value pairs, these symbols are the ones on top of the stack describes in the paragraph before. The scope is an array of arrays of symbols. Each index of the outer array is a scope and each inner array contains the symbols of that scope. In this structure to find a symbol is a simple loop up in the map, entering symbols, to enter a new symbol 
+
+\subsection{The SymbolTypeVisitor class}
 
 
+Forklar vi "overskriver" visitoren, eller vi bruger visitoren.
 \section{Code generation}
 
 

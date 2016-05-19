@@ -1,470 +1,939 @@
-\chapter{Semantics}
-This chapter provides a formal description of the language semantics. The chapter uses techniques from the book \textit{Transitions and Trees} \cite{Huttel}.
- \section{Syntactic categories}
- To simplify the presentation of the semantics of our language, syntactic categories have been used. The syntactic categories are based on the grammer found in section \ref{sec:Grammar}. A collection of metavariables are presented in the following paragraphs which will be used throughout the chapter to present the type system and the operational semantics.
- 
- \begin{math}
- e \in \textbf{Expr} - Expressions \newline
- S \in \textbf{Stmt} - Statements\newline
- n \in \textbf{Num} - Numerals\newline
- b \in \textbf{Bool} - Boolean\ Literals\newline
- B \in \textbf{Block} - Blocks \newline %sure about this??
- tx \in \textbf{String} - String \ Literals\newline
- t \in \textbf{Type} - Num,\ Bool\ and\ String \ types\newline
- x \in \textbf{Var} - Variable name \newline
- f \in \textbf{Func} - Function name \newline
- a \in \textbf{Act} - Action name \newline
- D_a \in \textbf{ActDcl} - Action\ declaration\newline
- D_f \in \textbf{FuncDcl} - Function\ declaration\newline
- D_v \in \textbf{VarDcl} - Gobal\ variable\ declaration\newline
- \end{math}
- 
- \section{Formation rules}
- These rules have the purpose of defining how to format code in the language. It doesn't define how things works, this will be described later in the semantics.
- 
-\begin{math}
-	B ::= \{ \ D_v  \ S \ \}
-	\newline
-	S ::= \ Stmt \ S \ | \ \epsilon
-	\newline
-	Stmt ::= \ x = e \ | \ if \ e_1 \ B_1 \ else \ B_2 \ \newline | \ Repeat \ While(e) \ B \ | \ Return \ e \ | \ skip \ | \ atom \ S \ end
-	\newline
-	%Exprs ::= \ Expr \ op \ Exprs \ | \ \epsilon
-	%\newline
-	%Expr ::= \ ( \ - \ | \ NOT \ )? \ e 
-	%\newline
-	D_a ::= \ a(Params) \ B \ D_a \ | \epsilon 
-	\newline
-	D_f ::= \ f(Params) \ B \ D_f \ | \epsilon 
-	\newline
-	D_v ::= \ \tau \ x \ D_v \ | \epsilon 
-	\newline
-	Params ::= Param \ Params \ | \ \epsilon
-	\newline
-	Param ::= \ D_v
-	\newline
-	Game ::= \ Stmt \ || \ F
-\end{math}
- 
- \section{Semantic Functions}
- The purpose of the semantics functions is interpret syntactic elements to semantic elements. The semantic functions used in our language will be described in this section. 
-  
-  \subsection{Numeral Literals}
-  The numbers literal in our language will be Numerals, which will be interpreted to real numbers by means of the semantic function: 
-  
-  \begin{math}
-  \mathcal{N}: \textbf{Num} \rightarrow \mathbb{R}
-  \end{math}
-  
-  Using this function, numerals as 
-  \begin{math}
-    \mathcal{N}
-  \end{math}[\underline{5}] and 
-  \begin{math}
-    \mathcal{N}
-  \end{math}[\underline{5.36}] will be mapped to the corresponding values 5 and 5.36. 
-  
-  
-  \subsection{String Literals}
-  A String literal is a sequence of symbols and characters in UTF-8 (Unicode Transformation Format 8-bit) except the delimiter ("). The sequence of symbols and characters must be within the delimiter, for example "Hello world!". 
-  
-  %\begin{math}
-  %txl \in \textbf{txtL} = (") \newline
-  %tx \in \textbf{Txt} = (") \ (U)^* \ (")\ \newline
-  %U \in \ {UTF-8}
-  %\end{math}
-  
-  String Literals are interpreted as string elements String, by means of the following:
-  
-  \begin{math}
-  	\tau : \textbf{String} \ \rightarrow \ \textbf{StringL} \newline
-  	As \ an \ example: \ \tau("Insert \ text \ here") \ \rightarrow \ Insert \ text \ here
-  \end{math}
-  
-  \subsection{Boolean Literals}
-  The Boolean literals depict whether the expression is evaluated to true or false. The symbol for true is \begin{math} \top \end{math}, and the symbol for false is \begin{math} \bot \end{math} from the set of values from \textbf{bool} = {True, False}.
-  
-  %\begin{math}
-  	%\beta : Bool \rightarrow bool
-  %\end{math}
-  
-  %The semantic function above can be used to evaluate the semantic value of a boolean, take \begin{math} x \ is \ evaluated \ by \ the \ function \ \beta,  \end{math} as an example:
-  
-  %\[ \beta(x) =
-    %\begin{cases}
-      %\top       & \quad \text{if } x \text{ is true}\\
-      %\bot  & \quad \text{if } x \text{ is false}\\
-    %\end{cases}
-  %\]
-  
-  
-  \section{Environment Store Model}
-  The environment store model describes how variables are bound to a storage during the execution of programs. The variables are bound to a storage-call, where the storage-cell contains the value of the variable. Storage-cells are also called \textit{locations}, the set of locations is denoted \textbf{Loc}.
-  
-  The variable environment is a function that will tell what storage location a variable is bound to. Variable environments  is the set of partial functions  from the variable to their location, as shown in the following equation:
-  
-  \begin{math}  
-	 E_v \in \boldsymbol{EnvV} = \boldsymbol{Var} \cup \{ next \} \rightharpoonup \ \boldsymbol{Loc}
-  \end{math}
-  
-  The partial function above shows us how a variable or the set \{ next \} is bound to a location. The \textit{next} element is pointing to the next available location in memory.
-  Let l be an arbitrary element of \textbf{Loc} and always assume that \textbf{Loc} = \begin{math} \mathbb{N}. \end{math} The function \textbf{new} found below, will return the successor for every location by defining \textbf{new} as: \textbf{new} l = l + 1.
-  
-  \begin{math}
-	  \boldsymbol{new} : \ \boldsymbol{Loc} \ \rightarrow \ \boldsymbol{Loc}
-  \end{math}
-  
-  Let \begin{math}env_v\end{math} be an arbitrary element of the partial function \textbf{EnvV}. To update the environment the update notation \begin{math}env_v [x \mapsto v] \end{math} is used. 
-  
-  \[ E^{'}_v(y) =
-      \begin{cases}
-        E_v(y)       & \quad \text{if } y \not= x\\
-        l  & \quad \text{if } y = x\\
-      \end{cases}
-    \]
-      
-  A partial function \textbf{St} is defined below with an arbitrary element st.
-  
-  \begin{math}
-	  st \ \in \boldsymbol{St} \ = \ \boldsymbol{Loc} \rightharpoonup \ \boldsymbol{Value}
-  \end{math}
-  
-  For updating the store st \begin{math} \in \end{math} \textbf{St} the update notation \begin{math} sto[l \mapsto v] \end{math} will be used. A location and a value is needed to be able to update sto.
-  
-  \[ sto^{'}(l^{'}) =
-    \begin{cases}
-      sto(l)       & \quad \text{if } l^{'} \not= l\\
-      v  & \quad \text{if } l^{'} = l\\
-    \end{cases}
-  \]
-  
-  
-  
-  
-  \section{Type system}
-  THIS SHALL BE MOVED!!!
-	\[
-	[NUM] \quad
-	\dfrac{}{\Gamma \vdash n ::= Num}
-	\]
-	 
-	\[
-	[BOOL] \quad
-	\dfrac{}{\Gamma \vdash b ::= Bool}
+	\chapter{Semantics}
+	
+	
+	This chapter provides a formal description of the language semantics. The chapter uses techniques from the book \textit{Transitions and Trees} \cite{Huttel}.
+	
+	
+	\section{Syntactic categories}
+	
+	
+	To simplify the presentation of the semantics of our language, syntactic categories have been used. The syntactic categories are based on the grammer found in section \ref{sec:Grammar}. A collection of metavariables are presented in the following paragraphs which will be used throughout the chapter to present the operational semantics.
+	
+	
+	
+	
+	
+	\begin{math}		
+		e \in \textbf{Expr} - Expressions \newline		
+		S \in \textbf{Stmt} - Statements\newline	
+		n \in \textbf{Num} - Numerals\newline	
+		b \in \textbf{Bool} - Booleans\ Literal\newline		
+		B \in \textbf{Block} - Blocks \newline %sure about this??	
+		tx \in \textbf{Txt} - Txt\ Literals\newline	
+		t \in \textbf{Type} - Num,\ Bool\ and\ Txt\ types\newline	
+		x \in \textbf{var} - Variable name \newline	
+		f \in \textbf{Func} - Function name \newline	
+		a \in \textbf{Act} - Action name \newline	
+		D_a \in \textbf{ActDcl} - Action\ declaration\newline
+		D_f \in \textbf{FuncDcl} - Function\ declaration\newline
+		D_v \in \textbf{VarDcl} - Gobal\ variable\ declaration\newline
+		F \in \textbf{Battle-Field} - Battle-field\ configuration\newline
+	\end{math}
+	
+	
+	
+	
+	
+	\section{Formation rules}
+	
+	
+	These rules have the purpose of defining how to format code in the language. It doesn't define how things works, this will be described later in the semantics.
+	
+	
+	
+	
+	
+	\begin{math}	
+		B ::= \{ \ D_v \ S \ \}	
+		\newline	
+		S ::= \ Stmt \ S \ | \ \epsilon
+		\newline
+		Stmt ::= \ x = e \ | \ if \ e_1 \ B_1 \ else \ B_2 \ \newline | \ Repeat \ While(e) \ B \ | \ Return \ e \ | \ skip \ | \ atom \ S \ end \ | active \ S \ end
+		\newline
+		a ::= \ a(Dv) \ B \ D_a \ | \epsilon 	
+		\newline	
+		D_f ::= \ f(Dv) \ B \ D_f \ | \epsilon 
+		\newline
+		D_v ::= \ \tau \ x \ D_v \ | \epsilon 
+		\newline
+		Game ::= \ Stmt \ || \ F
+	\end{math}
+	
+	
+	
+	
+	
+	\section{Semantic Functions}
+	
+	
+	The purpose of the semantics functions to interpret syntactic elements to semantic elements. The semantic functions used in our language will be described in this section. 
+	
+	
+	
+	
+	
+	\subsection{Numeral Literals}
+	
+	
+	The numbers literal in our language will be Numerals, which will be interpreted to real numbers by means of the semantic function: 
+	
+	
+	
+	
+	
+	\begin{math}
+		\mathcal{N}: \textbf{Num} \rightarrow \mathbb{R}
+	\end{math}
+	
+	
+	
+	
+	
+	Using this function, numerals as 
+	
+	
+	\begin{math}
+		\mathcal{N}
+	\end{math}[\underline{5}] and 
+	\begin{math}
+		\mathcal{N}		
+	\end{math}[\underline{5.36}] will be mapped to the corresponding values 5 and 5.36. 
+	
+	
+	
+	
+	
+	
+	
+	
+	\subsection{Text Literals}
+	
+	
+	A Text literal is a sequence of symbols and characters in UTF-8(Unicode Transformation Format 8-bit) except the delimiter ("). The sequence of symbols and characters must be within the delimiter, for example "Hello world!". 
+	
+	
+	
+	
+	
+	%\begin{math}
+	
+	
+	%txl \in \textbf{txtL} = (") \newline
+	
+	
+	%tx \in \textbf{Txt} = (") \ (U)^* \ (")\ \newline
+	
+	
+	%U \in \ {UTF-8}
+	
+	
+	%\end{math}
+	
+	
+	
+	
+	
+	Text Literal are interpreted as string elements Text, by means of the following:
+	
+	
+	
+	
+	
+	\begin{math}		
+		\tau : \textbf{Txt} \ \rightarrow \ \textbf{txtL} \newline	
+		As \ an \ example: \ \tau("Insert \ text \ here") \ \rightarrow \ Insert \ text \ here		
+	\end{math}
+	
+	
+	
+	
+	
+	\subsection{Boolean Literals}
+	
+	
+	The Boolean literals depict whether the expression is evaluated to True or False. The semantic value for true is \begin{math} \top \end{math}, and false is \begin{math} \bot. \end{math}
+	
+	
+	
+	
+	
+	%\begin{math}
+	
+	
+	%\beta : Bool \rightarrow bool
+	
+	
+	%\end{math}
+	
+	
+	
+	
+	
+	%The semantic function above can be used to evaluate the semantic value of a boolean, take \begin{math} x \ is \ evaluated \ by \ the \ function \ \beta, \end{math} as an example:
+	
+	
+	
+	
+	
+	%\[ \beta(x) =
+	
+	
+	%\begin{cases}
+	
+	
+	%\top & \quad \text{if } x \text{ is true}\\
+	
+	
+	%\bot & \quad \text{if } x \text{ is false}\\
+	
+	
+	%\end{cases}
+	
+	
+	%\]
+	
+	
+	
+	
+	
+	
+	
+	
+	\section{Environment Store Model}
+	
+	
+	The environment store model describes how variables are bound to a storage during the execution of programs. The variables are bound to a storage-call, where the storage-cell contains the value of the variable. Storage-cells are also called \textit{locations}, the set of locations is denoted \textbf{Loc}.
+	
+	
+	
+	
+	
+	The variable environment is a function that will tell what storage location a variable is bound to. Variable environments is the set of partial functions from the variable to their location, as shown in the following equation:
+	
+	
+	
+	
+	
+	\begin{math} 		
+		E_v \in \boldsymbol{EnvV} = \boldsymbol{Var} \cup \{ next \} \rightharpoonup \ \boldsymbol{Loc}		
+	\end{math}
+	
+	
+	
+	
+	
+	We assume the \textit{next} element does not belong to \textit{var} and will be used to point to the next available location in memory.
+	
+	
+	Let l be an arbitrary element of \textbf{Loc} and assume that \textbf{Loc} = \begin{math} \mathbb{N}. \end{math} The function \textbf{new} found below, will return the successor for every location by defining \textbf{new} as: \textbf{new} l = l + 1.
+	
+	
+	
+	
+	
+	\begin{math}		
+		\boldsymbol{new} : \ \boldsymbol{Loc} \ \rightarrow \ \boldsymbol{Loc}		
+	\end{math}
+	
+	
+	
+	
+	
+	Let \begin{math}E_v\end{math} be an arbitrary element in \textbf{EnvV}, we denote by \begin{math} E_v[x \mapsto l] \end{math} the variable environment \begin{math}E_v^{'} \end{math} defined as follows:
+	
+	
+	
+	
+	
+	\[ E^{'}_v(y) =	
+	\begin{cases}
+	E_v(y) & \quad \text{if } y \not= x\\
+	l & \quad \text{if } y = x\\	
+	\end{cases}	
 	\]
 	
-  	\[
-  	[TXT] \quad
-  	\dfrac{}{\Gamma \vdash tx ::= Txt}
-  	\]
-  	
-  \section{Operational semantic}
-  This section has the purpose of formally describing the language. It consists of semantic rules that gives context to a program. 
-  The semantics are described with big-step semantics due to the intuitiveness of this kind of semantics. 
-  The environments during the operational semantics will be denoted with E.
-  
-  \subsection{Blocks}
-    \[
-	  [BLOCK]
-	  \dfrac{\langle D_v, \ E_v \rangle \ \rightarrow_{Dv} \ \langle E_v^{'} \rangle \qquad E_v^{'} \ \vdash \ \langle S, \ st \rangle \ \rightarrow_S \ st^{'}}{E_v \ \vdash \ \langle begin \ D_v \ S \ end, \ st \rangle \ \rightarrow_B \ st^{'}}
-	  \]
-  
-  \subsubsection{Declarations}
-  	\[
-	[EMPTY-VARDCL] \quad
-	\dfrac{}{\langle\epsilon, \ E_v\rangle \rightarrow_{Dv} E_v}
-	\]
-    	
-   	\[
-   	[VARDCL] \quad
-   	\dfrac{ \langle D_v, \ E_v[x \mapsto l]\rangle \ \rightarrow_{Dv} \ \langle E_v^{'} \rangle }{ \langle \ \tau \ x; \ D_v,\ E_v \rangle \rightarrow_{Dv} \ \langle E_v^{'} \rangle }
-   	\qquad \ \ l = E_v(next)
-   	\]
-    	
-   	\[
-   	[EMPTY-ACTDCL] \quad
-   	\dfrac{}{E_v \ \vdash \ \langle \epsilon, E_a \rangle \ \rightarrow_{Da} \ E_a}
-   	\]
-    	
-    	
-  	\[
-   	[ACTDCL] \quad
-   	\dfrac{E_v \ \vdash \langle D_a, \ E_a[a \ \mapsto (S, \ (x_1 .. x_n) \ E_v)] \rangle \rightarrow_Da \ E_a^{'}}{E_v \ \vdash \ Action \ a(x_1 .. x_n) \ is \ S; \ D_a \ E_a \ \rightarrow_{Da} \ E_a^{'}}
-   	\]
-    	
-   	\[
-   	[EMPTY-FUNCDCL] \quad
-   	\dfrac{}{E_v \ \vdash \langle \epsilon; \ D_f \rangle \ \rightarrow_{Df} \ E_f}
-   	\]
-   	
-   	\[
-   	[FUNCDCL] \quad
-   	\dfrac{E_v \vdash \langle D_f, \ E_f[f \ \mapsto (S, \ x_1 .. x_n, \ E_v)] \rangle \rightarrow_{Df} E_f^{'}}{E_v \vdash \ \langle Function \ f(x_1 .. x_2) \ is \ S; \ D_f, \ E_f \rangle \ \rightarrow_{Df} \ E_f^{'}}
-   	\]
-   	\subsection{Statements}
-   	The interaction with the battlefield will not be explained in the semantics in this project, since it is out of the scope of the project. The interaction that a battlefield configuration may have with a statement running in parallel will be explained, but only for when it moves from one configuration to another.
-   	
-   	The configuration of the semantics statements are:
-   	
-   	\begin{itemize}
-   		\item \begin{math} \langle \end{math}S, st, envl\begin{math} \rangle \end{math}, which are intermediate configurations where C is a statement that may contain atomic-encapsulations or parallels.
-   		\item \begin{math} \langle \end{math}st, envl\begin{math} \rangle \end{math} is terminal configurations.
-   	\end{itemize}
-   	
-   	In intermediate configuration is where only parts of the statements will be interpreted. Where in terminal configurations  all the statements will be executed.
-   	
-   	The transition system of our language are:
-   	 
-   	\begin{math}
-   		((\boldsymbol{EvCxt} \ \times \boldsymbol{St}) \ \cup \ (\boldsymbol{St} \ \times \ \boldsymbol{Envl}), \Rightarrow, \ \boldsymbol{St} \ \times \ \boldsymbol{Envl})
-   	\end{math}
-   	
-   	The set of run time stacks \textbf{EvCxt} is:
-   	
-   	\textbf{Envl} = \textbf{EnvV}\begin{math}
-   	^*
-   	\end{math}
-   	
-   	\[
-   	[ATOM-PARTLY]
-   	\dfrac{E_e, \ E_f, \ E_a \ \vdash \langle S, \ st, \ E_l \rangle \ \Rightarrow_{Atom} \ \langle S^{''}, \ st^{'}, \ E_l^{'}}{E_e, \ E_f, \ E_a \ \vdash \ \langle atom \ S \ end, \ st, \ E_l \rangle \ \Rightarrow_{Atom} \ \langle atom \ S^{''} \ end, \ st^{'}, \ E_l^{'}}
-   	\]
-   	
-   	\[
-   	[ATOM-COMPLETE]
-   	\dfrac{E_e, \ E_f, \ E_a \ \vdash \langle S, \ st, \ E_l \rangle \ \Rightarrow_{Atom} \ \langle st^{'}, \ E_l^{'}}{E_e, \ E_f, \ E_a \ \vdash \ \langle atom \ S \ end, \ st, \ E_l \rangle \ \Rightarrow_{Atom} \ \langle st^{'}, \ E_l^{'}}
-   	\]
-   	
-   	In the formation rules section the formation rule "Game", describes the interaction between the battlefield and the program. The "F" in Game is the battlefield configuration. 
-   	
-   	F have to states in our language, either an event is raised or not. If no events are raised, F stays the same. If an event has been raise \begin{math} F \rightarrow_{event(p)} F^{'} \end{math}, which is an transition from the battlefield configuration. It is possible for the events to be raised with an parameter p. 
-   	
-   	\[
-   	[PARA-F]
-   	\dfrac{E_e, \ E_f, \ E_a \ \vdash \ \langle S, \ st, \ E_l \rangle \ \Rightarrow_S \ \langle S^{'}, \ st^{'}, \ E_l^{'}}{E_e, \ E_f, \ E_a \ \vdash \ \langle S \ || \ F, \ st, \ E_l \rangle \ \Rightarrow_Para \ \langle S^{'} \ || \ F, \ st^{'}, \ E_l^{'} \rangle}
-   	\]
-   	
-   	\[
-   	[PARA-F^{'}]
-   	\dfrac{F \ \rightarrow_{event(p)} \ F^{'}}{E_e, \ E_f, \ E_a \ \vdash \ \langle S \ || \ F, \ st, \ E_l \rangle \ \Rightarrow_Para \ \langle atom \ S^{'} \ end; \ S \ || \ F^{'}, \ st, \ E_l \rangle}
-   	\]
-   	
-   	\begin{math}
-   		Where \ S \ is \ not \ of \ the \ form \ S_1 \ end; \ S_2 \newline
-	   	E_e(event) \ = \ (begin \ D_v \ S^{''} \ end, \ x, \ E_v) \newline
-	   	S^{'} \ = \ begin \ D_v \ (x \ := \ p; \ S^{''} \ end)
-   	\end{math}
-   	
-   	\[
-   	[ASSIGN] \quad
-   	\dfrac{E_v \ \vdash \ st[l \ -> \ a] \ \Rightarrow_Assign \ st^{'}}{E_v \ \vdash \ x \ = \ a; \ S, \ st \ \Rightarrow_Assign \ st^{'}}
-   	\]
-   	\begin{math}
-   		Where E_v(x) = l;
-   	\end{math}
-   	
-   	\[
-   	[IF-ELSE^{E_1}_\top]
-   	\dfrac{E_v \ \vdash \ \langle e_1, \ st \rangle \Rightarrow_e true \quad \langle B_1, \ st \rangle \ \Rightarrow_S \ st^{'}}{E_v \ \vdash \ \langle if \ e_1 \ B_1 \ else \ B_2 \ st \ \Rightarrow_IfElse \ st^{'}}
-   	\]
-   	
-   	\[
-   	[IF-ELSE^{E_1}_\bot]
-   	\dfrac{E_v \ \vdash \ \langle e_1, \ st \rangle \Rightarrow_e false \quad \langle B_2, \ st \rangle \ \Rightarrow_S \ st^{'}}{E_v \ \vdash \ \langle if \ e_1 \ B_1 \ else \ B_2 \ st \ \Rightarrow_IfElse \ st^{'}}
-   	\]
-   	
-   	\[
-   	[REPEAT^e_\top]
-   	\dfrac{E_v \ \vdash \ \langle e, \ st \rangle \ \Rightarrow_e \ true \quad \langle B, \ st \ \Rightarrow_S \ st^{'}}{E_v \ \vdash \ \langle Repeat \ While(e) \ B \rangle \ \Rightarrow_Repeat \ st^{'}}
-   	\]
-   	
-   	\[
-   	[REPEAT^e_\bot]
-   	\dfrac{E_v \ \vdash \ e, \ st \ \Rightarrow_e false}{E_v \ \vdash \ \langle Repeat \ While(e) \ B, \ st\rangle \ \Rightarrow_e st}
-   	\]
-   	
-   	\[
-   	[SKIP]
-   	\dfrac{}{\langle skip, \ st \rangle \ \Rightarrow_Skip \ st}
-   	\]
-   	
-   	\subsection{Expressions}
-   	
-   	\[
-   	[PAR-EXPR] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e, \ st> \rightarrow_e (v, \ st^{'}}{E_v, \ E_a, \ E_f \vdash <(e), \ st> \rightarrow_e \ (v, \ st^{'})}
-   	\]
-   	
-	\[
-	[CALL]
-	\dfrac{E_v^{'}[next \ \mapsto \ l], \ E_f^{'} \ \vdash \ \langle S, \ st \rangle \ \rightarrow_{Call} \ st^{'}}{E_v, \ E_f \ \vdash \ \langle call f, \ st \rangle \ \rightarrow_call \ st^{'}}
-	\]
+	
+	
+	
+	
+	\begin{math}Env_v[x \mapsto v] \end{math} represents the update of \begin{math} x \ \in \ var \ to \ l \ \in \ Loc.\end{math} 
+	
+	
+	
+	
+	
+	A partial function in \textbf{St} is defined below with an arbitrary element st.
+	
+	
+	
+	
+	
 	\begin{math}		
-		\qquad \qquad \qquad \qquad where \ E_f(f) \ = \ \langle S, \ E_v^{'}, \ E_p^{'} \rangle \
-		and \ l \ = \ E_v(next)
+		st \ \in \boldsymbol{St} \ = \ \boldsymbol{Loc} \rightharpoonup \ \boldsymbol{Value}		
 	\end{math}
-   	
-   	\subsection{Arithmetic Expressions}
-   	
-   	\[
-   	[ASM-EXPR] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <a_1, \ st> \rightarrow_{e} (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <a_2, \ st^{''}> \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \vdash <a_1 \ op \ a_2, st> \rightarrow_{e} (v, st^{'})}
-   	\]
- 	\begin{math}
- 	op \ \in \ \{ \ +, \ -, \ * \ \} \newline
-   	v \ = \ v_1 \ + \ v_2 \newline
-   	v \ = \ v_1 \ - \ v_2 \newline
-   	v \ = \ v_1 \ * \ v_2
-   	\end{math}
-   	
-   	\[
-   	[DM-EXPR] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <a_1, \ st> \rightarrow_{e} (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <a_2, \ st^{''}> \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \vdash <a_1 \ op \ a_2, st> \rightarrow_{e} (v, st^{'})}
-   	\]
-   	\begin{math}
-   	op \ \in \ \{ \ /, \ \% \ \} \ | v \not= \ 0 \newline 
-   	v \ = \ v_1 \ / \ v_2 \newline
-   	v \ = \ v_1 \ \% \ v_2
-   	\end{math}   	   	   	
-
-   	\subsection{Boolean Expressions}
-   	Most of the boolean expressions look alike even with the value of true/false, except the AND/OR expressions. The constructs of AND/OR uses short-circuiting, since in the OR expression if the first value is evaluated to true, there is no need to evaluate the second part of the expression.
-   	\[
-   	[EXPR^{IS=}_{\ \top}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1
-   	\ IS= e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}
-   	\]
-   	\begin{math}
-   	v_1 \ = \ v_2 
-   	\end{math}
-
-   	\[
-   	[EXPR^{IS=}_{\ \bot}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1
-   	\ IS= e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}
-   	\]
+	
+	
+	
+	
+	
+	For updating the store st \begin{math} \in \end{math} \textbf{St} the update notation \begin{math} sto[l \mapsto v] \end{math} will be used. \begin{math} sto[l \mapsto v] \end{math} will denote the store function \begin{math}sto^{'} \end{math} defined as follows:
+	
+	
+	
+	
+	
+	\[ sto^{'}(l^{'}) =	
+	\begin{cases}	
+	sto(l) & \quad \text{if } l^{'} \not= l\\	
+	v & \quad \text{if } l^{'} = l\\	
+	\end{cases}	
+	\]
+	
+	
+	
+	
+	
+	\section{Operational semantic}
+	
+	
+	This section has the purpose of formally describing the language. It consists of semantic rules that give context to a program. 
+	
+	
+	The semantics is described with big-step semantics due to the intuitiveness of this kind of semantics. 
+	
+	
+	The environments during the operational semantics will be denoted with E.
+	
+	
+	
+	
+	
+	\subsection{Blocks}
+	
+	
+	\[	
+	[BLOCK]	
+	\dfrac{\dfrac{E_f, \ E_a \ \vdash \ \langle B, \ st^{''}, \ E_v^{''} \rangle \ \Rightarrow^* \ (st^{'}, \ E_l^{'})}{\dfrac{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1, \ st_1 \rangle \ \rightarrow_e \ (v_1, \ st_2)}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_n, \ st_n \rangle \ \rightarrow_e \ (v_n, \ st_{n+1})}}}{E_v, \ E_a, \ E_f \ \vdash \ \langle f(e_1 \ ... \ e_n), \ st \rangle \ \rightarrow_e \ (v, \ st^{'})}	
+	\]
+	
+	
+	
+	
+	
+	\begin{math}		
+		\quad where \newline		
+		\qquad st_1 = st \newline		
+		\qquad E_f(f) = (B, x_1 ... x_n, E_v^{'}) \newline		
+		\qquad E_v^{''} = E_v^{'}[x_1 \mapsto l_1] ... [x_n \mapsto l_n] [next \mapsto l_{n+1}] \newline		
+		\qquad st^{''} = st_{n+1}[l_1 \mapsto v_1] ... [l_n \mapsto v_n] \newline		
+		\qquad l_1 = new (Ev(next)) \newline		
+		\qquad l_{i+1}= new l_i for i \in {1 ... n}		
+	\end{math}
+	
+	
+	
+	
+	
+	\subsubsection{Declarations}
+	
+	
+	\[	
+	[EMPTY-VARDCL] \quad	
+	\dfrac{}{\langle\epsilon, \ E_v\rangle \rightarrow_{Dv} E_v}	
+	\]
+	
+	
+	
+	
+	
+	\[	
+	[VARDCL] \quad	
+	\dfrac{ \langle D_v, \ E_v[x \mapsto l][next \mapsto new_l]\rangle \ \rightarrow_{Dv} \ \langle E_v^{'} \rangle }{ \langle \ \tau \ x; \ D_v,\ E_v \rangle \rightarrow_{Dv} \ \langle E_v^{'} \rangle }	
+	\qquad \ \ l = E_v(next)	
+	\]
+	
+	
+	
+	
+	
+	\[	
+	[EMPTY-ACTDCL] \quad	
+	\dfrac{}{E_v \ \vdash \ \langle \epsilon, E_a \rangle \ \rightarrow_{Da} \ E_a}	
+	\]
+	
+	
+	
+	
+	
+	
+	
+	
+	\[	
+	[ACTDCL] \quad	
+	\dfrac{E_v \ \vdash \langle D_a, \ E_a[a \ \mapsto (S, \ x_1 .. x_n \ E_v)] \rangle \rightarrow_{Da} \ E_a^{'}}{E_v \ \vdash \ Action \ a(x_1 .. x_n) \ is \ S; \ D_a \ E_a \ \rightarrow_{Da} \ E_a^{'}}	
+	\]
+	
+	
+	
+	
+	
+	\[	
+	[EMPTY-FUNCDCL] \quad	
+	\dfrac{}{E_v \ \vdash \langle \epsilon; \ D_f \rangle \ \rightarrow_{Df} \ E_f}	
+	\]
+	
+	
+	
+	
+	
+	\[	
+	[FUNCDCL] \quad	
+	\dfrac{E_v \vdash \langle D_f, \ E_f[f \ \mapsto (S, \ x_1 .. x_n, \ E_v)] \rangle \rightarrow_{Df} E_f^{'}}{E_v \vdash \ \langle Function \ f(x_1 .. x_n) \ is \ S; \ D_f, \ E_f \rangle \ \rightarrow_{Df} \ E_f^{'}}	
+	\]
+	
+	
+	\subsection{Statements}
+	
+	
+	The interaction with the battlefield will not be explained in the semantics in this project, since it is out of the scope of the project. The interaction that a battlefield configuration may have with a statement running in parallel will be explained, but only for when it moves from one configuration to another.
+	
+	
+	
+	
+	
+	The configuration of the semantics statements are:
+	
+	
+	
+	
+	
+	\begin{itemize}
+		
+		
+		\item \begin{math} \langle \end{math}S, st, envl\begin{math} \rangle \end{math}, which are intermediate configurations where S is a statement that may contain atomic-encapsulations or parallels.
+		
+		
+		\item \begin{math} \langle \end{math}st, envl\begin{math} \rangle \end{math} is terminal configurations.
+		
+		
+	\end{itemize}
+	
+	
+	
+	
+	
+	In intermediate configuration is where only parts of the statements will be interpreted. Where in terminal configurations all the statements will be executed.
+	
+	
+	
+	
+	
+	The transition system of our language is:
+	
+	
+	
+	
+	
+	\begin{math}		
+		((\boldsymbol{S} \ \times \boldsymbol{EvCxt} \ \times \boldsymbol{St}) \ \cup \ (\boldsymbol{St} \ \times \ \boldsymbol{Envl}), \Rightarrow, \ \boldsymbol{St} \ \times \ \boldsymbol{Envl})		
+	\end{math}
+	
+	
+	
+	
+	
+	The set of run time stacks \textbf{EvCxt} is:
+	
+	
+	
+	
+	
+	\textbf{Envl} = \textbf{EnvV}\begin{math}		
+		^*		
+	\end{math}
+	
+	
+	
+	
+	
+	We will denote by \begin{math} E_l \end{math} a generic element in EvCxt
+	
+	
+	
+	
+	
+	\[	
+	[ATOM-PARTLY]	
+	\dfrac{E_l, \ E_f, \ E_a \ \vdash \langle S, \ st, \ E_l \rangle \ \Rightarrow \ \langle S^{''}, \ st^{'}, \ E_l^{'} \rangle}{E_e, \ E_f, \ E_a \ \vdash \ \langle atom \ S \ end, \ st, \ E_l \rangle \ \Rightarrow \ \langle atom \ S^{''} \ end, \ st^{'}, \ E_l^{'} \rangle}	
+	\]
+	
+	
+	
+	
+	
+	\[	
+	[ATOM-COMPLETE]	
+	\dfrac{E_l, \ E_f, \ E_a \ \vdash \langle S, \ st, \ E_l \rangle \ \Rightarrow \ \langle st^{'}, \ E_l^{'} \rangle}{E_e, \ E_f, \ E_a \ \vdash \ \langle atom \ S \ end, \ st, \ E_l \rangle \ \Rightarrow \ \langle st^{'}, \ E_l^{'} \rangle}	
+	\]
+	
+	
+	
+	
+	
+	In the formation rules section the formation rule "Game", describes the interaction between the battlefield and the program. The "F" in Game is the battlefield configuration. 
+	
+	
+	
+	
+	
+	F have to states in our language, either an event is raised or not. If no events are raised, F stays the same. If an event has been raise \begin{math} F \rightarrow_{event(p)} F^{'} \end{math}, which is an transition from the battlefield configuration. It is possible for the events to be raised with an parameter p. 
+	
+	
+	
+	
+	
+	\[	
+	[PARA-F]	
+	\dfrac{E_e, \ E_f, \ E_a \ \vdash \ \langle S, \ st, \ E_l \rangle \ \Rightarrow_S \ \langle S^{'}, \ st^{'}, \ E_l^{'}}{E_e, \ E_f, \ E_a \ \vdash \ \langle S \ || \ F, \ st, \ E_l \rangle \ \Rightarrow_Para \ \langle S^{'} \ || \ F, \ st^{'}, \ E_l^{'} \rangle}	
+	\]
+	
+	
+	
+	
+	
+	\[	
+	[PARA-F^{'}]	
+	\dfrac{F \ \rightarrow_{event(p)} \ F^{'}}{E_e, \ E_f, \ E_a \ \vdash \ \langle S \ || \ F, \ st, \ E_l \rangle \ \Rightarrow_Para \ \langle atom \ S^{'} \ end; \ S \ || \ F^{'}, \ st, \ E_l \rangle}	
+	\]
+	
+	
+	
+	
+	
+	\begin{math}		
+		Where \ S \ is \ not \ of \ the \ form \ S_1 \ end; \ S_2 \newline		
+		E_e(event) \ = \ (begin \ D_v \ S^{''} \ end, \ x, \ E_v) \newline		
+		S^{'} \ = \ begin \ D_v \ (x \ := \ p; \ S^{''} \ end)		
+	\end{math}
+	
+	
+	
+	
+	
+	\[
+	[COMP-PARTLY]
+	\dfrac{\langle S_1, \ st, \ E_l \rangle \ \Rightarrow \ \langle S_1^{‘}, \ st^{‘}, \ E_l^{‘}}{\langle S_1; \ S_2, \ st, \ E_l \rangle \ \Rightarrow \ \langle S_1^{‘}; \ S_2, \ st^{‘}, \ E_l{‘}}
+	\]
+	
+	\[
+	[COMP-COMPLETE]
+	\dfrac{\langle S_1, \ st, \ E_l \rangle \ \Rightarrow \ \langle \ st^{‘}, \ E_l^{‘}}{\langle S_2, \ st, \ E_l \rangle \ \Rightarrow \ \langle S_1^{‘}; \ S_2, \ st^{‘}, \ E_l{‘}}
+	\]
+	
+	
+	\[
+	[ASSIGN]
+	\dfrac{}{\langle x \ := \ a, \ st, \ E_l \rangle \ \Rightarrow \ (st[l \mapsto v], \ E_l)}
+	\]
 	\begin{math}
-   	v_1 \ \not= \ v_2
-   	\end{math}
-
-
-   	\[
-   	[EXPR^{NOT=}_{\ \top}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ NOT= e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}
-   	\]
+		Where
+		\qquad E_l = (E_v) : E_l^{‘}
+		\qquad l = E_v(x)
+		\qquad E_v, st \vdash a \rightarrow_a v
+	\end{math}
+	
+	\[
+	[IF-^{\top}_e]
+	\dfrac{\langle if \ e \ B_1 \ else \ B_2, \ st, \ E_l \rangle \ \Rightarrow \ \langle B_1, \ st, \ E_l \rangle}{}
+	\]
 	\begin{math}
-   	v_1 \ \not= \ v_2
-   	\end{math}   	
-   	
-
-   	\[
-   	[EXPR^{NOT=}_{\ \bot}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ NOT= e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}
-   	\]
+		If E_v, st \vdash e \rightarrow_e \top \quad where E_l = (E_v) : E_l{‘}
+	\end{math}
+	
+	\[
+	[IF-^{\bot}_e]
+	\dfrac{\langle if \ e \ B_1 \ else \ B_2, \ st, \ E_l \rangle \ \Rightarrow \ \langle B_2, \ st, \ E_l \rangle}{}
+	\]
 	\begin{math}
-   	v_1 \ = \ v_2
-   	\end{math}   	
-   	
-   	
-   	\[
-   	[EXPR^{\ >}_{\ \top}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ > e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}
-   	\]
+		If E_v, st \vdash e \rightarrow_e \bot \quad where E_l = (E_v) : E_l{‘}
+	\end{math}
+	
+	\[
+	[REPEAT]
+	\dfrac{}{\langle repeat \ while(e) \ B, \ st, \ E_l \rangle \ \Rightarrow \ \langle if \ e \ (B; \ repeat \ while(e) \ B) \ else \ skip, \ st, \ E_l \rangle}
+	\]
+	
+	\[
+	[SKIP]
+	\dfrac{}{\langle skip, \ st, \ E_l \rangle \ \Rightarrow \ (st, \ E_l)}
+	\]
+	
+	\[
+	[RETURN]	
+	\dfrac{E_v, \ E_a, \ E_f \ \vdash \ \langle e, \ st \rangle \ \rightarrow_e \ (v, \ st^{'})}{E_f, \ E_a \ \vdash \ \langle return \ e, \ st, \ E_l \rangle \ \Rightarrow \ (st^{'}[r \ \mapsto \ v], \ E_l)}
+	\quad Where	
+	\qquad E_l = E_v : E_l^{'}	
+	\]
+	
+	
+	
+	
+	
+	\subsection{Expressions}
+	
+	
+	
+	
+	
+	\[	
+	[PAR-EXPR] \quad	
+	\dfrac{E_v, \ E_a, \ E_f \vdash \langle e, \ st \rangle \rightarrow_e (v, \ st^{'}}{E_v, \ E_a, \ E_f \vdash \langle (e), \ st \rangle \rightarrow_e \ (v, \ st^{'})}	
+	\]
+	
+	
+	
+	
+	
+	
+	
+	\[
+	[CALL-FUNC]
+	\dfrac{}{ \langle call \ f(x_1 … x_n), \ st, \ E_l \rangle \ \Rightarrow \ \langle active \ S \ end, \ st, \ (E_v^{‘}, E_f^{‘}) : E_l \rangle}
+	\]
 	\begin{math}
-   	v_1 \ > \ v_2
-   	\end{math}   	
-   	
-   	\newcommand{\exprtrans}[5][E_v, E_a,E_f]{#1\vdash \langle #2, #3 \rangle \mathrel{\to_e} (#4 , #5)}
-   	
-   	\[
-   	[EXPR^{\ >}_{\ \bot}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ > e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}
-   	\]
+	Where 
+	\qquad E_f(f) = (S, E_v^{‘}, E_f^{‘})
+	\qquad E_l = (E_v) : E_l^{‘}
+	\end{math}
+	
+	\[
+	[CALL-F-REC]
+	\dfrac{}{ \langle call \ f, \ st, \ E_l \rangle \ \Rightarrow \ \langle active \ S \ end, \ st, \ (E_v^{‘}, \ E_f^{‘}[f \mapsto (S, \ E_v^{‘}, \ E_f^{‘}] : E_l \rangle}
+	\]
 	\begin{math}
-   	v_1 \ \not> \ v_2
-   	\end{math}   
-   	
-   	\[
-   	[EXPR^{\ <}_{\ \top}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ < e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}
-   	\]
+		Where
+		\qquad E_f(f) = (S, E_v^{‘}, E_f^{‘}) 
+		\qquad E_l = (E_v) : E_l^{‘}
+	\end{math}
+	
+	\[
+	[CALL-ACT]
+	\dfrac{}{ \langle call \ a(x_1 … x_n), \ st, \ E_l \rangle \ \Rightarrow \ \langle active \ S \ end, \ st, \ (E_v^{‘}, E_a^{‘}) : E_l}
+	\]
 	\begin{math}
-   	v_1 \ < \ v_2
-   	\end{math}   	
-   	
-
-   	\[
-   	[EXPR^{\ <}_{\ \bot}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ < e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}
-   	\]
+	Where
+	\qquad E_a(a) = (S, E_v^{‘}, E_a^{‘})
+	\qquad E_l = (E_v) : E_l^{‘}
+	\end{math}
+	\[
+	[CALL-A-REC]
+	\dfrac{}{ \langle call \ f, \ st, \ E_l \rangle \ \Rightarrow \ \langle active \ S \ end, \ st, \ (E_v^{‘}, \ E_f^{‘}[f \mapsto (S, \ E_v^{‘}, \ E_f^{‘}] : E_l \rangle}
+	\]
 	\begin{math}
-   	v_1 \ \not< \ v_2
-   	\end{math}
-   	
-   	\[
-   	[EXPR^{\ >=}_{\ \ \top}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ >= e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}
-   	\]
-	\begin{math}
-   	v_1 \ \ge \ v_2
-   	\end{math}   	
-   	
-
-   	\[
-   	[EXPR^{\ >=}_{\ \ \bot}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ >= e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}
-   	\]
-	\begin{math}
-   	v_1 \ \ngeq \ v_2
-   	\end{math}
-   	
-   	\[
-   	[EXPR^{\ <=}_{\ \ \top}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ <= e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}
-   	\]
-	\begin{math}
-   	v_1 \ \le \ v_2
-   	\end{math}   	
-   	
-
-   	\[
-   	[EXPR^{\ <=}_{\ \ \bot}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ <= e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}
-   	\]
-	\begin{math}
-   	v_1 \ \nleq \ v_2
-   	\end{math}
-   	
-   	\[
-   	[EXPR^{\ \ !}_{\ \ \top}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <v, \ st> \rightarrow_e (\top, st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <!v, \ st> \ \rightarrow_e (\top, \ st^{'})}
-   	\]  	  	
-
-   	\[
-   	[EXPR^{\ \ !}_{\ \ \bot}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <v, \ st> \rightarrow_e (\bot, st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <!v, \ st> \ \rightarrow_e (\bot, \ st^{'})}
-   	\]
-   	
-   	
-   	\[
-   	[EXPR^{\ AND}_{\ \ \top}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (\top, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (\top, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ AND \ e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}
-   	\]  	
-   	
-   	\[
-   	[EXPR^{\ AND}_{\ \ \bot}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e, \ st> \rightarrow_e (\bot, \ st) }{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ AND \ e_2, \ st> \ \rightarrow_e (\bot, \ st)}
-   	\]
-   	
-   	
-   	\[
-   	[EXPR^{\ OR}_{\ \ \top}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e, \ st> \rightarrow_e (\top, \ st) }{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ OR \ e_2, \ st> \ \rightarrow_e (\top, \ st)}
-   	\]
-   	
-   	\[
-   	[EXPR^{\ OR}_{\ \ \bot}] \quad
-   	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (\bot, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (\bot, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ OR \ e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}
-   	\]  	
-   	
-   	
+		Where
+		\qquad E_a(a) = (S, E_v^{‘}, E_a^{‘})
+		\qquad E_l = (E_v) : E_l^{‘}		
+	\end{math}
+	
+	\subsection{Arithmetic Expressions}
+	
+	
+	
+	
+	
+	\[
+	[ASM-EXPR] \quad	
+	\dfrac{E_v, \ E_a, \ E_f \vdash \langle a_1, \ st \rangle \rightarrow_{e} (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \langle a_2, \ st^{''}\rangle \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \vdash \ \langle a_1 \ op \ a_2, st \rangle \ \rightarrow_{e} (v, st^{'})}	
+	\]
+	
+	
+	\begin{math}		
+		op \ \in \ \{ \ +, \ -, \ * \ \} \newline		
+		v \ = \ v_1 \ op \ v_2		
+	\end{math}
+	
+	
+	
+	
+	
+	\[
+	[DM-EXPR] \quad
+	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle a_1, \ st \rangle \ \rightarrow_{e} (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle a_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \vdash \ \langle a_1 \ op \ a_2, st \rangle \ \rightarrow_{e} (v, st^{'})}	
+	\]
+	
+	
+	\begin{math}		
+		op \ \in \ \{ \ /, \ \% \ \} \ | v \not= \ 0 \newline 		
+		v \ = \ v_1 \ op \ v_2		
+	\end{math} 
+	
+	
+	
+	
+	
+	\subsection{Boolean Expressions}
+	
+	
+	Most of the boolean expressions look alike even with the value of true/false, except the AND/OR expressions. The constructs of AND/OR uses short-circuiting, since in the OR expression if the first value is evaluated to true, there is no need to evaluate the second part of the expression.
+	
+	
+	\[
+	[EXPR^{IS=}_{\ \top}] \quad	
+	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \ \langle e_1 \ IS= e_2, \ st \rangle \ \ \rightarrow_e (\top, \ st^{'})}	
+	\]
+	
+	
+	\begin{math}		
+		v_1 \ = \ v_2 		
+	\end{math}
+	
+	
+	
+	
+	
+	\[
+	[EXPR^{IS=}_{\ \bot}] \quad	
+	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \ \rangle \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ IS= e_2, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}	
+	\]
+	
+	
+	\begin{math}		
+		v_1 \ \not= \ v_2		
+	\end{math}
+	
+	
+	
+	
+	
+	
+	
+	
+	\[	
+	[EXPR^{NOT=}_{\ \top}] \quad	
+	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ NOT= e_2, \ st \rangle \ \rightarrow_e (\top, \ st^{'})}	
+	\]
+	
+	
+	\begin{math}		
+		v_1 \ \not= \ v_2		
+	\end{math} 
+	
+	
+	
+	
+	
+	
+	
+	
+	\[
+	[EXPR^{NOT=}_{\ \bot}] \quad	
+	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ NOT= e_2, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}	
+	\]
+	
+	
+	\begin{math}		
+		v_1 \ = \ v_2		
+	\end{math} 
+	
+	
+	
+	
+	
+	
+	
+	
+	\[	
+	[EXPR^{\ >}_{\ \top}] \quad	
+	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ > e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}	
+	\]
+	
+	
+	\begin{math}		
+		v_1 \ > \ v_2		
+	\end{math} 
+	
+	
+	
+	
+	
+	\newcommand{\exprtrans}[5][E_v, E_a,E_f]{#1\vdash \langle #2, #3 \rangle \mathrel{\to_e} (#4 , #5)}
+	
+	
+	
+	
+	
+	\[	
+	[EXPR^{\ >}_{\ \bot}] \quad	
+	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ > e_2, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}
+	\]
+	
+	
+	\begin{math}		
+		v_1 \ \not> \ v_2		
+	\end{math} 
+	
+	
+	
+	
+	
+	\[	
+	[EXPR^{\ <}_{\ \top}] \quad	
+	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ < e_2, \ st \rangle \ \rightarrow_e (\top, \ st^{'})}
+	\]
+	
+	
+	\begin{math}		
+		v_1 \ < \ v_2		
+	\end{math} 
+	
+	
+	
+	
+	
+	
+	
+	
+	\[	
+	[EXPR^{\ <}_{\ \bot}] \quad	
+	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ < e_2, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}	
+	\]
+	
+	
+	\begin{math}		
+		v_1 \ \not< \ v_2		
+	\end{math}
+	
+	
+	
+	
+	
+	\[	
+	[EXPR^{\ >=}_{\ \ \top}] \quad	
+	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ >= e_2, \ st \rangle \ \rightarrow_e (\top, \ st^{'})}	
+	\]
+	
+	
+	\begin{math}		
+		v_1 \ \ge \ v_2		
+	\end{math} 
+	
+	
+	
+	
+	
+	
+	
+	
+	\[	
+	[EXPR^{\ >=}_{\ \ \bot}] \quad	
+	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ >= e_2, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}	
+	\]
+	
+	
+	\begin{math}		
+		v_1 \ \ngeq \ v_2		
+	\end{math}
+	
+	
+	
+	
+	
+	\[
+	[EXPR^{\ <=}_{\ \ \top}] \quad
+	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ <= e_2, \ st \rangle \ \rightarrow_e (\top, \ st^{'})}
+	\]
+	
+	
+	\begin{math}		
+		v_1 \ \le \ v_2		
+	\end{math} 
+	
+	
+	
+	
+	
+	
+	
+	
+	\[	
+	[EXPR^{\ <=}_{\ \ \bot}] \quad	
+	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ <= e_2, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}	
+	\]
+	
+	
+	\begin{math}		
+		v_1 \ \nleq \ v_2		
+	\end{math}
+	
+	
+	
+	
+	
+	\[	
+	[EXPR^{\ \ !}_{\ \ \top}] \quad	
+	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e, \ st \rangle \ \rightarrow_e (\top, st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle !e, \ st \rangle \ \rightarrow_e (\top, \ st^{'})}	
+	\] 
+	
+	
+	
+	
+	
+	\[	
+	[EXPR^{\ \ !}_{\ \ \bot}] \quad	
+	\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e, \ st \rangle \ \rightarrow_e (\bot, st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle !e, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}	
+	\]
+	
+	
+	
+	
+	
+	
+	
+	
+	\[	
+	[EXPR^{\ AND}_{\ \ \top}] \quad	
+	\dfrac{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e \ (\top, \ st^{''}) \qquad E_v, \ E_a, \ E_f \ \vdash \ \langle e_2, \ st^{''} \ \rightarrow_e \ (v, st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ AND \ e_2, \ st> \ \rightarrow_e (v, \ st^{'})}	
+	\] 
+	
+	
+	
+	
+	
+	\[	
+	[EXPR^{\ AND}_{\ \ \bot}] \quad	
+	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (\bot, \ st^{'}) }{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ AND \ e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}	
+	\]
+	
+	
+	
+	
+	
+	
+	
+	
+	\[	
+	[EXPR^{\ OR}_{\ \ \top}] \quad	
+	\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (\top, \ st^{'}) }{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ OR \ e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}	
+	\]
+	
+	
+	
+	
+	
+	\[	
+	[EXPR^{\ OR}_{\ \ \bot}] \quad	
+	\dfrac{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e \ (\bot, \ st^{''}) \qquad E_v, \ E_a, \ E_f \ \vdash \ \langle e_2, \ st^{''} \ \rightarrow_e \ (v, st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ OR \ e_2, \ st> \ \rightarrow_e (v, \ st^{'})}
+	\]
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

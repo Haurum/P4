@@ -2,7 +2,7 @@
 \label{chap:Analysis}
 The analysis chapter is of purpose to create a basis for the further work with developing a programming language to make the use of Robocode easier for new programmers. This chapter contains a description of Robocode and cover the basics of how to use it. 
 
-Further in the analysis the choice of a parser generator for the project will be discussed. The work of the analysis has the purpose of leading to the next chapter, \ref{chap:LanguageDesign}
+Further in the analysis the choice of a parser generator for the project will be discussed. The work of the analysis has the purpose of leading to the next chapter, \ref{chap:LanguageDesign}.
 
 \section{Robocode}
 \label{sec:Robocode}
@@ -53,7 +53,7 @@ public void onHitWall(HitWallEvent e) {
 
 When the robot drives into the wall, the event onHitWall will be raised, and the robot can be programmed to do a specific task when this occurs. 
 
-The above mentioned is only a few of the events that can occur in RoboCode. In the while loop, events and functions the user can use many build-in methods from the robot class, which is moving and controlling the robot, controlling the radar and the gun and getting information about the battlefield, the user's robot, other robots and many other things. 
+The above mentioned is only a few of the events that can occur in Robocode. In the while loop, events and functions the user can use many build-in methods from the robot class, which is moving and controlling the robot, controlling the radar and the gun and getting information about the battlefield, the user's robot, other robots and many other things. 
 
 
 In this section the robocode concept will be described. It will include the different functions the system contains.
@@ -64,14 +64,14 @@ The robot is the core of the game. The robot can be coded to act differently in 
 The robot also has a radar. The radar allows the robot to scan for other robots scan and walls. This could once again affect the strategies of the robots.
 
 \subsection{Battlefield}
-The battlefield is the arena where the robots will fight each other. It’s also the visible field on screen when the game is running. When coding, the battlefield can be used for different reasons, for example, to get the number of enemies that are alive. A robot might be programmed to act differently if there areess than three robots left. All this depends on the way the player decided to program his robot. Some of the other examples that the battlefield can be queriedor could be the field size, time or the current round number. 
+The battlefield is the arena where the robots will fight each other. It’s also the visible field on screen when the game is running. When coding, the battlefield can be used for different reasons, for example, to get the number of enemies that are alive. A robot might be programmed to act differently if there are less than three robots left. All this depends on the way the player decided to program his robot. Some of the other examples that the battlefield can be queried or could be the field size, time or the current round number. 
 
 \subsection{Energy}
 Robots have energy, which is the spendable resource when shooting bullets, it is the ‘health’ of a robot, since being hit by a wall or another robots bullet causes a robot to lose energy. But if one robot hits another one, it regains energy. All robots start at 100 energy at the start of a fight, but can exceed this amount, by hitting other robots to regain energy, without losing it. The amount of energy gained when hitting a robot is (3 * bulletpower), which is three times the power you spend shooting it. By being hit by a bullet, the robot lose (4 * bulletpower), and hitting a wall with an AdvancedRobot extended robot will cause the robot to lose energy as well.
 
 If a robot shoots a bullet which uses the last energy that particular robot has, it will be disabled. A disabled robot will not be able to move or shoot. The last shot that robot took, has a chance to restore the robot, if it hits an enemy and thereby regaining energy.
    
-Energy for the robots are both the health and the spendable resource for attacking, which makes every decision of maneuvering and shooting count.
+Energy for the robots are both the health and the spendable resource for attacking, which makes every decision of manoeuvring and shooting count.
 
 \subsection{Scoring}
 Winning in robocode is not about being the sole survivor, not even in the RoboRumble gamemode, which is the “every man for himself” type of gamemode. It is all about scoring, and there are different methods for scoring points. The various types of scoring are as following:
@@ -84,20 +84,20 @@ Ram damage, any robot that rams another robot gains 2 points for each damage the
 \item Ram damage bonus, every time a robot kills another robot by ramming, it scores an additional 30\% of all the damage it did to that robot as points.
 \end{itemize}
 
-When all the above scoring points for all robots in a battle has een added up, the robot with the most points wins the game.
+When all the above scoring points for all robots in a battle has been added up, the robot with the most points wins the game.
 
 
 \section{Choice of parser generator}
 \label{sec:ParserGenerator}
-When choosing a parser generator, one also has to choose a lexer generator, for the lexical analysis. The choice of not building a parser for this project without a generator tool, was due to the fact that the ANTLR4 tool had a build-in lexical analyzer, and a plugin for Eclipse/IntelliJ, generating abstract syntax trees while writing the grammar. Other parser generators were discussed before making a final decision, such as CUP, but the lack of lexical analyzers and abstract syntax tree builders, and at the same time the ease of installing the ANTLR4 parser generator, stated that the ANTLR4 tool was the choice of generator for this project. For the IntelliJ IDE there was a single plugin the user had to install, but for Eclipse, and the abstract syntax tree builder for Eclipse, it required a few plugins, and a bit of experience with the tool, to fully understand how to operate with the tree builder window. Both Eclipse and IntelliJ has been considered as the IDE to use. IntelliJ is preferred because of the ease of installation and use of the ANTLR4 plugin.
+When choosing a parser generator, one also has to choose a lexer generator, for the lexical analysis. The choice of not building a parser for this project without a generator tool, was due to the fact that the ANTLR4 tool had a build-in lexical analyser, and a plugin for Eclipse/IntelliJ, generating abstract syntax trees while writing the grammar. Other parser generators were discussed before making a final decision, such as CUP, but the lack of lexical analysers and abstract syntax tree builders, and at the same time the ease of installing the ANTLR4 parser generator, stated that the ANTLR4 tool was the choice of generator for this project. For the IntelliJ IDE there was a single plugin the user had to install, but for Eclipse, and the abstract syntax tree builder for Eclipse, it required a few plugins, and a bit of experience with the tool, to fully understand how to operate with the tree builder window. Both Eclipse and IntelliJ has been considered as the IDE to use. IntelliJ is preferred because of the ease of installation and use of the ANTLR4 plugin.
  
-\section{ANTLR4 Parser Generator}
+\section{ANTLR4 parser generator}
 \label{Antlr}
-In this project, the ANTLR4 parser generator was chosen, as the tool generated both the parser and the lexical analyzer. This tool, as a plugin for both IntelliJ and Eclipse, could also build abstract syntax trees (AST), which are the trees representing abstract syntactic structures, language correct (syntactically correct) sentences (source code) in a computer language. These trees have a top representing the program, and nodes representing terminals and non-terminals. The roots of the tree are terminals, which is the syntactically correct sentence.
+In this project, the ANTLR4 parser generator was chosen, as the tool generated both the parser and the lexical analyser. This tool, as a plugin for both IntelliJ and Eclipse, could also build abstract syntax trees (AST), which are the trees representing abstract syntactic structures, language correct (syntactically correct) sentences (source code) in a computer language. These trees have a top representing the program, and nodes representing terminals and non-terminals. The roots of the tree are terminals, which is the syntactically correct sentence.
 
 The AST tree builder for the ANTLR4 Eclipse plugin would show the trees in an Eclipse window, where the user would be able to write a sentence, and the window would show the AST for that particular sentence, if it was syntactically correct, corresponding to the grammar described in a .g4 file in the Eclipse project.
-ANTLR4 parses through an LL(*) algorithm, which means it can process any LL(x) grammar, where ‘x’ is the amount of lookahead needed for parsing, and the LL means it parses from left to right, with leftmost derivation. This makes it a top-down parser. The grammar input to this tool should be a CFG (Context-free grammar) in EBNF (Extended Backus-Naur form), which is a formal description of a formal language, including programming languages. This parser generator can parse to four different languages, where the interesting one for this project would be Java. This tool can also generate a C\# output parser, but as this project narrows Robocode to only be written in Java, this wasn’t in consideration for choosing the parser generator. Robocode can, as earlier stated, also be written in C\#, which would enforce the choice made, if this project also included the C\# source code for Robocode.
+ANTLR4 parses through an LL(*) algorithm, which means it can process any LL(x) grammar, where ‘x’ is the amount of lookahead needed for parsing, and the LL means it parses from left to right, with leftmost derivation. This makes it a top-down parser. The grammar input to this tool should be a CFG (Context-free grammar) in EBNF (Extended Backus-Naur form), which is a formal description of a formal language, including programming languages. This parser generator can parse to four different languages, where the interesting one for this project would be Java. This tool can also generate a C\# output parser, but as this project narrows Robocode to only be written in Java, this wasn't in consideration for choosing the parser generator. Robocode can, as earlier stated, also be written in C\#, which would enforce the choice made, if this project also included the C\# source code for Robocode.
 
 The ANTLR4 tool for Eclipse required a few other plugins to make the AST window work correctly, and it is a little bugged. When the user defines a grammar, the user then generates an ANTLR4 recognizer, if the .g4 file is then saved, the user then has to edit the document to make it a not-saved file to operate in the AST window. If the user has saved the document, without editing afterwards, the window would be unresponsive.
 
-In IntelliJ the ANTLR4 plugin requires very little work to get started. To generate the ANTLR4 files the user has to rightclick and select the generate options of the plugin and the IDE does all the work. Similarly to generate the AST all one has to do is rightclick and choose to test the grammar.
+In IntelliJ the ANTLR4 plugin requires very little work to get started. To generate the ANTLR4 files the user has to right click and select the generate options of the plugin and the IDE does all the work. Similarly to generate the AST all one has to do is right click and choose to test the grammar.

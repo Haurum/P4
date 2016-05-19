@@ -1,19 +1,19 @@
 \chapter{Semantics}
-This chapter provides a formal description of the language semantics. The chapter uses techniques from the book \textit{Transitions and Trees} \cite{Huttel}.
+This chapter provides a formal description of the language semantics. The chapter uses techniques from the book \textit{Transitions and Trees} \citep{Huttel}.
  \section{Syntactic categories}
- To simplify the presentation of the semantics of our language, syntactic categories have been used. The syntactic categories are based on the grammer found in section \ref{sec:Grammar}. A collection of metavariables are presented in the following paragraphs which will be used throughout the chapter to present the type system and the operational semantics.
+ To simplify the presentation of the semantics of our language, syntactic categories have been used. The syntactic categories are based on the grammar found in section \ref{sec:Grammar}. A collection of meta variables are presented in the following paragraphs which will be used throughout the chapter to present the type system and the operational semantics.
  
  \begin{math}
  e \in \textbf{Expr} - Expressions \newline
  S \in \textbf{Stmt} - Statements\newline
  n \in \textbf{Num} - Numerals\newline
- b \in \textbf{Bool} - Boolean\ Literals\newline
+ b \in \textbf{Bool} - Boolean\ literals\newline
  B \in \textbf{Block} - Blocks \newline %sure about this??
- tx \in \textbf{String} - String \ Literals\newline
+ tx \in \textbf{String} - String \ literals\newline
  t \in \textbf{Type} - Num,\ Bool\ and\ String \ types\newline
- x \in \textbf{Var} - Variable name \newline
- f \in \textbf{Func} - Function name \newline
- a \in \textbf{Act} - Action name \newline
+ x \in \textbf{Var} - Variable \ name \newline
+ f \in \textbf{Func} - Function \ name \newline
+ a \in \textbf{Act} - Action \ name \newline
  D_a \in \textbf{ActDcl} - Action\ declaration\newline
  D_f \in \textbf{FuncDcl} - Function\ declaration\newline
  D_v \in \textbf{VarDcl} - Gobal\ variable\ declaration\newline
@@ -46,10 +46,10 @@ This chapter provides a formal description of the language semantics. The chapte
 	Game ::= \ Stmt \ || \ F
 \end{math}
  
- \section{Semantic Functions}
+ \section{Semantic functions}
  The purpose of the semantics functions is interpret syntactic elements to semantic elements. The semantic functions used in our language will be described in this section. 
   
-  \subsection{Numeral Literals}
+  \subsection{Numeral literals}
   The numbers literal in our language will be Numerals, which will be interpreted to real numbers by means of the semantic function: 
   
   \begin{math}
@@ -65,7 +65,7 @@ This chapter provides a formal description of the language semantics. The chapte
   \end{math}[\underline{5.36}] will be mapped to the corresponding values 5 and 5.36. 
   
   
-  \subsection{String Literals}
+  \subsection{String literals}
   A String literal is a sequence of symbols and characters in UTF-8 (Unicode Transformation Format 8-bit) except the delimiter ("). The sequence of symbols and characters must be within the delimiter, for example "Hello world!". 
   
   %\begin{math}
@@ -74,14 +74,14 @@ This chapter provides a formal description of the language semantics. The chapte
   %U \in \ {UTF-8}
   %\end{math}
   
-  String Literals are interpreted as string elements String, by means of the following:
+  String literals are interpreted as string elements String, by means of the following:
   
   \begin{math}
   	\tau : \textbf{String} \ \rightarrow \ \textbf{StringL} \newline
   	As \ an \ example: \ \tau("Insert \ text \ here") \ \rightarrow \ Insert \ text \ here
   \end{math}
   
-  \subsection{Boolean Literals}
+  \subsection{Boolean literals}
   The Boolean literals depict whether the expression is evaluated to true or false. The symbol for true is \begin{math} \top \end{math}, and the symbol for false is \begin{math} \bot \end{math} from the set of values from \textbf{bool} = {True, False}.
   
   %\begin{math}
@@ -98,7 +98,7 @@ This chapter provides a formal description of the language semantics. The chapte
   %\]
   
   
-  \section{Environment Store Model}
+  \section{Environment store model}
   The environment store model describes how variables are bound to a storage during the execution of programs. The variables are bound to a storage-call, where the storage-cell contains the value of the variable. Storage-cells are also called \textit{locations}, the set of locations is denoted \textbf{Loc}.
   
   The variable environment is a function that will tell what storage location a variable is bound to. Variable environments  is the set of partial functions  from the variable to their location, as shown in the following equation:
@@ -304,7 +304,7 @@ This chapter provides a formal description of the language semantics. The chapte
 		and \ l \ = \ E_v(next)
 	\end{math}
    	
-   	\subsection{Arithmetic Expressions}
+   	\subsection{Arithmetic expressions}
    	
    	\[
    	[ASM-EXPR] \quad
@@ -327,7 +327,7 @@ This chapter provides a formal description of the language semantics. The chapte
    	v \ = \ v_1 \ \% \ v_2
    	\end{math}   	   	   	
 
-   	\subsection{Boolean Expressions}
+   	\subsection{Boolean expressions}
    	Most of the boolean expressions look alike even with the value of true/false, except the AND/OR expressions. The constructs of AND/OR uses short-circuiting, since in the OR expression if the first value is evaluated to true, there is no need to evaluate the second part of the expression.
    	\[
    	[EXPR^{IS=}_{\ \top}] \quad

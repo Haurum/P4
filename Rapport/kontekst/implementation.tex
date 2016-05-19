@@ -375,6 +375,9 @@ public String visitDcls(GrammarParser.DclsContext ctx) {
 
 Forklar vi "overskriver" visitoren, eller vi bruger visitoren.
 \section{Code generation}
+The CodeGen class extends the BaseListener class and is the third and last traversal of the parse tree. At this point the program is type checked and ready to get translated into Java code, this is what the CodeGen class does. 
+
+
 
 
 TO DO

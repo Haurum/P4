@@ -375,9 +375,181 @@ public String visitDcls(GrammarParser.DclsContext ctx) {
 
 Forklar vi "overskriver" visitoren, eller vi bruger visitoren.
 \section{Code generation}
-The CodeGen class extends the BaseListener class and is the third and last traversal of the parse tree. At this point the program is type checked and ready to get translated into Java code, this is what the CodeGen class does. 
+The CodeGen class extends the BaseListener class and is the third and last traversal of the parse tree. At this point the program is type checked and ready to get translated into Java code, the CodeGen class generates a string containing the translated code. 
 
+When visiting the literals bool, num and string nothing is changed and the text is returned. When visiting id an "\_" is added in front of the id, to make sure the id name doesn't clash with Java keywords. The literals id and num can be seen in listing \ref{VIM}. 
 
+\begin{lstlisting}[caption={CodeGen - visitId \& visitNum functions}, label={VIM}]
+@Override
+public String visitId(GrammarParser.IdContext ctx) {
+    return "_" + ctx.ID().getText();
+}
+
+@Override
+public String visitNum(GrammarParser.NumContext ctx) {
+    return ctx.NUM().getText();
+}
+\end{lstlisting}
+
+When visiting expressions the only thing needed is to change AND, OR, IS=, NOT= and NOT is changed to their equivalent operator in Java. 
+
+In the visitEcall function in listing \ref{VEC} the appropriate FuncSymbol is found in the FuncSymbolTable using the same method as the SymbolTypeVisitor class. visitEcall adds "e." in front of the function name, before it returns. The "e" will be the parameter of the event which this call is within. 
+
+\begin{lstlisting}[caption={CodeGen - visitEcall function}, label={VEC}]
+@Override
+public String visitEcall(GrammarParser.EcallContext ctx) {
+    FuncSymbol fsym;
+    RuleContext parent = ctx.parent;
+    while(parent != null){
+        if(parent instanceof GrammarParser.EventdclContext){
+            fsym = RoboFST.GetFuncSymbol(((GrammarParser.EventdclContext) parent).ID().getText(), ctx.ID().getText());
+            if(ctx.getChildCount() == 5) {
+                return "e." + fsym.RoboCodeName + "(" + visit(ctx.args()) + ")";
+            }else {
+                return "e." + fsym.RoboCodeName + "()";
+            }
+        }
+        parent = parent.parent;
+    }
+    Error e = new Error("codeGen Error");
+    throw e;
+}
+\end{lstlisting}
+
+In all other Robocode calls, like the visitTankcall function found in listing \ref{VTC}, the appropriate FuncSymbol is found in the FuncSymbolTable and the Robocode name is returned with potential arguments.
+
+\begin{lstlisting}[caption={CodeGen - visitTankcall function}, label={VTC}]
+@Override
+public String visitTankcall(GrammarParser.TankcallContext ctx) {
+    FuncSymbol fs = RoboFST.GetFuncSymbol("Tank", ctx.ID().getText());
+    if(ctx.getChildCount() == 5) {
+        return fs.RoboCodeName + "(" + visit(ctx.args()) + ")";
+    }else {
+        return fs.RoboCodeName + "()";
+    }
+}
+\end{lstlisting}
+
+In Function and Action calls an "\_" are added in front of the id and potential parameters before returning. This is done like with the num, string and bool literals, so the id's don't clash with any Java keywords. Listing \ref{VFC} shows the visitFcall function.
+
+\begin{lstlisting}[caption={CodeGen - visitFcall function}, label={VFC}]
+@Override
+public String visitFcall(GrammarParser.FcallContext ctx) {
+    if (ctx.getChildCount() == 4){
+        return "_" + ctx.ID().getText() + "(" + visit(ctx.args()) + ")";
+    }else{
+        return "_" + ctx.ID().getText() + "()";
+    }
+}
+\end{lstlisting}
+
+The visitIfstmt function uses a StringBuilder to add the \textbf{if} followed by any \textbf{elseif} if needed, at the end the StringBuilder returns as a string. The visitIfstmt function is shown in listing \ref{VISTM}
+
+\begin{lstlisting}[caption={CodeGen - visitIfstmt function}, label={VISTM}]
+@Override
+public String visitIfstmt(GrammarParser.IfstmtContext ctx) {
+    StringBuilder buf = new StringBuilder();
+    buf.append("if(");
+    buf.append(visit(ctx.expr()));
+    buf.append(")");
+    buf.append(visit(ctx.block(0)));
+    for(int i = 0; i< ctx.elseif().size(); i++){
+        buf.append(visit(ctx.elseif(i)));
+    }
+    if (ctx.block().size() > 1){
+        buf.append("else");
+        buf.append(visit(ctx.block(1)));
+    }
+    return buf.toString();
+}
+\end{lstlisting}
+
+The visitVardcl function shown in listing \ref{VVDCL}, changes the type declared in the program to the equivalent type in Java. String and Bool will be changes to string and boolen, where the type Num will be changed to a double. Another thing worth mentioning is the "\_" in front of the ids, for the same reasons as mentioned before.
+
+\begin{lstlisting}[caption={CodeGen - visitVardcl function}, label={VVDCL}]
+@Override
+public String visitVardcl(GrammarParser.VardclContext ctx) {
+    String result;
+    if (ctx.TYPE().getText().equals("Num")){
+        result = "double ";
+    }else if(ctx.TYPE().getText().equals("Bool")){
+        result = "boolean ";
+    }else{
+        result = "String ";
+    }
+    if (ctx.getChild(1) instanceof GrammarParser.AssignContext){
+        result += visit(ctx.assign());
+    }else {
+        result += "_" + ctx.ID().getText() + ctx.SEMI().getText() + "\n";
+    }
+    return result;
+}
+\end{lstlisting}
+
+The visitEventdcl function in listing \ref{VEDCL} is worth noting the added "on"  and the added "Event", these are used to create the Robocode eventhandler and the Robocode event. The "e" added after "Event" corresponds to the e in visitEcall.
+
+\begin{lstlisting}[caption={CodeGen - visitEventdcl function}, label={VEDCL}]
+@Override
+public String visitEventdcl(GrammarParser.EventdclContext ctx) {
+    String id = StringUtils.capitalize(ctx.ID().getText());
+    return "public void on" + id + "( " + id + "Event e )" + visit(ctx.block());
+}
+\end{lstlisting}
+
+In the visitFuncdcl function  a new public Java function is created with the return type with the appropriate return type, name, block and possibly parameters. Once again an "\_" is added in front of the id, for the same reasons as before.
+
+\begin{lstlisting}[caption={CodeGen - visitFuncdcl function}, label={VFDCL}]
+@Override
+public String visitFuncdcl(GrammarParser.FuncdclContext ctx) {
+    String type;
+    if (ctx.TYPE().getText().equals("Num")){
+        type = "double ";
+    }else if(ctx.TYPE().getText().equals("Bool")){
+        type = "boolean ";
+    }else{
+        type = "String ";
+    }
+    if (ctx.getChildCount() == 8) {
+        return "public " + type + " _" + ctx.ID().getText() + "(" + visit(ctx.params()) + ")" + visit(ctx.functionBlock());
+    }else{
+        return "public " + type + " _" + ctx.ID().getText() + "()" + visit(ctx.functionBlock());
+    }
+}
+\end{lstlisting}
+
+The visitSetupblock and visitRepeatblock functions shown in listing \ref{VSRB} are a bit special as the Repeat block(is the while(true) statement in the Run function in Java) is inside the Setup block(Run function) in Java. To do this Setup block creates the void function and adds the block, then cuts of the last curly bracket adds the Repeat block, which is renamed to while(true) and puts back the curly bracket. 
+
+\begin{lstlisting}[caption={CodeGen - visitSetupblock \& visitRepeatblock functions}, label={VSRB}]
+@Override
+public String visitSetupblock(GrammarParser.SetupblockContext ctx) {
+    String result = "public void run()" + visit(ctx.block());
+    result = result.substring(0, result.length()-2);
+    return result + visit(((GrammarParser.DclsContext) ctx.parent).repeatblock(0)) + "}";
+}
+
+@Override
+public String visitRepeatblock(GrammarParser.RepeatblockContext ctx) {
+    return "while (true)" + visit(ctx.block());
+}
+\end{lstlisting}
+
+In the visitProg function a StringBuilder is used to add the import statements needed for Java to be able to compile the program. After that the class is declared using the Tankname and then extends Robot to the class declaration. After this the entire program is added followed by a closing curly bracket. The code generation is now complete and a string with the entire program in Java code is returned. 
+
+\begin{lstlisting}[caption={CodeGen - visitProg function}, label={VP}]
+@Override
+public String visitProg(GrammarParser.ProgContext ctx) {
+    StringBuilder buf = new StringBuilder();
+    buf.append("import robocode.*;\n");
+    buf.append("import static robocode.util.Utils.*;\n");
+    buf.append("public class ");
+    buf.append(StringUtils.capitalize(visit(ctx.dcls().tankname(0))));
+    buf.append(" extends Robot {\n ");
+    buf.append(visit(ctx.dcls()));
+    buf.append("}");
+    System.out.print(buf.toString());
+    return buf.toString();
+}
+\end{lstlisting}
 
 
 TO DO

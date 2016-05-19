@@ -1,15 +1,17 @@
-java -classpath "%~dp0\out\production\Grammar\;%~dp0\antlr-4.5.2-complete.jar" Main %1
-javac -classpath "%~dp0\robocode\libs\robocode.jar" %1.java
-move "%~dp0\$1.class" "%~dp0\robocode/robots"
-del "%~dp0\$1.java"
-echo $null >> "%~dp0\robocode\battles\$1.battle"
-echo "#Battle Properties
-robocode.battleField.width=800
-robocode.battleField.height=600
-robocode.battle.numRounds=10
-robocode.battle.gunCoolingRate=0.1
-robocode.battle.rules.inactivityTime=450
-robocode.battle.hideEnemyNames=true
-robocode.battle.selectedRobots=%1*,sample.Crazy" >> "%~dp0\robocode\battles\%1.battle"
-.%~dp0\robocode\robocode.bat -battle %1.battle
-set /p id="Enter ID: "
+if %errorlevel% neq 0 exit /b %errorlevel%
+SET filename=RamFire
+java -classpath "%~dp0out\production\Grammar\;%~dp0antlr-4.5.2-complete.jar" Main %filename%
+javac -classpath "%~dp0robocode\libs\robocode.jar" %filename%.java
+move "%~dp0%filename%.class" "%~dp0robocode\robots"
+del "%~dp0%filename%.java"
+copy NUL "%~dp0robocode\battles\%filename%.battle"
+echo #Battle Properties>> "%~dp0robocode\battles\%filename%.battle"
+echo robocode.battleField.width=800>> "%~dp0robocode\battles\%filename%.battle"
+echo robocode.battleField.height=600>> "%~dp0robocode\battles\%filename%.battle"
+echo robocode.battle.numRounds=10>> "%~dp0robocode\battles\%filename%.battle"
+echo robocode.battle.gunCoolingRate=0.1>> "%~dp0robocode\battles\%filename%.battle"
+echo robocode.battle.rules.inactivityTime=450>> "%~dp0robocode\battles\%filename%.battle"
+echo robocode.battle.hideEnemyNames=true>> "%~dp0robocode\battles\%filename%.battle"
+echo robocode.battle.selectedRobots=%1*,sample.Crazy>> "%~dp0robocode\battles\%filename%.battle"
+cd robocode
+.\robocode.bat -battle %filename%.battle

@@ -18,14 +18,14 @@ Den får vores grammar og vores sourcecode, hvad gør den så ?
 Forklar hvordan lexer, parser og hvordan antlr gør det. Sådan set de to første steps i diagrammet. Med deres output i form af Tokens og Parse tree.
 
 Forklar de to visitor patterns som antlr genererer(Listener/walker og visitor)
-\section{Function Definition}
-After Antlr has produced the parsetree, baselistener and basevisitior, the function definition phase starts. In this phase every function that allready exists in Robocode, will be mapped to the names defined in the apendix,(Indsæt reference til apendix her!!!!!) and added to the functiontable. Also every user defined function or actions will be added to this functiontable. 
+\section{Function definition}
+After ANTLR has produced the parse tree, base listener and base visitor, the function definition phase starts. In this phase every function that already exists in Robocode, will be mapped to the names defined in the appendix,(Indsæt reference til apendix her!!!!!) and added to the function table. Also every user defined function or actions will be added to this function table. 
 
 \subsection{FuncSymbol \& FuncSymbolTable}
 To keep track of the varies functions and their parameters, return values and Robocode names, a FuncSymbol class is used as representation for a single function and a FuncSymbolTable class is used to keep track of every FuncSymbol in the program.
 The FuncSymbol has a string properties for Name, Type, ReturnType, original Robocode names and a string array for the parameters.
 
-The FuncSymbolTable is basically a key/value pair HashMap. Where the key is the type of the function followed by the name of the function. The type in this case, can be either Function or Action from userdefined functions, Tank, Gun, Battlefield, Radar or Utils from Robocode functions or the name of the event from Robocode events.
+The FuncSymbolTable is basically a key/value pair HashMap. Where the key is the type of the function followed by the name of the function. The type in this case, can be either Function or Action from user defined functions, Tank, Gun, Battlefield, Radar or Utils from Robocode functions or the name of the event from Robocode events.
 This class has two functions, GetFuncSymbol and EnterFuncSymbol which can be found in listing \ref{FST}. 
 
 The GetFuncSymbol takes a type and a name from a function, combines them, looks for them in the HashMap and returns the result.
@@ -59,14 +59,14 @@ Error handling
 Forklar om de to forskellige functables der bliver generete af henholdsvis bruger og fra den fil der bilver loadet ind. 
 
 \subsection{Robocode functions \& events}
-To allow the typechecker and codegeneration phase to do their jobs, every Robocode function and event needs to be added to the FuncSymbolTable. To do this a simple textfile was created which line for line have each function written out in a specific manner. 
+To allow the type checker and code generation phase to do their jobs, every Robocode function and event needs to be added to the FuncSymbolTable. To do this a simple text file was created which line for line have each function written out in a specific manner. 
 
 WE COULD EXPLAIN THE TEXTFILE AND THE ALGORITHM USED TO LOAD IT IN IF WE HAVE TIME!!
 
-\subsection{Userdefined Functions \& Actions}
-To load the user defined functions from the program, a traverse of the parse tree is done using the Antlr generated walker/listener. For every Function and Action the listener visits, a new FuncSymbol is created and added to the FuncSymbolTable. This is done with the FuncListener class, which extends the BaseListener Antlr created.
+\subsection{Userdefined functions \& actions}
+To load the user defined functions from the program, a traverse of the parse tree is done using the ANTLR generated walker/listener. For every Function and Action the listener visits, a new FuncSymbol is created and added to the FuncSymbolTable. This is done with the FuncListener class, which extends the BaseListener ANTLR created.
  
-The FuncListener class overrides the Enter/Exit Action declaration functions, the Enter/Exit Function declaration functions and the Enter parameter function. In the Enter Action and Function declaration functions, a new FuncSymbol is created called CurrentFunc. To CurrentFunc a name and a type is added, and in the Function case a return type is added aswell. Name, type and return type are found using the parse tree.
+The FuncListener class overrides the Enter/Exit Action declaration functions, the Enter/Exit Function declaration functions and the Enter parameter function. In the Enter Action and Function declaration functions, a new FuncSymbol is created called CurrentFunc. To CurrentFunc a name and a type is added, and in the Function case a return type is added as well. Name, type and return type are found using the parse tree.
 In the Enter parameter function adds a new parameter to the CurrentFunc's array of parameters. 
 Now in the Exit Action and Function declaration functions the CurrentFunc gets added to the FuncSymbolTable. 
 The reason the CurrentFunc is added in the Exit functions, is that the walker have to visit all the parameters. 
@@ -74,7 +74,7 @@ The reason the CurrentFunc is added in the Exit functions, is that the walker ha
 \section{Type checking} 
 After the first traversal of the parse tree using the FuncListener, every function is now defined in the function table and we can begin type checking. To do type checking a Symbol- and a SymbolTable class are used to keep track of every variable and their scope, using these two classes the SymbolTypeVisitor class checks for type compatibility. 
 
-\subsection{Symbol \& Symbol table}
+\subsection{Symbol \& symbol table}
 Every variable in the program is represented by the Symbol class. The Symbol class has the properties String Name and Type, Symbol Var and int Depth. The Name and Type represents the name and type of the variable, the interesting parts is the Var and Depth properties. Var is a reference to a Symbol of the same name but in a higher scope, this would work as stack for all symbols of the same name, where the top of the stack will be the most inner scope and therefore the one used. The Depth property indicates the depth of the scope the symbol is in, with 0 being the global scope. 
 
 The SymbolTable is mainly two things, the Map associates a name of a variable with a symbol as key value pairs, these symbols are the ones on top of the stack describes in the paragraph before. The scope is an array of arrays of symbols. Each index of the outer array is a scope and each inner array contains the symbols of that scope. 
@@ -131,7 +131,7 @@ public void CloseScope(){
 
 
 \subsection{The SymbolTypeVisitor class}
-The SymbolTypeVisitor class extends the BaseVisitor class from Antlr and is the second traversal through the parse tree. It visits every single node in  the parse tree and each node return its type to the caller. At each node it is determined whether the types returned match with the expected type, errors are thrown if they don't match.
+The SymbolTypeVisitor class extends the BaseVisitor class from ANTLR and is the second traversal through the parse tree. It visits every single node in  the parse tree and each node return its type to the caller. At each node it is determined whether the types returned match with the expected type, errors are thrown if they don't match.
 
 At the basic level the types are returned as they are, which is the functions visitNum, visitString and visitBool, that can be found in listing \ref{VT}.
 
@@ -375,6 +375,9 @@ public String visitDcls(GrammarParser.DclsContext ctx) {
 
 Forklar vi "overskriver" visitoren, eller vi bruger visitoren.
 \section{Code generation}
+The CodeGen class extends the BaseListener class and is the third and last traversal of the parse tree. At this point the program is type checked and ready to get translated into Java code, this is what the CodeGen class does. 
+
+
 
 
 TO DO

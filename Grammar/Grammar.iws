@@ -2,505 +2,505 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69e8e018-4d1e-4444-9562-d99c2d37dd6e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/allclasses-noframe.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/PaintingRobot.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/roborumble.ico" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/snapshot/IBulletSnapshot.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/Fire.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/META-INF/MANIFEST.MF" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/MyFirstRobot.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/PaintEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/util/package-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/Target.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/SpinBot.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/resources/inherit.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sampleteam/MyFirstTeam.team" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/IAdvancedRobot.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/MouseEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/_RobotBase.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/snapshot/BulletState.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/peer/package-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/package-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/CustomEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/roborumble/meleerumble.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/BattleEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/theme/editor/Robocode White Theme.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/teamrumble.command" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/VelociRobot.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/RobotDeathEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/package-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/RobocodeListener.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sampleex/Alien.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/theme/editor/Robocode Black Theme.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/Robot.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/BattleResumedEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/config/robocode.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/MouseDraggedEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/package-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/BattleEndedEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robocode.sh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/HitWallEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/HitRobotEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/twinduel.command" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/libs/robocode.ui.editor-1.9.2.5.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/RobocodeEngine.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/BattleSpecification.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/roborumble/twinduel.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/Bullet.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/libs/robocode.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/roborumble.sh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/KeyEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/ReadMe.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/libs/robocode.host-1.9.2.5.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/Tracker.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/BattleFinishedEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/Corners.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/package-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/BattleCompletedEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/snapshot/IRobotSnapshot.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/BattlefieldSpecification.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/snapshot/IDebugProperty.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/robot.database" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/Crazy.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/templates/newjavafile.tpt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/teamrumble.sh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/snapshot/package-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/RandomFactory.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/TrackFire.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/MouseReleasedEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/annotation/package-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/MoveCompleteCondition.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/Droid.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/Rules.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/util/Utils.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/battles/.battle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/RoundEndedEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/package-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/BattleErrorEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/BattlePausedEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/peer/ITeamRobotPeer.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/KeyReleasedEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/BattleRules.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/SittingDuck.data/count.dat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/twinduel.sh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/overview-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/MouseMovedEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/libs/robocode.battle-1.9.2.5.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/SittingDuck.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/RobocodeFileOutputStream.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/battles/Corners.battle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/BorderSentry.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/RobotStatus.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/IBasicEvents2.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/IPaintRobot.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/RamFire.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/Condition.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/MyFirstJuniorRobot.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/battles/sample.battle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/SkippedTurnEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/deprecated-list.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/StatusEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/TurnCompleteCondition.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/constant-values.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/RoundStartedEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/MouseExitedEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/peer/package-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/battles/intro.battle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/MessageEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/snapshot/ITurnSnapshot.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/peer/IStandardRobotPeer.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/util/package-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/Interactive.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sampleex/ProxyOfGreyEminence.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/libs/robocode.ui-1.9.2.5.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/ScannedRobotEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/IBasicEvents.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/package-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/IPaintEvents.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/libs/codesize-1.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/ITeamEvents.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/versions.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/_AdvancedRobot.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/samplesentry/BorderGuard.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robocode.command" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/roborumble/teamrumble.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/libs/picocontainer-2.14.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/Robocode.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/BulletMissedEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/package-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/stylesheet.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/Interactive_v2.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/RobotSpecification.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/snapshot/package-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/peer/package-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/meleerumble.sh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robocode.ico" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/_Robot.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/Walls.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/allclasses-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/battles/RamFire.battle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/snapshot/IScoreSnapshot.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/MousePressedEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/WinEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/libs/robocode.repository-1.9.2.5.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/roborumble.command" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/serialized-form.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/snapshot/package-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sampleex/MasterAndSlave.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/MouseWheelMovedEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/IRobocodeEngine.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/BattleResults.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/ReadMe.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/IBattleListener.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/IInteractiveEvents.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/package-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/TeamRobot.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/package-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/annotation/SafeStatic.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/RobocodeFileWriter.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/RobotResults.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/license/epl-v10.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/roborumble/roborumble.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/battles/Walls.battle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/roborumble/roborumble.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/IJuniorRobot.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/BattleStartedEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/RobotSetup.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/IBasicRobot.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/package-list" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/BattleAdaptor.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/IBasicEvents3.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/BattleMessageEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/libs/robocode.core-1.9.2.5.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/TurnEndedEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/overview-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/KeyTypedEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/config/compiler.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/BulletHitBulletEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/templates/newrobot.tpt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/config/window.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/MouseClickedEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/help-doc.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/IInteractiveRobot.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/libs/roborumble.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/HitByBulletEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/GunTurnCompleteCondition.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/RateControlRobot.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/peer/IAdvancedRobotPeer.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/snapshot/RobotState.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/JuniorRobot.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/RoundEndedEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/package-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/annotation/package-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/AdvancedRobot.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/IAdvancedEvents.html" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/KeyPressedEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/peer/IJuniorRobotPeer.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/libs/robocode.sound-1.9.2.5.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/peer/IBasicRobotPeer.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/templates/newjuniorrobot.tpt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/TurnStartedEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/meleerumble.command" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/package-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/_AdvancedRadiansRobot.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/compilers/ecj.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/package-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/MouseEnteredEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/annotation/package-tree.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/util/package-frame.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/RadarTurnCompleteCondition.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/DeathEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/overview-summary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/index-all.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/constant-values.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/GunTurnCompleteCondition.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/RobotResults.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/BattleStartedEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/snapshot/BulletState.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/libs/robocode.ui-1.9.2.5.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/roborumble.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/TeamRobot.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/battles/intro.battle" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/templates/newrobot.tpt" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/BulletHitEvent.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/Event.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/IBattleListener.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/Interactive_v2.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/meleerumble.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/libs/robocode.core-1.9.2.5.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/annotation/SafeStatic.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/Condition.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/Bullet.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/BorderSentry.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/roborumble/twinduel.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/MouseEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/deprecated-list.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/overview-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/IBasicEvents.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/WinEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/BulletMissedEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/serialized-form.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/teamrumble.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/PaintEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/util/Utils.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/ScannedRobotEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/Fire.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/annotation/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/libs/robocode.sound-1.9.2.5.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/RoundEndedEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/templates/newjuniorrobot.tpt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/VelociRobot.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/ITeamEvents.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/theme/editor/Robocode Black Theme.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/roborumble/teamrumble.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/RobocodeFileOutputStream.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/MouseExitedEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/overview-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/_RobotBase.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/IInteractiveEvents.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/peer/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/AdvancedRobot.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/snapshot/IRobotSnapshot.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/battles/.battle" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/SpinBot.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/RobotDeathEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robocode.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/Tracker.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/BattleRules.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/KeyReleasedEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/RobotSpecification.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/stylesheet.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/libs/picocontainer-2.14.2.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/peer/IJuniorRobotPeer.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/IAdvancedEvents.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/config/robocode.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/util/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/BattleAdaptor.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/RobotSetup.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/Corners.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/allclasses-noframe.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/Crazy.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/BattleErrorEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/peer/ITeamRobotPeer.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/BattlefieldSpecification.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/RoundStartedEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/RobocodeFileWriter.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/ReadMe.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sampleex/Alien.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/twinduel.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/MessageEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sampleteam/MyFirstTeam.team" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/RateControlRobot.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/robot.database" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/IJuniorRobot.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/IInteractiveRobot.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/help-doc.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/PaintingRobot.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/snapshot/ITurnSnapshot.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/MyFirstJuniorRobot.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/Interactive.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/Walls.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/SittingDuck.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/MouseClickedEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/MyFirstRobot.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/battles/sample.battle" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robocode.command" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/META-INF/MANIFEST.MF" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/snapshot/IBulletSnapshot.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/overview-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/Rules.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/peer/IAdvancedRobotPeer.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/MouseReleasedEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/config/window.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/HitWallEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/twinduel.command" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/IAdvancedRobot.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/roborumble/roborumble.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/BattleResults.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/BattleSpecification.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/libs/codesize-1.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/MousePressedEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/RandomFactory.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/package-list" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/snapshot/IScoreSnapshot.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sampleex/MasterAndSlave.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/MouseEnteredEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/_AdvancedRobot.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/MouseMovedEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/battles/RamFire.battle" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/RobocodeEngine.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/Robot.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/Droid.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/Robocode.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/Target.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/HitByBulletEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/MoveCompleteCondition.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/RobotStatus.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/RoundEndedEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/JuniorRobot.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/ReadMe.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/util/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/SkippedTurnEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/libs/robocode.repository-1.9.2.5.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/IBasicRobot.html" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/ITeamRobot.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/package-frame.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/Grammar.ipr" afterPath="$PROJECT_DIR$/out/production/Grammar/Grammar.ipr" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/RoundEndedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/RoundEndedEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/resources/inherit.gif" afterPath="$PROJECT_DIR$/robocode/javadoc/resources/inherit.gif" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/RobotStatus.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/RobotStatus.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/package-summary.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IAdvancedRobot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IAdvancedRobot.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Grammar.iml" afterPath="$PROJECT_DIR$/Grammar.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/PaintingRobot.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/PaintingRobot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/TeamRobot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/TeamRobot.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/MoveCompleteCondition.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/MoveCompleteCondition.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/RobocodeListener.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/RobocodeListener.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/BattleResults.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/BattleResults.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/IAdvancedRobotPeer.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/IAdvancedRobotPeer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/VelociRobot.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/VelociRobot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Tracker.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/Tracker.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/annotation/package-frame.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/annotation/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseClickedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseClickedEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/Droid.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/Droid.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IInteractiveEvents.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IInteractiveEvents.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IInteractiveRobot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IInteractiveRobot.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/RamFire.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/RamFire.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/Robocode.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/Robocode.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/MessageEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/MessageEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/templates/newjavafile.tpt" afterPath="$PROJECT_DIR$/robocode/templates/newjavafile.tpt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/libs/picocontainer-2.14.2.jar" afterPath="$PROJECT_DIR$/robocode/libs/picocontainer-2.14.2.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/KeyEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/KeyEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/annotation/package-summary.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/annotation/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/meleerumble.command" afterPath="$PROJECT_DIR$/robocode/meleerumble.command" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/libs/robocode.battle-1.9.2.5.jar" afterPath="$PROJECT_DIR$/robocode/libs/robocode.battle-1.9.2.5.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/teamrumble.sh" afterPath="$PROJECT_DIR$/robocode/teamrumble.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/ITeamEvents.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/ITeamEvents.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/BattleEndedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/BattleEndedEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/TrackFire.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/TrackFire.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/roborumble/roborumble.txt" afterPath="$PROJECT_DIR$/robocode/roborumble/roborumble.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/stylesheet.css" afterPath="$PROJECT_DIR$/robocode/javadoc/stylesheet.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IBasicEvents2.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IBasicEvents2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseMovedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseMovedEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/AlienComposition.java" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/AlienComposition.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/IStandardRobotPeer.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/IStandardRobotPeer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/VelociRobot.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/VelociRobot.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Crazy.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/Crazy.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/GreyEminence.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/GreyEminence.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseDraggedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseDraggedEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/Grammar.iml" afterPath="$PROJECT_DIR$/out/production/Grammar/Grammar.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseExitedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseExitedEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/package-summary.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Crazy.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/Crazy.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/templates/newjuniorrobot.tpt" afterPath="$PROJECT_DIR$/robocode/templates/newjuniorrobot.tpt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleteam/RobotColors.java" afterPath="$PROJECT_DIR$/robocode/robots/sampleteam/RobotColors.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Fire.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/Fire.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/StatusEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/StatusEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/AlienComposition$AlienEventHandler.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/AlienComposition$AlienEventHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Walls.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/Walls.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/RobotSpecification.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/RobotSpecification.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/compile_script" afterPath="$PROJECT_DIR$/out/production/Grammar/compile_script" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/MyFirstRobot.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/MyFirstRobot.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/RoundEndedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/RoundEndedEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/compilers/CompilerTest.java" afterPath="$PROJECT_DIR$/robocode/compilers/CompilerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/SpinBot.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/SpinBot.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/_AdvancedRadiansRobot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/_AdvancedRadiansRobot.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/battles/RamFire.battle" afterPath="$PROJECT_DIR$/robocode/battles/RamFire.battle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Walls.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/Walls.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/TurnEndedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/TurnEndedEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IBasicEvents.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IBasicEvents.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/samplesentry/BorderGuard.class" afterPath="$PROJECT_DIR$/robocode/robots/samplesentry/BorderGuard.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/Grammar.iws" afterPath="$PROJECT_DIR$/out/production/Grammar/Grammar.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/util/Utils.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/util/Utils.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/Rules.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/Rules.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/TrackFire.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/TrackFire.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/_Robot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/_Robot.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/package-tree.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/package-frame.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/robocode/robots/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/SittingDuck.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/SittingDuck.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/RegullarMonk.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/RegullarMonk.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/battles/Corners.battle" afterPath="$PROJECT_DIR$/robocode/battles/Corners.battle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/Event.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/Event.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/samplesentry/BorderGuard$RobotData.class" afterPath="$PROJECT_DIR$/robocode/robots/samplesentry/BorderGuard$RobotData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/RandomFactory.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/RandomFactory.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/MyFirstJuniorRobot.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/MyFirstJuniorRobot.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/TrackFire.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/TrackFire.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/libs/robocode.core-1.9.2.5.jar" afterPath="$PROJECT_DIR$/robocode/libs/robocode.core-1.9.2.5.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/IJuniorRobotPeer.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/IJuniorRobotPeer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/MasterAndSlave.java" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/MasterAndSlave.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/PaintEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/PaintEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/RobotResults.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/RobotResults.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/ReadMe.html" afterPath="$PROJECT_DIR$/robocode/ReadMe.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/RateControlRobot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/RateControlRobot.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/roborumble/roborumble.properties" afterPath="$PROJECT_DIR$/robocode/roborumble/roborumble.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/roborumble/meleerumble.txt" afterPath="$PROJECT_DIR$/robocode/roborumble/meleerumble.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/index-all.html" afterPath="$PROJECT_DIR$/robocode/javadoc/index-all.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/overview-summary.html" afterPath="$PROJECT_DIR$/robocode/javadoc/overview-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/PaintingRobot.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/PaintingRobot.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/IBasicRobotPeer.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/IBasicRobotPeer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/package-tree.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/TurnCompleteCondition.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/TurnCompleteCondition.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleteam/RobotColors.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleteam/RobotColors.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseWheelMovedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseWheelMovedEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/theme/editor/Robocode White Theme.properties" afterPath="$PROJECT_DIR$/robocode/theme/editor/Robocode White Theme.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/twinduel.sh" afterPath="$PROJECT_DIR$/robocode/twinduel.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/license/epl-v10.html" afterPath="$PROJECT_DIR$/robocode/license/epl-v10.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleteam/MyFirstLeader.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleteam/MyFirstLeader.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/libs/robocode.repository-1.9.2.5.jar" afterPath="$PROJECT_DIR$/robocode/libs/robocode.repository-1.9.2.5.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IJuniorRobot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IJuniorRobot.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Corners.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/Corners.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Crazy.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/Crazy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/HitRobotEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/HitRobotEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/allclasses-noframe.html" afterPath="$PROJECT_DIR$/robocode/javadoc/allclasses-noframe.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/KeyPressedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/KeyPressedEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleteam/MyFirstDroid.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleteam/MyFirstDroid.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleteam/MyFirstTeam.team" afterPath="$PROJECT_DIR$/robocode/robots/sampleteam/MyFirstTeam.team" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/IBattleListener.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/IBattleListener.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleteam/Point.java" afterPath="$PROJECT_DIR$/robocode/robots/sampleteam/Point.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Fire.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/Fire.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/VelociRobot.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/VelociRobot.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Target.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/Target.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/Slave.java" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/Slave.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/_AdvancedRobot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/_AdvancedRobot.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/config/robocode.properties" afterPath="$PROJECT_DIR$/robocode/config/robocode.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/SittingDuck.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/SittingDuck.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Corners.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/Corners.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/RadarTurnCompleteCondition.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/RadarTurnCompleteCondition.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleteam/MyFirstLeader.java" afterPath="$PROJECT_DIR$/robocode/robots/sampleteam/MyFirstLeader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/AlienComposition.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/AlienComposition.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Target.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/Target.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/libs/robocode.sound-1.9.2.5.jar" afterPath="$PROJECT_DIR$/robocode/libs/robocode.sound-1.9.2.5.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/Alien.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/Alien.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IBasicEvents3.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IBasicEvents3.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/roborumble.ico" afterPath="$PROJECT_DIR$/robocode/roborumble.ico" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/IDebugProperty.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/IDebugProperty.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/libs/robocode.host-1.9.2.5.jar" afterPath="$PROJECT_DIR$/robocode/libs/robocode.host-1.9.2.5.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/RegullarMonk.java" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/RegullarMonk.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/KeyReleasedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/KeyReleasedEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/teamrumble.command" afterPath="$PROJECT_DIR$/robocode/teamrumble.command" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleMessageEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleMessageEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/samplesentry/BorderGuard.java" afterPath="$PROJECT_DIR$/robocode/robots/samplesentry/BorderGuard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/twinduel.command" afterPath="$PROJECT_DIR$/robocode/twinduel.command" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IBasicRobot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IBasicRobot.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattlePausedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattlePausedEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/RobotState.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/RobotState.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/MousePressedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/MousePressedEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/TurnStartedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/TurnStartedEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Interactive.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/Interactive.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/BattleRules.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/BattleRules.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseEnteredEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseEnteredEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robocode.command" afterPath="$PROJECT_DIR$/robocode/robocode.command" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/package-tree.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/RobotSetup.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/RobotSetup.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/HitByBulletEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/HitByBulletEvent.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/allclasses-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/RamFire.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/snapshot/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/versions.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/MouseWheelMovedEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/libs/robocode.host-1.9.2.5.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/util/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/TurnStartedEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/KeyTypedEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/samplesentry/BorderGuard.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/theme/editor/Robocode White Theme.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/SittingDuck.data/count.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/snapshot/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/RobocodeListener.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/snapshot/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/battles/Corners.battle" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/Event.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/CustomEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/libs/robocode.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/IRobocodeEngine.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/battles/Walls.battle" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/peer/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/libs/roborumble.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/BulletHitBulletEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/BattleMessageEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/index-all.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/roborumble/meleerumble.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/IPaintEvents.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/meleerumble.command" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/roborumble.command" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/libs/robocode.battle-1.9.2.5.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/libs/robocode.ui.editor-1.9.2.5.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/MouseDraggedEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/config/compiler.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/TurnCompleteCondition.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/KeyEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sample/TrackFire.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/IBasicEvents3.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/DeathEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/license/epl-v10.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/peer/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/annotation/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/IBasicEvents2.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/HitRobotEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/TurnEndedEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/BattleResumedEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/peer/IStandardRobotPeer.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/_Robot.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/BattleEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/BattleFinishedEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/peer/IBasicRobotPeer.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robocode.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/StatusEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/_AdvancedRadiansRobot.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/roborumble/roborumble.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/robotinterfaces/IPaintRobot.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/compilers/ecj.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/annotation/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/snapshot/RobotState.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/BattleCompletedEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/events/BattlePausedEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/control/snapshot/IDebugProperty.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/resources/inherit.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/BattleEndedEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/teamrumble.command" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/javadoc/robocode/RadarTurnCompleteCondition.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/roborumble.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/templates/newjavafile.tpt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Grammar/robocode/robots/sampleex/ProxyOfGreyEminence.properties" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Interactive_v2.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/Interactive_v2.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/roborumble.command" afterPath="$PROJECT_DIR$/robocode/roborumble.command" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Interactive.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/Interactive.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/MyFirstJuniorRobot.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/MyFirstJuniorRobot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Walls.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/Walls.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleFinishedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleFinishedEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/package-frame.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/BulletHitEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/BulletHitEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/BulletHitBulletEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/BulletHitBulletEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/ProxyOfGreyEminence.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/ProxyOfGreyEminence.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/package-summary.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/package-summary.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/DeathEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/DeathEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/GunTurnCompleteCondition.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/GunTurnCompleteCondition.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/battles/Walls.battle" afterPath="$PROJECT_DIR$/robocode/battles/Walls.battle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/theme/editor/Robocode Black Theme.properties" afterPath="$PROJECT_DIR$/robocode/theme/editor/Robocode Black Theme.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Interactive.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/Interactive.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/ReadMe.txt" afterPath="$PROJECT_DIR$/robocode/ReadMe.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/overview-frame.html" afterPath="$PROJECT_DIR$/robocode/javadoc/overview-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/battles/.battle" afterPath="$PROJECT_DIR$/robocode/battles/.battle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/MasterAndSlave.properties" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/MasterAndSlave.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleErrorEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleErrorEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/MyFirstJuniorRobot.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/MyFirstJuniorRobot.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/ITurnSnapshot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/ITurnSnapshot.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/SkippedTurnEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/SkippedTurnEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseReleasedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseReleasedEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/samplesentry/BorderGuard.properties" afterPath="$PROJECT_DIR$/robocode/robots/samplesentry/BorderGuard.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Fire.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/Fire.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/SittingDuck.data/count.dat" afterPath="$PROJECT_DIR$/robocode/robots/sample/SittingDuck.data/count.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/versions.md" afterPath="$PROJECT_DIR$/robocode/versions.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/libs/robocode.ui-1.9.2.5.jar" afterPath="$PROJECT_DIR$/robocode/libs/robocode.ui-1.9.2.5.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/battles/sample.battle" afterPath="$PROJECT_DIR$/robocode/battles/sample.battle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/libs/codesize-1.1.jar" afterPath="$PROJECT_DIR$/robocode/libs/codesize-1.1.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/ScannedRobotEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/ScannedRobotEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/WinEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/WinEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/package-summary.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/BattlefieldSpecification.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/BattlefieldSpecification.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/SpinBot.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/SpinBot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/roborumble/twinduel.txt" afterPath="$PROJECT_DIR$/robocode/roborumble/twinduel.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/Alien.properties" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/Alien.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/RamFire.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/RamFire.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/roborumble.sh" afterPath="$PROJECT_DIR$/robocode/roborumble.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/KeyTypedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/KeyTypedEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Tracker.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/Tracker.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Corners.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/Corners.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IPaintEvents.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IPaintEvents.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/compile_script" afterPath="$PROJECT_DIR$/compile_script" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/BulletMissedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/BulletMissedEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/util/package-tree.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/util/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/help-doc.html" afterPath="$PROJECT_DIR$/robocode/javadoc/help-doc.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/AlienComposition$AlienMain.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/AlienComposition$AlienMain.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/allclasses-frame.html" afterPath="$PROJECT_DIR$/robocode/javadoc/allclasses-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robocode.ico" afterPath="$PROJECT_DIR$/robocode/robocode.ico" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/ProxyOfGreyEminence.java" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/ProxyOfGreyEminence.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Target.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/Target.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/MyFirstRobot.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/MyFirstRobot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/meleerumble.sh" afterPath="$PROJECT_DIR$/robocode/meleerumble.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Target.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/Target.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/libs/robocode.jar" afterPath="$PROJECT_DIR$/robocode/libs/robocode.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IAdvancedEvents.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IAdvancedEvents.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/templates/newrobot.tpt" afterPath="$PROJECT_DIR$/robocode/templates/newrobot.tpt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/MyFirstRobot.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/MyFirstRobot.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/Corners.class" afterPath="$PROJECT_DIR$/robocode/robots/Corners.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/RobocodeFileOutputStream.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/RobocodeFileOutputStream.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/BattleSpecification.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/BattleSpecification.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/SittingDuck.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/SittingDuck.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/config/compiler.properties" afterPath="$PROJECT_DIR$/robocode/config/compiler.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IPaintRobot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IPaintRobot.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/RoundStartedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/RoundStartedEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/serialized-form.html" afterPath="$PROJECT_DIR$/robocode/javadoc/serialized-form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/RobotDeathEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/RobotDeathEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleteam/MyFirstDroid.java" afterPath="$PROJECT_DIR$/robocode/robots/sampleteam/MyFirstDroid.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/_RobotBase.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/_RobotBase.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/libs/robocode.ui.editor-1.9.2.5.jar" afterPath="$PROJECT_DIR$/robocode/libs/robocode.ui.editor-1.9.2.5.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/AdvancedRobot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/AdvancedRobot.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robocode.sh" afterPath="$PROJECT_DIR$/robocode/robocode.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/compilers/ecj.jar" afterPath="$PROJECT_DIR$/robocode/compilers/ecj.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/IBulletSnapshot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/IBulletSnapshot.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/SpinBot.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/SpinBot.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/IScoreSnapshot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/IScoreSnapshot.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/battles/intro.battle" afterPath="$PROJECT_DIR$/robocode/battles/intro.battle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/Robot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/Robot.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Tracker.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/Tracker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/BorderSentry.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/BorderSentry.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/package-list" afterPath="$PROJECT_DIR$/robocode/javadoc/package-list" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/util/package-summary.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/util/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/Slave.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/Slave.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/constant-values.html" afterPath="$PROJECT_DIR$/robocode/javadoc/constant-values.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/package-summary.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/util/package-frame.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/util/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleCompletedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleCompletedEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/compilers/CompilerTest.class" afterPath="$PROJECT_DIR$/robocode/compilers/CompilerTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/package-tree.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/PaintingRobot.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/PaintingRobot.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/annotation/package-tree.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/annotation/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/overview-tree.html" afterPath="$PROJECT_DIR$/robocode/javadoc/overview-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/package-tree.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/ProxyOfGreyEminence.properties" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/ProxyOfGreyEminence.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/package-frame.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/samplesentry/BorderGuard.properties" afterPath="$PROJECT_DIR$/robocode/robots/samplesentry/BorderGuard.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/battles/Walls.battle" afterPath="$PROJECT_DIR$/robocode/battles/Walls.battle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Fire.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/Fire.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/BulletHitEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/BulletHitEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Walls.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/Walls.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseEnteredEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseEnteredEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/battles/RamFire.battle" afterPath="$PROJECT_DIR$/robocode/battles/RamFire.battle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/templates/newrobot.tpt" afterPath="$PROJECT_DIR$/robocode/templates/newrobot.tpt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/RateControlRobot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/RateControlRobot.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Walls.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/Walls.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/JuniorRobot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/JuniorRobot.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/RobocodeFileWriter.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/RobocodeFileWriter.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/BulletState.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/BulletState.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Interactive_v2.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/Interactive_v2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleteam/Point.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleteam/Point.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/IRobotSnapshot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/IRobotSnapshot.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/RobocodeEngine.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/RobocodeEngine.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/CustomEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/CustomEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/Alien.java" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/Alien.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Interactive_v2$Direction.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/Interactive_v2$Direction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/annotation/SafeStatic.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/annotation/SafeStatic.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/Condition.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/Condition.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/libs/roborumble.jar" afterPath="$PROJECT_DIR$/robocode/libs/roborumble.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/roborumble/teamrumble.txt" afterPath="$PROJECT_DIR$/robocode/roborumble/teamrumble.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Interactive_v2.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/Interactive_v2.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/package-frame.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Crazy.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/Crazy.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/RobotDeathEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/RobotDeathEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/AlienComposition.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/AlienComposition.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/battles/.battle" afterPath="$PROJECT_DIR$/robocode/battles/.battle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/IBulletSnapshot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/IBulletSnapshot.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/IAdvancedRobotPeer.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/IAdvancedRobotPeer.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/samplesentry/BorderGuard.class" afterPath="$PROJECT_DIR$/robocode/robots/samplesentry/BorderGuard.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/package-frame.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/index.html" afterPath="$PROJECT_DIR$/robocode/javadoc/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/HitWallEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/HitWallEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/Bullet.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/Bullet.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/ITeamRobot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/ITeamRobot.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/ITeamRobotPeer.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/ITeamRobotPeer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/RamFire.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/RamFire.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Grammar.iws" afterPath="$PROJECT_DIR$/Grammar.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/robot.database" afterPath="$PROJECT_DIR$/robocode/robots/robot.database" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleStartedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleStartedEvent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/MasterBase.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/MasterBase.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/DeathEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/DeathEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/SpinBot.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/SpinBot.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/AdvancedRobot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/AdvancedRobot.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/battles/sample.battle" afterPath="$PROJECT_DIR$/robocode/battles/sample.battle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/Rules.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/Rules.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseClickedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseClickedEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/roborumble/twinduel.txt" afterPath="$PROJECT_DIR$/robocode/roborumble/twinduel.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/AlienComposition.java" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/AlienComposition.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/IRobocodeEngine.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/IRobocodeEngine.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/config/window.properties" afterPath="$PROJECT_DIR$/robocode/config/window.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/RegullarMonk.java" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/RegullarMonk.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleteam/Point.java" afterPath="$PROJECT_DIR$/robocode/robots/sampleteam/Point.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/templates/newjuniorrobot.tpt" afterPath="$PROJECT_DIR$/robocode/templates/newjuniorrobot.tpt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/WinEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/WinEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/annotation/package-tree.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/annotation/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/package-tree.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Crazy.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/Crazy.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/teamrumble.sh" afterPath="$PROJECT_DIR$/robocode/teamrumble.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/IBattleListener.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/IBattleListener.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/package-frame.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/license/epl-v10.html" afterPath="$PROJECT_DIR$/robocode/license/epl-v10.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/util/package-frame.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/util/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/overview-frame.html" afterPath="$PROJECT_DIR$/robocode/javadoc/overview-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/PaintEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/PaintEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/constant-values.html" afterPath="$PROJECT_DIR$/robocode/javadoc/constant-values.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/deprecated-list.html" afterPath="$PROJECT_DIR$/robocode/javadoc/deprecated-list.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/package-tree.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/MasterAndSlave.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/MasterAndSlave.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Target$1.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/Target$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/libs/robocode.jar" afterPath="$PROJECT_DIR$/robocode/libs/robocode.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleResumedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleResumedEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/index-all.html" afterPath="$PROJECT_DIR$/robocode/javadoc/index-all.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/ProxyOfGreyEminence.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/ProxyOfGreyEminence.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/ITeamEvents.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/ITeamEvents.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/allclasses-noframe.html" afterPath="$PROJECT_DIR$/robocode/javadoc/allclasses-noframe.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/stylesheet.css" afterPath="$PROJECT_DIR$/robocode/javadoc/stylesheet.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Grammar.iws" afterPath="$PROJECT_DIR$/Grammar.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/IBasicRobotPeer.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/IBasicRobotPeer.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/MyFirstJuniorRobot.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/MyFirstJuniorRobot.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/TurnStartedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/TurnStartedEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/Grammar.iws" afterPath="$PROJECT_DIR$/out/production/Grammar/Grammar.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/help-doc.html" afterPath="$PROJECT_DIR$/robocode/javadoc/help-doc.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Corners.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/Corners.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/TrackFire.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/TrackFire.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/Robocode.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/Robocode.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IJuniorRobot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IJuniorRobot.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/Slave.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/Slave.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/RoundEndedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/RoundEndedEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleCompletedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleCompletedEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robocode.ico" afterPath="$PROJECT_DIR$/robocode/robocode.ico" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/util/package-summary.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/util/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/libs/robocode.ui-1.9.2.5.jar" afterPath="$PROJECT_DIR$/robocode/libs/robocode.ui-1.9.2.5.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/Grammar.iml" afterPath="$PROJECT_DIR$/out/production/Grammar/Grammar.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/Event.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/Event.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IBasicEvents.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IBasicEvents.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/roborumble/roborumble.properties" afterPath="$PROJECT_DIR$/robocode/roborumble/roborumble.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/theme/editor/Robocode White Theme.properties" afterPath="$PROJECT_DIR$/robocode/theme/editor/Robocode White Theme.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/MyFirstRobot.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/MyFirstRobot.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/roborumble/roborumble.txt" afterPath="$PROJECT_DIR$/robocode/roborumble/roborumble.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IBasicEvents3.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IBasicEvents3.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Corners.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/Corners.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleteam/MyFirstLeader.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleteam/MyFirstLeader.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleteam/MyFirstDroid.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleteam/MyFirstDroid.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/ITeamRobotPeer.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/ITeamRobotPeer.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/ReadMe.html" afterPath="$PROJECT_DIR$/robocode/ReadMe.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/config/compiler.properties" afterPath="$PROJECT_DIR$/robocode/config/compiler.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/Grammar.ipr" afterPath="$PROJECT_DIR$/out/production/Grammar/Grammar.ipr" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/SittingDuck.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/SittingDuck.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/RobocodeFileOutputStream.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/RobocodeFileOutputStream.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/MyFirstJuniorRobot.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/MyFirstJuniorRobot.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Interactive_v2.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/Interactive_v2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/KeyTypedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/KeyTypedEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleteam/RobotColors.java" afterPath="$PROJECT_DIR$/robocode/robots/sampleteam/RobotColors.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/compile_script" afterPath="$PROJECT_DIR$/compile_script" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/package-summary.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/BorderSentry.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/BorderSentry.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleAdaptor.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleAdaptor.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/RobotResults.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/RobotResults.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/versions.md" afterPath="$PROJECT_DIR$/robocode/versions.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/MyFirstRobot.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/MyFirstRobot.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/IRobotSnapshot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/IRobotSnapshot.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Crazy.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/Crazy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/RoundStartedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/RoundStartedEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/meleerumble.sh" afterPath="$PROJECT_DIR$/robocode/meleerumble.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/RobotState.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/RobotState.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseExitedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseExitedEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/_AdvancedRadiansRobot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/_AdvancedRadiansRobot.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Fire.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/Fire.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleStartedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleStartedEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IAdvancedRobot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IAdvancedRobot.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/ITeamRobot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/ITeamRobot.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/RobotSetup.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/RobotSetup.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/RamFire.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/RamFire.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/BulletState.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/BulletState.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseDraggedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseDraggedEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/BattlefieldSpecification.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/BattlefieldSpecification.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IBasicEvents2.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IBasicEvents2.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/PaintingRobot.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/PaintingRobot.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/RobotSpecification.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/RobotSpecification.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/package-tree.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/compilers/ecj.jar" afterPath="$PROJECT_DIR$/robocode/compilers/ecj.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/package-frame.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/GreyEminence.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/GreyEminence.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Target$1.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/Target$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/MasterBase.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/MasterBase.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/TrackFire.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/TrackFire.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/util/Utils.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/util/Utils.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/AlienComposition$AlienMain.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/AlienComposition$AlienMain.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/libs/robocode.host-1.9.2.5.jar" afterPath="$PROJECT_DIR$/robocode/libs/robocode.host-1.9.2.5.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/CustomEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/CustomEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/SkippedTurnEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/SkippedTurnEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/package-tree.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/RegullarMonk.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/RegullarMonk.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/GunTurnCompleteCondition.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/GunTurnCompleteCondition.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/ScannedRobotEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/ScannedRobotEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/templates/newjavafile.tpt" afterPath="$PROJECT_DIR$/robocode/templates/newjavafile.tpt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/RandomFactory.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/RandomFactory.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleteam/Point.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleteam/Point.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Grammar.iml" afterPath="$PROJECT_DIR$/Grammar.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/HitRobotEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/HitRobotEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Tracker.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/Tracker.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/package-summary.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/libs/robocode.core-1.9.2.5.jar" afterPath="$PROJECT_DIR$/robocode/libs/robocode.core-1.9.2.5.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/libs/robocode.battle-1.9.2.5.jar" afterPath="$PROJECT_DIR$/robocode/libs/robocode.battle-1.9.2.5.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseMovedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseMovedEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/twinduel.command" afterPath="$PROJECT_DIR$/robocode/twinduel.command" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleFinishedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleFinishedEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/AlienComposition$AlienEventHandler.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/AlienComposition$AlienEventHandler.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/annotation/package-frame.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/annotation/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/RobocodeFileWriter.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/RobocodeFileWriter.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/SittingDuck.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/SittingDuck.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/annotation/package-summary.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/annotation/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/samplesentry/BorderGuard.java" afterPath="$PROJECT_DIR$/robocode/robots/samplesentry/BorderGuard.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/package-tree.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/config/robocode.properties" afterPath="$PROJECT_DIR$/robocode/config/robocode.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattlePausedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattlePausedEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/meleerumble.command" afterPath="$PROJECT_DIR$/robocode/meleerumble.command" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/package-frame.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/IStandardRobotPeer.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/IStandardRobotPeer.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/index.html" afterPath="$PROJECT_DIR$/robocode/javadoc/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/twinduel.sh" afterPath="$PROJECT_DIR$/robocode/twinduel.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/compilers/CompilerTest.java" afterPath="$PROJECT_DIR$/robocode/compilers/CompilerTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleteam/MyFirstDroid.java" afterPath="$PROJECT_DIR$/robocode/robots/sampleteam/MyFirstDroid.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Interactive.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/Interactive.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/BattleRules.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/BattleRules.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IInteractiveEvents.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IInteractiveEvents.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleteam/MyFirstTeam.team" afterPath="$PROJECT_DIR$/robocode/robots/sampleteam/MyFirstTeam.team" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/MasterAndSlave.properties" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/MasterAndSlave.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/MasterAndSlave.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/MasterAndSlave.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/ReadMe.txt" afterPath="$PROJECT_DIR$/robocode/ReadMe.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/_Robot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/_Robot.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/Droid.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/Droid.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/BulletMissedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/BulletMissedEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/KeyPressedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/KeyPressedEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/MyFirstJuniorRobot.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/MyFirstJuniorRobot.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/serialized-form.html" afterPath="$PROJECT_DIR$/robocode/javadoc/serialized-form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/BattleEndedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/BattleEndedEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/SpinBot.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/SpinBot.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/VelociRobot.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/VelociRobot.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/package-summary.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/PaintingRobot.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/PaintingRobot.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/Corners.class" afterPath="$PROJECT_DIR$/robocode/robots/Corners.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robocode.command" afterPath="$PROJECT_DIR$/robocode/robocode.command" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Interactive.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/Interactive.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseReleasedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseReleasedEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/HitWallEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/HitWallEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/MoveCompleteCondition.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/MoveCompleteCondition.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/MessageEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/MessageEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/overview-tree.html" afterPath="$PROJECT_DIR$/robocode/javadoc/overview-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/compilers/CompilerTest.class" afterPath="$PROJECT_DIR$/robocode/compilers/CompilerTest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/roborumble.command" afterPath="$PROJECT_DIR$/robocode/roborumble.command" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IPaintEvents.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IPaintEvents.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/_AdvancedRobot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/_AdvancedRobot.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/libs/roborumble.jar" afterPath="$PROJECT_DIR$/robocode/libs/roborumble.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/compile_script" afterPath="$PROJECT_DIR$/out/production/Grammar/compile_script" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/teamrumble.command" afterPath="$PROJECT_DIR$/robocode/teamrumble.command" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/util/package-tree.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/util/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IPaintRobot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IPaintRobot.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IBasicRobot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IBasicRobot.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/TurnCompleteCondition.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/TurnCompleteCondition.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/RamFire.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/RamFire.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/robot.database" afterPath="$PROJECT_DIR$/robocode/robots/robot.database" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/RoundEndedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/RoundEndedEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/libs/robocode.repository-1.9.2.5.jar" afterPath="$PROJECT_DIR$/robocode/libs/robocode.repository-1.9.2.5.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/VelociRobot.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/VelociRobot.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Target.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/Target.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/IJuniorRobotPeer.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/IJuniorRobotPeer.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/package-list" afterPath="$PROJECT_DIR$/robocode/javadoc/package-list" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/package-summary.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/SittingDuck.data/count.dat" afterPath="$PROJECT_DIR$/robocode/robots/sample/SittingDuck.data/count.dat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robocode.sh" afterPath="$PROJECT_DIR$/robocode/robocode.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/battles/intro.battle" afterPath="$PROJECT_DIR$/robocode/battles/intro.battle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/StatusEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/StatusEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/RadarTurnCompleteCondition.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/RadarTurnCompleteCondition.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/MyFirstRobot.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/MyFirstRobot.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Tracker.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/Tracker.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/IDebugProperty.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/IDebugProperty.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/package-summary.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/PaintingRobot.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/PaintingRobot.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/config/window.properties" afterPath="$PROJECT_DIR$/robocode/config/window.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/roborumble/meleerumble.txt" afterPath="$PROJECT_DIR$/robocode/roborumble/meleerumble.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/ProxyOfGreyEminence.java" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/ProxyOfGreyEminence.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/VelociRobot.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/VelociRobot.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/HitByBulletEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/HitByBulletEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/Alien.java" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/Alien.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/ITurnSnapshot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/ITurnSnapshot.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/roborumble.sh" afterPath="$PROJECT_DIR$/robocode/roborumble.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleMessageEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleMessageEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/resources/inherit.gif" afterPath="$PROJECT_DIR$/robocode/javadoc/resources/inherit.gif" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/package-summary.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/allclasses-frame.html" afterPath="$PROJECT_DIR$/robocode/javadoc/allclasses-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/Bullet.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/Bullet.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/RobotStatus.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/RobotStatus.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Interactive_v2$Direction.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/Interactive_v2$Direction.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Walls.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/Walls.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/RamFire.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/RamFire.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/Condition.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/Condition.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/RobocodeListener.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/RobocodeListener.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/battles/Corners.battle" afterPath="$PROJECT_DIR$/robocode/battles/Corners.battle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/TeamRobot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/TeamRobot.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseWheelMovedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseWheelMovedEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IInteractiveRobot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/IInteractiveRobot.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/robocode/robots/META-INF/MANIFEST.MF" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/roborumble.ico" afterPath="$PROJECT_DIR$/robocode/roborumble.ico" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleteam/RobotColors.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleteam/RobotColors.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/libs/picocontainer-2.14.2.jar" afterPath="$PROJECT_DIR$/robocode/libs/picocontainer-2.14.2.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/roborumble/teamrumble.txt" afterPath="$PROJECT_DIR$/robocode/roborumble/teamrumble.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/Robot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/Robot.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Fire.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/Fire.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/overview-summary.html" afterPath="$PROJECT_DIR$/robocode/javadoc/overview-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/SittingDuck.properties" afterPath="$PROJECT_DIR$/robocode/robots/sample/SittingDuck.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/SpinBot.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/SpinBot.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/package-frame.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/robotinterfaces/peer/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/IScoreSnapshot.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/snapshot/IScoreSnapshot.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Interactive_v2.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/Interactive_v2.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/BulletHitBulletEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/BulletHitBulletEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleteam/MyFirstLeader.java" afterPath="$PROJECT_DIR$/robocode/robots/sampleteam/MyFirstLeader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/MasterAndSlave.java" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/MasterAndSlave.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Tracker.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/Tracker.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/TurnEndedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/TurnEndedEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/KeyEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/KeyEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/libs/robocode.ui.editor-1.9.2.5.jar" afterPath="$PROJECT_DIR$/robocode/libs/robocode.ui.editor-1.9.2.5.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/_RobotBase.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/_RobotBase.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/MousePressedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/MousePressedEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/Alien.properties" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/Alien.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/BattleResults.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/BattleResults.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/libs/robocode.sound-1.9.2.5.jar" afterPath="$PROJECT_DIR$/robocode/libs/robocode.sound-1.9.2.5.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/theme/editor/Robocode Black Theme.properties" afterPath="$PROJECT_DIR$/robocode/theme/editor/Robocode Black Theme.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/MouseEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/KeyReleasedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/KeyReleasedEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/Alien.class" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/Alien.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/libs/codesize-1.1.jar" afterPath="$PROJECT_DIR$/robocode/libs/codesize-1.1.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/package-tree.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleResumedEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleResumedEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Interactive.java" afterPath="$PROJECT_DIR$/robocode/robots/sample/Interactive.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Corners.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/Corners.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/samplesentry/BorderGuard$RobotData.class" afterPath="$PROJECT_DIR$/robocode/robots/samplesentry/BorderGuard$RobotData.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleErrorEvent.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/events/BattleErrorEvent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/TrackFire.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/TrackFire.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/ProxyOfGreyEminence.properties" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/ProxyOfGreyEminence.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sampleex/Slave.java" afterPath="$PROJECT_DIR$/robocode/robots/sampleex/Slave.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/control/RobocodeEngine.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/control/RobocodeEngine.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/javadoc/robocode/annotation/SafeStatic.html" afterPath="$PROJECT_DIR$/robocode/javadoc/robocode/annotation/SafeStatic.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robocode/robots/sample/Target.class" afterPath="$PROJECT_DIR$/robocode/robots/sample/Target.class" />
     </list>
     <ignored path="Grammar.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -523,16 +523,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Symbol.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/Symbol.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="SymbolTable.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/SymbolTable.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -558,9 +548,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
-              <folding>
-                <element signature="n#!!doc" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -575,43 +563,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SymbolTypeVisitor.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SymbolTypeVisitor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/SymbolTypeVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.23970944">
-              <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="48" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CodeGen.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CodeGen.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/code/CodeGen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="6.7651334">
               <caret line="269" column="13" selection-start-line="269" selection-start-column="13" selection-end-line="269" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Tuple.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/Tuple.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="12" column="63" selection-start-line="12" selection-start-column="63" selection-end-line="12" selection-end-column="63" />
               <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#335#336#0" expanded="false" />
-                <element signature="e#365#366#0" expanded="false" />
-                <element signature="e#978#979#0" expanded="false" />
-                <element signature="e#1019#1020#0" expanded="false" />
-                <element signature="e#1421#1422#0" expanded="false" />
-                <element signature="e#1479#1480#0" expanded="false" />
-                <element signature="e#4131#4132#0" expanded="false" />
-                <element signature="e#4192#4193#0" expanded="false" />
-                <element signature="e#6334#6335#0" expanded="false" />
-                <element signature="e#6386#6387#0" expanded="false" />
-                <element signature="e#6787#6788#0" expanded="false" />
-                <element signature="e#6832#6833#0" expanded="false" />
-                <element signature="e#10266#10267#0" expanded="false" />
-                <element signature="e#10312#10313#0" expanded="false" />
-                <element signature="e#10394#10395#0" expanded="false" />
-                <element signature="e#10440#10441#0" expanded="false" />
-                <element signature="e#11876#11877#0" expanded="false" />
-                <element signature="e#11923#11924#0" expanded="false" />
-                <element signature="e#11997#11998#0" expanded="false" />
-                <element signature="e#12039#12040#0" expanded="false" />
+                <element signature="e#198#199#0" expanded="true" />
+                <element signature="e#268#269#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -738,9 +717,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -775,6 +753,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -964,7 +943,6 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49548534" sideWeight="0.50214595" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875264" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295711" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20911722" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -973,16 +951,17 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.255079" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.255079" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32853025" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875264" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3266385" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1132,13 +1111,6 @@
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_73/src.zip!/java/util/Stack.java" />
-    <entry file="file://$PROJECT_DIR$/code/Tuple.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="64" selection-start-line="12" selection-start-column="64" selection-end-line="12" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code/SymbolListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1299,36 +1271,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/CodeGen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="269" column="13" selection-start-line="269" selection-start-column="13" selection-end-line="269" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#335#336#0" expanded="false" />
-            <element signature="e#365#366#0" expanded="false" />
-            <element signature="e#978#979#0" expanded="false" />
-            <element signature="e#1019#1020#0" expanded="false" />
-            <element signature="e#1421#1422#0" expanded="false" />
-            <element signature="e#1479#1480#0" expanded="false" />
-            <element signature="e#4131#4132#0" expanded="false" />
-            <element signature="e#4192#4193#0" expanded="false" />
-            <element signature="e#6334#6335#0" expanded="false" />
-            <element signature="e#6386#6387#0" expanded="false" />
-            <element signature="e#6787#6788#0" expanded="false" />
-            <element signature="e#6832#6833#0" expanded="false" />
-            <element signature="e#10266#10267#0" expanded="false" />
-            <element signature="e#10312#10313#0" expanded="false" />
-            <element signature="e#10394#10395#0" expanded="false" />
-            <element signature="e#10440#10441#0" expanded="false" />
-            <element signature="e#11876#11877#0" expanded="false" />
-            <element signature="e#11923#11924#0" expanded="false" />
-            <element signature="e#11997#11998#0" expanded="false" />
-            <element signature="e#12039#12040#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gen/GrammarListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1365,9 +1307,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1381,8 +1321,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code/SymbolTypeVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23970944">
-          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="48" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/Tuple.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="63" selection-start-line="12" selection-start-column="63" selection-end-line="12" selection-end-column="63" />
+          <folding>
+            <element signature="e#198#199#0" expanded="true" />
+            <element signature="e#268#269#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/CodeGen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="6.7651334">
+          <caret line="269" column="13" selection-start-line="269" selection-start-column="13" selection-end-line="269" selection-end-column="13" />
           <folding />
         </state>
       </provider>

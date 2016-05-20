@@ -10,14 +10,11 @@ Introduction to the chapter!
 
 
 \section{ANTLR}
-Antlr og vores grammer(Tjek om vores grammar er beskrevet før)
-Hvad gør antlr for os ?
-Den får vores grammar og vores sourcecode, hvad gør den så ?
-
-
-Forklar hvordan lexer, parser og hvordan antlr gør det. Sådan set de to første steps i diagrammet. Med deres output i form af Tokens og Parse tree.
+The ANTLR tool takes as input the sourcecode the user wants to parse along with the grammar for the language. It then does the lexical analysis to scan the sourcecode for compliance with the grammar to create the tokens, and after that it parses the sourcecode to create a parse tree. After the parse phase it creates a function table with all the function and action declarations, and then does the type-checking to create the symbol table. The symbol table is filled with the variables and their type. When the parse tree, function table and symbol table is done, the code generation can start. The code generation then translates the sourcecode to a Java file. 
 
 Forklar de to visitor patterns som antlr genererer(Listener/walker og visitor)
+
+
 \section{Function definition}
 After ANTLR has produced the parse tree, base listener and base visitor, the function definition phase starts. In this phase every function that already exists in Robocode, will be mapped to the names defined in the appendix,(Indsæt reference til apendix her!!!!!) and added to the function table. Also every user defined function or actions will be added to this function table. 
 

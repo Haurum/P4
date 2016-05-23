@@ -18,7 +18,7 @@ public class FuncSymbolTable {
     public void EnterFuncSymbol(FuncSymbol fs){
         FuncSymbol oldSym = GetFuncSymbol(fs.Type, fs.Name);
         if (oldSym != null) {
-            Error e = new Error("Function already declared");
+            Error e = new Error(fs.Type + " " + fs.Name + " already declared");
             throw e;
         }
         Map.put(fs.Type + fs.Name, fs);

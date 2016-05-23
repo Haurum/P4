@@ -26,7 +26,6 @@ public class CodeGen extends GrammarBaseVisitor<String> {
         buf.append(" extends Robot {\n ");
         buf.append(visit(ctx.dcls()));
         buf.append("}");
-        System.out.print(buf.toString());
         return buf.toString();
     }
 

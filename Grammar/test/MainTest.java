@@ -1,5 +1,7 @@
 import org.junit.Test;
 
+import java.io.IOException;
+
 import static org.junit.Assert.*;
 
 /**
@@ -7,12 +9,17 @@ import static org.junit.Assert.*;
  */
 public class MainTest {
     @Test
-    public void main() {
-
+    public void doubleFunction() {
+        try {
+            String[] argument = new String[] {"/testrobots/DoubleFunctionName"};
+            Main.main(argument);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
-    public void importReservedFunctions() {
+    public void evaluatesExpression() {
 
     }
 

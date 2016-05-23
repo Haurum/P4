@@ -1,7 +1,9 @@
 \chapter{Tests}
+This chapter is covering the tests that has been done to confirm the functionality of our language. Two kinds of tests will be used, convertion tests where the language will be used in practice and unit tests with focus on making sure everything works as planned.
+
 
 \section{Convertion tests}
-In this section tests will be run where sample robots from Robocode will be written in our language, compiled back to Java and compared with the original robot.
+In this section tests will be run where sample robots from Robocode will be written in our language, compiled back to Java and compared with the original robot. The focus of this test is to make sure that the language works in practice. Doing work and documenting any errors found while using the language quickly helped discovering some problems which then could be fixed. 
 
 \subsection{Tracker}
 When writing the robot Tracker in our language a few errors were found. First an error was received that the Expression types didn't match for an assignment. This was quickly fixed as it turned out the Utils.normalRelativeAngleDegrees had the wrong returntype in the ReservedFunctions list.
@@ -9,11 +11,13 @@ When writing the robot Tracker in our language a few errors were found. First an
 Another error occurred were the compiler returned the error Variable not found. This was fixed by changning trackName = null to trackName = "0" throughout the code when a target has not been found. The compiler also gives an error if a robot has been given another name in the code than in the file name.
 
 To test if the converted version of Tracker works the same as the original version both robots has been tested versus the sample robot Crazy. The output log of Robocode shows that the converted version has a problem with an if-statement checking whether the robot it hits is the same as the target. Looking at the scoreboard of the match the converted robot earns 20\% less points than the original sample robot. This shows that there has been a flaw in the conversion and that the robots does not share the exact same functionality.
+There are two main causes for this problem. The first cause is that the Robocode command \emph{setAdjustGunForRobotTurn(true)} is not implemented in our language. The second cause is that it's not possible to use a return statement inside an if-statement in our language.
 
 
 \subsection{Fire}
 When converting the Fire robot to our language there was an error in the compiler saying that the variable was not found. This error occurred because the variable Num dist was declared in the setup block, it was fixed by moving the declaration outside the block.
 
-When testing the converted Fire robot versus the sample Fire robot by matching both against the Crazy sample robot both versions of the Fire robot behaved in the same way and earned scores close to each other.
+When testing the converted Fire robot versus the sample Fire robot by matching both robots against the Crazy sample robot, both versions of the Fire robot behaved in the same way and earned scores close to each other.
+This shows that the robot has been compiled to have the same functionality after being written in our language as the original sample robot.
 
 

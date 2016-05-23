@@ -1,0 +1,13 @@
+
+
+
+Tankname ramFire;
+
+Setup {
+    Num turnDirection = 1;
+    Num turnDirection = 5;
+}
+
+Repeat {
+
+}

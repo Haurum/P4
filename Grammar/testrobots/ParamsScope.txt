@@ -1,0 +1,17 @@
+
+Num turnDirection = 1;
+
+Tankname ramFire;
+
+Setup {
+    print(True AND False);
+}
+
+Repeat {
+
+}
+
+Function test(Num a) returns Num{
+    Num a = a + 1;
+    return a;
+}

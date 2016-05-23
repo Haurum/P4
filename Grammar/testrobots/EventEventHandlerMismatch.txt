@@ -1,0 +1,11 @@
+Tankname ramFire;
+
+Setup {
+}
+
+Repeat {
+}
+
+When onHitRobot {
+    Event.heading();
+}

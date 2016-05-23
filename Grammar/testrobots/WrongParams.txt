@@ -1,0 +1,16 @@
+
+Num turnDirection = 1;
+
+Tankname ramFire;
+
+Setup {
+    test(True, 5);
+}
+
+Repeat {
+
+}
+
+Function test(Num a, Bool b) returns Num{
+    return a;
+}

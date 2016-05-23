@@ -54,7 +54,11 @@ public class SymbolTable  {
             newSym.Depth = depth;
             newSym.Var = oldsym;
             Scope.get(depth).add(newSym);
-            Map.put(newSym.Name, newSym);
+            if(oldsym == null){
+                Map.replace(name, oldsym, newSym);
+            }else{
+                Map.put(name, newSym);
+            }
         }
     }
 }

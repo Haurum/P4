@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69e8e018-4d1e-4444-9562-d99c2d37dd6e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RamFire.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/code/SymbolTable.class" afterPath="$PROJECT_DIR$/out/production/Grammar/code/SymbolTable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/code/SymbolTypeVisitor.class" afterPath="$PROJECT_DIR$/out/production/Grammar/code/SymbolTypeVisitor.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Fire.txt" afterPath="$PROJECT_DIR$/Fire.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Grammar.iws" afterPath="$PROJECT_DIR$/Grammar.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ReservedFunctions.txt" afterPath="$PROJECT_DIR$/ReservedFunctions.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Tracker.txt" afterPath="$PROJECT_DIR$/Tracker.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Grammar/Grammar.iws" afterPath="$PROJECT_DIR$/out/production/Grammar/Grammar.iws" />
     </list>
     <ignored path="Grammar.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,6 +26,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Grammar.g4" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Grammar.g4">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1335">
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -47,8 +52,11 @@
             <state relative-caret-position="420">
               <caret line="33" column="39" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
               <folding>
-                <element signature="e#619#620#0" expanded="true" />
-                <element signature="e#667#668#0" expanded="true" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#304#305#0" expanded="false" />
+                <element signature="e#334#335#0" expanded="false" />
+                <element signature="e#1013#1014#0" expanded="false" />
+                <element signature="e#1061#1062#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -74,11 +82,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tracker.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Tracker.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Tracker.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="46" column="14" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
+            <state relative-caret-position="-120">
+              <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Fire.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Fire.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="262">
+              <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -159,6 +177,7 @@
         <option value="$PROJECT_DIR$/code/SymbolTable.java" />
         <option value="$PROJECT_DIR$/ReservedFunctions.txt" />
         <option value="$PROJECT_DIR$/Tracker.txt" />
+        <option value="$PROJECT_DIR$/Fire.txt" />
       </list>
     </option>
   </component>
@@ -169,9 +188,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="22" />
     <option name="y" value="23" />
-    <option name="width" value="1400" />
+    <option name="width" value="1440" />
     <option name="height" value="834" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -288,7 +306,7 @@
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="Main" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="Tracker" />
+      <option name="PROGRAM_PARAMETERS" value="Fire" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -749,12 +767,12 @@
       <workItem from="1460450148120" duration="98000" />
       <workItem from="1461831748886" duration="526000" />
       <workItem from="1461834264723" duration="1060000" />
-      <workItem from="1463989934652" duration="1919000" />
+      <workItem from="1463989934652" duration="3476000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5510000" />
+    <option name="totallyTimeSpent" value="7067000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -766,7 +784,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="22" y="23" width="1400" height="834" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="834" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -782,7 +800,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295711" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11214285" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10902778" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44093686" sideWeight="0.49785408" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -965,13 +983,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code/EventSymbol.java" />
-    <entry file="file://$PROJECT_DIR$/Fire.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="7" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EventFunctions.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-204">
@@ -1091,17 +1102,12 @@
         <state relative-caret-position="420">
           <caret line="33" column="39" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
           <folding>
-            <element signature="e#619#620#0" expanded="true" />
-            <element signature="e#667#668#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#304#305#0" expanded="false" />
+            <element signature="e#334#335#0" expanded="false" />
+            <element signature="e#1013#1014#0" expanded="false" />
+            <element signature="e#1061#1062#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Grammar.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1165,8 +1171,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Tracker.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="46" column="14" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
+        <state relative-caret-position="-120">
+          <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Fire.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Grammar.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1335">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -1,1 +1,19 @@
 \chapter{Tests}
+
+\section{Convertion tests}
+In this section tests will be run where sample robots from Robocode will be written in our language, compiled back to Java and compared with the original robot.
+
+\subsection{Tracker}
+When writing the robot Tracker in our language a few errors were found. First an error was received that the Expression types didn't match for an assignment. This was quickly fixed as it turned out the Utils.normalRelativeAngleDegrees had the wrong returntype in the ReservedFunctions list.
+
+Another error occurred were the compiler returned the error Variable not found. This was fixed by changning trackName = null to trackName = "0" throughout the code when a target has not been found. The compiler also gives an error if a robot has been given another name in the code than in the file name.
+
+To test if the converted version of Tracker works the same as the original version both robots has been tested versus the sample robot Crazy. The output log of Robocode shows that the converted version has a problem with an if-statement checking whether the robot it hits is the same as the target. Looking at the scoreboard of the match the converted robot earns 20\% less points than the original sample robot. This shows that there has been a flaw in the conversion and that the robots does not share the exact same functionality.
+
+
+\subsection{Fire}
+When converting the Fire robot to our language there was an error in the compiler saying that the variable was not found. This error occurred because the variable Num dist was declared in the setup block, it was fixed by moving the declaration outside the block.
+
+When testing the converted Fire robot versus the sample Fire robot by matching both against the Crazy sample robot both versions of the Fire robot behaved in the same way and earned scores close to each other.
+
+

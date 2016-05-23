@@ -395,7 +395,8 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
         String id = ctx.ID().getText();
         Symbol sym = ST.GetSymbol(id);
         if (sym == null){
-            Error e = new Error("variable not found");
+            Error e = new Error("Error at line: " +
+                    ctx.expr().start.getLine() + ": Variable not declared");
             throw e;
         }
         if (!sym.Type.equals(visit(ctx.expr()))){

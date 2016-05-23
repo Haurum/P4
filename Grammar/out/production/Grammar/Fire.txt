@@ -5,6 +5,7 @@ Num dist = 50;
 Setup {
 
 }
+
 Repeat {
     Gun.turn(5);
 }
@@ -12,6 +13,9 @@ Repeat {
 When scannedRobot {
     if (Event.distance() < 50 AND Tank.energy() > 50) {
     Gun.shoot(3);
+
+    dist = dist / 0;
+
     }
     else {
         Gun.shoot(1);

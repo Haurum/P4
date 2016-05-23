@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69e8e018-4d1e-4444-9562-d99c2d37dd6e" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Fire.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Fire.txt" afterPath="$PROJECT_DIR$/Fire.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Grammar.iws" afterPath="$PROJECT_DIR$/Grammar.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Tracker.txt" afterPath="$PROJECT_DIR$/Tracker.txt" />
     </list>
     <ignored path="Grammar.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Grammar.g4" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Grammar.g4" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Grammar.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1335">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state relative-caret-position="-1110">
+              <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -82,11 +83,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tracker.txt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Tracker.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Tracker.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-120">
-              <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
+            <state relative-caret-position="247">
+              <caret line="78" column="66" selection-start-line="78" selection-start-column="66" selection-end-line="78" selection-end-column="66" />
               <folding />
             </state>
           </provider>
@@ -95,8 +96,8 @@
       <file leaf-file-name="Fire.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Fire.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+            <state relative-caret-position="135">
+              <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -176,8 +177,8 @@
         <option value="$PROJECT_DIR$/code/SymbolTypeVisitor.java" />
         <option value="$PROJECT_DIR$/code/SymbolTable.java" />
         <option value="$PROJECT_DIR$/ReservedFunctions.txt" />
-        <option value="$PROJECT_DIR$/Tracker.txt" />
         <option value="$PROJECT_DIR$/Fire.txt" />
+        <option value="$PROJECT_DIR$/Tracker.txt" />
       </list>
     </option>
   </component>
@@ -767,12 +768,12 @@
       <workItem from="1460450148120" duration="98000" />
       <workItem from="1461831748886" duration="526000" />
       <workItem from="1461834264723" duration="1060000" />
-      <workItem from="1463989934652" duration="3476000" />
+      <workItem from="1463989934652" duration="8818000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7067000" />
+    <option name="totallyTimeSpent" value="12409000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1127,16 +1128,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gen/GrammarParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="2158" column="0" selection-start-line="2158" selection-start-column="0" selection-end-line="2158" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/RamFire.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -1169,26 +1160,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tracker.txt">
+    <entry file="file://$PROJECT_DIR$/gen/GrammarParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-120">
-          <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
+        <state relative-caret-position="181">
+          <caret line="2158" column="0" selection-start-line="2158" selection-start-column="0" selection-end-line="2158" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Grammar.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1110">
+          <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Fire.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+        <state relative-caret-position="135">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Grammar.g4">
+    <entry file="file://$PROJECT_DIR$/Tracker.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1335">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        <state relative-caret-position="247">
+          <caret line="78" column="66" selection-start-line="78" selection-start-column="66" selection-end-line="78" selection-end-column="66" />
           <folding />
         </state>
       </provider>

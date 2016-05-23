@@ -1,13 +1,28 @@
-Tankname Fire;
+Tankname fire;
 
 Num dist = 50;
+String string;
+String stringtwo;
+
+
+
 
 Setup {
-
+string = "hej";
+stringtwo = "heja";
 }
 
 Repeat {
     Gun.turn(5);
+    if (string IS= stringtwo) {
+        print("equal");
+    }
+    if (string NOT= stringtwo) {
+        print("not equal");
+    }
+
+
+
 }
 
 When scannedRobot {

@@ -1,2 +1,18 @@
 #!/bin/bash
-javac 
+set -e
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+java -classpath "$DIR/out/production/Grammar/:$DIR/antlr-4.5.2-complete.jar" Main $1
+javac -classpath "$DIR/robocode/libs/robocode.jar" $1.java
+mv "$DIR/$1.class" "$DIR/robocode/robots"
+rm "$DIR/$1.java"
+touch "$DIR/robocode/battles/$1.battle"
+ > "$DIR/robocode/battles/$1.battle"
+echo "#Battle Properties
+robocode.battleField.width=800
+robocode.battleField.height=600
+robocode.battle.numRounds=10
+robocode.battle.gunCoolingRate=0.1
+robocode.battle.rules.inactivityTime=450
+robocode.battle.hideEnemyNames=true
+robocode.battle.selectedRobots=$1*,sample.Crazy" >> "$DIR/robocode/battles/$1.battle"
+./robocode/robocode.sh -battle $1.battle

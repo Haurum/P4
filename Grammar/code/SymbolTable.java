@@ -32,10 +32,7 @@ public class SymbolTable  {
     public void CloseScope(){
         Scope.get(depth).forEach(s -> {
             Symbol prevSym = s.Var;
-            Map.remove(s.Name);
-            if (prevSym != null){
-                Map.put(prevSym.Name, prevSym);
-            }
+            Map.replace(s.Name, s, prevSym);
         });
         depth--;
     }

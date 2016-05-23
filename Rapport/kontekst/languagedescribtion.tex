@@ -1,6 +1,6 @@
-\chapter{Language Description}
+\chapter{Language description}
 \label{chap:LanguageDescription}
-In this chapter features of our language by means of a simple example, will be overviewed followed by a formal description of its syntax. 
+In this chapter, features of our language by means of a simple example, will be overviewed followed by a formal description of its syntax in form of a grammar for the language, language constructs and type systems. 
 
 \section{Syntax walkthrough}
 In this section an example of a sample robot from Robocode has been introduced and can be found in listing \ref{lst:corners}.
@@ -87,7 +87,7 @@ Setup{
 }
 \end{lstlisting}
 
-To make the robot do repetitive actions during the battles, Robot, Gun and Radar behaviour can be placed in the Repeat block. The Repeat block is basically a loop, that will iterate through the robot's Robot, Gun and Radar behaviour. The Repeat block of the sample robot Corners, in listing \ref{lst:Repeat}, consists of a repeat while loop. At the end of the repeat while loop, the gun have been turned a total of 90 or -90 degrees. 
+To make the robot do repetitive actions during the battles, Tank, Gun and Radar behaviour can be placed in the Repeat block. The Repeat block is basically a loop, that will iterate through the robot's Tank, Gun and Radar behaviour. The Repeat block of the sample robot Corners, in listing \ref{lst:Repeat}, consists of a repeat while loop. At the end of the repeat while loop, the gun have been turned a total of 90 or -90 degrees. 
 
 \begin{lstlisting}[caption={Code listing of the Repeat block}, xleftmargin=.2\textwidth, label={lst:Repeat}]
 Repeat{  
@@ -267,31 +267,31 @@ TYPE     & 'Num' | 'Bool' | 'Text'            \\ \hline
 In this section the language constructs for this project will be defined and explained, in order to give a clearer view of our language.
 
 \subsection{Setup block}
-The Setup block is a block, run only once at the begining of each round. In this block the user can define colors of different parts of the robot, call user defined functions which should only be called in once in the beginning and reserved calls. The Setup block can only be declared once, and have to be in the code, else the user will not be able to run the code.
+The Setup block is a block, run only once at the beginning of each round. In this block the user can define colors of different parts of the robot, call user defined functions which should only be called in once in the beginning and reserved calls. The Setup block can only be declared once, and have to be in the code, else the user will not be able to run the code.
 
 \begin{defi}
-The Setup block consists of the reserved word \textbf{Setup} followed by \{ \textbf{body} \}, where the body is the userdefined code. 
+The Setup block consists of the reserved word \textbf{Setup} followed by \{ \textbf{body} \}, where the body is the user defined code. 
 \end{defi}
 
 \subsection{Repeat block}
 The Repeat block will iterate through the users code, unless an event has occurred which then have first priority. The Repeat block is the general behaviour and logic of the robot, and will often contain the main movements of the robot. Just as the Setup block, the Repeat block ccan also only be declared once, and have to be in the code.
 
 \begin{defi}
-The Repeat block is defined with the reserved word \textbf{Repeat} followed by \{ \textbf{body} \}, where the body is the userdefined code.
+The Repeat block is defined with the reserved word \textbf{Repeat} followed by \{ \textbf{body} \}, where the body is the user defined code.
 \end{defi}
 
 \subsection{When block}
-The When block is handling an event whenever it occurs during the battle. The When block is preforming the behaviour and logic when the events occur, where this will be made by the user. Only a predefined number of events can be declared, which can be found in the Apendix \ref{fig:EventTable}
+The When block is handling an event whenever it occurs during the battle. The When block is preforming the behaviour and logic when the events occur, where this will be made by the user. Only a predefined number of events can be declared, which can be found in the Appendix \ref{fig:EventTable}
 
 \begin{defi}
 The When block is defined as: When eventName \{ \textbf{body} \}, \textbf{When} is the reserved word, the name of a Robocode event followed by the body which is the user defined code.
 \end{defi}
 
 \subsection{Variables}
-In our language there are three different kind of variables, \textbf{Num}, \textbf{Bool} and \textbf{Txt}. All numeric types will be interpreted as \textbf{Num}. \textbf{Bool} can either be True or False. \textbf{Txt} is an array of characters.
+In our language there are three different kind of variables, \textbf{Num}, \textbf{Bool} and \textbf{String}. All numeric types will be interpreted as \textbf{Num}. \textbf{Bool} can either be True or False. \textbf{String} is an array of characters.
 
 \begin{defi}
-The variables can be declared using the reserved words \textbf{Num}, \textbf{Bool} and \textbf{Txt} followed by the desired id of the variable. If the variable should also de initialized,  the assignment operator "=" should be used followed by the value or expression for the variable. 
+The variables can be declared using the reserved words \textbf{Num}, \textbf{Bool} and \textbf{String} followed by the desired id of the variable. If the variable should also de initialized,  the assignment operator "=" should be used followed by the value or expression for the variable. 
 \end{defi}
 
 \subsection{Action block}
@@ -311,22 +311,22 @@ An example of the Function block would be: \textbf{Function} myFunction Returns 
 \end{defi}
 
 \subsection{Reserved calls}
-In our language, there are a few reserved calls, meaning that there are some predefined words that can’t be used for other purposes other than what they’re intended to be used for. The reserved calls for our language are: \textbf{Tank}, \textbf{Gun}, \textbf{Radar} and \textbf{Battlefield}. With the use of dot notation, the members of each reserved call can be accesed.  
+In our language, there are a few reserved calls, meaning that there are some predefined words that can’t be used for other purposes other than what they’re intended to be used for. The reserved calls for our language are: \textbf{Tank}, \textbf{Gun}, \textbf{Radar} and \textbf{Battlefield}. With the use of dot notation, the members of each reserved call can be accessed.  
 
 \begin{defi}
-A reserved call is defined by the use of one of the four reserved calls: \textbf{Tank}, \textbf{Gun}, \textbf{Radar} and \textbf{Battlefield} followed by dot notation, then followed by an action. The list containing each action one of the reserved calls can call, can be seen in Apendix \ref{fig:ReservedCallsTable}. \newline
+A reserved call is defined by the use of one of the four reserved calls: \textbf{Tank}, \textbf{Gun}, \textbf{Radar} and \textbf{Battlefield} followed by dot notation, then followed by an action. The list containing each action the reserved calls can call, can be seen in Appendix \ref{fig:ReservedCallsTable}. \newline
 A call with a reserved call could look like: \textbf{Tank}.energy()
 \end{defi}
 
 \subsection{Conditional block}
-The conditional block is the langauge's conditional statements which will execute the user defiend code in it's body depending on a boolean expression. Conditional blocks helps making the robots logic for it's behaviour. 
+The conditional block is the language's conditional statements which will execute the user defined code in it's body depending on a boolean expression. Conditional blocks helps making the robots logic for it's behaviour. 
 
 \begin{defi}
 The conditional block contains a minimum of one if-construct, an optional number of else if-construct and can be ended with an optional else-construct. 
 
-The if-construct is noted with the reserved word \textbf{if} followed by the boolean expression in parentheses and the body within \{\}: If(ture) {body}.
+The if-construct is noted with the reserved word \textbf{if} followed by the boolean expression in parentheses and the body within \{\}: If(true) {body}.
 
-The else if-contruct's structure is the same as the if-construct, except that the reserved  word \textbf{else if} should be used instead of the \textbf{if}. 
+The else if-construct's structure is the same as the if-construct, except that the reserved  word \textbf{else if} should be used instead of the \textbf{if}. 
 
 The else-construct is noted by the reserved word \textbf{else} followed by the the body in \{\}.
 \end{defi}
@@ -350,13 +350,9 @@ The included operators in our language can be seen in table \ref{fig:OperatorTab
 	\caption{Table with operators in our language.}
 	\label{fig:OperatorTable}
 \end{table}
-\todo[color=red!40]{Please fill me!}
-\begin{defi}
-Hello? It's me.
-\end{defi}
 
 \section{Type systems}
-In this section the type and scope rules will be explained. To do so, \cite{Sebesta} has been used to understand and explain how the type and scope rules impacts our project.
+In this section the type and scope rules will be explained. To do so, \citep{Sebesta} has been used to understand and explain how the type and scope rules impacts our project.
 
 \subsection{Type rules}
 The following subsection will describe the type rules of the language. These rules will express which operators can be applied to each type, and how each expression will have a type, determined by the operands and operators in the expression.
@@ -372,7 +368,7 @@ The operators [+, -, *, /, \%] will be used as the shorthand 'op'. Relational op
 \dfrac{\Gamma \vdash e_1 : Num}{\Gamma \vdash -e_1 : Num}
 \]
 \[
-\dfrac{\Gamma \vdash e_1 : Txt \Gamma \vdash e_2 : \tau}{\Gamma \vdash e_1 + e_2 : Txt}
+\dfrac{\Gamma \vdash e_1 : String \Gamma \vdash e_2 : \tau}{\Gamma \vdash e_1 + e_2 : String}
 \]
 \[
 \dfrac{\Gamma \vdash e_1 : Bool \Gamma \vdash e_2 : Bool}{\Gamma \vdash e_1 relop e_2 : Bool}
@@ -381,7 +377,7 @@ The operators [+, -, *, /, \%] will be used as the shorthand 'op'. Relational op
 \dfrac{\Gamma \vdash e_1 : Bool}{\Gamma \vdash NOTe_1 : Bool}
 \]
 \subsection{Scope rules}
-Scope rules are where the scope of a name is part of the program, where the name binding is associated with an entity. Enities are variables, function names, event names, action names, etc. The scoping mechanism used in this project, is the lexical scoping, as the scope of a name binding refers to a portion of the source code. In our language there are three kind of scopes: local scope, global scope and function scope. A variable is visible in the specific scope, if can be referenced to. Two variables of the same name, can't be in the same scope. The local variables are declared inside blocks of code. The scope of a name binding is delinited to the deepest block where it has been declared. The blocks are marked with \{ \}. In the example in listing \ref{lst:example} the variable degrees is declared locally in the code block Setup, and it can't be used in other code blocks unless it is nested inside of the Setup block, it could e.g. be used in a if-loop in the Setup block. 
+Scope rules are where the scope of a name is part of the program, where the name binding is associated with an entity. Entities are variables, function names, event names, action names, etc. The scoping mechanism used in this project, is the lexical scoping, as the scope of a name binding refers to a portion of the source code. In our language there are three kind of scopes: local scope, global scope and function scope. A variable is visible in the specific scope, if can be referenced to. Two variables of the same name, can't be in the same scope. The local variables are declared inside blocks of code. The scope of a name binding is delimited to the deepest block where it has been declared. The blocks are marked with \{ \}. In the example in listing \ref{lst:example} the variable degrees is declared locally in the code block Setup, and it can't be used in other code blocks unless it is nested inside of the Setup block, it could e.g. be used in a if-loop in the Setup block. 
 
 \begin{lstlisting}[caption={Example of local scoping rules},  xleftmargin=.2\textwidth, label={lst:example}]
 Setup{
@@ -392,7 +388,7 @@ Setup{
 }
 \end{lstlisting}
 
-The parameters declared in a function, are visible in the function scope and can be used just as local variables for the function. It is possible to shadow parameters by creating an inner block and declare a varible with the same name. However it isn't possible to create two varibles with the same name in the same block. 
+The parameters declared in a function, are visible in the function scope and can be used just as local variables for the function. It is possible to shadow parameters by creating an inner block and declare a variable with the same name. However it isn't possible to create two variables with the same name in the same block. 
 
 When a variable is declared in the global scope, it can be used in all of the other functions and code blocks. When a variable is used, it will first search for it in the local scope, if it is not found in the local scope, it will search the in the global scope. In listing \ref{lst:example1} Codeblock1 uses the global variable, where Codeblock2 uses a local variable with the same name as the global variable, but the local variable will be used.
 
@@ -406,6 +402,6 @@ Codeblock1{
 
 Codeblock2{
 	Num number = 5; /* Locally declared variable */
-	5 + number; /* Will use the global variable number */
+	5 + number; /* Will use the local variable number */
 }
 \end{lstlisting}

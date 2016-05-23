@@ -16,7 +16,7 @@ getGunCoolingRate Gun coolingRate Num
 getGunHeading Gun heading Num
 getGunHeat Gun heat Num
 turnGunRight Gun turn Num - Num degrees
-getRadarHeading Radar heading void
+getRadarHeading Radar heading Num
 scan Radar scan void
 turnRadarRight Radar turn void
 getBattleFieldHeight Battlefield height Num

@@ -1,21 +1,33 @@
-Tankname Fire;
+Tankname fire;
 
 Num dist = 50;
+String string;
+String stringtwo;
+
+
+
 
 Setup {
-
+string = "hej";
+stringtwo = "heja";
 }
 
 Repeat {
     Gun.turn(5);
+    if (string IS= stringtwo) {
+        print("equal");
+    }
+    if (string NOT= stringtwo) {
+        print("not equal");
+    }
+
+
+
 }
 
 When scannedRobot {
     if (Event.distance() < 50 AND Tank.energy() > 50) {
     Gun.shoot(3);
-
-    dist = dist / 0;
-
     }
     else {
         Gun.shoot(1);

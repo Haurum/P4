@@ -187,4 +187,11 @@ public class MainTest {
         String[] argument = new String[] {"testrobots/EventEventhandlerMismatch"};
         mainfunc.main(argument);
     }
+
+    @Test(expected = java.lang.Error.class)
+    public void if3() throws IOException {
+        Main mainfunc = new Main();
+        String[] argument = new String[] {"testrobots/If"};
+        mainfunc.main(argument);
+    }
 }

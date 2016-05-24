@@ -27,17 +27,20 @@ These rules have the purpose of defining how to format code in the language. It 
 \begin{math}	
 B ::= \{ \ D_v \ S \ \}	
 \newline	
-S ::= \ Stmt \ S \ | \ \epsilon
+S ::= \ skip \ | \ x \ = \ a \ | \ B \ | \ call \ a(e_1 ... , e_n) \ | \ return \ e \ | \ S_1; \ S_2 \ | \ if \ e \ B_1 \ else \ B_2 \
+\newline  | \ repeat \ while \ e \ B \ | \ active \ S \ end \ | \ atom \ S \ end
 \newline
-Stmt ::= \ x = e \ | \ if \ e_1 \ B_1 \ else \ B_2 \ \newline | \ Repeat \ While(e) \ B \ | \ Return \ e \ | \ skip \ | \ atom \ S \ end \ | active \ S \ end
-\newline
-a ::= \ a(Dv) \ B \ D_a \ | \epsilon 	
+a ::= \ action \ a(x_1 ... x_n) \ is \ B \ D_a \ | \epsilon 	
 \newline	
-D_f ::= \ f(Dv) \ B \ D_f \ | \epsilon 
+f ::= \ function \ f(x_1 ... x_n) \ is \ B \ D_f \ | \epsilon 
 \newline
 D_v ::= \ \tau \ x \ D_v \ | \epsilon 
 \newline
-Game ::= \ Stmt \ || \ F
+e ::= \ ( \ e \ ) \ | \ call \ f(x_1 ... x_n) \ | \ e_1 op e_2 \ | \ !e \ | \ \epsilon
+\newline
+Game ::= \ S \ || \ F
+\newline
+op \in {+, -, *, /, \%, =, \neq, >, <, \nleq, \ngeq, \not>, \nless, \ge, \le, AND, OR}
 \end{math}
 
 \section{Semantic functions}
@@ -112,23 +115,21 @@ v & \quad \text{if } l^{'} = l\\
 \section{Operational semantic}
 This section has the purpose of formally describing the language. It consists of semantic rules that give context to a program. \newline
 The semantics is described with big-step semantics due to the intuitiveness of this kind of semantics. \newline
-The environments during the operational semantics will be denoted with E.
+The environments during the operational semantics will be denoted with E. For simplicity the environments \begin{math} E_v, E_a, E_f \end{math} will now be denoted as \begin{math} E_{vaf} \end{math} and \begin{math} E_a, E_f \end{math} will be denoted as \begin{math} E_{af} \end{math}.
 
 \subsection{Blocks}
 \[	
-[BLOCK]	
-\dfrac{\dfrac{E_f, \ E_a \ \vdash \ \langle B, \ st^{''}, \ E_v^{''} \rangle \ \Rightarrow^* \ (st^{'}, \ E_l^{'})}{\dfrac{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1, \ st_1 \rangle \ \rightarrow_e \ (v_1, \ st_2)}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_n, \ st_n \rangle \ \rightarrow_e \ (v_n, \ st_{n+1})}}}{E_v, \ E_a, \ E_f \ \vdash \ \langle f(e_1 \ ... \ e_n), \ st \rangle \ \rightarrow_e \ (v, \ st^{'})}	
+[BLOCK-ENTER]	
+\dfrac{\langle D_v, \ E_v \rangle \ \rightarrow_{Dv} \ E_v^{'}}{E_{eaf} \ \vdash \ \langle active \ S \ end, \ st, \ E_l \rangle \ \Rightarrow \ \langle active \ S \ end, \ st, \ E_v^{'} \ : \ E_l}	
 \]
-
-\begin{math}		
-\quad where \newline		
-\qquad st_1 = st \newline		
-\qquad E_f(f) = (B, x_1 ... x_n, E_v^{'}) \newline		
-\qquad E_v^{''} = E_v^{'}[x_1 \mapsto l_1] ... [x_n \mapsto l_n] [next \mapsto l_{n+1}] \newline		
-\qquad st^{''} = st_{n+1}[l_1 \mapsto v_1] ... [l_n \mapsto v_n] \newline		
-\qquad l_1 = new (Ev(next)) \newline		
-\qquad l_{i+1}= new l_i for i \in {1 ... n}		
-\end{math}
+\[	
+[BLOCK-CONTINUE]	
+\dfrac{E_{eaf} \ \vdash \ \langle S, \ st, \ E_l \rangle \ \Rightarrow \ \langle S^{'}, \ st^{'}, \ E_l^{'}}{E_{eaf} \ \vdash \ \langle active \ S \ end, \ st, \ E_l \rangle \ \Rightarrow \ \langle active \ S^{'} \ end, \ st^{'}, \ E_l^{'} \rangle}	
+\]
+\[	
+[BLOCK-EXIT]	
+\dfrac{E_{eaf} \ vdash \ \langle S, \ st, \ E_l \rangle \ \Rightarrow \ \langle st^{'}, \ E_v \ : \ E_l^{'} \rangle}{E_{eaf} \ \vdash \ \langle active \ S \ end, \ st, \ E_l \ \rangle \ \Rightarrow \ \langle st^{'}, \ E_l^{'} \rangle}	
+\]
 
 \subsubsection{Declarations}	
 \[	
@@ -137,7 +138,7 @@ The environments during the operational semantics will be denoted with E.
 \]\newline
 \[	
 [VARDCL] \quad	
-\dfrac{ \langle D_v, \ E_v[x \mapsto l][next \mapsto new_l]\rangle \ \rightarrow_{Dv} \ \langle E_v^{'} \rangle }{ \langle \ \tau \ x; \ D_v,\ E_v \rangle \rightarrow_{Dv} \ \langle E_v^{'} \rangle } \newline	
+\dfrac{ \langle D_v, \ E_v[x \mapsto l][next \mapsto new(l)]\rangle \ \rightarrow_{Dv} \ E_v^{'}}{ \langle \ \tau \ x; \ D_v,\ E_v \rangle \rightarrow_{Dv} \ E_v^{'}} \newline	
 \qquad \ \ l = E_v(next)	
 \]\newline
 \[	
@@ -146,47 +147,46 @@ The environments during the operational semantics will be denoted with E.
 \]\newline
 \[	
 [ACTDCL] \quad	
-\dfrac{E_v \ \vdash \langle D_a, \ E_a[a \ \mapsto (S, \ x_1 .. x_n \ E_v)] \rangle \rightarrow_{Da} \ E_a^{'}}{E_v \ \vdash \ Action \ a(x_1 .. x_n) \ is \ S; \ D_a \ E_a \ \rightarrow_{Da} \ E_a^{'}}	
+\dfrac{E_v \ \vdash \langle D_a, \ E_a[a \ \mapsto (B, \ x_1 .. x_n \ E_v)] \rangle \rightarrow_{Da} \ E_a^{'}}{E_v \ \vdash \ \langle Action \ a(x_1 .. x_n) \ is \ B; \ D_a, \ E_a \rangle \ \rightarrow_{Da} \ E_a^{'}}	
 \]\newline
 \[	
 [EMPTY-FUNCDCL] \quad	
-\dfrac{}{E_v \ \vdash \langle \epsilon; \ D_f \rangle \ \rightarrow_{Df} \ E_f}	
+\dfrac{}{E_v \ \vdash \langle \epsilon, \ D_f \rangle \ \rightarrow_{Df} \ E_f}	
 \]\newline
 \[	
 [FUNCDCL] \quad	
-\dfrac{E_v \vdash \langle D_f, \ E_f[f \ \mapsto (S, \ x_1 .. x_n, \ E_v)] \rangle \rightarrow_{Df} E_f^{'}}{E_v \vdash \ \langle Function \ f(x_1 .. x_n) \ is \ S; \ D_f, \ E_f \rangle \ \rightarrow_{Df} \ E_f^{'}}	
+\dfrac{E_v \vdash \langle D_f, \ E_f[f \ \mapsto (B, \ x_1 .. x_n, \ E_v)] \rangle \rightarrow_{Df} E_f^{'}}{E_v \vdash \ \langle Function \ f(x_1 .. x_n) \ is \ B; \ D_f, \ E_f \rangle \ \rightarrow_{Df} \ E_f^{'}}	
 \]
 
 \subsection{Statements}
-The interaction with the battlefield will not be explained in the semantics in this project, since it is out of the scope of the project. The interaction that a battlefield configuration may have with a statement running in parallel will be explained, but only for when it moves from one configuration to another.	
+The interaction with the battlefield will not be explained since it is out of the scope of the project. The interaction that a battlefield configuration may have with a statement running in parallel will be explained.
 
-The configuration of the semantics statements are:
+The configuration of the semantic statements are:
 \begin{itemize}
-	\item \begin{math} \langle \end{math}S, st, envl\begin{math} \rangle \end{math}, which are intermediate configurations where S is a statement that may contain atomic-encapsulations or parallels.
-	\item \begin{math} \langle \end{math}st, envl\begin{math} \rangle \end{math} is terminal configurations.	
+	\item \begin{math} \langle S, \ st, \ E_l \rangle \end{math}, which are intermediate configurations where S is a statement that may contain atomic-encapsulations or parallels.
+	\item \begin{math} \langle st, \ E_l \rangle \end{math} is terminal configurations.	
 \end{itemize}
 
-In intermediate configuration is where only parts of the statements will be interpreted. Where in terminal configurations all the statements will be executed.
-
-The transition system of our language is:
+The transition system for statements is:
 \begin{math}		
-((\boldsymbol{S} \ \times \boldsymbol{EvCxt} \ \times \boldsymbol{St}) \ \cup \ (\boldsymbol{St} \ \times \ \boldsymbol{Envl}), \Rightarrow, \ \boldsymbol{St} \ \times \ \boldsymbol{Envl})		
+((\boldsymbol{Stmt} \ \times \boldsymbol{St} \ \times \boldsymbol{E_l}) \ \cup \ (\boldsymbol{St} \ \times \ \boldsymbol{E_l}), \Rightarrow, \ (\boldsymbol{St} \ \times \ \boldsymbol{E_l}))		
 \end{math}
 
-The set of run time stacks \textbf{EvCxt} is:
+The set of run time stacks is:
 \textbf{Envl} = \textbf{EnvV}\begin{math}		
 ^*		
 \end{math}
 
 We will denote by \begin{math} E_l \end{math} a generic element in EvCxt
+For simplicity we will now denote \begin{math} E_l, E_a, E_f \end{math} as \begin{math} E_{laf} \end{math} and \begin{math} E_e, E_a, E_f \end{math} as \begin{math} E_{eaf} \end{math} and \begin{math} E_v, E_f \end{math} as \begin{math} E_{vf} \end{math}, and lastly the environments \begin{math} E_v, E_e, E_a, E_f \end{math} as \begin{math} E_{veaf} \end{math}.
 
 \[	
-[ATOM-PARTLY]	
-\dfrac{E_l, \ E_f, \ E_a \ \vdash \langle S, \ st, \ E_l \rangle \ \Rightarrow \ \langle S^{''}, \ st^{'}, \ E_l^{'} \rangle}{E_e, \ E_f, \ E_a \ \vdash \ \langle atom \ S \ end, \ st, \ E_l \rangle \ \Rightarrow \ \langle atom \ S^{''} \ end, \ st^{'}, \ E_l^{'} \rangle}	
+[ATOM-CONTINUE]	
+\dfrac{E_{eaf} \ \vdash \langle S, \ st, \ E_l \rangle \ \Rightarrow \ \langle S^{'}, \ st^{'}, \ E_l^{'} \rangle}{E_{eaf} \ \vdash \ \langle atom \ S \ end, \ st, \ E_l \rangle \ \Rightarrow \ \langle atom \ S^{'} \ end, \ st^{'}, \ E_l^{'} \rangle}	
 \]\newline
 \[	
-[ATOM-COMPLETE]	
-\dfrac{E_l, \ E_f, \ E_a \ \vdash \langle S, \ st, \ E_l \rangle \ \Rightarrow \ \langle st^{'}, \ E_l^{'} \rangle}{E_e, \ E_f, \ E_a \ \vdash \ \langle atom \ S \ end, \ st, \ E_l \rangle \ \Rightarrow \ \langle st^{'}, \ E_l^{'} \rangle}	
+[ATOM-EXIT]	
+\dfrac{E_{eaf} \ \vdash \langle S, \ st, \ E_l \rangle \ \Rightarrow \ \langle st^{'}, \ E_v \ : \ E_l^{'} \rangle}{E_{eaf} \ \vdash \ \langle atom \ S \ end, \ st, \ E_l \rangle \ \Rightarrow \ \langle st^{'}, \ E_l^{'} \rangle}	
 \]
 
 In the formation rules section the formation rule "Game", describes the interaction between the battlefield and the program. The "F" in Game is the battlefield configuration. 
@@ -194,112 +194,77 @@ In the formation rules section the formation rule "Game", describes the interact
 F have to states in our language, either an event is raised or not. If no events are raised, F stays the same. If an event has been raise \begin{math} F \rightarrow_{event(p)} F^{'} \end{math}, which is an transition from the battlefield configuration. It is possible for the events to be raised with an parameter p. 
 
 \[	
-[PARA-F]	
-\dfrac{E_e, \ E_f, \ E_a \ \vdash \ \langle S, \ st, \ E_l \rangle \ \Rightarrow_S \ \langle S^{'}, \ st^{'}, \ E_l^{'}}{E_e, \ E_f, \ E_a \ \vdash \ \langle S \ || \ F, \ st, \ E_l \rangle \ \Rightarrow_Para \ \langle S^{'} \ || \ F, \ st^{'}, \ E_l^{'} \rangle}	
+[PARA-PROG]	
+\dfrac{E_{eaf} \ \vdash \ \langle S, \ st, \ E_l \rangle \ \Rightarrow_S \ \langle S^{'}, \ st^{'}, \ E_l^{'} \rangle}{E_{eaf} \ \vdash \ \langle S \ || \ F, \ st, \ E_l \rangle \ \Rightarrow \ \langle S^{'} \ || \ F, \ st^{'}, \ E_l^{'} \rangle}
 \]\newline
 \[	
-[PARA-F^{'}]	
-\dfrac{F \ \rightarrow_{event(p)} \ F^{'}}{E_e, \ E_f, \ E_a \ \vdash \ \langle S \ || \ F, \ st, \ E_l \rangle \ \Rightarrow_Para \ \langle atom \ S^{'} \ end; \ S \ || \ F^{'}, \ st, \ E_l \rangle}	
+[PARA-EVENT]	
+\dfrac{F \ \rightarrow_{event(p)} \ F^{'} \quad \langle D_v, \ E_v[x \mapsto l][next \mapsto new(l)] \rangle \ \rightarrow_{Dv} \ E_v^{'}}{E_{eaf} \ \vdash \ \langle S \ || \ F, \ st, \ E_l \rangle \ \Rightarrow \ \langle atom \ S^{'} \ end; \ S \ || \ F^{'}, \ st[l \mapsto p], \ E_v^{'} \ : \ E_l \rangle}	
 \]
 \begin{math}		
-Where \ S \ is \ not \ of \ the \ form \ S_1 \ end; \ S_2 \newline		
-E_e(event) \ = \ (begin \ D_v \ S^{''} \ end, \ x, \ E_v) \newline		
-S^{'} \ = \ begin \ D_v \ (x \ := \ p; \ S^{''} \ end)		
+Where \ S \ is \ not \ of \ the \ form \ S_1 \ end; \ S_2 \newline
+E_v \ = \ E_v \ : \ E_l^{'}, \ and \ l \ = \ E_v(next) \newline	
+E_e(event) \ = \ (begin \ D_v \ S^{'} \ end, \ x, \ E_v) \newline	
+\end{math}
+\[	
+[PARA-QUIT]	
+\dfrac{F \ \rightarrow_{event(p)} \ F^{'} \quad \langle D_v, \ E_v[x \mapsto l][next \mapsto new(l)] \rangle \ \rightarrow_{Dv} \ E_v^{'}}{E_{eaf} \ \vdash \ \langle S \ || \ F, \ st, \ E_l \rangle \ \Rightarrow \ \langle active \ S^{'} \ end, \ st[l \mapsto p], \ E_v^{'} \ : \ E_l \rangle}	
+\]
+\begin{math}		
+	Where \ S \ is \ not \ of \ the \ form \ S_1 \ end; \ S_2 \newline
+	E_v \ = \ E_v \ : \ E_l^{'}, \ and \ l \ = \ E_v(next) \newline	
+	E_e(quit) \ = \ (begin \ D_v \ S^{'} \ end, \ x, \ E_v) \newline	
 \end{math}
 
 \[
 [COMP-PARTLY]
-\dfrac{\langle S_1, \ st, \ E_l \rangle \ \Rightarrow \ \langle S_1^{‘}, \ st^{‘}, \ E_l^{‘}}{\langle S_1; \ S_2, \ st, \ E_l \rangle \ \Rightarrow \ \langle S_1^{‘}; \ S_2, \ st^{‘}, \ E_l{‘}}
+\dfrac{E_{eaf} \ \vdash \ \langle S_1, \ st, \ E_l \rangle \ \Rightarrow \ \langle S_1^{'}, \ st^{'}, \ E_l^{'} \rangle}{E_{eaf} \ \vdash \ \langle S_1; \ S_2, \ st, \ E_l \rangle \ \Rightarrow \ \langle S_1^{'}; \ S_2, \ st^{'}, \ E_l{'} \rangle}
 \]\newline
 \[
 [COMP-COMPLETE]
-\dfrac{\langle S_1, \ st, \ E_l \rangle \ \Rightarrow \ \langle \ st^{‘}, \ E_l^{‘}}{\langle S_2, \ st, \ E_l \rangle \ \Rightarrow \ \langle S_1^{‘}; \ S_2, \ st^{‘}, \ E_l{‘}}
+\dfrac{E_{eaf} \ \vdash \ \langle S_1, \ st, \ E_l \rangle \ \Rightarrow \ \langle \ st^{'}, \ E_l^{'} \rangle}{E_{eaf} \ \vdash \ \langle S_2, \ st, \ E_l \rangle \ \Rightarrow \ \langle S_1^{'}; \ S_2, \ st^{'}, \ E_l{'} \rangle}
 \]\newline
 \[
 [ASSIGN]
-\dfrac{}{\langle x \ := \ a, \ st, \ E_l \rangle \ \Rightarrow \ (st[l \mapsto v], \ E_l)}
+\dfrac{E_{veaf} \ \vdash \ \langle e, \ st \rangle \ \rightarrow_e \ (v, \ st^{'})}{E_{eaf} \ \vdash \ \langle x \ = \ e, \ st, \ E_l \rangle \ \Rightarrow \ (st^{'}[l \mapsto v], \ E_l)}
 \]
 \begin{math}
 Where
-\qquad E_l = (E_v) : E_l^{‘}
+\qquad E_l = E_v : E_l^{‘}
 \qquad l = E_v(x)
-\qquad E_v, st \vdash a \rightarrow_a v
 \end{math}
 
 \[
 [IF-^{\top}_e]
-\dfrac{\langle if \ e \ B_1 \ else \ B_2, \ st, \ E_l \rangle \ \Rightarrow \ \langle B_1, \ st, \ E_l \rangle}{}
+\dfrac{E_{vf} \ \vdash \ \langle e, \ st \rangle \ \rightarrow_e \ (\top, \ st^{'})}{E_{eaf} \ \vdash \ \langle if \ e \ B_1 \ else \ B_2, \ st, \ E_l \rangle \ \Rightarrow \ \langle B_1, \ st^{'}, \ E_l \rangle}
 \]
 \begin{math}
-If E_v, st \vdash e \rightarrow_e \top \quad where E_l = (E_v) : E_l{‘}
+Where \quad E_l = E_v : E_l{‘}
 \end{math}
 
 \[
 [IF-^{\bot}_e]
-\dfrac{\langle if \ e \ B_1 \ else \ B_2, \ st, \ E_l \rangle \ \Rightarrow \ \langle B_2, \ st, \ E_l \rangle}{}
+\dfrac{E_{vf} \ \vdash \ \langle e, \ st \rangle \ \rightarrow_e \ (\bot, \ st^{'})}{E_{eaf} \ \vdash \ \langle if \ e \ B_1 \ else \ B_2, \ st, \ E_l \rangle \ \Rightarrow \ \langle B_2, \ st^{'}, \ E_l \rangle}
 \]
 \begin{math}
-If E_v, st \vdash e \rightarrow_e \bot \quad where E_l = (E_v) : E_l{‘}
-\end{math}
-
-\[
-[CALL-FUNC]
-\dfrac{}{ \langle call \ f(x_1 … x_n), \ st, \ E_l \rangle \ \Rightarrow \ \langle active \ S \ end, \ st, \ (E_v^{‘}, E_f^{‘}) : E_l \rangle}
-\]
-\begin{math}
-Where 
-\qquad E_f(f) = (S, E_v^{‘}, E_f^{‘})
-\qquad E_l = (E_v) : E_l^{‘}
-\end{math}
-
-\[
-[CALL-F-REC]
-\dfrac{}{ \langle call \ f, \ st, \ E_l \rangle \ \Rightarrow \ \langle active \ S \ end, \ st, \ (E_v^{‘}, \ E_f^{‘}[f \mapsto (S, \ E_v^{‘}, \ E_f^{‘}] : E_l \rangle}
-\]
-\begin{math}
-Where
-\qquad E_f(f) = (S, E_v^{‘}, E_f^{‘}) 
-\qquad E_l = (E_v) : E_l^{‘}
+Where \quad E_l = E_v : E_l{‘}
 \end{math}
 
 \[
 [CALL-ACT]
-\dfrac{}{ \langle call \ a(x_1 … x_n), \ st, \ E_l \rangle \ \Rightarrow \ \langle active \ S \ end, \ st, \ (E_v^{‘}, E_a^{‘}) : E_l}
+\dfrac{E_{veaf} \ \vdash \ \langle e_i, \ st_i \rangle \ \rightarrow_e \ (v_i, \ st_{i+1}^{'}) \quad for \ i \ \in \ {1 ... n}}{E_{eaf} \ \vdash \ \langle call \ a(e_1 … e_n), \ st, \ E_l \rangle \ \Rightarrow \ \langle active \ B \ end, \ st^{'}, \ E_v^{''} \ : \ E_l}
 \]
 \begin{math}
 Where
-\qquad E_a(a) = (S, E_v^{‘}, E_a^{‘})
-\qquad E_l = (E_v) : E_l^{‘}
-\end{math}
-\[
-[CALL-A-REC]
-\dfrac{}{ \langle call \ f, \ st, \ E_l \rangle \ \Rightarrow \ \langle active \ S \ end, \ st, \ (E_v^{‘}, \ E_f^{‘}[f \mapsto (S, \ E_v^{‘}, \ E_f^{‘}] : E_l \rangle}
-\]
-\begin{math}
-Where
-\qquad E_a(a) = (S, E_v^{‘}, E_a^{‘})
-\qquad E_l = (E_v) : E_l^{‘}		
-\end{math}
-
-\[
-[IF-^{\top}_e]
-\dfrac{\langle if \ e \ B_1 \ else \ B_2, \ st, \ E_l \rangle \ \Rightarrow \ \langle B_1, \ st, \ E_l \rangle}{}
-\]
-\begin{math}
-If E_v, st \vdash e \rightarrow_e \top \quad where E_l = (E_v) : E_l{‘}
-\end{math}
-
-\[
-[IF-^{\bot}_e]
-\dfrac{\langle if \ e \ B_1 \ else \ B_2, \ st, \ E_l \rangle \ \Rightarrow \ \langle B_2, \ st, \ E_l \rangle}{}
-\]
-\begin{math}
-If E_v, st \vdash e \rightarrow_e \bot \quad where E_l = (E_v) : E_l{‘}
+\qquad st_1 = st, E_l = E_v : E_l, E_a(a) = (B, (x_1 ... x_n), E_v^{'}) \newline
+\qquad l_1 = E_v(next) and, l_{j+1} = new(l_j) for j \in {1 ... n} \newline
+\qquad E_v^{''} = E_v^{'}[x_1 \mapsto l_1] ... [x_n ... l_n][next \mapsto l_{n+1}] \newline
+\qquad st^{'} = st_{n+1}[l_1 \mapsto v_1] ... [l_n \mapsto v_n]
 \end{math}
 
 \[
 [REPEAT]
-\dfrac{}{\langle repeat \ while(e) \ B, \ st, \ E_l \rangle \ \Rightarrow \ \langle if \ e \ (B; \ repeat \ while(e) \ B) \ else \ skip, \ st, \ E_l \rangle}
+\dfrac{}{E_{eaf} \ \vdash \ \langle repeat \ while(e) \ B, \ st, \ E_l \rangle \ \Rightarrow \ \langle if \ e \ (B; \ repeat \ while(e) \ B) \ else \ skip, \ st, \ E_l \rangle}
 \]\newline
 \[
 [SKIP]
@@ -307,7 +272,7 @@ If E_v, st \vdash e \rightarrow_e \bot \quad where E_l = (E_v) : E_l{‘}
 \]\newline
 \[
 [RETURN]	
-\dfrac{E_v, \ E_a, \ E_f \ \vdash \ \langle e, \ st \rangle \ \rightarrow_e \ (v, \ st^{'})}{E_f, \ E_a \ \vdash \ \langle return \ e, \ st, \ E_l \rangle \ \Rightarrow \ (st^{'}[r \ \mapsto \ v], \ E_l)}
+\dfrac{E_{veaf} \ \vdash \ \langle e, \ st \rangle \ \rightarrow_e \ (v, \ st^{'})}{E_{eaf} \ \vdash \ \langle return \ e, \ st, \ E_l \rangle \ \Rightarrow \ (st^{'}[r \ \mapsto \ v], \ E_l)}
 \quad Where	
 \qquad E_l = E_v : E_l^{'}	
 \]\newline
@@ -316,13 +281,27 @@ If E_v, st \vdash e \rightarrow_e \bot \quad where E_l = (E_v) : E_l{‘}
 \subsection{Expressions}
 \[	
 [PAR-EXPR] \quad	
-\dfrac{E_v, \ E_a, \ E_f \vdash \langle e, \ st \rangle \rightarrow_e (v, \ st^{'}}{E_v, \ E_a, \ E_f \vdash \langle (e), \ st \rangle \rightarrow_e \ (v, \ st^{'})}	
+\dfrac{E_{veaf} \vdash \langle e, \ st \rangle \rightarrow_e (v, \ st^{'}}{E_{veaf} \vdash \langle (e), \ st \rangle \rightarrow_e \ (v, \ st^{'})}	
 \]
+
+\[
+[CALL-FUNC]
+\dfrac{E_{eaf} \ \vdash \ \langle active \ B \ end, \ st^{''}, \ E_v^{''} \rangle \ \Rightarrow^{*} \ (st^{'}, E_l) \qquad E_{veaf} \ \vdash \ \langle e_i, \ st_i \rangle \ \rightarrow_e \ (v_i, \ st_{i+1})}{E_{veaf} \ \vdash \ \langle call \ f(x_1 ... x_n), \ st \rangle \ \rightarrow_e \ (v, \ st^{'})}
+\]
+\begin{math}
+	Where
+	\quad E_f(f) = (B, (x_1 ... x_n), E_v^{'}) \newline
+	\quad st_1 = st \newline
+	\quad l_1 = E_v(next), l_{j+1} = new(l_j) for j \in {1 ... n} \newline
+	\quad E_v^{''} = E_v^{'}[x_1 \mapsto l_1] ... [x_n \mapsto l_n][next \mapsto l_{n+1}] \newline
+	\quad st^{''} = St_{n+1}[l_1 \mapsto v_1] ... [l_n \mapsto v_n] \newline
+	\quad v = st^{'}(r)
+\end{math}
 
 \subsection{Arithmetic expressions}
 \[
 [ASM-EXPR] \quad	
-\dfrac{E_v, \ E_a, \ E_f \vdash \langle a_1, \ st \rangle \rightarrow_{e} (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \langle a_2, \ st^{''}\rangle \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \vdash \ \langle a_1 \ op \ a_2, st \rangle \ \rightarrow_{e} (v, st^{'})}	
+\dfrac{E_{veaf} \ \vdash \langle a_1, \ st \rangle \rightarrow_{e} (v_1, st^{''}) \qquad E_{veaf} \ \vdash \langle a_2, \ st^{''}\rangle \rightarrow_e (v_2, \ st^{'})}{E_{veaf} \ \vdash \ \langle a_1 \ op \ a_2, st \rangle \ \rightarrow_{e} (v, st^{'})}	
 \]
 \begin{math}		
 op \ \in \ \{ \ +, \ -, \ * \ \} \newline		
@@ -331,7 +310,7 @@ v \ = \ v_1 \ op \ v_2
 
 \[
 [DM-EXPR] \quad
-\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle a_1, \ st \rangle \ \rightarrow_{e} (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle a_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \vdash \ \langle a_1 \ op \ a_2, st \rangle \ \rightarrow_{e} (v, st^{'})}	
+\dfrac{E_{veaf} \ \vdash \ \langle a_1, \ st \rangle \ \rightarrow_{e} (v_1, st^{''}) \qquad E_{veaf} \ \vdash \ \langle a_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_{veaf} \ \vdash \ \langle a_1 \ op \ a_2, st \rangle \ \rightarrow_{e} (v, st^{'})}	
 \]
 \begin{math}		
 op \ \in \ \{ \ /, \ \% \ \} \ | v \not= \ 0 \newline 		
@@ -342,109 +321,109 @@ v \ = \ v_1 \ op \ v_2
 Most of the boolean expressions look alike even with the value of true/false, except the AND/OR expressions. The constructs of AND/OR uses short-circuiting, since in the OR expression if the first value is evaluated to true, there is no need to evaluate the second part of the expression.
 \[
 [EXPR^{IS=}_{\ \top}] \quad	
-\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \ \langle e_1 \ IS= e_2, \ st \rangle \ \ \rightarrow_e (\top, \ st^{'})}	
+\dfrac{E_{veaf} \ \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_{veaf} \ \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_{veaf} \ \ \vdash \ \ \langle e_1 \ IS= e_2, \ st \rangle \ \ \rightarrow_e (\top, \ st^{'})}	
 \]
 \begin{math}		
 v_1 \ = \ v_2 		
 \end{math}	
 \[
 [EXPR^{IS=}_{\ \bot}] \quad	
-\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \ \rangle \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ IS= e_2, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}	
+\dfrac{E_{veaf} \ \vdash \ \langle e_1, \ st \ \rangle \rightarrow_e (v_1, st^{''}) \qquad E_{veaf} \ \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_{veaf} \ \ \vdash \ \langle e_1 \ IS= e_2, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}	
 \]
 \begin{math}		
 v_1 \ \not= \ v_2		
 \end{math}
 \[	
 [EXPR^{NOT=}_{\ \top}] \quad	
-\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ NOT= e_2, \ st \rangle \ \rightarrow_e (\top, \ st^{'})}	
+\dfrac{E_{veaf} \ \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_{veaf} \ \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_{veaf} \ \ \vdash \ \langle e_1 \ NOT= e_2, \ st \rangle \ \rightarrow_e (\top, \ st^{'})}	
 \]	
 \begin{math}		
 v_1 \ \not= \ v_2		
 \end{math} 
 \[
 [EXPR^{NOT=}_{\ \bot}] \quad	
-\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ NOT= e_2, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}	
+\dfrac{E_{veaf} \ \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_{veaf} \ \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_{veaf} \ \ \vdash \ \langle e_1 \ NOT= e_2, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}	
 \]	
 \begin{math}		
 v_1 \ = \ v_2		
 \end{math} 
 \[	
 [EXPR^{\ >}_{\ \top}] \quad	
-\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ > e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}	
+\dfrac{E_{veaf} \ \vdash <e_1, \ st> \rightarrow_e (v_1, st^{''}) \qquad E_{veaf} \ \vdash <e_2, \ st^{''} \rightarrow_e (v_2, \ st^{'})}{E_{veaf} \ \vdash \ <e_1 \ > e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}	
 \]
 \begin{math}		
 v_1 \ > \ v_2		
 \end{math} 
 \[	
 [EXPR^{\ >}_{\ \bot}] \quad	
-\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ > e_2, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}
+\dfrac{E_{veaf} \ \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_{veaf} \ \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_{veaf} \ \vdash \ \langle e_1 \ > e_2, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}
 \]
 \begin{math}		
 v_1 \ \not> \ v_2		
 \end{math} 
 \[	
 [EXPR^{\ <}_{\ \top}] \quad	
-\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ < e_2, \ st \rangle \ \rightarrow_e (\top, \ st^{'})}
+\dfrac{E_{veaf} \ \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_{veaf} \ \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_{veaf} \ \vdash \ \langle e_1 \ < e_2, \ st \rangle \ \rightarrow_e (\top, \ st^{'})}
 \]
 \begin{math}		
 v_1 \ < \ v_2		
 \end{math} 
 \[	
 [EXPR^{\ <}_{\ \bot}] \quad	
-\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ < e_2, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}	
+\dfrac{E_{veaf} \ \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_{veaf} \ \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_{veaf} \ \ \vdash \ \langle e_1 \ < e_2, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}	
 \]
 \begin{math}		
 v_1 \ \not< \ v_2		
 \end{math}
 \[	
 [EXPR^{\ >=}_{\ \ \top}] \quad	
-\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ >= e_2, \ st \rangle \ \rightarrow_e (\top, \ st^{'})}	
+\dfrac{E_{veaf} \ \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_{veaf} \ \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_{veaf} \ \ \vdash \ \langle e_1 \ >= e_2, \ st \rangle \ \rightarrow_e (\top, \ st^{'})}	
 \]
 \begin{math}		
 v_1 \ \ge \ v_2		
 \end{math} 
 \[	
 [EXPR^{\ >=}_{\ \ \bot}] \quad	
-\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ >= e_2, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}	
+\dfrac{E_{veaf} \ \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_{veaf} \ \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_{veaf} \ \ \vdash \ \langle e_1 \ >= e_2, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}	
 \]
 \begin{math}		
 v_1 \ \ngeq \ v_2		
 \end{math}
 \[
 [EXPR^{\ <=}_{\ \ \top}] \quad
-\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ <= e_2, \ st \rangle \ \rightarrow_e (\top, \ st^{'})}
+\dfrac{E_{veaf} \ \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_{veaf} \ \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_{veaf} \ \vdash \ \langle e_1 \ <= e_2, \ st \rangle \ \rightarrow_e (\top, \ st^{'})}
 \]
 \begin{math}		
 v_1 \ \le \ v_2		
 \end{math} 
 \[	
 [EXPR^{\ <=}_{\ \ \bot}] \quad	
-\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_v, \ E_a, \ E_f \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1 \ <= e_2, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}	
+\dfrac{E_{veaf} \ \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e (v_1, st^{''}) \qquad E_{veaf} \ \vdash \ \langle e_2, \ st^{''} \rangle \ \rightarrow_e (v_2, \ st^{'})}{E_{veaf} \ \vdash \ \langle e_1 \ <= e_2, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}	
 \]
 \begin{math}		
 v_1 \ \nleq \ v_2		
 \end{math}
 \[	
 [EXPR^{\ \ !}_{\ \ \top}] \quad	
-\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e, \ st \rangle \ \rightarrow_e (\top, st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle !e, \ st \rangle \ \rightarrow_e (\top, \ st^{'})}	
+\dfrac{E_{veaf} \ \vdash \ \langle e, \ st \rangle \ \rightarrow_e (\top, st^{'})}{E_{veaf} \ \vdash \ \langle !e, \ st \rangle \ \rightarrow_e (\top, \ st^{'})}	
 \] \newline
 \[	
 [EXPR^{\ \ !}_{\ \ \bot}] \quad	
-\dfrac{E_v, \ E_a, \ E_f \vdash \ \langle e, \ st \rangle \ \rightarrow_e (\bot, st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ \langle !e, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}	
+\dfrac{E_{veaf} \ \vdash \ \langle e, \ st \rangle \ \rightarrow_e (\bot, st^{'})}{E_{veaf} \ \vdash \ \langle !e, \ st \rangle \ \rightarrow_e (\bot, \ st^{'})}	
 \]\newline
 \[	
 [EXPR^{\ AND}_{\ \ \top}] \quad	
-\dfrac{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e \ (\top, \ st^{''}) \qquad E_v, \ E_a, \ E_f \ \vdash \ \langle e_2, \ st^{''} \ \rightarrow_e \ (v, st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ AND \ e_2, \ st> \ \rightarrow_e (v, \ st^{'})}	
+\dfrac{E_{veaf} \ \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e \ (\top, \ st^{''}) \qquad E_{veaf} \ \vdash \ \langle e_2, \ st^{''} \ \rightarrow_e \ (v, st^{'})}{E_{veaf} \ \vdash \ <e_1 \ AND \ e_2, \ st> \ \rightarrow_e (v, \ st^{'})}	
 \] \newline
 \[	
 [EXPR^{\ AND}_{\ \ \bot}] \quad	
-\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (\bot, \ st^{'}) }{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ AND \ e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}	
+\dfrac{E_{veaf} \ \vdash <e_1, \ st> \rightarrow_e (\bot, \ st^{'}) }{E_{veaf} \ \vdash \ <e_1 \ AND \ e_2, \ st> \ \rightarrow_e (\bot, \ st^{'})}	
 \]\newline
 \[	
 [EXPR^{\ OR}_{\ \ \top}] \quad	
-\dfrac{E_v, \ E_a, \ E_f \vdash <e_1, \ st> \rightarrow_e (\top, \ st^{'}) }{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ OR \ e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}	
+\dfrac{E_{veaf} \ \vdash <e_1, \ st> \rightarrow_e (\top, \ st^{'}) }{E_{veaf} \ \vdash \ <e_1 \ OR \ e_2, \ st> \ \rightarrow_e (\top, \ st^{'})}	
 \]\newline
 \[	
 [EXPR^{\ OR}_{\ \ \bot}] \quad	
-\dfrac{E_v, \ E_a, \ E_f \ \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e \ (\bot, \ st^{''}) \qquad E_v, \ E_a, \ E_f \ \vdash \ \langle e_2, \ st^{''} \ \rightarrow_e \ (v, st^{'})}{E_v, \ E_a, \ E_f \ \vdash \ <e_1 \ OR \ e_2, \ st> \ \rightarrow_e (v, \ st^{'})}
+\dfrac{E_{veaf} \ \vdash \ \langle e_1, \ st \rangle \ \rightarrow_e \ (\bot, \ st^{''}) \qquad E_{veaf} \ \vdash \ \langle e_2, \ st^{''} \ \rightarrow_e \ (v, st^{'})}{E_{veaf} \ \vdash \ <e_1 \ OR \ e_2, \ st> \ \rightarrow_e (v, \ st^{'})}
 \]

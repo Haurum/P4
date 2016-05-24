@@ -1,14 +1,16 @@
-Tankname trackerNew;
+Tankname tracker;
 
 
     Num gunTurnAmt;
     String trackName;
     Num count = 0;
+    Num testVar;
 
     Setup
     {
     trackName = "0";
     gunTurnAmt = 10;
+    print(testVar);
     }
 
     Repeat
@@ -70,7 +72,9 @@ When scannedRobot {
 }
 
 When hitRobot {
-    if (trackName NOT= "0" AND trackName NOT= Event.enemyName())
+
+
+    if (trackName NOT= "0" AND (trackName NOT= Event.enemyName()))
     {
       print("Tracking" + Event.enemyName() + " due to collision");
     }

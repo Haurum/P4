@@ -1,0 +1,8 @@
+Tankname ramFire;
+
+Setup {
+    test();
+}
+
+Repeat {
+}

@@ -1,0 +1,11 @@
+
+Num turnDirection = 1;
+
+Tankname ramFire;
+
+Setup {
+}
+
+Repeat {
+    Tank.turn(5 * turnDirection);
+}

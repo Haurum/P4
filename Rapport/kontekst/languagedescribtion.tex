@@ -1,11 +1,11 @@
 \chapter{Language description}
 \label{chap:LanguageDescription}
-In this chapter, features of our language by means of a simple example, will be overviewed followed by a formal description of its syntax in form of a grammar for the language, language constructs and type systems. 
+In this chapter, features of DatLanguage will be described by means of a simple example, and formal descriptions of its syntax in form of a grammar for the language, language constructs and type systems. 
 
 \section{Syntax walkthrough}
 In this section an example of a sample robot from Robocode has been introduced and can be found in listing \ref{lst:corners}.
 
-\begin{lstlisting}[caption={Eksampel of the sample robot "Corners" in our language}, label={lst:corners}]
+\begin{lstlisting}[caption={Example of the sample robot "Corners" in our language}, label={lst:corners}]
 Tankname corners;
 Num others;
 Num corner = 0;
@@ -28,9 +28,9 @@ Repeat{
 }
 
 Action goCorner(){
-  stopWhenSeeRobot = false;  
-  Tank.turn(Math.normalRelativeAngleDegrees(corner - Tank.heading()));      
-  stopWhenSeeRobot = true;
+  stopWhenSeeRobot = False;  
+  Tank.turn(Utils.normalRelativeAngleDegrees(corner - Tank.heading()));      
+  stopWhenSeeRobot = True;
   Tank.forward(5000);
   Tank.turn(-90);
   Tank.forward(5000);
@@ -63,7 +63,7 @@ When death{
     return;
   }
   
-  if((others - getOthers()) / others < 0.75){
+  if((others - Battlefield.enemies()) / others < 0.75){
     corner = corner + 90;
     if(corner IS= 270) {
       corner = -90;
@@ -75,9 +75,9 @@ When death{
 }
 \end{lstlisting}
 
-Robocodes sample robot, Corners \citep{Corners}, will as find a specific corner where to stay for the entire round, and shoot at other robots whenever scanned. Initially Corners goes to the top left corner. When Corners dies, it will see if it did well or poorly it will either use the same corner or move clockwise to the next corner on the battlefield.
+Robocodes sample robot, Corners \citep{Corners}, will find a specific corner where the robot will stay for the entire round, and shoot at other robots whenever scanned. Initially \textit{Corners} goes to the top left corner. When \textit{Corners} dies, it will check whether it performed well or poorly, and will either use the same corner or move clockwise to the next corner on the battlefield.
 
-In line 1-5 the Tankname is set and some global variables, are declared and initialized. The Setup block in listing \ref{lst:setup} is a block there run once at the beginning of each round. In this example the Setup block is used to store in the global variable "other" the initial number of enemies. This value is obtained by calling the build-in function Battlefield.enemies(). It will run the action goCorner, which will be explained later. As the last thing, the Setup block declares a variable, gunIncrement, of type num and initializes its value to 3.
+In line 1-5 the Tankname is set and some global variables are declared and initialized. The Setup block in listing \ref{lst:setup} is a block which is run once at the beginning of each round. In this example the Setup block is used to store in the global variable "other" the initial number of enemies. This value is obtained by calling the build-in function Battlefield.enemies(). It will run the action goCorner, which will be explained later. As the last thing, the Setup block declares a variable, gunIncrement, of type num and initializes its value to 3.
 
 \begin{lstlisting}[caption={Code listing of the Setup block},  xleftmargin=.2\textwidth, label={lst:setup}]
 Setup{
@@ -87,7 +87,7 @@ Setup{
 }
 \end{lstlisting}
 
-To make the robot do repetitive actions during the battles, Tank, Gun and Radar behaviour can be placed in the Repeat block. The Repeat block is basically a loop, that will iterate through the robot's Tank, Gun and Radar behaviour. The Repeat block of the sample robot Corners, in listing \ref{lst:Repeat}, consists of a repeat while loop. At the end of the repeat while loop, the gun have been turned a total of 90 or -90 degrees. 
+To make the robot do repetitive actions during the battles, Tank, Gun and Radar behaviour can be placed in the Repeat block. The Repeat block is basically a loop, that will iterate through the robot's Tank, Gun and Radar behaviour. The Repeat block of the sample robot \textit{Corners}, in listing \ref{lst:Repeat}, consists of a repeat while loop. At the end of the repeat while loop, the gun has been turned a total of 90 or -90 degrees. 
 
 \begin{lstlisting}[caption={Code listing of the Repeat block}, xleftmargin=.2\textwidth, label={lst:Repeat}]
 Repeat{  
@@ -101,14 +101,14 @@ Repeat{
 }
 \end{lstlisting}
 
-In our language an Action is compared to a procedure in the language C. Corners uses an Action goCorner(), to move to the desired corner. In the first round of the battle, it will turn the robot the amount of degrees so it is facing the top wall, which is done at line 3 in listing \ref{lst:goCorner}. The degrees are calculated by subtracting the corner variable from the robots heading. "Heading" is getting the robot's heading, which is the direction the robot is facing. It will then move forward until it hits the wall, turn -90 degrees, again  move forward until it hits the wall and turn the gun -90 degrees. At the end of the execution of this action, the robot should be sitting in a corner, ready to turn its gun 90 degrees clockwise or counter-clockwise.
+In DatLanguage an Action is compared to a procedure in the language C. \textit{Corners} uses an Action goCorner(), to move to the desired corner. In the first round of the battle, it will turn the robot the amount of degrees so it is facing the top wall, which is done at line 3 in listing \ref{lst:goCorner}. The degrees are calculated by subtracting the corner variable from the robot’s heading. "Heading" is getting the robot's heading, which is the direction the tank is facing. It will then move forward until it hits the wall, turn -90 degrees, again move forward until it hits the wall and turn the gun -90 degrees. At the end of the execution of this action, the robot should be sitting in a corner, ready to turn its gun 90 degrees clockwise or counter-clockwise.
 
 
 \begin{lstlisting}[caption={Code listing of the Action goCorner()}, xleftmargin=.2\textwidth, label={lst:goCorner}]
 Action goCorner(){
-  stopWhenSeeRobot = false;  
-  Tank.turn(Math.normalRelativeAngleDegrees(corner - Tank.heading()));      
-  stopWhenSeeRobot = true;
+  stopWhenSeeRobot = False;  
+  Tank.turn(Utils.normalRelativeAngleDegrees(corner - Tank.heading()));      
+  stopWhenSeeRobot = True;
   Tank.forward(5000);
   Tank.turn(-90);
   Tank.forward(5000);
@@ -116,10 +116,10 @@ Action goCorner(){
 }
 \end{lstlisting}
 
-One of the most peculiar things about Robocode is the use of events. The event handlers are indicated by the reserved word "When". 
-In the Action goCorner(), a variable of type bool is set to false on line 2 and set to true in line 4 in listing \ref{lst:goCorner}. This variable is used in the event scannedRobot() found in listing \ref{lst:scannedRobot}. If the before mentioned bool is true, a build-in function Tank.Stop() is used to stop the robots movement, then it uses the action "smartfire", where the power of the shoot will be determined by the distance between the robot and the scannedRobot. The robot will then use Radar.scan() and resume it's movement towards the corner. If the bool was false, the robot is already in the corner, and will shoot at scanned robots.
+One of the most peculiar things about Robocode is the use of events. The event handlers are indicated by the reserved word "When" in DatLanguage. 
+In the Action goCorner(), a variable of type Bool is set to false on line 2 and set to true in line 4 in listing \ref{lst:goCorner}. This variable is used in the event scannedRobot() found in listing \ref{lst:scannedRobot}. If the before mentioned Bool is true, a build-in function Tank.stop() is used to stop the robots movement, then it uses the action "smartfire", where the power of the shot will be determined by the distance between the robot and the scannedRobot. The robot will then use Radar.scan() and resume its movement towards the corner. If the Bool was false, the robot is already in the corner, and will shoot at the scanned robots.
 
-If an event listener is listening to the event, it can detect when the event is triggered and make sure the event handler is executed. When the behaviour in the event has been run, the robot will continue running the Repeat block.  
+If an event listener is listening to the event, it can detect when the event is triggered and make sure the event handler is executed. When the behaviour in the event has been run, the robot will continue to run the Repeat block.  
 
 
 \begin{lstlisting}[caption={Code listing of the event scannedRobot()} label=corners3, xleftmargin=.2\textwidth, label={lst:scannedRobot}]
@@ -135,55 +135,53 @@ When scannedRobot{
 }
 \end{lstlisting}
 
-%Consider if the event Death should be explanied here for the example Corners. 
-
 
 \section{Grammar}
 \label{sec:Grammar}
-In this section the syntax of our language will be formally presented by means of a context-free grammar in extended BNF.
+In this section the syntax of our language will be formally presented by means of a context-free grammar in EBNF.
 
 \begin{lstlisting}[label={lst:CFG}]
 grammar Grammar;
 
 prog : dcls EOF;
-tankname : 'Tankname' ID ';';
+tankname : 'Tankname' ID SEMI;
 setupblock : 'Setup' block;
 repeatblock : 'Repeat' block;
 
 dcls : (actdcl
      | funcdcl
-     | vardcl';'
+     | vardcl
      | setupblock
      | repeatblock
      | tankname
      | eventdcl
-     | print';')*
+     | print)*
      ;
 
 actdcl : 'Action' ID '(' params? ')'block;
 funcdcl : 'Function' ID '(' params? ')' 'returns' TYPE functionBlock;
-functionBlock : '{' stmts returnstmt';' '}';
+functionBlock : '{' stmts returnstmt SEMI '}';
 params : param (',' param)*;
 param : TYPE ID;
 eventdcl : 'When' ID block;
 block : '{' stmts '}';
 
-stmts : (assign';'
-      |vardcl';'
+stmts : (assign
+      |vardcl
       |ifstmt
       |whilestmt
-      |call';'
-      |print';')*
+      |stmtcall
+      |print)*
       ;
 
-assign : ID '=' expr;
-vardcl : TYPE (ID|assign);
+assign : ID '=' expr SEMI;
+vardcl : TYPE (ID SEMI|assign);
 ifstmt : 'if''('expr')' block elseif* ('else' block)?;
 elseif : 'else''if''('expr')' block;
 whilestmt : 'repeat' ('while''('expr')' block | block 'while''('expr')');
-
 returnstmt : 'return' expr;
-print : 'print('expr')';
+print : 'print('expr')' SEMI;
+stmtcall : call SEMI;
 
 call : acall
      | fcall
@@ -193,26 +191,25 @@ call : acall
 
 acall : 'run' ID'('args?')';
 fcall : ID'('args?')';
-
-rcall   : 'Tank.'ID'('args?')'
-        | 'Gun.'ID'('args?')'
-        | 'Radar.'ID'('args?')'
-        | 'Battlefield.'ID'('args?')'
-        | 'Math.'ID'('args?')'
+rcall   : 'Tank.'ID'('args?')'          #tankcall
+        | 'Gun.'ID'('args?')'           #guncall
+        | 'Radar.'ID'('args?')'         #radarcall
+        | 'Battlefield.'ID'('args?')'   #battlefieldcall
+        | 'Utils.'ID'('args?')'          #utilscall
         ;
-
+        
 ecall : 'Event.'ID'('args?')';
 args : expr (',' expr)*;
 
-expr    : MINUS expr                           #unexpr
-        | NOT expr                             #notexpr
-        | expr op=(MULT | DIV | MOD) expr      #mulexpr
-        | expr op=(PLUS | MINUS) expr          #addexpr
-        | expr op=(LTEQ | GTEQ | LT | GT) expr #relexpr
-        | expr op=(EQ | NEQ) expr              #eqexpr
-        | expr AND expr                        #andexpr
-        | expr OR expr                         #orexpr
-        | atomic                               #atomicexpr
+expr    : MINUS expr                            #minusexpr
+        | NOT expr                              #notexpr
+        | expr op=(MULT | DIV | MOD) expr       #mulexpr
+        | expr op=(PLUS | MINUS) expr           #addexpr
+        | expr op=(LTEQ | GTEQ | LT | GT) expr  #relexpr
+        | expr op=(EQ | NEQ) expr               #eqexpr
+        | expr AND expr                         #andexpr
+        | expr OR expr                          #orexpr
+        | atomic                                #atomicexpr
         ;
 
 atomic : '(' expr ')'
@@ -228,9 +225,7 @@ literal : ID        #id
 
 COMMENT : '/*'~['*/']*'*/' -> skip;
 SPACE : [ \r\t\n] -> skip;
-
 \end{lstlisting}
-
 
 \subsection{Lexicon}
 The definition of what input are allowed for each lexeme in the grammar is defined by means of regular expressions. This will be described here with a table of terminals with matching regex, found in table \ref{fig:Lexicon}. A stream of characters is read by the scanner of the compiler and then turned into a token name defined by the regex.
@@ -247,11 +242,11 @@ AND		 & 'AND'							  \\ \hline
 EQ		 & 'IS=' | 'NOT='					  \\ \hline
 REL		 & '>'|'<'|'>='|'<='					  \\ \hline
 ADD		 & '+'|'-'							  \\ \hline
-MUL		 & '*'|'/'							  \\ \hline
-NUM		 & [0-9]+("."[0-9]*)?|"."[0-9]+\\ \hline
-BOOL 	 & 'false' | 'true'					  \\ \hline
+MUL		 & '*'|'/'|'\%'						  \\ \hline
+NUM		 & [0-9]+("."[0-9]*)?|"."[0-9]+		\\ \hline
+BOOL 	 & 'False' | 'True'					  \\ \hline
 STRING 	 & '"'.*'"'						      \\ \hline
-TYPE     & 'Num' | 'Bool' | 'Text'            \\ \hline
+TYPE     & 'Num' | 'Bool' | 'String'            \\ \hline
 
 
 \end{tabular}
@@ -260,69 +255,66 @@ TYPE     & 'Num' | 'Bool' | 'Text'            \\ \hline
 \end{table}
 
 \section{Language constructs}
-%Lav definitioner til hver contruct:
-%Forklaring hvonår det er den contructs og hvad den gør(Så som hvad den tager som input og giver som output)
-
-%Til hver definition, lav en tekst om hvad den bruges til og hvorfor den er med i vores sprog.
-In this section the language constructs for this project will be defined and explained, in order to give a clearer view of our language.
+In this section the language constructs for this project will be defined and explained, in order to give a clearer view of DatLanguage.
 
 \subsection{Setup block}
-The Setup block is a block, run only once at the beginning of each round. In this block the user can define colors of different parts of the robot, call user defined functions which should only be called in once in the beginning and reserved calls. The Setup block can only be declared once, and have to be in the code, else the user will not be able to run the code.
+The Setup block is a block which is only executed once at the beginning of each round. In this block the user can define colors of different parts of the robot, call user defined methods and reserved calls. The Setup block can only be declared once and has to be in the code, else the user will not be able to run the code.
 
 \begin{defi}
 The Setup block consists of the reserved word \textbf{Setup} followed by \{ \textbf{body} \}, where the body is the user defined code. 
 \end{defi}
 
 \subsection{Repeat block}
-The Repeat block will iterate through the users code, unless an event has occurred which then have first priority. The Repeat block is the general behaviour and logic of the robot, and will often contain the main movements of the robot. Just as the Setup block, the Repeat block ccan also only be declared once, and have to be in the code.
+The Repeat block will iterate through the user’s code, unless an event has occurred which then has first priority. The Repeat block is the general behaviour and logic of the robot, and will often contain the main movements of the robot. Just as the Setup block, the Repeat block can also only be declared once and has to be in the code.
 
 \begin{defi}
 The Repeat block is defined with the reserved word \textbf{Repeat} followed by \{ \textbf{body} \}, where the body is the user defined code.
 \end{defi}
 
 \subsection{When block}
-The When block is handling an event whenever it occurs during the battle. The When block is preforming the behaviour and logic when the events occur, where this will be made by the user. Only a predefined number of events can be declared, which can be found in the Appendix \ref{fig:EventTable}
+The When block is handling an event whenever it occurs during the battle. The When block is performing the behaviour and logic when the events occur, and this will be defined by the user. Only a predefined number of events can be declared, which can be found in the Appendix \ref{fig:EventTable}.
 
 \begin{defi}
-The When block is defined as: When eventName \{ \textbf{body} \}, \textbf{When} is the reserved word, the name of a Robocode event followed by the body which is the user defined code.
+The When block is defined as: When eventName \{ \textbf{body} \}. \textbf{When} is the reserved word, the name of a Robocode event followed by the body which is the user defined code.
 \end{defi}
 
 \subsection{Variables}
-In our language there are three different kind of variables, \textbf{Num}, \textbf{Bool} and \textbf{String}. All numeric types will be interpreted as \textbf{Num}. \textbf{Bool} can either be True or False. \textbf{String} is an array of characters.
+In DatLanguage there are three different kinds of variables, \textbf{Num}, \textbf{Bool} and \textbf{String}. All numeric types will be interpreted as \textbf{Num}. \textbf{Bool} can either be True or False. \textbf{String} is an array of characters.
 
 \begin{defi}
-The variables can be declared using the reserved words \textbf{Num}, \textbf{Bool} and \textbf{String} followed by the desired id of the variable. If the variable should also de initialized,  the assignment operator "=" should be used followed by the value or expression for the variable. 
+The variables can be declared using the reserved words \textbf{Num}, \textbf{Bool} and \textbf{String} followed by the desired ID of the variable. Should the variable also be initialized, the assignment operator "=" must be used followed by the value or expression for the variable. 
 \end{defi}
 
 \subsection{Action block}
-An Action block is an abstraction for statements with no return types, the Actions can be called throughout the code. The parameters in the Action block is always call by value, just as in the programming language Java, this will be the same in the Function block.
+An Action block is an abstraction for statements with no return types. Actions can be called throughout the code. The parameters in the Action block is always call by value, just as in the programming language Java, this will be the same in the Function block.
 
 \begin{defi}
-An Action block is defined with the reserved word \textbf{Action} followed by the id of the Action, a desired amount of parameters in parentheses and the body of the Action block within \{\}. \newline
-An Action block will look like: \textbf{Action} myAction (parameters) \{ \textbf{body} \}.
+An Action block is defined with the reserved word \textbf{Action} followed by the ID of the Action, a desired amount of parameters in parentheses and the body of the Action block within \{\}. \newline
+An Action block will look like: \textbf{Action} myAction (parameters) \{ \textbf{body} \}. \newline
+To use an Action, the keyword \textit{run} has to be before the Action’s ID: \newline \textbf{run} anAction(parameters)
 \end{defi}
 
 \subsection{Function block}
-The Function block is very similar to the Action block. The difference of the two blocks is that the Function block have a return type. 
+The Function block is very similar to the Action block. The difference of the two blocks is that the Function block has a return type. 
 
 \begin{defi}
-The function block is defined with the reserved word \textbf{Function} followed by the id of the Function, what the Function will be returning, a desired amount of parameters in parentheses and the body of the Function block within \{\}. \newline
-An example of the Function block would be: \textbf{Function} myFunction Returns returnType (parameters) \{ \textbf{body} \}
+The Function block is defined with the reserved word \textbf{Function} followed by the ID of the Function, what the Function will be returning, a desired amount of parameters in parentheses and the body of the Function block within \{\}. \newline
+An example of the Function block would be: \textbf{Function} myFunction returns returnType (parameters) \{ \textbf{body} \}
 \end{defi}
 
 \subsection{Reserved calls}
-In our language, there are a few reserved calls, meaning that there are some predefined words that can’t be used for other purposes other than what they’re intended to be used for. The reserved calls for our language are: \textbf{Tank}, \textbf{Gun}, \textbf{Radar} and \textbf{Battlefield}. With the use of dot notation, the members of each reserved call can be accessed.  
+In DatLanguage, there are a few reserved calls, meaning that there are some predefined calls that can’t be used for other purposes other than what they’re intended to be used for. The reserved calls for DatLanguage are: \textbf{Tank.}, \textbf{Gun.}, \textbf{Radar.}, \textbf{Battlefield.} and \textbf{Utils}. 
 
 \begin{defi}
-A reserved call is defined by the use of one of the four reserved calls: \textbf{Tank}, \textbf{Gun}, \textbf{Radar} and \textbf{Battlefield} followed by dot notation, then followed by an action. The list containing each action the reserved calls can call, can be seen in Appendix \ref{fig:ReservedCallsTable}. \newline
-A call with a reserved call could look like: \textbf{Tank}.energy()
+A reserved call is defined by the use of one of the five reserved calls: \textbf{Tank.}, \textbf{Gun.}, \textbf{Radar.},\textbf{Battlefield.} and \textbf{Utils} followed by a method. The list containing each method the reserved calls can call, can be found in Appendix \ref{fig:ReservedCallsTable}. \newline
+A call with a reserved call could look like: \textbf{Tank.}energy()
 \end{defi}
 
 \subsection{Conditional block}
-The conditional block is the language's conditional statements which will execute the user defined code in it's body depending on a boolean expression. Conditional blocks helps making the robots logic for it's behaviour. 
+The conditional block is the language's conditional statements, which will execute the user defined code in it's body depending on a boolean expression. Conditional blocks helps making the robots logic for its behaviour. 
 
 \begin{defi}
-The conditional block contains a minimum of one if-construct, an optional number of else if-construct and can be ended with an optional else-construct. 
+The conditional block contains a minimum of one if-construct, an optional number of else if-constructs and can be ended with an optional else-construct. 
 
 The if-construct is noted with the reserved word \textbf{if} followed by the boolean expression in parentheses and the body within \{\}: If(true) {body}.
 
@@ -341,7 +333,7 @@ The included operators in our language can be seen in table \ref{fig:OperatorTab
 		Operator & Description & Example                \\ \hline
 		=			& Assignment &  assign = example\\ \hline
 		+, -		& Addition and Subtraction &  a + b - c = example \\ \hline
-		*, /		& Multiplication and Division &  a * b / c = example\\ \hline
+		*, /, \%		& Multiplication, Division \& Modulo &  a * b / c \% d = example\\ \hline
 		>, <, >=, <= & Comparison; Greater than, lesser than, etc. & a > b, c =< d \\ \hline
 		IS=	, NOT=	 &  Comparison; S equal and IS NOT equal & b IS= b, a NOT= c \\ \hline
 		OR			& Logical OR & a > b OR c < d  \\ \hline
@@ -377,7 +369,7 @@ The operators [+, -, *, /, \%] will be used as the shorthand 'op'. Relational op
 \dfrac{\Gamma \vdash e_1 : Bool}{\Gamma \vdash NOTe_1 : Bool}
 \]
 \subsection{Scope rules}
-Scope rules are where the scope of a name is part of the program, where the name binding is associated with an entity. Entities are variables, function names, event names, action names, etc. The scoping mechanism used in this project, is the lexical scoping, as the scope of a name binding refers to a portion of the source code. In our language there are three kind of scopes: local scope, global scope and function scope. A variable is visible in the specific scope, if can be referenced to. Two variables of the same name, can't be in the same scope. The local variables are declared inside blocks of code. The scope of a name binding is delimited to the deepest block where it has been declared. The blocks are marked with \{ \}. In the example in listing \ref{lst:example} the variable degrees is declared locally in the code block Setup, and it can't be used in other code blocks unless it is nested inside of the Setup block, it could e.g. be used in a if-loop in the Setup block. 
+Scope rules are where the scope of a name is part of the program, where the name binding is associated with an entity. Entities are variables, function names, action names, etc. The scoping mechanism used in this project, is the lexical scoping, as the scope of a name binding refers to a portion of the source code. In DatLanguage there are three kinds of scopes: local scope, global scope and function scope. A variable is visible in the specific scope, if it can be referenced to. Two variables of the same name, can't be in the same scope. The local variables are declared inside blocks of code. The scope of a name binding is delimited to the deepest block where it has been declared. The blocks are marked with \{ \}. In the example in listing \ref{lst:example} the variable degrees is declared locally in the code block Setup, and it can't be used in other code blocks unless it is nested inside of the Setup block, it could e.g. be used in a if-loop in the Setup block. 
 
 \begin{lstlisting}[caption={Example of local scoping rules},  xleftmargin=.2\textwidth, label={lst:example}]
 Setup{
@@ -390,7 +382,7 @@ Setup{
 
 The parameters declared in a function, are visible in the function scope and can be used just as local variables for the function. It is possible to shadow parameters by creating an inner block and declare a variable with the same name. However it isn't possible to create two variables with the same name in the same block. 
 
-When a variable is declared in the global scope, it can be used in all of the other functions and code blocks. When a variable is used, it will first search for it in the local scope, if it is not found in the local scope, it will search the in the global scope. In listing \ref{lst:example1} Codeblock1 uses the global variable, where Codeblock2 uses a local variable with the same name as the global variable, but the local variable will be used.
+When a variable is declared in the global scope, it can be used in all of the other code blocks. When a variable is used, it will first search for it in the local scope, if it is not found in the local scope, it will then search for it in the global scope. In listing \ref{lst:example1} Codeblock1 uses the global variable, where Codeblock2 uses a local variable with the same name as the global variable, but the local variable will be used.
 
 
 \begin{lstlisting}[caption={Example of global scoping rules},  xleftmargin=.2\textwidth, label={lst:example1}]
@@ -405,3 +397,10 @@ Codeblock2{
 	5 + number; /* Will use the local variable number */
 }
 \end{lstlisting}
+
+
+
+
+
+
+

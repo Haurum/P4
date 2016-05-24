@@ -1,0 +1,14 @@
+
+Num turnDirection = 1;
+
+Tankname ramFire;
+
+Setup {
+    if (3) {
+        print("Hej");
+    }
+}
+
+Repeat {
+
+}

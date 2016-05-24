@@ -1,28 +1,13 @@
 Tankname fire;
 
 Num dist = 50;
-String string;
-String stringtwo;
-
-
-
 
 Setup {
-string = "hej";
-stringtwo = "heja";
+
 }
 
 Repeat {
     Gun.turn(5);
-    if (string IS= stringtwo) {
-        print("equal");
-    }
-    if (string NOT= stringtwo) {
-        print("not equal");
-    }
-
-
-
 }
 
 When scannedRobot {
@@ -37,7 +22,6 @@ When scannedRobot {
 
 When hitByBullet {
     Tank.turn(Utils.normalRelativeAngleDegrees(90 - (Tank.heading() - Event.heading())));
-
     		Tank.forward(dist);
     		dist = dist * (-1);
     		Radar.scan();

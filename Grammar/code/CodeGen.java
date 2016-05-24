@@ -26,7 +26,6 @@ public class CodeGen extends GrammarBaseVisitor<String> {
         buf.append(" extends Robot {\n ");
         buf.append(visit(ctx.dcls()));
         buf.append("}");
-        System.out.print(buf.toString());
         return buf.toString();
     }
 
@@ -117,7 +116,7 @@ public class CodeGen extends GrammarBaseVisitor<String> {
 
     @Override
     public String visitEventdcl(GrammarParser.EventdclContext ctx) {
-        String id = com.sun.xml.internal.ws.util.StringUtils.capitalize(ctx.ID().getText());
+        String id = StringUtils.capitalize(ctx.ID().getText());
         return "public void on" + id + "( " + id + "Event e )" + visit(ctx.block());
     }
 

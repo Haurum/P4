@@ -48,8 +48,7 @@ ifstmt : 'if''('expr')' block elseif* ('else' block)?;
 
 elseif : 'else''if''('expr')' block;
 
-whilestmt : 'repeat' ('while''('expr')' block
-          | block 'while''('expr')')
+whilestmt : 'repeat' 'while''('expr')' block
           ;
 
 returnstmt : 'return' expr;

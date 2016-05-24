@@ -45,7 +45,7 @@ public class SymbolTable  {
     public void EnterSymbol(String name, String type){
         Symbol oldsym = Map.get(name);
         if (oldsym != null && oldsym.Depth == depth){
-            Error e = new Error("Duplicate declaration of " + name);
+            Error e = new Error("Duplicate declaration of variable" + name);
             throw e;
         }else{
             Symbol newSym = new Symbol();
@@ -54,7 +54,11 @@ public class SymbolTable  {
             newSym.Depth = depth;
             newSym.Var = oldsym;
             Scope.get(depth).add(newSym);
-            Map.put(newSym.Name, newSym);
+            if(oldsym != null){
+                Map.replace(name, oldsym, newSym);
+            }else{
+                Map.put(name, newSym);
+            }
         }
     }
 }

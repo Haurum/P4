@@ -1,4 +1,4 @@
-Tankname trackerNew;
+Tankname tracker;
 
 
     Num gunTurnAmt;
@@ -7,8 +7,7 @@ Tankname trackerNew;
 
     Setup
     {
-    trackName = null;
-    setAdjustGunForRobot(true);
+    trackName = "0";
     gunTurnAmt = 10;
     }
 
@@ -30,29 +29,30 @@ Tankname trackerNew;
 
         if (count > 11)
         {
-          trackName = null;
+          trackName = "0";
         }
 
     }
 
 When scannedRobot {
-    if ((trackName NOT= null) AND (Event.enemyName() NOT= trackName)) {
+    if ((trackName NOT= "0") AND (Event.enemyName() NOT= trackName)) {
 
     }
 
-    if (trackName IS= null) {
+    if (trackName IS= "0") {
     trackName = Event.enemyName();
     print("Tracking" + trackName);
     }
 
     count = 0;
 
-    if (Event.distance () > 150)
+    if (Event.distance() > 150)
     {
       gunTurnAmt = Utils.normalRelativeAngleDegrees(Event.bearing() + (Tank.heading() - Radar.heading()));
       Gun.turn(gunTurnAmt);
       Tank.turn(Event.bearing());
       Tank.forward(Event.distance() - 140);
+
     }
 
     gunTurnAmt = Utils.normalRelativeAngleDegrees(Event.bearing() + (Tank.heading() - Radar.heading()));
@@ -60,7 +60,7 @@ When scannedRobot {
     Gun.shoot(3);
 
     if (Event.distance() < 100) {
-        if (Event.bearing() > -90 AND Event.bearing() <= 90)
+        if ((Event.bearing() > -90) AND (Event.bearing() <= 90))
         {
           Tank.backward(40);
         }
@@ -71,7 +71,9 @@ When scannedRobot {
 }
 
 When hitRobot {
-    if (trackName NOT= null AND trackName NOT= Event.enemyName())
+
+
+    if ((trackName NOT= "0") AND (trackName NOT= Event.enemyName()))
     {
       print("Tracking" + Event.enemyName() + " due to collision");
     }

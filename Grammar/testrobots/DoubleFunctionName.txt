@@ -1,0 +1,19 @@
+
+Num turnDirection = 1;
+
+Tankname ramFire;
+
+Setup {
+}
+
+Repeat {
+    Tank.turn(5 * turnDirection);
+}
+
+Function testfuncname() returns Num {
+    return 1;
+}
+
+Function testfuncname() returns Num {
+    return 1;
+}

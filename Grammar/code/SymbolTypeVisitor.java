@@ -99,7 +99,7 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
                 FuncSymbol fsym = RoboFST.GetFuncSymbol(((GrammarParser.EventdclContext) parent).ID().getText(), ctx.ID().getText());
                 if (fsym == null){
                     Error e = new Error("Error at line: " +
-                            ctx.start.getLine() + ": Function not found");
+                            ctx.start.getLine() + ": Event calls need to match event handler");
                     throw e;
                 }
                 if(ctx.getChildCount() == 5) {
@@ -110,7 +110,7 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
                         if (!paramType.equals(arg)) {
                             Error e = new Error("Error at line: " +
                                     ctx.args().expr(i).start.getLine() +
-                                    ": Parameter number " + i + " not matched. Expected " + paramType);
+                                    ": Parameter number " + (i+1) + " not matched. Expected " + paramType);
                             throw e;
                         }
                     }
@@ -144,7 +144,7 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
                 if (!paramType.equals(arg)) {
                     Error e = new Error("Error at line: " +
                             ctx.args().expr(i).start.getLine() +
-                            ": Parameter number " + i + " not matched. Expected " + paramType);
+                            ": Parameter number " + (i+1) + " not matched. Expected " + paramType);
                     throw e;
                 }
             }
@@ -173,7 +173,7 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
                 if (!paramType.equals(arg)) {
                     Error e = new Error("Error at line: " +
                             ctx.args().expr(i).start.getLine() +
-                            ": Parameter number " + i+1 + " not matched. Expected " + paramType);
+                            ": Parameter number " + (i+1) + " not matched. Expected " + paramType);
                     throw e;
                 }
             }
@@ -202,7 +202,7 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
                 if (!paramType.equals(arg)) {
                     Error e = new Error("Error at line: " +
                             ctx.args().expr(i).start.getLine() +
-                            ": Parameter number " + i + " not matched. Expected " + paramType);
+                            ": Parameter number " + (i+1) + " not matched. Expected " + paramType);
                     throw e;
                 }
             }
@@ -231,7 +231,7 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
                 if (!paramType.equals(arg)) {
                     Error e = new Error("Error at line: " +
                             ctx.args().expr(i).start.getLine() +
-                            ": Parameter number " + i + " not matched. Expected " + paramType);
+                            ": Parameter number " + (i+1) + " not matched. Expected " + paramType);
                     throw e;
                 }
             }
@@ -260,7 +260,7 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
                 if (!paramType.equals(arg)) {
                     Error e = new Error("Error at line: " +
                             ctx.args().expr(i).start.getLine() +
-                            ": Parameter number " + i + " not matched. Expected " + paramType);
+                            ": Parameter number " + (i+1) + " not matched. Expected " + paramType);
                     throw e;
                 }
             }
@@ -320,7 +320,7 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
                 if (!paramType.equals(arg)) {
                     Error e = new Error("Error at line: " +
                             ctx.args().expr(i).start.getLine() +
-                            ": Parameter number " + i + " not matched. Expected " + paramType);
+                            ": Parameter number " + (i+1) + " not matched. Expected " + paramType);
                     throw e;
                 }
             }
@@ -348,7 +348,7 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
                 if (!asym.Params.get(i).y.equals(args[i])) {
                     Error e = new Error("Error at line: " +
                             ctx.args().expr(i).start.getLine() +
-                            ": Parameter number " + i + " not matched.");
+                            ": Parameter number " + (i+1) + " not matched.");
                     throw e;
                 }
             }
@@ -395,7 +395,8 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
         String id = ctx.ID().getText();
         Symbol sym = ST.GetSymbol(id);
         if (sym == null){
-            Error e = new Error("variable not found");
+            Error e = new Error("Error at line: " +
+                    ctx.expr().start.getLine() + ": Variable not declared");
             throw e;
         }
         if (!sym.Type.equals(visit(ctx.expr()))){

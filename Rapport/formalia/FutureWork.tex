@@ -3,3 +3,33 @@ Other robot types(advanced robots)
 Implementere won't have fra moscow
 Evt. lave user tests
 
+\textbf{\LARGE{MoSCoW}}
+
+As earlier stated not all the requirements from the MoSCoW analysis were implemented, in this section these will be described why they would be a good addition to implement for future versions of DatLanguage.
+
+\textbf{Cos, Sin \& Tan}\newline
+Implementing Cos, Sin \& Tan would allow the user to make more advanced calculations in the user's functions and actions, which again will allow the user to make more intelligent robots. 
+
+For this to be implemented to DatLanguage, the group believes that the language should extend AdvancedRobots, which it doesn't. 
+
+\textbf{For loops} \newline
+The for loop is an other way of iterating over data. Implementing the for loop will improve the writability of the language, especially if the users have a little experience with programming in general.
+
+The for loop hasn't been implemented in this project, since the group didn't see any use for it with the standard "Robot" type, where the repeat while loop would be sufficient enough. 
+
+\textbf{Random number generator}\newline
+A random number generator could e.g. be used to make  the robots movement patterns less predicable, which e.g. could be done as in example \ref{rng}: 
+
+\begin{lstlisting}[caption={Simple example of a random number generator}, label={rng}]
+	Num MovementNumber = 20;
+	Random = "Random Number generator between 2 - 10"
+	
+	Tank.forward(MovementNumber * Random);
+\end{lstlisting}
+
+The random number generator would've been a good implementation for the standard "Robot" type. The random number generator wasn't highly prioritized, because of it's minor functionality for a new programmer.
+
+\textbf{Other robot types}\newline
+Implementing the five other robot types, would make it possible for the user to make different and more advanced robots, but also battle in other game modes with the TeamRobot.
+
+For this project it wasn't necessary to implement other robot types other than the standard "Robot" type. This is due to the fact that the scope of this project is high school students with little or no programming experience. Though it would be a great addition to further develop their programming skills with Robocode, by coding more advanced and intelligent robots.

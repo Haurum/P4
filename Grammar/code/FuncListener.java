@@ -5,9 +5,6 @@ import gen.GrammarParser;
 
 import java.util.ArrayList;
 
-/**
- * Created by Frederik on 28-03-2016.
- */
 public class FuncListener extends GrammarBaseListener {
 
     FuncSymbolTable FST;

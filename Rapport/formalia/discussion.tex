@@ -3,3 +3,45 @@
 
 Error handling - evt. med en error stack ?
 Vi kunne have haft ét symbol table?
+Tjekke efter moscow,
+Generelt hvad vi har opnået
+
+
+In section \ref{sec:MoSCoW} the MoSCoW analysis was created and describes. This was used to prioritize the requirements for the projects language. In table \ref{moscowDis} shows what have been implemented and what have not been implemented. \newline
+All \textit{Must have} items have been implemented as they should, since these was the most important and essential items for the language. These items was needed to make the logic, movement and so on for the robot. \newline
+All \textit{Should have} items have also been implemented. The Events and Void and type methods helps making more intelligent robots, where Comments will help for the readability of the program the user makes. \newline
+Half of the items in \textit{Could have}, has been implemented, which is Print statements, Strings and Setup block. Print statements and Strings have been implemented for the user to be able to debug their code. The Setup block is used for code, that should only be run once each round. Here the user could write code to make some initializing movements e.g. make the  robot move to the wall. Cos, Sin \& Tan, For loops and Arrays were not implemented in DatLanguage. \newline
+No items from \textit{Won't have} were implemented to this project.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ |l|l|l| }
+\hline
+\multicolumn{3}{ |c| }{MoSCoW analysis} \\
+\hline
+& MoSCoW items & Status \\
+\hline
+\multirow{7}{*}{Must have} & Primitive types and variables & Implemented \\
+& While loop & Implemented \\
+& Reserved calls & Implemented \\
+& Robot naming & Implemented \\
+& If/Else/Elseif statements & Implemented \\
+& Arithmetic expressions and operators & Implemented \\
+& Logical expressions and operators & Implemented \\ \hline
+\multirow{3}{*}{Should have} & Events & Implemented \\
+& Comments & Implemented \\
+& Void and type methods & Implemented \\ \hline
+\multirow{6}{*}{Could have} & Cos, Sin \& Tan & {\color{red}Not Implemented} \\
+& For loops & {\color{red}Not Implemented} \\
+& Arrays & {\color{red}Not Implemented} \\
+& Print statements & Implemented \\
+& Strings & Implemented \\
+& Setup block & Implemented  \\ \hline
+\multirow{3}{*}{Won't have} & Random number generator & {\color{red}Not Implemented} \\
+& Other robot types & {\color{red}Not Implemented} \\
+\hline
+\end{tabular}
+\caption{Fulfilment of the MoSCoW analysis}
+\label{moscowDis}
+
+\end{table}

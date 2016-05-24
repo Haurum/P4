@@ -1,9 +1,12 @@
 \chapter{Appendix}
 \section{Table of reserved calls}
+
+A table of all the reserved calls for DatLanguage/Robocode. The first column is the prefix of the reserved call in the second column. The third column is the equivalent Robocode call. 
+
 \begin{center}
     \begin{tabular}{ | l| l | p{0.4\linewidth} | }
-    \hline
-    Reserved calls & Our language & RoboCode \\ \hline
+	\hline
+    Reserved calls & DatLanguage & Robocode \\ \hline
     Tank. & forward(num distance) & ahead(double distance)  \\ \hline
      & backward(num distance) & back(double distance)  \\ \hline
      & doNothing() & doNothing() \\ \hline
@@ -27,22 +30,34 @@
     Radar. & heading() & getRadarHeading() \\ \hline
      & scan() & scan() \\ \hline
      & turn(num degrees) & turnRadarLeft(double degrees) \\ \hline
-     & &  \\ \hline
+    \end{tabular}
+\end{center} 
+     
+\begin{center}
+    \begin{tabular}{ | l| l | p{0.4\linewidth} | }
+    \hline
     Battlefield. & height() & getBattleFieldHeight() \\ \hline
      & width() & getBattleFieldWidth() \\ \hline
      & numOfRounds() & getNumRounds() \\ \hline
      & enemies() & getOthers() \\ \hline
      & roundNum() & getRoundNum() \\ \hline
-     & time() & getTime()  \\
-    \hline
+     & time() & getTime()  \\ \hline
+   	 & &  \\ \hline    
+     Utils. & normalAbsoluteAngle & normalAbsoluteAngle \\ \hline
+     & normalAbsoluteAngleDegrees & normalAbsoluteAngleDegrees \\ \hline
+     & normalNearAbsoluteAngle & normalNearAbsoluteAngle \\ \hline
+     & normalNearAbsoluteAngleDegrees & normalNearAbsoluteAngleDegrees \\ \hline
+     & normalRelativeAngle & normalRelativeAngle \\ \hline
+     & normalRelativeAngleDegrees & normalRelativeAngleDegrees \\ \hline
     \end{tabular}
 \end{center}
 
 \section{Table of events}
+This table contains all the possible events for DatLanguage. The first column is the name of the event, the second column is the event's methods and the third column is the equivalent Robocode methods. 
 \begin{center}
 	\begin{tabular}{ | p{0.2\linewidth} | p{0.3\linewidth} | p{0.35\linewidth} |}
 		\hline
-		OL / Robocode Event& OL Event Information & Robocode Event Information \\ \hline
+		DatLanguage / Robocode Event& DatLanguage Event Information & Robocode Event Information \\ \hline
 		BulletHit / onBulletHit& bulletHeading() & getBullet().getHeading() \\ \hline
 		& bulletOwner() & getBullet().getName() \\ \hline
 		& bulletPower() & getBullet().getPower() \\ \hline
@@ -59,6 +74,13 @@
 		& bulletVictim() & getBullet().getVictim() \\ \hline
 		& bulletXCoord() & getBullet().getX() \\ \hline
 		& bulletYCoord() & getBullet().getY() \\ \hline
+	\end{tabular}
+	\label{fig:EventTable}
+\end{center}		
+		
+\begin{center}
+	\begin{tabular}{ | p{0.2\linewidth} | p{0.25\linewidth} | p{0.4\linewidth} |}
+		\hline		
 		& bulletIsActive() & getBullet().isActive() \\ \hline
 		& enemyBulletHeading() & getHitBullet().getHeading() \\ \hline
 		& enemyBulletOwner() & getHitBullet().getName() \\ \hline
@@ -82,13 +104,6 @@
 		& headingDegrees() & getHeadingDegrees() \\ \hline
 		& power() & getPower() \\ \hline
 		& velocity() & getVelocity() \\ \hline
-	\end{tabular}
-	\label{fig:ReservedCallsTable}
-\end{center}
-
-\begin{center}
-	\begin{tabular}{ | p{0.2\linewidth} | p{0.25\linewidth} | p{0.4\linewidth} |}
-		\hline
 		HitRobot / onHitRobot & bearing() & getBearing() \\ \hline
 		& bearingDegrees() & getBearingDegrees \\ \hline
 		& energy() & getEnergy() \\ \hline
@@ -100,6 +115,11 @@
 		RoundEnded / onRoundEnded & round() & getRound() \\ \hline
 		& totalTurns() & getTotalTurns() \\ \hline
 		& turns() & getTurns() \\ \hline
+	\end{tabular}
+\end{center}		
+\begin{center}
+	\begin{tabular}{ | p{0.2\linewidth} | p{0.25\linewidth} | p{0.4\linewidth} |}
+		\hline		
 		ScannedRobot / onScannedRobot & bearing() & getBearing() \\ \hline
 		& distance() & getDistance() \\ \hline
 		& energy() & getEnergy() \\ \hline
@@ -112,5 +132,4 @@
 		Win / onWin &  & \\
 		\hline
 	\end{tabular}
-		\label{fig:EventTable}
 \end{center}

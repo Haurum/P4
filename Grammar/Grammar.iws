@@ -538,7 +538,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
-              <folding />
+              <folding>
+                <element signature="n#!!doc" expanded="false" />
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -563,6 +566,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="ReservedFunctions.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ReservedFunctions.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.0292398">
+              <caret line="32" column="59" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="59" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="CodeGen.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/CodeGen.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -573,11 +586,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Grammar.g4" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Grammar.g4" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Grammar.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7748538">
-              <caret line="127" column="26" selection-start-line="0" selection-start-column="0" selection-end-line="127" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="123" column="21" selection-start-line="123" selection-start-column="21" selection-end-line="123" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FuncSymbol.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/FuncSymbol.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FuncSymbolTable.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/FuncSymbolTable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -592,36 +625,6 @@
                 <element signature="e#198#199#0" expanded="true" />
                 <element signature="e#268#269#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GrammarListener.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gen/GrammarListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="12" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GrammarParser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gen/GrammarParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="12" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GrammarVisitor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gen/GrammarVisitor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="12" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -932,7 +935,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="240" y="0" width="1400" height="850" extended-state="0" />
+    <frame x="240" y="0" width="1400" height="850" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1166,13 +1169,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ReservedFunctions.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="75" selection-start-line="32" selection-start-column="75" selection-end-line="32" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Corners.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1220,22 +1216,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/FuncSymbol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/FuncSymbolTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="25" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1299,7 +1279,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1307,14 +1290,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="230" column="2" selection-start-line="230" selection-start-column="2" selection-end-line="230" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/SymbolTypeVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1338,10 +1313,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/code/FuncSymbol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/FuncSymbolTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/SymbolTypeVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Grammar.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7748538">
-          <caret line="127" column="26" selection-start-line="0" selection-start-column="0" selection-end-line="127" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="123" column="21" selection-start-line="123" selection-start-column="21" selection-end-line="123" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ReservedFunctions.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0292398">
+          <caret line="32" column="59" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="59" />
           <folding />
         </state>
       </provider>

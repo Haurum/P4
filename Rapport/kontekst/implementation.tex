@@ -1,5 +1,5 @@
 \chapter{Implementation}
-Introduction to the chapter!
+In this chapter the implementation of the compiler will be explained.
 
 \begin{figure}[!ht]
 \centering
@@ -9,10 +9,11 @@ Introduction to the chapter!
 \end{figure}
 
 
-\section{ANTLR}
-The ANTLR tool takes as input the sourcecode the user wants to parse along with the grammar for the language. It then does the lexical analysis to scan the sourcecode for compliance with the grammar to create the tokens, and after that it parses the sourcecode to create a parse tree. After the parse phase it creates a function table with all the function and action declarations, and then does the type-checking to create the symbol table. The symbol table is filled with the variables and their type. When the parse tree, function table and symbol table is done, the code generation can start. The code generation then translates the sourcecode to a Java file. 
+The phases the compiler goes through are show in figure \ref{cs}. Before this though, the ANTLR tool has generated a scanner and a parser using the grammar showed in section 4.2. The ANTLR scanner is used to transform the source code into tokens. These tokens are then used by the ANTLR parser to generate the parsetree. After this the compiler does 3 triversals of this parsetree. First triversal is the funcDef phase, where every function the user has written is added to a funcTable for use in later phases. Second triversal is the Type checking phase. This phase uses a symboltable to check that the type and scope rules are followed by the code. The third triversal is the code generation phase, where the compiler goes through the parse tree and translates it to java code. Lastly the java code is sendt to the javac compiler and compiled to the finnished java robot class usable by robocode.
 
-Forklar de to visitor patterns som antlr genererer(Listener/walker og visitor)
+
+\section{ANTLR}
+The ANTLR tool takes as input the sourcecode the user wants to parse along with the grammar for the language. It then does the lexical analysis to scan the sourcecode for compliance with the grammar to create the tokens, and after that it parses the sourcecode to create a parse tree. On top of creating the parse tree, the ANTLR tool generates 2 visitor patterns, which can be extended and used. The first and simplest is the listener. The listener has 2 functions for each node in the parse tree, one called enter and one called exit. With the listener a walker is needed to triverse the parse tree. As the walker visits nodes in the parse tree it calls the right function in the listener. The enter function is called as soon as the walker visits the node. After this the walker visits any child nodes. When it returns from these child notes the exit function is called. The second visitor pattern is the visitor. The visitor has one function per node. Each node function is responsible for calling all child node functions it has. This gives the coder more freedom in when to call the child nodes and i which order. Also the visitor supports return types on the functions, which makes it possible to pass data from one node to the caller node. 
 
 
 \section{Function definition}

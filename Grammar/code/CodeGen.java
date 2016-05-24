@@ -178,11 +178,7 @@ public class CodeGen extends GrammarBaseVisitor<String> {
 
     @Override
     public String visitWhilestmt(GrammarParser.WhilestmtContext ctx) {
-        if (ctx.getChild(1).equals(ctx.block())){
-            return "do" + visit(ctx.block()) + "while(" + visit(ctx.expr()) + ");";
-        }else {
             return "while(" + visit(ctx.expr()) + ")" + visit(ctx.block());
-        }
     }
 
     @Override

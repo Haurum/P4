@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="69e8e018-4d1e-4444-9562-d99c2d37dd6e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Fire.txt" afterPath="$PROJECT_DIR$/Fire.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Rapport/appendiks/appendiks1.tex" afterPath="$PROJECT_DIR$/../Rapport/appendiks/appendiks1.tex" />
-    </list>
+    <list default="true" id="69e8e018-4d1e-4444-9562-d99c2d37dd6e" name="Default" comment="" />
     <ignored path="Grammar.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -144,6 +141,9 @@
   <component name="JsBuildToolPackageJson" detection-done="true" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
+  </component>
+  <component name="PhpServers">
+    <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
@@ -804,7 +804,7 @@
       <workItem from="1461831748886" duration="526000" />
       <workItem from="1461834264723" duration="1060000" />
       <workItem from="1463990180393" duration="9112000" />
-      <workItem from="1464029232688" duration="1188000" />
+      <workItem from="1464029232688" duration="1527000" />
     </task>
     <servers />
   </component>
@@ -841,7 +841,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13891000" />
+    <option name="totallyTimeSpent" value="14230000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">

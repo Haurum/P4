@@ -120,7 +120,6 @@
 \begin{lstlisting}[caption={The robot Tracker writting in our language}, label={lst:tracker}]
 	Tankname tracker;
 
-
     Num gunTurnAmt;
     String trackName;
     Num count = 0;
@@ -172,7 +171,6 @@ When scannedRobot {
       Gun.turn(gunTurnAmt);
       Tank.turn(Event.bearing());
       Tank.forward(Event.distance() - 140);
-
     }
 
     gunTurnAmt = Utils.normalRelativeAngleDegrees(Event.bearing() + (Tank.heading() - Radar.heading()));
@@ -191,8 +189,6 @@ When scannedRobot {
 }
 
 When hitRobot {
-
-
     if ((trackName NOT= "0") AND (trackName NOT= Event.enemyName()))
     {
       print("Tracking" + Event.enemyName() + " due to collision");
@@ -209,7 +205,7 @@ When hitRobot {
 
 \subsection{Fire}
 \begin{lstlisting}[caption={The robot Fire written in our language.}, label={lst:Fire}]
-	Tankname fire;
+Tankname fire;
 
 Num dist = 50;
 
@@ -223,7 +219,7 @@ Repeat {
 
 When scannedRobot {
     if (Event.distance() < 50 AND Tank.energy() > 50) {
-    Gun.shoot(3);
+    	Gun.shoot(3);
     }
     else {
         Gun.shoot(1);

@@ -104,6 +104,12 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
                 }
                 if(ctx.getChildCount() == 5) {
                     String[] args = visit(ctx.args()).split(", ");
+                    if(args.length != fsym.Params.size()){
+                        Error e = new Error("Error at line: " +
+                                ctx.args().expr(0).start.getLine() +
+                                ": Number of parameters does not match number of arguments");
+                        throw e;
+                    }
                     for (int i = 0; i < args.length; i++) {
                         String paramType = fsym.Params.get(i).y;
                         String arg = args[i];
@@ -138,6 +144,12 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
         }
         if(ctx.getChildCount() == 5) {
             String[] args = visit(ctx.args()).split(", ");
+            if(args.length != fsym.Params.size()){
+                Error e = new Error("Error at line: " +
+                        ctx.args().expr(0).start.getLine() +
+                        ": Number of parameters does not match number of arguments");
+                throw e;
+            }
             for (int i = 0; i < args.length; i++) {
                 String paramType = fsym.Params.get(i).y;
                 String arg = args[i];
@@ -167,6 +179,12 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
         }
         if(ctx.getChildCount() == 5) {
             String[] args = visit(ctx.args()).split(", ");
+            if(args.length != fsym.Params.size()){
+                Error e = new Error("Error at line: " +
+                        ctx.args().expr(0).start.getLine() +
+                        ": Number of parameters does not match number of arguments");
+                throw e;
+            }
             for (int i = 0; i < args.length; i++) {
                 String paramType = fsym.Params.get(i).y;
                 String arg = args[i];
@@ -196,6 +214,12 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
         }
         if(ctx.getChildCount() == 5) {
             String[] args = visit(ctx.args()).split(", ");
+            if(args.length != fsym.Params.size()){
+                Error e = new Error("Error at line: " +
+                        ctx.args().expr(0).start.getLine() +
+                        ": Number of parameters does not match number of arguments");
+                throw e;
+            }
             for (int i = 0; i < args.length; i++) {
                 String paramType = fsym.Params.get(i).y;
                 String arg = args[i];
@@ -225,6 +249,12 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
         }
         if(ctx.getChildCount() == 5) {
             String[] args = visit(ctx.args()).split(", ");
+            if(args.length != fsym.Params.size()){
+                Error e = new Error("Error at line: " +
+                        ctx.args().expr(0).start.getLine() +
+                        ": Number of parameters does not match number of arguments");
+                throw e;
+            }
             for (int i = 0; i < args.length; i++) {
                 String paramType = fsym.Params.get(i).y;
                 String arg = args[i];
@@ -254,6 +284,12 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
         }
         if(ctx.getChildCount() == 5) {
             String[] args = visit(ctx.args()).split(", ");
+            if(args.length != fsym.Params.size()){
+                Error e = new Error("Error at line: " +
+                        ctx.args().expr(0).start.getLine() +
+                        ": Number of parameters does not match number of arguments");
+                throw e;
+            }
             for (int i = 0; i < args.length; i++) {
                 String paramType = fsym.Params.get(i).y;
                 String arg = args[i];
@@ -314,6 +350,12 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
         }
         if(ctx.getChildCount() == 4) {
             String[] args = visit(ctx.args()).split(", ");
+            if(args.length != fsym.Params.size()){
+                Error e = new Error("Error at line: " +
+                        ctx.args().expr(0).start.getLine() +
+                        ": Number of parameters does not match number of arguments");
+                throw e;
+            }
             for (int i = 0; i < args.length; i++) {
                 String paramType = fsym.Params.get(i).y;
                 String arg = args[i];
@@ -344,6 +386,12 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
         }
         if(ctx.getChildCount() == 5) {
             String[] args = visit(ctx.args()).split(", ");
+            if(args.length != asym.Params.size()){
+                Error e = new Error("Error at line: " +
+                        ctx.args().expr(0).start.getLine() +
+                        ": Number of parameters does not match number of arguments");
+                throw e;
+            }
             for (int i = 0; i < args.length; i++) {
                 if (!asym.Params.get(i).y.equals(args[i])) {
                     Error e = new Error("Error at line: " +

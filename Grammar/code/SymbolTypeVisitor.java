@@ -317,12 +317,14 @@ public class SymbolTypeVisitor extends GrammarBaseVisitor<String> {
 
     @Override
     public String visitFunctionBlock(GrammarParser.FunctionBlockContext ctx) {
+        ST.OpenScope();
         FuncSymbol fs = FST.GetFuncSymbol("Function", ((GrammarParser.FuncdclContext) ctx.parent).ID().getText());
 
         fs.Params.forEach(tuple -> {
             ST.EnterSymbol(tuple.x, tuple.y);
         });
         visit(ctx.stmts());
+        ST.CloseScope();
         return visit(ctx.returnstmt());
     }
 

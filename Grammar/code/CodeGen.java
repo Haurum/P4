@@ -5,9 +5,6 @@ import gen.GrammarBaseVisitor;
 import gen.GrammarParser;
 import org.antlr.v4.runtime.RuleContext;
 
-/**
- * Created by frede on 09-05-2016.
- */
 public class CodeGen extends GrammarBaseVisitor<String> {
 
     FuncSymbolTable RoboFST;

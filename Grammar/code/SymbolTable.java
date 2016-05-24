@@ -6,9 +6,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-/**
- * Created by Frederik on 23-03-2016.
- */
 public class SymbolTable  {
 
     public LinkedHashMap<String, Symbol> Map = new LinkedHashMap<String, Symbol>();

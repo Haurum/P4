@@ -1,27 +1,25 @@
 \chapter{Language design}
-%This Chapter will describe the design choices made when designing our language. First the langauge criteria section is described with the three criteria \textit{Readability}, \textit{Writeability} and \textit{Reliability}. The MoSCoW analysis will be applied to our language. The MoSCoW analysis concerns what the project \textit{Must have}, \textit{Should have}, \textit{Could have} and \textit{Should have}. Last in the chapter each of the  items in the MoSCoW analysis will be shortly described why it have been considered and why it is placed where it is.(Consider writing the sebesta source in this intro.)
 \label{chap:LanguageDesign}
-In this chapter the design decisions made during the process of creating the language will be described. There are three criteria for the development of the language \emph{readability, writability} and \emph{reliability}. The decisions made to accommodate these will be described in detail in the first section of the chapter. In the second part of this chapter, a list of items for the MoSCoW analysis are prioritized. The MoSCoW analysis concerns what the project \textit{must have}, \textit{should have}, \textit{could have} and \textit{won't have}. Last in the chapter each of the  items in the MoSCoW analysis will be shortly described why it have been considered and why it is placed where it is.
+In this chapter the design decisions made during the process of creating DatLanguage will be described. There are three criteria for the development of the language \emph{readability, writability} and \emph{reliability}. The decisions made to accommodate these will be described in detail in the first section of the chapter. In the second part of this chapter, a list of items for the MoSCoW analysis are prioritized. The MoSCoW analysis concerns what the project \textit{must have}, \textit{should have}, \textit{could have} and \textit{won't have}. Last in the chapter each of the items in the MoSCoW analysis will be shortly described why it have been considered and why it is placed where it is.
  
 \section{Language criteria}
-
 In this section the three main criteria for designing the language will be discussed with focus on the implementation of these in the language. The criteria are based on theory from the book \emph{Concepts of Programming Languages} \citep{Sebesta}.
 
 \subsection{Readability}
-Readability refers to the ease of reading and understanding a programming language. The language in this report should be very simple, since the programming language is, as earlier mentioned, targeted for high school students with little or no programming experience. Beginners would not necessarily know the concepts of object-oriented languages, but this would be needed to code robots in Java. This would be concealed from the user with this reports language, and simplifications to the type system would give the user a lesser flexibility, but it would highly increase the readability of the language. Readability will be the main priority for this report, as readability is key to understand and learn a new language.
+Readability refers to the ease of reading and understanding a programming language. The language in this report should be very simple, since the programming language is, as earlier mentioned, targeted for high school students with little or no programming experience. Beginners would not necessarily know the concepts of object oriented programming languages, but this would be needed to code robots in Java. This would be concealed from the user with DatLanguage, and simplifications to the type system would give the user a lesser flexibility, but it would highly increase the readability of the language. Readability will be the main priority for this report, as readability is key to understand and learn a new language.
 
-Readability is directly affected by orthogonality, and with this language being constructed for beginners, only a few primitive types and very few constructs will be implemented.
+Readability is directly affected by orthogonality, and with DatLanguage being constructed for beginners, only a few primitive types and very few constructs will be implemented.
 
 \subsection{Writability}
 Writability is a contradiction to readability. If a language has advanced constructs that will help a programmer code big systems in little time, it will probably not be as easy for a beginner to understand. Take structs from C, if a non-experienced high school student had to implement a struct, that person wouldn't know what to do, or how it works. This is why writability will not be considered greatly in this report.
 
 \subsection{Reliability}
-To make the programming language reliable to use, a lot of focus has been put into making the language as write- and readable as possible, and design the language in a way that helps the user create code without errors. By making programs written in the language less prone to errors, the more reliable it will also be.
+To make the programming language reliable to use, a lot of focus has been put into making DatLanguage as readable as possible, and design the language in a way that helps the user create code without errors. By making programs written in DatLanguage less prone to errors, the more reliable it will also be.
 
-Another thing being implemented that will have an effect on the reliability of the programming language, is type checking. This is to prevent the user from assigning values to a variable that is not of the same type. If there is no type checking, bugs and errors can be hard to track down and fix, so it is better to be absolutely sure that all variables contains information of a certain type, rather than unexpected behaviour and output. 
-The language also does not have pointers, so aliasing, having two or more variables pointing to the same memory cell, will not be a problem that could have a negative effect on reliability. It can't be ensured that there is no aliasing in our language, since even without pointers one variable can reference an object, which is aliasing. 
+Another thing being implemented that will have an effect on the reliability of the programming language, is type checking. This is to prevent the user from assigning values to a variable that is not of the same type. If there is no type checking, then bugs and errors can be hard to track down and fix, so it is better to be absolutely sure that all variables contains information of a certain type, rather than unexpected behaviour and output. 
+DatLanguage has no pointers, so aliasing, having two or more variables pointing to the same memory cell, will not be a problem that could have a negative effect on reliability. It can't be ensured that there is no aliasing in our language, since even without pointers one variable cannot reference an object, which is aliasing. 
 
-By taking these precautions, the programming language should be reliable enough for a beginner to use, without feeling frustrated and losing interest because of language difficulties, but reliability will not be the of biggest concern in our language. 
+By taking these precautions, the programming language should be reliable enough for a beginner to use, without feeling frustrated and losing interest because of language difficulties, but reliability will not be the of biggest concern in DatLanguage. 
 
 
 \section{MoSCoW analysis}
@@ -64,11 +62,11 @@ The criteria that has been designed can be seen in this section.
 
 \textbf{While loop} is needed to make the robots logic, since the Repeat block is a while loop. The Repeat block will be described in the following chapter.
 
-\textbf{Reserved calls} are methods used to make the robots behaviour, this is needed to e.g. make the robot shoot, scan for other robots and move around the battlefield. 
+\textbf{Reserved calls} are methods used to make the robot’s behaviour, this is needed to make the robot shoot, scan for other robots and move around the battlefield. 
 
-\textbf{Robot naming} is necessary because some of the methods in Robocode returns the robots name. 
+\textbf{Robot naming} is necessary because some of the methods in Robocode returns the robot’s name. 
 
-\textbf{If/Else/Elseif statements} is a very essential part of Robocode since it is a conditional statement, and since decision making is playing a very big role in Robocode.
+\textbf{If/Else/Elseif statements} is a very essential part of Robocode since it is a conditional statement, and since decision making is a very big role in Robocode.
 
 \textbf{Arithmetic expressions and operators} are used to do calculations on primitive types and variables. 
 
@@ -77,16 +75,16 @@ The criteria that has been designed can be seen in this section.
 \subsection{Should have}
 \textbf{Events} are a big part of Robocode, it gives the robot the option to act on the environment and actions around it. Events are placed in should have because it is not necessary to code a moving robot, but to make the robot more intelligent.
 
-\textbf{Comments} would help on the readability of the program, if the user was able to put comments in his/her code. 
+\textbf{Comments} would help on the readability of the program, if the user was able to put comments in the code. 
 
-\textbf{Void and type methods} are another way to inject intelligence to the robot. Instead of using the Robocode events, the user can make his/her own functions with or without return types. 
+\textbf{Void and type methods} are another way to inject intelligence to the robot. Instead of using the Robocode events, the user can make their own functions with or without return types. 
 
 \subsection{Could have} 
-\textbf{Cos, Sin \& Tan} could be useful when programming robots in Robocode, since when the robots behaviour is made, the user is often working with degrees in the Reserved calls, so if the user wants to make his/her own functions, this could become necessary.
+\textbf{Cos, Sin \& Tan} could be useful when programming robots in Robocode, the user is often working with degrees in the reserved calls, so if the user wants to make their own functions, this could become necessary.
 
 \textbf{For loops} would be another way for the user to iterate over data, but the for loop doesn't seem as necessary as the while loop for this.
  
-\textbf{Arrays} is an collection construct, which doesn't seem so important for beginners, but could be useful, if the users should be able to write more advanced robots in our language. 
+\textbf{Arrays} is a collection construct, which doesn't seem so important for beginners, but could be useful, if the users should be able to write more advanced robots in DatLanguage. 
 
 \textbf{Print statements} would be a smart statement for debugging purposes.
 \textbf{Strings} would be necessary if the print statement would be implemented.
@@ -95,7 +93,5 @@ The criteria that has been designed can be seen in this section.
 \textbf{Random number generator}
 A random number generator would be a great tool to implement to the language. If some user would like to make their robots movements more unpredictable, a random number generator would be very useful.
 
-\textbf{Other robot type} 
-Overall there are six different robot types in RoboCode which are: Robot, AdvancedRobot, JuniorRobot, TeamRobot, Droid and BorderSentry. This project will focus on the Robot type. JuniorRobot is very similar, where some of the other robots are allowing the user to make more advanced robots. 
-
- 
+\textbf{Other robot types} 
+Overall there are six different robot types in Robocode which are: Robot, AdvancedRobot, JuniorRobot, TeamRobot, Droid and BorderSentry. This project will focus on the Robot type. JuniorRobot is very similar, where some of the other robots are allowing the user to make more advanced robots. 

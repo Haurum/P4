@@ -46,7 +46,7 @@ public class FuncSymbolTable {
 	}
 }
 \end{lstlisting}
-%Skal vi beholde det her, eller?
+
 \subsection{Robocode functions \& events}
 To allow the type checker and code generation phase to do their jobs, every Robocode function and event needs to be added to the FuncSymbolTable. To do this a simple text file was created which line for line have each function written out in a specific manner. 
 
@@ -62,8 +62,8 @@ The reason why the CurrentFunc is added in the Exit functions, is that the walke
 After the first traversal of the parse tree using the FuncListener, every function is now defined in the function table and we can begin type checking. To do type checking a Symbol- and a SymbolTable class are used to keep track of every variable and their scope, using these two classes the SymbolTypeVisitor class checks for type compatibility. 
 
 \subsection{Symbol \& symbol table}
-Every variable in the program is represented by the Symbol class. The Symbol class has the properties String Name and Type, Symbol Var and Depth. The Name and Type represents the name and type of the variable, the interesting parts are the Var and Depth properties. Var is a reference to a Symbol of the same name but in a higher scope, this would work as stack for all symbols of the same name, where the top of the stack will be the innermost scope and therefore the one used. The Depth property indicates the depth of the scope the symbol is in, with 0 being the global scope. 
-%Der mangler et ord efter innermost..
+Every variable in the program is represented by the Symbol class. The Symbol class has the properties String Name and Type, Symbol Var and Depth. The Name and Type represents the name and type of the variable, the interesting parts are the Var and Depth properties. Var is a reference to a Symbol of the same name but in a higher scope, this would work as stack for all symbols of the same name, where the top of the stack will be the innermost encountered scope and therefore the one used. The Depth property indicates the depth of the scope the symbol is in, with 0 being the global scope. 
+
 The SymbolTable is mainly two things, the Map associates a name of a variable with a symbol as key value pair, these symbols are the ones on top of the stack described in the paragraph before. The scope is an array of arrays of symbols. Each index of the outer array is a scope and each inner array contains the symbols of that scope. 
 
 The SymbolTable class has four functions: OpenScope, CloseScope, GetSymbol and EnterSymbol. 

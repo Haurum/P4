@@ -24,7 +24,6 @@ The code of the robot can be seen in appendix \ref{lst:fire}.
 
 \subsection{Corners}
 The same kind of test has also been performed on the robot Corners. The behavior of the converted Corners robot is not exactly the same as the original sample. This is due to the fact that the original robot uses a static variable to decide which corner to move to, our language doesn't support static variables so it moves to the same corner every time. 
+Considering that static variables could be difficult to understand for a new user, implementing this functionality wouldn't be the best way to solve it. We would rather solve it by creating a functionality that makes it possible to have a variable stay the same through the rounds of a battle. 
 
 These tests has gathered some errors with the language that now can be worked on removing. The next section focuses on the unittests made to ensure functionality of the language and compiler.
-
-\section{Unittest}

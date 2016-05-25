@@ -1,5 +1,5 @@
 \chapter{Implementation}
-The phases the compiler goes through are shown in figure \ref{cs}. Before this though, the ANTLR tool has generated a scanner and a parser using the grammar showed in section 4.2. The ANTLR scanner is used to transform the source code into tokens. These tokens are then used by the ANTLR parser to generate the parse tree. After this the compiler does three triversals of this parse tree. First triversal is the funcDef phase, where every function the user has written is added to a funcTable for use in later phases. Second triversal is the Type checking phase. This phase uses a symbol table to check that the type and scope rules are followed by the code. The third triversal is the code generation phase, where the compiler goes through the parse tree and translates it to Java code. Lastly the Java code is sent to the Java compiler and compiled to the finished Java robot class usable by Robocode.
+The phases the compiler goes through are shown in figure \ref{cs}. Before this, the ANTLR tool has generated a scanner and a parser using the grammar showed in section 4.2. The ANTLR scanner is used to transform the source code into tokens. These tokens are then used by the ANTLR parser to generate the parse tree. After this the compiler does three traversals of this parse tree. First traversal is the funcDef phase, where every function the user has written is added to a funcTable for use in later phases. Second traversal is the Type checking phase. This phase uses a symbol table to check that the type and scope rules are followed by the code. The third traversal is the code generation phase, where the compiler goes through the parse tree and translates it to Java code. Lastly the Java code is sent to the Java compiler and compiled to the finished Java robot class usable by Robocode.
 
 \begin{figure}[h]
 \centering
@@ -9,7 +9,7 @@ The phases the compiler goes through are shown in figure \ref{cs}. Before this t
 \end{figure}
 
 \section{ANTLR}
-The ANTLR tool takes as input the source code the user wants to parse along with the grammar for the language. It then performs a lexical analysis to scan the source code for compliance with the grammar to create the tokens, then it parses the tokenized source code to create a  tree. On top of creating the parse tree, the ANTLR tool generates 2 visitor patterns, which can be extended and used. The first and simplest is the listener. The listener has 2 functions for each node in the parse tree, one called enter and one called exit. With the listener a walker is needed to triverse the parse tree. As the walker visits nodes in the parse tree it calls the right function in the listener. The enter function is called as soon as the walker visits the node. After this the walker visits any child nodes. When it returns from these child notes the exit function is called. The second visitor pattern is the visitor. The visitor has one function per node. Each node function is responsible for calling all child node functions it has. This gives the coder more freedom in when to call the child nodes and i which order. Also the visitor supports return types on the functions, which makes it possible to pass data from one node to the caller node. 
+The ANTLR tool takes as input the source code the user wants to parse along with the grammar for the language. It then performs a lexical analysis to scan the source code for compliance with the grammar to create the tokens. It then parses the tokenized source code to create a tree. On top of creating the parse tree, the ANTLR tool generates two visitor patterns, which can be extended and used. The first and simplest is the listener. The listener has two functions for each node in the parse tree, one called enter and one called exit. With the listener, a walker is needed to traverse the parse tree. As the walker visits nodes in the parse tree, it calls the right function in the listener. The enter function is called as soon as the walker visits the node. After this, the walker visits all child nodes. When it returns from these child nodes the exit function is called. The second visitor pattern is the visitor. The visitor has one function per node. Each node function is responsible for calling all child nodes functions it has. This gives the developer of the compiler more freedom when to call the child nodes and in which order. Also the visitor supports return types on the functions, which makes it possible to pass data from one node to the caller node. 
 
 
 \section{Function definition}
@@ -17,14 +17,14 @@ After ANTLR has produced the parse tree, base listener and base visitor, the fun
 
 \subsection{FuncSymbol \& FuncSymbolTable}
 To keep track of the functions and their parameters, return values and Robocode names, a FuncSymbol class is used as representation for a single function and a FuncSymbolTable class is used to keep track of every FuncSymbol in the program.
-The FuncSymbol has a string properties for Name, Type, ReturnType, original Robocode names and a string array for the parameters.
+The FuncSymbol has string properties for Name, Type, ReturnType, original Robocode names and a string array for the parameters.
 
-The FuncSymbolTable is basically a key/value pair HashMap. Where the key is the type of the function followed by the name of the function. The type in this case, can be either Function or Action from user defined functions, Tank, Gun, Battlefield, Radar or Utils from Robocode functions or the name of the event from Robocode events.
+The FuncSymbolTable is a key-value pair HashMap, where the key is the type of the function followed by the name of the function and the value is the FuncSymbol. The type in this case, can be either Function or Action for user defined functions, Tank, Gun, Battlefield, Radar or Utils from Robocode functions or the name of the event from Robocode events.
 This class has two functions, GetFuncSymbol and EnterFuncSymbol which can be found in listing \ref{FST}. 
 
 The GetFuncSymbol takes a type and a name from a function, combines them, looks for them in the HashMap and returns the result.
 
-EnterFuncSymbol takes a FuncSymbol and tries to add it to the HashMap. First it checks if a function with same type and name was already declared, if such a function exists, an error is thrown, otherwise the function is added to the HashMap.
+EnterFuncSymbol takes a FuncSymbol and tries to add it to the HashMap. First, it checks if a function with the same type and name was already declared. If such a function exists, an error is thrown, otherwise the function is added to the HashMap.
 
 \begin{lstlisting}[caption={FuncSymbolTable}, label={FST}]
 public class FuncSymbolTable {
@@ -46,24 +46,24 @@ public class FuncSymbolTable {
 	}
 }
 \end{lstlisting}
-%Skal vi beholde det her, eller?
+
 \subsection{Robocode functions \& events}
-To allow the type checker and code generation phase to do their jobs, every Robocode function and event needs to be added to the FuncSymbolTable. To do this a simple text file was created which line for line have each function written out in a specific manner. 
+To allow the type checker and code generation phase to do their jobs, every Robocode function and event needs to be added to the FuncSymbolTable. To do this, a simple text file was created which line for line have each function written out in a specific manner. 
 
 \subsection{User defined functions \& actions}
-To load the user defined functions from the program, a traverse of the parse tree is done using the ANTLR generated walker/listener. For every Function and Action the listener visits, a new FuncSymbol is created and added to the FuncSymbolTable. This is done with the FuncListener class, which extends the BaseListener ANTLR created.
+To load the user defined functions from the program, a traverse of the parse tree is done using the ANTLR generated walker and listener. For every Function and Action the listener visits, a new FuncSymbol is created and added to the FuncSymbolTable. This is done with the FuncListener class, which extends the BaseListener ANTLR created.
  
 The FuncListener class overrides the Enter/Exit Action declaration functions, the Enter/Exit Function declaration functions and the Enter parameter function. In the Enter Action and Function declaration functions, a new FuncSymbol is created called CurrentFunc. To CurrentFunc a name and a type is added, and in the Function case a return type is added as well. Name, type and return type are found using the parse tree.
 In the Enter parameter function adds a new parameter to the CurrentFunc's array of parameters. 
 Now in the Exit Action and Function declaration functions the CurrentFunc is added to the FuncSymbolTable. 
-The reason why the CurrentFunc is added in the Exit functions, is that the walker have to visit all the parameters. 
+The reason why the CurrentFunc is added in the Exit functions, is that the walker has to visit all the parameters. 
 
 \section{Type checking} 
-After the first traversal of the parse tree using the FuncListener, every function is now defined in the function table and we can begin type checking. To do type checking a Symbol- and a SymbolTable class are used to keep track of every variable and their scope, using these two classes the SymbolTypeVisitor class checks for type compatibility. 
+After the first traversal of the parse tree using the FuncListener, every function is now defined in the function table and we can begin type checking. To do type checking a Symbol class and a SymbolTable class are used to keep track of every variable and their scope, using these two classes the SymbolTypeVisitor class checks for type compatibility. 
 
 \subsection{Symbol \& symbol table}
-Every variable in the program is represented by the Symbol class. The Symbol class has the properties String Name and Type, Symbol Var and Depth. The Name and Type represents the name and type of the variable, the interesting parts are the Var and Depth properties. Var is a reference to a Symbol of the same name but in a higher scope, this would work as stack for all symbols of the same name, where the top of the stack will be the innermost scope and therefore the one used. The Depth property indicates the depth of the scope the symbol is in, with 0 being the global scope. 
-%Der mangler et ord efter innermost..
+Every variable in the program is represented by the Symbol class. The Symbol class has the properties Name, Type, Var and Depth. The Name and Type represents the name and type of the variable, the interesting parts are the Var and Depth properties. Var is a reference to a Symbol of the same name but in an outer scope, this would work as a stack for all symbols of the same name, where the top of the stack will be the innermost encountered scope and therefore the one used. The Depth property indicates the depth of the scope the symbol is in, with 0 being the global scope. 
+
 The SymbolTable is mainly two things, the Map associates a name of a variable with a symbol as key value pair, these symbols are the ones on top of the stack described in the paragraph before. The scope is an array of arrays of symbols. Each index of the outer array is a scope and each inner array contains the symbols of that scope. 
 
 The SymbolTable class has four functions: OpenScope, CloseScope, GetSymbol and EnterSymbol. 
@@ -81,9 +81,9 @@ public void OpenScope(){
 }
 \end{lstlisting}
 
- The EnterSymbol function in listing \ref{ES}, is used to enter a new symbol into the SymbolTable. When EnterSymbol is run it firstly checks if there already exists a symbol with the same name, if this is the case it checks whether the depth of this symbol is the same depth as current scope. If the depths are the same, an error is thrown, since there can't exist two variables with the same name in the same scope. If no symbol exists in the Map or it is at another depth, a new symbol is created. This symbol gets the current depth in its depth property and it sets its var property to the old symbol. It then either replaces the new symbol with the old symbol or just adds it if the old symbol was null. 
+The EnterSymbol function in listing \ref{ES}, is used to enter a new symbol into the SymbolTable. When EnterSymbol is run it firstly checks if there already exists a symbol with the same name, if this is the case it checks whether the depth of this symbol is the same depth as the current scope. If the depths are the same, an error is thrown, since there can't exist two variables with the same name in the same scope. If no symbol exists in the Map or it is at another depth, a new symbol is created. This symbol gets the current depth in its depth property and it sets its var property to the old symbol. It then either replaces the new symbol with the old symbol or just adds it if the old symbol was null. 
 
-The GetSymbol function looks up a symbol in the map and will return the name of that symbol.
+The GetSymbol function looks up a symbol in the Map and will return the name of that symbol.
 
 \begin{lstlisting}[caption={EnterSymbol function}, label={ES}]
 public void EnterSymbol(String name, String type){
@@ -103,7 +103,7 @@ public void EnterSymbol(String name, String type){
 }
 \end{lstlisting}
 
-CloseScope in listing \ref{CS}, is used to close the current scope. This is done by going through each symbol \textbf{s} at the current depth, and replacing \textbf{s} in the Map with \textbf{s.Var} which is a symbol with the same name but in a higher scope. If no such symbol exists, \textbf{s} is replaced with a null value. 
+CloseScope in listing \ref{CS}, is used to close the current scope. This is done by going through each symbol \textbf{s} at the current depth, and replacing \textbf{s} in the Map with \textbf{s.Var} which is a symbol with the same name but in an outer scope. If no such symbol exists, \textbf{s} is replaced with a null value. 
 
 \begin{lstlisting}[caption={CloseScope function}, label={CS}]
 public void CloseScope(){
@@ -116,9 +116,8 @@ public void CloseScope(){
 \end{lstlisting}
 
 
-
 \subsection{The SymbolTypeVisitor class}
-The SymbolTypeVisitor class extends the BaseVisitor class from ANTLR and is the second triversal through the parse tree. It visits every single node in  the parse tree and each node returns its type to the caller. At each node it is determined whether the types returned match with the expected types, errors are thrown if they don't match.
+The SymbolTypeVisitor class extends the BaseVisitor class from ANTLR and is the second traversal through the parse tree. It visits every single node in the parse tree and each node returns its type to the caller. At each node it is checked whether the types returned match with the expected types, errors are thrown if they don't match.
 
 At the basic level the types are returned as they are, which are the functions visitNum, visitString and visitBool, that can be found in listing \ref{VT}.
 
@@ -139,7 +138,7 @@ public String visitBool(GrammarParser.BoolContext ctx) {
 }
 \end{lstlisting}
 
-Also at the basic level variable identifiers are looked up in the SymbolTable and their type is returned, an error is thrown if the variable isn't found in the SymbolTable, as shown in listing \ref{VID}.
+Also at the basic level variable identifiers are looked up in the SymbolTable and their type is returned. An error is thrown if the variable isn't found in the SymbolTable, as shown in listing \ref{VID}.
 
 \begin{lstlisting}[caption={SymbolTypeVisitor - visitId function}, label={VID}]
 @Override
@@ -172,7 +171,7 @@ public String visitOrexpr(GrammarParser.OrexprContext ctx) {
 }
 \end{lstlisting}
 
-The add-expression in listing \ref{VADD}, is treated slightly differently as the plus operator is overloaded and can be used on two numbers or a string and any other type. Therefore the function checks if both expressions evaluate to a number, or one of them is a string and the operator is a plus, it throws an error if none of the above is true else it returns the appropriate type. 
+The add-expression in listing \ref{VADD}, is treated slightly differently as the plus operator is overloaded and can be used on two numbers or a string and any other type. Therefore the function checks if both expressions evaluate to a number, or one of them is a string and the operator is a plus. It throws an error if none of the above is true else it returns the appropriate type. 
 
 \begin{lstlisting}[caption={SymbolTypeVisitor - visitAddexpr function}, label={VADD}]
 @Override
@@ -191,7 +190,7 @@ public String visitAddexpr(GrammarParser.AddexprContext ctx) {
 }
 \end{lstlisting}
 
-The function visitAssign in listing \ref{VAS}, checks whether the type of the symbol found from the id equals the expression's type. It throws errors if the id is not found in the symbol table or the types don't match. 
+The function visitAssign in listing \ref{VAS}, checks whether the type of the symbol, found from the ID, equals the expression's type. It throws errors if the ID is not found in the SymbolTable or the types don't match. 
 
 \begin{lstlisting}[caption={SymbolTypeVisitor - visitAssign function}, label={VAS}]
 @Override
@@ -211,7 +210,7 @@ public String visitAssign(GrammarParser.AssignContext ctx) {
 }
 \end{lstlisting}
 
-The function visitVardcl in listing \ref{VAD}, adds a new symbol in the SymbolTable. The type is found at the variable declaration Node or at the assign node of the parse tree. visitVardcl determines where to find the id and adds the new symbol to the SymbolTable. 
+The function visitVardcl in listing \ref{VAD}, adds a new symbol in the SymbolTable. The type is found at the variable declaration node or at the assign node of the parse tree. visitVardcl determines where to find the ID and adds the new symbol to the SymbolTable. 
 
 \begin{lstlisting}[caption={SymbolTypeVisitor - visitVardcl function}, label={VAD}]
 @Override
@@ -226,7 +225,7 @@ public String visitVardcl(GrammarParser.VardclContext ctx) {
 }
 \end{lstlisting}
 
-The visitBlock function in listing \ref{VB}, opens a new scope and if its parent is the Action declaration, any formal parameter of the Action declaration  is added to the scope. The function then visits all the statements in the block and then closes the scope. 
+The visitBlock function in listing \ref{VB}, opens a new scope and if its parent is the Action declaration, any formal parameter of the Action declaration is added to the scope. The function then visits all the statements in the block and then closes the scope. 
 
 \begin{lstlisting}[caption={SymbolTypeVisitor - visitBlock function}, label={VB}]
 @Override
@@ -245,8 +244,8 @@ public String visitBlock(GrammarParser.BlockContext ctx) {
 \end{lstlisting}
 
 The function visitArgs in listing \ref{VAF} at line 1-8, visits each expression and concatenates with a comma in between and returns the whole thing as a string. 
-%Begrundelse
-visitFcall which is also found in listing \ref{VAF} at line 10-37, gets a function symbol from the FuncSymbolTable and then matches each argument type from the visitArgs with each parameter type in the function symbol. Errors are thrown if these don't match or the function id doesn't match any function in the FuncSymbolTable. visitAcall, visitUtilscall, visitBattlefieldcall, visitRadarcall, visitGuncall and visitTankcall functions works similarly to the visitFcall function.
+
+visitFcall which is also found in listing \ref{VAF} at line 10-37, gets a function symbol from the FuncSymbolTable and then matches each argument type from the visitArgs with each parameter type in the function symbol. Errors are thrown if these don't match or the function ID doesn't match any function in the FuncSymbolTable. visitAcall, visitUtilscall, visitBattlefieldcall, visitRadarcall, visitGuncall and visitTankcall functions works similarly to the visitFcall function.
 
 \begin{lstlisting}[caption={SymbolTypeVisitor - visitArgs and visitFcall functions}, label={VAF}]
 @Override
@@ -288,7 +287,7 @@ public String visitFcall(GrammarParser.FcallContext ctx) {
 }
 \end{lstlisting}
 
-visitEcall in listing \ref{VE}, is a bit special compared to the other call function, as it needs to check whether the function called is comparable with the event that it is called within. To do this, it checks the parent to see if that is an event declaration, if it is not, it checks the parent of the parent and so on, until it either reaches the event declaration or the root of the tree, if the root is reached an error is then thrown. If an event declaration is reached, the event declaration id and the event call id is used to look up the function in the FuncSymbolTable, if none is returned an error is thrown, otherwise the arguments are matched with the parameters as before, if successful the function's return type is returned. 
+visitEcall in listing \ref{VE}, is a bit special compared to the other call functions, as it needs to check whether the function called is comparable with the event that it is called within. To do this, it checks the parent to see if that is an event declaration, if it is not, it checks the parent of the parent and so on, until it either reaches the event declaration or the root of the tree. If the root is reached an error is then thrown. If an event declaration is reached, the event declaration ID and the event call ID is used to look up the function in the FuncSymbolTable. If none is returned an error is thrown, otherwise the arguments are matched with the parameters as before. If successful the function's return type is returned. 
 
 \begin{lstlisting}[caption={SymbolTypeVisitor - visitEcall function}, label={VE}]
 @Override
@@ -362,7 +361,7 @@ public String visitDcls(GrammarParser.DclsContext ctx) {
 \section{Code generation}
 The CodeGen class extends the BaseListener class and is the third and last traversal of the parse tree. At this point the program is type checked and ready to get translated into Java code, the CodeGen class generates a string containing the translated code. 
 
-When visiting the literals bool, num and string nothing is changed and the text is returned. When visiting id an "\_" is added in front of the id, to make sure the id name doesn't clash with Java keywords. The literals id and num can be seen in listing \ref{VIM}. 
+When visiting the literals bool, num and string nothing is changed and the text is returned. When visiting ID an "\_" is added in front of the ID, to make sure the ID name doesn't clash with Java keywords. The literals ID and num can be seen in listing \ref{VIM}. 
 
 \begin{lstlisting}[caption={CodeGen - visitId \& visitNum functions}, label={VIM}]
 @Override
@@ -376,7 +375,7 @@ public String visitNum(GrammarParser.NumContext ctx) {
 }
 \end{lstlisting}
 
-When visiting expressions the only thing needed is to change AND, OR, IS=, NOT= and NOT is changed to their equivalent operator in Java. 
+When visiting expressions the only thing needed is to change AND, OR, IS=, NOT= and NOT to their equivalent operator in Java. 
 
 In the visitEcall function in listing \ref{VEC} the appropriate FuncSymbol is found in the FuncSymbolTable using the same method as the SymbolTypeVisitor class. visitEcall adds "e." in front of the function name, before it returns. The "e" will be the parameter of the event which this call is within. 
 
@@ -415,7 +414,7 @@ public String visitTankcall(GrammarParser.TankcallContext ctx) {
 }
 \end{lstlisting}
 
-In Function and Action calls an "\_" are added in front of the id and potential parameters before returning. This is done like with the num, string and bool literals, so the id's don't clash with any Java keywords. Listing \ref{VFC} shows the visitFcall function.
+In Function and Action calls an "\_" are added in front of the ID and potential parameters before returning. This is done like with the num, string and bool literals, so the ID’s don't clash with any Java keywords. Listing \ref{VFC} shows the visitFcall function.
 
 \begin{lstlisting}[caption={CodeGen - visitFcall function}, label={VFC}]
 @Override
@@ -428,7 +427,7 @@ public String visitFcall(GrammarParser.FcallContext ctx) {
 }
 \end{lstlisting}
 
-The visitIfstmt function uses a StringBuilder to add the \textbf{if} followed by any \textbf{elseif} if needed, at the end the StringBuilder returns as a string. The visitIfstmt function is shown in listing \ref{VISTM}
+The visitIfstmt function uses a StringBuilder to add the \textbf{if} followed by any \textbf{elseif} needed, at the end the StringBuilder returns as a string. The visitIfstmt function is shown in listing \ref{VISTM}
 
 \begin{lstlisting}[caption={CodeGen - visitIfstmt function}, label={VISTM}]
 @Override
@@ -449,7 +448,7 @@ public String visitIfstmt(GrammarParser.IfstmtContext ctx) {
 }
 \end{lstlisting}
 
-The visitVardcl function shown in listing \ref{VVDCL}, changes the type declared in the program to the equivalent type in Java. String and Bool will be changed to string and boolean, where the type Num will be changed to a double. Another thing worth mentioning is the "\_" in front of the ids, for the same reasons as mentioned before.
+The visitVardcl function shown in listing \ref{VVDCL}, changes the type declared in the program to the equivalent type in Java. String and Bool will be changed to string and boolean, where the type Num will be changed to a double. Another thing worth mentioning is the "\_" in front of the IDs, for the same reasons as mentioned before.
 
 \begin{lstlisting}[caption={CodeGen - visitVardcl function}, label={VVDCL}]
 @Override
@@ -471,7 +470,7 @@ public String visitVardcl(GrammarParser.VardclContext ctx) {
 }
 \end{lstlisting}
 
-The visitEventdcl function in listing \ref{VEDCL} is worth noting the added "on"  and the added "Event", these are used to create the Robocode eventhandler and the Robocode event. The "e" added after "Event" corresponds to the e in visitEcall.
+The visitEventdcl function in listing \ref{VEDCL} is worth noting the added "on" and the added "Event", these are used to create the Robocode eventhandler and the Robocode event. The "e" added after "Event" corresponds to the “e” in visitEcall.
 
 \begin{lstlisting}[caption={CodeGen - visitEventdcl function}, label={VEDCL}]
 @Override
@@ -481,7 +480,7 @@ public String visitEventdcl(GrammarParser.EventdclContext ctx) {
 }
 \end{lstlisting}
 
-In the visitFuncdcl function  a new public Java function is created with the return type with the appropriate return type, name, block and possibly parameters. Once again an "\_" is added in front of the id, for the same reasons as before.
+In the visitFuncdcl function a new public Java function is created with the appropriate return type, name, block and possible parameters. Once again an "\_" is added in front of the ID, for the same reasons as before.
 
 \begin{lstlisting}[caption={CodeGen - visitFuncdcl function}, label={VFDCL}]
 @Override
@@ -502,7 +501,7 @@ public String visitFuncdcl(GrammarParser.FuncdclContext ctx) {
 }
 \end{lstlisting}
 
-The visitSetupblock and visitRepeatblock functions shown in listing \ref{VSRB} are a bit special as the Repeat block(is the while(true) statement in the Run function in Java) is inside the Setup block(Run function) in Java. To do this Setup block creates the void function and adds the block, then cuts of the last curly bracket adds the Repeat block, which is renamed to while(true) and puts back the curly bracket. 
+The visitSetupblock and visitRepeatblock functions shown in listing \ref{VSRB} are a bit special as the Repeat block (is the while(true) statement in the Run function in Robocode) is inside the Setup block (Run function) in Robocode. To do this, Setup block creates the void function and adds the block, then cuts of the last curly bracket adds the Repeat block, which is renamed to while(true) and puts back the curly bracket. 
 
 \begin{lstlisting}[caption={CodeGen - visitSetupblock \& visitRepeatblock functions}, label={VSRB}]
 @Override
@@ -536,14 +535,19 @@ public String visitProg(GrammarParser.ProgContext ctx) {
 }
 \end{lstlisting}
 
-%
-% to do
-%Rename Txt og TEXT til String.
-%Open og close scope i functionBlockContext
-%CodeGen errors
-%Ændre while i codegen
-%Lav billede til Environment store model, og forklar det!
-%Apendix, skriv tekst til det vi har, overvej om der skal tilføjes kode eksempler.
-%Formuler en problem stilling i introduction.
 
+\section{Compiling source code}
+To make it easy to compile and test code created in DatLanguage, a simple script has been created. The script works, by taking the file as an argument and passing it to the compiler.
+The Java code the compiler returns, is then passed to the Java compiler, to create the final working Robocode robot. The robot is then put in a robots folder in the Robocode directory.
+ 
+When the robot is created, a standard .battle file is created. A battle file contains the information required by Robocode to setup a battlefield, including width, height, number of rounds and participating robots. The Robot created by the compiler, is added to the list of robots that should play on the field, and the battle file is put in the Robocode directory.
+ 
+Since Robocode can be run from a terminal with arguments specifying which battle to play, the script is able to start up Robocode and play the specified battle.
+ 
+To run the script on Mac, open Terminal and find the root directory of the compiler, that should also contain the source file to be compiled. Type “./compile\_mac” followed by the name of the source file, eg “./compile\_mac RamFire”, and hit enter.
+ 
+On windows, the same thing has to be done in PowerShell, just replace “./compile\_mac” with “./compile\_windows.bat”.
+ 
+By automating the process of compiling and running, it is easier and faster to test the robots.
+ 
 

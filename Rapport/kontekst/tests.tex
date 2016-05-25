@@ -1,29 +1,64 @@
 \chapter{Tests}
-This chapter is covering the tests that has been done to confirm the functionality of our language. Two kinds of tests will be used, convertion tests where the language will be used in practice and unit tests with focus on making sure everything works as planned.
+This chapter is covering the tests that have been done to confirm the functionality of DatLanguage. Two kinds of tests will be used, conversion tests where the language will be used in practice and tests using the JUnit Java library to ensure functionality.
 
 
-\section{Convertion tests}
-In this section tests will be run where sample robots from Robocode will be written in our language, compiled back to Java and compared with the original robot. The focus of this test is to make sure that the language works in practice. Doing work and documenting any errors found while using the language quickly helped discovering some problems which then could be fixed. 
+\section{Conversion tests}
+In this section tests will be run where sample robots from Robocode will be written in DatLanguage, compiled back to Java and compared with the original robot. The focus of this test is to make sure that the language works in practice. Doing work and documenting any errors found while using the language quickly helped discover some problems which then could be fixed. 
 
 \subsection{Tracker}
-When writing the robot Tracker in our language a few errors were found. First an error was received that the Expression types didn't match for an assignment. This was quickly fixed as it turned out the Utils.normalRelativeAngleDegrees had the wrong returntype in the ReservedFunctions list.
+When writing the robot Tracker in DatLanguage a few errors were found. First an error was received that the Expression types didn't match for an assignment. This was quickly fixed as it turned out the Utils.normalRelativeAngleDegrees had the wrong return type in the ReservedFunctions list.
 
-Another error occurred were the compiler returned the error Variable not found. This was fixed by changning trackName = null to trackName = "0" throughout the code when a target has not been found. The compiler also gives an error if a robot has been given another name in the code than in the file name.
+Another error occurred were the compiler returned the error Variable not found. This was fixed by changing “trackName = null” to “trackName = "0"” throughout the code when a target has not been found. The compiler also gives an error if a robot has been given another name in the code than in the file name.
 
-To test if the converted version of Tracker works the same as the original version both robots has been tested versus the sample robot Crazy. The output log of Robocode shows that the converted version has a problem with an if-statement checking whether the robot it hits is the same as the target. Looking at the scoreboard of the match the converted robot earns 20\% less points than the original sample robot. This shows that there has been a flaw in the conversion and that the robots does not share the exact same functionality.
-There are two main causes for this problem. The first cause is that the Robocode command \emph{setAdjustGunForRobotTurn(true)} is not implemented in our language. The second cause is that it's not possible to use a return statement inside an if-statement in our language. 
+To test if the converted version of Tracker works the same as the original version both robots has been tested versus the sample robot Crazy. The output log of Robocode shows that the converted version has a problem with an if-statement checking whether the robot hits the target it’s looking for. Looking at the scoreboard of the match the converted robot earns 20\% less points than the original sample robot. This shows that there has been a flaw in the conversion and that the robots does not share the exact same functionality.
+There are two causes for this problem. The first cause is that the Robocode command \emph{setAdjustGunForRobotTurn(true)} is not implemented in our language. The second cause is that it's not possible to use a return statement inside an if-statement in our language. 
 The code of the robot can be seen in appendix \ref{lst:tracker}.
 
 
 \subsection{Fire}
-When converting the Fire robot to our language there was an error in the compiler saying that the variable was not found. This error occurred because the variable Num dist was declared in the setup block, it was fixed by moving the declaration outside the block.
+When converting the Fire robot to DatLanguage there was an error in the compiler saying that the variable was not found. This error occurred because the variable Num dist was declared in the setup block, it was fixed by moving the declaration outside the block.
 
 When testing the converted Fire robot versus the sample Fire robot by matching both robots against the Crazy sample robot, both versions of the Fire robot behaved in the same way and earned scores close to each other.
-This shows that the robot has been compiled to have the same functionality after being written in our language as the original sample robot.
+This shows that the robot has been compiled to have the same functionality after being written in DatLanguage as the original sample robot.
 The code of the robot can be seen in appendix \ref{lst:fire}.
 
 \subsection{Corners}
-The same kind of test has also been performed on the robot Corners. The behavior of the converted Corners robot is not exactly the same as the original sample. This is due to the fact that the original robot uses a static variable to decide which corner to move to, our language doesn't support static variables so it moves to the same corner every time. 
+The same kind of test has also been performed on the robot Corners. The behavior of the converted Corners robot is not exactly the same as the original sample. This is due to the fact that the original robot uses a static variable to decide which corner to move to, DatLanguage doesn't support static variables so it moves to the same corner every time. 
 Considering that static variables could be difficult to understand for a new user, implementing this functionality wouldn't be the best way to solve it. We would rather solve it by creating a functionality that makes it possible to have a variable stay the same through the rounds of a battle. 
 
-These tests has gathered some errors with the language that now can be worked on removing. The next section focuses on the unittests made to ensure functionality of the language and compiler.
+These tests have gathered some errors with DatLanguage that now can be worked on removing. The next section focuses on the tests made to ensure functionality of the FuncListener and SymbolTypeVisitor classes.
+
+\section{Functionality tests}
+To test that the classes FuncListener and SymbolTypeVisitor are working as expected, a series of programs has been written, to test specific things. To help doing this, a unit testing library for Java is used, called JUnit. By using JUnit, the program can be run multiple times with different source codes, to get an overview of which ones are successful and which have failed.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ |p{4cm}|p{4cm}|p{4cm}|c| }
+\hline
+\textbf{Condition} & \textbf{Expected result} & \textbf{Actual result} & \textbf{Status} \\ \hline
+Two functions with the same name & Throws error & Throws error & - \\ \hline
+Action and function with same name & Compiles & Compiles & - \\ \hline
+Addition of number and string & Compiles & Compiles & - \\ \hline
+Subtract number and string & Throws error & Throws error & - \\ \hline
+Bool AND Bool & Compiles & Compiles & - \\ \hline
+Bool AND String & Throws error & Throws error & - \\ \hline
+Assign to not declared variable & Throws error & Throws error & - \\ \hline
+Assign String to Num & Throws error & Throws error & - \\ \hline
+Declare same variable name in different scopes & Compiles & Compiles & \\ \hline
+Declare same variable name in global scope and in setup & Compiles & Compiles & - \\ \hline
+Declare same variable name in same scope & Throws error & Throws error & - \\ \hline
+Call function with wrong parameter types & Throws error & Throws error & - \\ \hline
+Call a function with too few parameters given & Throws error & Compiles & Fixed \\ \hline
+ Call a function with too many parameters & Throws error & Throws error & - \\ \hline
+Call a function that hasn’t been declared & Throws error & Throws error & - \\ \hline
+Wrong event on event handler & Throws error & Throws error & -  \\ \hline
+If(3) & Throws error & Throws error & - \\
+\hline
+\end{tabular}
+\caption{Fulfilment of the MoSCoW analysis}
+\label{tests}
+
+\end{table}
+
+What was discovered during the testing, was that supplying too few parameters to a function, would still end up creating the Java file.
+To fix this, the compiler now always checks if the amount of formal parameters matches the number of actual parameters, and throws an error if there is a mismatch. 

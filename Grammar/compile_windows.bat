@@ -1,5 +1,5 @@
 if %errorlevel% neq 0 exit /b %errorlevel%
-SET filename=RamFire
+SET filename=%1
 java -classpath "%~dp0out\production\Grammar\;%~dp0antlr-4.5.2-complete.jar" Main %filename%
 javac -classpath "%~dp0robocode\libs\robocode.jar" %filename%.java
 move "%~dp0%filename%.class" "%~dp0robocode\robots"

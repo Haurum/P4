@@ -1,8 +1,22 @@
 \chapter{Conclusion}
 \label{chap:Conclusion}
-Har vi besvaret problemstatement??
-Har vi lavet et sporg der er let at bruge for en nybegynder????
-Hvordan har vi fuldført moscow ? Hvad mangler vi ???
-Hvordan har vi levet op til design criteriet?
+This chapter will make a final conclusion of the project. First the Problem statement will evaluated and then the design criteria.
+
+\subsubsection{Problem statement}
+\textbf{How can a domain-specific language for Robocode simplify the creation of a robot for high school students, with little or no experience to programming?} \newline
+To simplify the creation of a robot in Robocode a domain-specific language has been designed, called DatLanguage. DatLanguage simplifies the Java type system and cuts down on language constructs, which lowers the learning curve for new programmers. Along the simplified type system and language constructs, a CLI has been made to facilitate easier compilation and start-up of the Robocode client for the user.
+
+\textbf{How can the Java type system be simplified?} \newline
+Only one numeric type is used in DatLanguage, as new programmers might not grasp the concept of memory allocation of different types. As only one numeric type is used, there is no need to convert between types in arithmetic operations. DatLanguage does not support classes, as this is from the object oriented paradigm, which is complex. The imperative paradigm is enforced in DatLanguage, as this is most fitting for learning purposes of new programmers. The type conversion in DatLanguage is very restrictive, as new programmers may not fathom how types would behave after casts. Any type can be converted to a String type, any other conversions are not allowed. 
+
+\textbf{Which constructs are necessary for programming standard robots in Robocode?} \newline
+DatLanguage implements the constructs described in the discussion and throughout the report, this is deemed enough to program standard robots in Robocode. 
+
+\textbf{How can an easy to use interface be made for the users?} \newline
+A simple interface for compiling DatLanguage is the two scripts created for Mac and Windows. By typing a simple command in Terminal or PowerShell, all the steps of translating to Java, compilling the Java code and running Robocode
+
+\subsubsection{Design criteria}
+The main priority of the design criteria in this project was the readability of the language, where the language should be easy to read and understand, which means that the language should be as simple as possible. This is done by having a few sets of constructs, few sets of primitive types and static scoping. To conclude on this criterion, a usability test would be necessary. Without this test, we cannot conclude whether DatLanguage is more readable than Java, as this would be a subjective conclusion on our behalf. We know how the language was constructed and meant to be programmed, but a new, non-experienced user, would give us a better understanding on this topic. \newline
+The syntax of DatLanguage has been tried to be simplified by making the keywords look more like a spoken language e.g. the “When” block for the events. 
 
 
